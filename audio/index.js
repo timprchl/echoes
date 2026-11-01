@@ -43,4 +43,4 @@ window.ECHOES_AUDIO = {
     "5": "07454899"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793560218; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793560402; // gegen veraltete Aufnahmen im Browser-Cache
