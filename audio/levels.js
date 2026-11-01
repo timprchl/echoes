@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793548981
     }
   },
+  "krakatau": {
+    "1": {
+      "before": -22.9,
+      "after": -20.1,
+      "mtime": 1793554460
+    },
+    "2": {
+      "before": -21.3,
+      "after": -20.2,
+      "mtime": 1793554474
+    },
+    "3": {
+      "before": -19.5,
+      "after": -20.0,
+      "mtime": 1793554487
+    },
+    "4": {
+      "before": -22.2,
+      "after": -20.1,
+      "mtime": 1793554497
+    },
+    "5": {
+      "before": -17.8,
+      "after": -19.9,
+      "mtime": 1793554512
+    }
+  },
   "september-11": {
     "1": {
       "before": -26.6,

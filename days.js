@@ -187,7 +187,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'chernobyl',
-    status: 'approved',
+    status: 'live',
     year: 1986,
     lat: 51.39,
     lon: 30.1,
@@ -242,7 +242,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'krakatau',
-    status: 'reviewed',
+    status: 'approved',
     year: 1883,
     lat: -6.1,
     lon: 105.42,
@@ -255,6 +255,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Old woman, England',
         style: 'Elderly English woman, fond and dreamy, remembering her girlhood',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1.0, rate: 0.9,
         text: 'When I was a girl, the sunsets one winter were so red and strange that our teacher took us outside to draw them. The old women in the village said it was the end of the world. I wasn’t afraid. I thought it was the most beautiful thing I had ever seen.',
         note: 'Volcanic ash in the upper atmosphere caused vivid red sunsets around the world for months.',
@@ -262,6 +263,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Telegraph clerk',
         style: 'Precise English clerk in his 30s, crisp, then alarmed',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 1.05,
         text: 'The cable brought news from the other side of the world faster than any ship – hours instead of weeks. That morning the line went dead in the middle of a sentence. The last words were about darkness at midday and ash falling. Then nothing.',
         note: 'Undersea telegraph cables made this one of the first disasters the world heard about within hours.',
@@ -269,6 +271,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Plantation clerk',
         style: 'Dutch man in his 40s, relaxed and ironic at first, Dutch accent',
+        voiceId: '33TnQ4T1Fu1IUNLy4MCf', voiceName: 'Max (dutch)',
         pitch: 0.9, rate: 1.0,
         text: 'The heat on the coast was heavy as a wet blanket, and the pepper and coffee went out on Dutch ships. For weeks the island out in the strait had been grumbling and smoking. We made a joke of it. Some of the ladies took a steamer out to watch.',
         note: 'The area was part of the Dutch East Indies. The volcano had been active since May.',
@@ -276,6 +279,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Sailor on a merchant ship',
         style: 'Weathered sailor, shaken, slow and vivid',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.85, rate: 0.9,
         text: 'A bang so loud it burst the eardrums of half my crew. Then ash and hot stones rained onto the deck, and at midday it was pitch dark. The next morning the sea was covered in pumice so thick you could almost walk on it.',
         note: 'The explosion was heard almost 5,000 km away – probably the loudest sound in recorded history.',
@@ -283,6 +287,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Fisherman, Java',
         style: 'Old Javanese fisherman, quiet and grieving, Indonesian accent',
+        voiceId: '4h05pJAlcSqTMs5KRd8X', voiceName: 'Zephlyn (indonesian)',
         pitch: 0.9, rate: 0.85,
         text: 'In August 1883 Krakatoa, the mountain in the strait between Java and Sumatra, blew itself apart. Then came the waves, taller than the palm trees, and took our village with them.',
         note: 'More than 36,000 people died, most of them in the tsunamis.',

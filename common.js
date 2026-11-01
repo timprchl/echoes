@@ -7,6 +7,12 @@ window.Echoes = (() => {
   const params = new URLSearchParams(location.search);
   const DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || params.has('dev');
 
+  // Spieler-Statistik (Cloudflare Worker in stats-server/). Leer = noch nicht online.
+  // Im Entwicklermodus wird nichts gemeldet, außer mit ?stats=local gegen `npx wrangler dev`.
+  const STATS_LIVE = 'https://echoes-stats.echoes-stats.workers.dev';
+  const STATS_URL = DEV ? (params.get('stats') === 'local' ? 'http://localhost:8787' : '') : STATS_LIVE;
+  if (STATS_URL) window.ECHOES_STATS_URL = STATS_URL;
+
   // Punkte: alle starten mit 10.000. Jede gehörte Stimme und jeder Fehlversuch kostet.
   const RULES = {
     START_POINTS: 10000,
@@ -159,5 +165,15 @@ window.Echoes = (() => {
     if (foot) foot.hidden = !DEV;
   });
 
-  return { DEV, START, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  // zufällige Geräte-ID, damit jedes Gerät pro Tag nur ein Ergebnis meldet (kein Name, keine IP)
+  function deviceId() {
+    let id = store.get('echoes.device');
+    if (!id) {
+      id = (crypto.randomUUID ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 12)}`);
+      store.set('echoes.device', id);
+    }
+    return id;
+  }
+
+  return { DEV, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();

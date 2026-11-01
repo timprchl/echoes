@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Echoes – Privacy</title>
-  <link rel="stylesheet" href="style.css?v=40">
+  <link rel="stylesheet" href="style.css?v=43">
 </head>
 <body>
   <header class="top">
@@ -16,7 +16,8 @@
 
   <main class="legal">
     <h1>Privacy</h1>
-    <p class="legal-lead">Echoes is a free hobby project. It has no accounts, no ads, no cookies and no tracking.</p>
+    <p class="legal-lead">Echoes is a free hobby project. It has no accounts, no ads, no cookies and no tracking.
+      The only thing it collects is an anonymous summary of each finished round, so everyone can see what others guessed.</p>
 
     <h2>Who is responsible</h2>
     <p>Tim Pröchel · contact via GitHub: <a href="https://github.com/timprchl">github.com/timprchl</a></p>
@@ -29,8 +30,16 @@
     <p>Your progress for the day, your streak and which tips you have already seen are saved in your browser’s local storage.
       This data never leaves your device and is not sent to us. You can delete it at any time by clearing your browser’s site data.</p>
 
-    <h2>No third parties</h2>
-    <p>All scripts, the world map and the audio files are served from this site itself. No fonts, analytics or other services from third parties are loaded.</p>
+    <h2>Anonymous game statistics</h2>
+    <p>When you finish a round, the game sends a short, anonymous summary to our statistics service: the day, how many voices you heard,
+      on which guess you found it, your points, whether you named the event, and for each guess only the country and the decade.
+      To count each device once per day it uses a random ID created in your browser – no name, no account, no IP address is stored.
+      These summaries are shown to all players as percentages on the “What everyone guessed” page.</p>
+    <p>The statistics service runs on Cloudflare Workers (Cloudflare, Inc., USA), which processes technical data such as your IP address
+      to deliver the request. Details: <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare Privacy Policy</a>.</p>
+
+    <h2>No other third parties</h2>
+    <p>All scripts, the world map and the audio files are served from this site itself. Apart from the statistics service above, no fonts, analytics or other third-party services are used.</p>
 
     <h2>AI voices</h2>
     <p>All characters are fictional. Their voices were created in advance with ElevenLabs and are played as ordinary audio files – nothing you do in the game is sent to ElevenLabs.</p>

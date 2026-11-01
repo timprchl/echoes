@@ -473,6 +473,7 @@
     pin = null;
     if (g.hit || g.final) { state.done = true; viewing = null; }
     if (state.done) { state.score = score(); Echoes.markPlayed(dayNo); } // für Startseite und Serie
+    if (state.done) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
     save();
     if (state.done) {
       stopSpeaking();

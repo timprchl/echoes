@@ -1,12 +1,23 @@
 // Ergebnisseite „What everyone guessed“: wann die Spieler es erkannt haben, wo und wann sie getippt haben.
-// Die Zahlen aller Spieler kommen später von einem Server (ECHOES_STATS_URL). Bis dahin gibt es
-// im Entwicklermodus Beispielzahlen – echte Spieler sehen ohne Server nur ihre eigene Runde.
+// Die Zahlen aller Spieler kommen vom Statistik-Server (ECHOES_STATS_URL, siehe stats-server/).
+// Ohne Server gibt es im Entwicklermodus Beispielzahlen; echte Spieler sehen dann den Knopf nicht.
+// report() meldet am Ende einer Runde das eigene, anonyme Ergebnis.
 window.EchoesStats = (() => {
   const { fmt, DEV } = Echoes;
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   const AT_SEA = 'At sea';
-  const countryAt = (countries, c) => countries.find(f => d3.geoContains(f, c))?.properties.name ?? AT_SEA;
+  // Land unter einem Punkt; an Küsten ist die grobe Weltkarte ungenau, darum auch knapp daneben suchen (≈ 50–100 km)
+  function countryAt(countries, [lon, lat]) {
+    const hit = c => countries.find(f => d3.geoContains(f, c))?.properties.name;
+    for (const r of [0, 0.5, 1]) {
+      for (const [dx, dy] of r ? [[r, 0], [-r, 0], [0, r], [0, -r], [r, r], [-r, r], [r, -r], [-r, -r]] : [[0, 0]]) {
+        const name = hit([lon + dx, lat + dy]);
+        if (name) return name;
+      }
+    }
+    return AT_SEA;
+  }
 
   // Wie die eigene Runde ausging: 'first' | 'second' (Treffer) oder 'final'
   const outcome = state => {
@@ -17,7 +28,7 @@ window.EchoesStats = (() => {
   async function load(day, dayNo, mine) {
     if (window.ECHOES_STATS_URL) {
       try {
-        const r = await fetch(`${window.ECHOES_STATS_URL}?day=${dayNo}&id=${encodeURIComponent(day.id)}`);
+        const r = await fetch(`${window.ECHOES_STATS_URL}/api/stats?day=${dayNo}`);
         if (r.ok) return await r.json();
       } catch {}
     }
@@ -189,5 +200,21 @@ window.EchoesStats = (() => {
   // gibt es Zahlen, die man zeigen kann?
   const available = () => DEV || !!window.ECHOES_STATS_URL;
 
-  return { open, close, available };
+  // eigenes Ergebnis anonym melden (einmal pro Gerät und Tag; Fehler stören das Spiel nicht)
+  function report({ day, dayNo, state, countries }) {
+    if (!window.ECHOES_STATS_URL || !state.done) return Promise.resolve();
+    const body = {
+      dayNo, dayId: day.id, device: Echoes.deviceId(), heard: Math.max(1, state.heard), outcome: outcome(state),
+      score: Math.max(0, Math.round(state.score ?? 0)), named: !!state.named?.ok,
+      guesses: state.guesses.map(g => ({
+        country: countries.length ? countryAt(countries, [g.lon, g.lat]) : AT_SEA,
+        decade: Math.max(1800, Math.min(2020, Math.floor(g.year / 10) * 10)),
+      })),
+    };
+    return fetch(`${window.ECHOES_STATS_URL}/api/result`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
+    }).catch(() => {});
+  }
+
+  return { open, close, available, report };
 })();
