@@ -472,7 +472,7 @@
     freshTry = state.guesses.length - 1;
     pin = null;
     if (g.hit || g.final) { state.done = true; viewing = null; }
-    if (state.done) { state.score = score(); Echoes.markPlayed(dayNo); } // für Startseite und Serie
+    if (state.done) { state.score = score(); state.endedAt = Date.now(); Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
     if (state.done) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
     save();
     if (state.done) {
@@ -646,6 +646,7 @@
   function nextVoice() {
     if (state.heard >= day.voices.length || state.done) return;
     state.heard++;
+    if (state.heard === 1) state.startedAt = Date.now(); // für die Spieldauer in der Statistik
     viewing = null;
     save();
     renderVoices();

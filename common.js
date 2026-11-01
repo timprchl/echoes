@@ -7,9 +7,9 @@ window.Echoes = (() => {
   const params = new URLSearchParams(location.search);
   const DEV = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || params.has('dev');
 
-  // Spieler-Statistik (Cloudflare Worker in stats-server/). Leer = noch nicht online.
+  // Spieler-Statistik (stats-server/, läuft als Cloudflare Pages – *.workers.dev war nicht erreichbar).
   // Im Entwicklermodus wird nichts gemeldet, außer mit ?stats=local gegen `npx wrangler dev`.
-  const STATS_LIVE = 'https://echoes-stats.echoes-stats.workers.dev';
+  const STATS_LIVE = 'https://echoes-stats.pages.dev';
   const STATS_URL = DEV ? (params.get('stats') === 'local' ? 'http://localhost:8787' : '') : STATS_LIVE;
   if (STATS_URL) window.ECHOES_STATS_URL = STATS_URL;
 

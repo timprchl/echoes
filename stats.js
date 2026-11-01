@@ -209,8 +209,13 @@ window.EchoesStats = (() => {
       guesses: state.guesses.map(g => ({
         country: countries.length ? countryAt(countries, [g.lon, g.lat]) : AT_SEA,
         decade: Math.max(1800, Math.min(2020, Math.floor(g.year / 10) * 10)),
+        km: Math.min(21000, Math.max(0, Math.round(g.km ?? 0))),
+        years: Math.min(300, Math.abs(Math.round(g.dy ?? 0))),
       })),
     };
+    // Spieldauer von der ersten Stimme bis zum letzten Tipp (nur wenn plausibel)
+    const secs = state.startedAt && state.endedAt ? Math.round((state.endedAt - state.startedAt) / 1000) : null;
+    if (secs > 0 && secs <= 86400) body.seconds = secs;
     return fetch(`${window.ECHOES_STATS_URL}/api/result`, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body),
     }).catch(() => {});

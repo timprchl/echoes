@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793548981
     }
   },
+  "everest": {
+    "1": {
+      "before": -22.9,
+      "after": -20.0,
+      "mtime": 1793559352
+    },
+    "2": {
+      "before": -21.5,
+      "after": -20.1,
+      "mtime": 1793559353
+    },
+    "3": {
+      "before": -27.7,
+      "after": -20.2,
+      "mtime": 1793559366
+    },
+    "4": {
+      "before": -22.6,
+      "after": -20.1,
+      "mtime": 1793559367
+    },
+    "5": {
+      "before": -23.5,
+      "after": -20.0,
+      "mtime": 1793559379
+    }
+  },
   "krakatau": {
     "1": {
       "before": -22.9,

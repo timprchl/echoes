@@ -242,7 +242,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'krakatau',
-    status: 'approved',
+    status: 'live',
     year: 1883,
     lat: -6.1,
     lon: 105.42,
@@ -297,7 +297,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'everest',
-    status: 'reviewed',
+    status: 'approved',
     year: 1953,
     lat: 27.99,
     lon: 86.93,
@@ -310,6 +310,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Woman on a bee farm',
         style: 'Down-to-earth New Zealand woman in her 40s, laughing, warm',
+        voiceId: '7ceZgj78jCCeAW93ItNk', voiceName: 'Jessie (new zealand)',
         pitch: 1.05, rate: 1.0,
         text: 'My brother-in-law keeps bees, like everyone in the family. When he went away, I minded the hives for him. One morning the whole valley rang with the news, and the bees went on humming as if nothing had happened. I laughed until I cried.',
         note: 'Edmund Hillary, one of the two climbers, was a beekeeper from New Zealand.',
@@ -317,6 +318,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Newspaper correspondent',
         style: 'Clipped upper-class English man, conspiratorial and delighted',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.9, rate: 1.05,
         text: 'The message went out in code so no rival paper could print it first. To everyone else it sounded like a dull weather report. It reached London on the very morning the whole nation was celebrating a coronation.',
         note: 'The news reached Britain on 2 June 1953 – the day of Queen Elizabeth II’s coronation.',
@@ -324,6 +326,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Porter',
         style: 'Strong, calm Nepali man speaking English with an accent, breathing hard, steady',
+        voiceId: 'qEvUQh8PxrzNFap49hNm', voiceName: 'Ananta (indian)',
         pitch: 0.9, rate: 0.9,
         text: 'Past the monastery and the prayer flags we climbed, carrying tents, ropes and heavy bottles of air, day after day. Above the last villages there was only ice and wind, and the air was so thin that every step felt like three.',
         note: 'Porters and Sherpas carried tonnes of equipment, including bottled oxygen, up to the high camps.',
@@ -331,6 +334,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Cook at base camp',
         style: 'Cheerful man, practical, slightly awed',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 1.0, rate: 1.0,
         text: 'We laid ladders across the ice, over crevasses so deep you couldn’t see the bottom. In the end two men set off alone, right to the top of the world, where no one had ever stood.',
         note: 'The route led through the Khumbu Icefall, crossed on ladders and ropes.',
@@ -338,6 +342,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Sherpa woman, Namche Bazaar, Nepal',
         style: 'Proud Nepali woman, warm and clear',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 0.95,
         text: 'On 29 May 1953 people stood on top of Mount Everest, the highest mountain on Earth, for the first time. One of them was a Sherpa from our mountains.',
         note: 'Tenzing Norgay and Edmund Hillary reached the summit together.',

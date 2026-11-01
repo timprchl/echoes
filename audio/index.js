@@ -14,6 +14,13 @@ window.ECHOES_AUDIO = {
     "4": "b54f3f11",
     "5": "e80ba033"
   },
+  "everest": {
+    "1": "7e87513a",
+    "2": "b147c730",
+    "3": "0eee9542",
+    "4": "033ba24c",
+    "5": "f5c15928"
+  },
   "krakatau": {
     "1": "090cf3a3",
     "2": "5bdbf2db",
@@ -36,4 +43,4 @@ window.ECHOES_AUDIO = {
     "5": "07454899"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793554514; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793559380; // gegen veraltete Aufnahmen im Browser-Cache
