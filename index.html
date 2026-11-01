@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Echoes</title>
+  <link rel="stylesheet" href="style.css?v=35">
+</head>
+<body class="home">
+  <header class="top">
+    <div class="brand">
+      <div class="logo">Echoes</div>
+      <div class="sub" id="dayLabel"></div>
+    </div>
+    <nav class="nav">
+      <button class="textbtn" id="guideLink"></button>
+      <button class="circle" id="helpBtn" aria-label="?">?</button>
+    </nav>
+  </header>
+
+  <div class="headline" id="headline" aria-hidden="true"></div>
+
+  <main class="hero">
+    <div class="hero-globe">
+      <div class="globe-lens"><svg id="heroGlobe" viewBox="20 20 460 460" aria-hidden="true"></svg></div>
+    </div>
+    <div class="hero-text">
+      <div class="eyebrow" id="eyebrow"></div>
+      <h1 id="heroTitle"></h1>
+      <p class="hero-sub" id="heroSub"></p>
+      <div class="hero-actions">
+        <a class="pill" id="playBtn" href="play.html"></a>
+        <button class="textbtn" id="guideBtn"></button>
+      </div>
+      <p class="played" id="played" hidden></p>
+      <p class="countdown" id="countdown"></p>
+    </div>
+  </main>
+
+
+  <p class="ai-note">All voices are fictional and AI-generated, based on real eyewitness accounts. · <a href="privacy.html">Privacy</a></p>
+
+  <footer class="foot">
+    <span id="protoLabel"></span> <span id="dayLinks"></span>
+  </footer>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="vendor/topojson-client.min.js"></script>
+  <script src="days.js?v=35"></script>
+  <script src="common.js?v=35"></script>
+  <script src="landing.js?v=35"></script>
+</body>
+</html>

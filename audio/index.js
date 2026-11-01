@@ -1,0 +1,31 @@
+// Automatisch erzeugt von tools/make_voices.py – pro Stimme der Fingerabdruck ihres Textes
+window.ECHOES_AUDIO = {
+  "berlin-wall": {
+    "1": "28e1970a",
+    "2": "d8ad10c5",
+    "3": "20264795",
+    "4": "af7eac32",
+    "5": "8966a64d"
+  },
+  "chernobyl": {
+    "1": "1ba6e74c",
+    "2": "da2138e2",
+    "3": "f2422648",
+    "4": "f18e4bd0"
+  },
+  "september-11": {
+    "1": "18538fe4",
+    "2": "80e94dd3",
+    "3": "b449a826",
+    "4": "288e21ec",
+    "5": "331b8a6d"
+  },
+  "titanic": {
+    "1": "c1df7826",
+    "2": "52e7abc3",
+    "3": "e46d7a64",
+    "4": "73c17986",
+    "5": "07454899"
+  }
+};
+window.ECHOES_AUDIO_VERSION = 1793545890; // gegen veraltete Aufnahmen im Browser-Cache
