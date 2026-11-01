@@ -10,9 +10,10 @@
 //   5  Resolution: place, date, name.
 // The `who` label is a hint too: the event's place only appears in voice 5's label.
 //
-// `status` – where the day is in the content pipeline (see review.html):
-//   draft → reviewed (texts approved) → voiced (recordings made) → approved (playable).
-// Outside dev mode only `approved` days are shown to players.
+// `status` – where the day is in the content pipeline (see studio.html):
+//   draft → reviewed (texts approved) → voiced (recordings made) → approved (playable)
+//   → live (published to GitHub Pages; tools/dev_server.py does this on approve).
+// Outside dev mode only `approved` and `live` days are shown to players.
 //
 // `style` describes the character's voice; `voiceId`/`voiceName` is the matching voice from the
 // ElevenLabs library (find one with tools/find_voices.py), read by tools/make_voices.py;
@@ -20,7 +21,7 @@
 window.ECHOES_DAYS = [
   {
     id: 'september-11',
-    status: 'approved',
+    status: 'live',
     year: 2001,
     lat: 40.7115,
     lon: -74.0134,
@@ -75,7 +76,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'titanic',
-    status: 'approved',
+    status: 'live',
     year: 1912,
     lat: 41.73,
     lon: -49.95,
@@ -131,7 +132,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'berlin-wall',
-    status: 'approved',
+    status: 'live',
     year: 1989,
     lat: 52.52,
     lon: 13.4,
@@ -186,7 +187,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'chernobyl',
-    status: 'reviewed',
+    status: 'approved',
     year: 1986,
     lat: 51.39,
     lon: 30.1,
@@ -199,6 +200,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Nurse by the sea',
         style: 'Warm Cuban woman in her 50s speaking English with a Spanish accent, gentle, then hesitant',
+        voiceId: 'pBZVCk298iJlHAcHQwLr', voiceName: 'Leoni Vergara (spanish)',
         pitch: 1.05, rate: 0.95,
         text: 'Years later the buses came to our beach full of children, pale and quiet, some with no hair. We taught them to swim. One little girl asked me if the sea could make her well. I said yes. I didn’t know.',
         note: 'From 1990, Cuba treated more than 20,000 children affected by the disaster at the beach resort of Tarará.',
@@ -206,6 +208,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Engineer',
         style: 'Proud young man in his late 20s, Eastern European accent, nostalgic',
+        voiceId: 'fXya1gyEVUh4h5MzdoXO', voiceName: 'Kostya – calm, friendly (russian)',
         pitch: 0.95, rate: 1.0,
         text: 'Our town was the pride of the whole country – brand new, everyone under thirty. A cinema, a swimming pool, a funfair that was going to open on the first of May. My salary was good, and my name was on the list for a car.',
         note: 'Pripyat was a model Soviet town built in the 1970s for the plant’s workers; the funfair never opened.',
@@ -213,6 +216,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Engineer in Sweden',
         style: 'Calm Swedish man, matter-of-fact, then uneasy',
+        voiceId: 'pIsMvEB8LP1GR5k3OcQj', voiceName: 'Christian (swedish)',
         pitch: 0.95, rate: 1.0,
         text: 'Our detectors went off and we searched our own plant for the leak. But it wasn’t us. The radiation came on the wind – from far away in the east, over the Baltic, and nobody there was saying a word.',
         note: 'The accident first became known when radiation was measured at the Forsmark plant in Sweden.',
@@ -220,6 +224,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Liquidator',
         style: 'Hoarse, weary man in his 50s, Eastern European accent, factual',
+        voiceId: 'XaEUesE01wKIKaa0xI0h', voiceName: 'Alexey\'s English With Russian Accent Professional Male Voice (russian)',
         pitch: 0.8, rate: 0.9,
         text: 'They called us “liquidators”. We shovelled graphite off the reactor roof, a few seconds each, because the machines broke down up there. Later we built the concrete sarcophagus over it.',
         note: 'Around 600,000 “liquidators” were sent to clean up, many with little protection.',
@@ -227,6 +232,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Former resident, Pripyat',
         style: 'Gentle Ukrainian woman in her 50s, quiet, sad',
+        voiceId: 'MRUchoi49aUup7AnxGC9', voiceName: 'Nastasiia (ukrainian)',
         pitch: 1.0, rate: 0.9,
         text: 'In the night of 26 April 1986, reactor 4 of the Chernobyl nuclear power plant exploded. Our town of Pripyat, in Ukraine, has been in the exclusion zone ever since. My key still hangs on a nail.',
         note: 'Pripyat was evacuated about 36 hours after the explosion and is still abandoned today.',

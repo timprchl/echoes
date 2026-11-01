@@ -59,7 +59,7 @@
   const $ = s => document.querySelector(s);
 
   const { no: dayNo, day, key: KEY } = Echoes.currentDay();
-  if (!Echoes.DEV && day.status !== 'approved') {
+  if (!Echoes.DEV && day.status !== 'approved' && day.status !== 'live') {
     document.querySelector('.stage').innerHTML = '<p class="not-ready">Today’s event is still being prepared. Come back soon.</p>';
     document.querySelector('.ai-note').hidden = true;
     return;
@@ -206,9 +206,12 @@
   // Echte Aufnahmen aus audio/ (erzeugt von tools/make_voices.py);
   // fehlt eine, spricht der Browser als Platzhalter.
   // Übersicht der Aufnahmen frisch laden (ändert sich, sobald neue erzeugt werden)
-  const manifest = document.createElement('script');
-  manifest.src = `audio/index.js?t=${Date.now()}`;
-  document.head.append(manifest);
+  // dazu die Lautstärke-Werte: angeglichene Aufnahmen liegen als .m4a neben der .mp3
+  for (const file of ['index.js', 'levels.js']) {
+    const tag = document.createElement('script');
+    tag.src = `audio/${file}?t=${Date.now()}`;
+    document.head.append(tag);
+  }
   // eine Aufnahme gilt nur, wenn sie zum aktuellen Text gehört
   const recorded = i => window.ECHOES_AUDIO?.[day.id]?.[i + 1] === Echoes.textHash(day.voices[i].text);
   let speakingIdx = -1;
@@ -266,7 +269,8 @@
     const v = day.voices[i];
     let getP;
     if (recorded(i)) {
-      const a = player = new Audio(`audio/${day.id}/${i + 1}.mp3?v=${window.ECHOES_AUDIO_VERSION || 0}`);
+      const ext = window.ECHOES_LEVELS?.[day.id]?.[i + 1] ? 'm4a' : 'mp3'; // angeglichen, falls vorhanden
+      const a = player = new Audio(`audio/${day.id}/${i + 1}.${ext}?v=${window.ECHOES_AUDIO_VERSION || 0}`);
       a.onended = done(true);
       a.onerror = done(false);
       a.play().catch(done(false));

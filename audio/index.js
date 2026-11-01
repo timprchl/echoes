@@ -8,10 +8,11 @@ window.ECHOES_AUDIO = {
     "5": "8966a64d"
   },
   "chernobyl": {
-    "1": "1ba6e74c",
-    "2": "da2138e2",
-    "3": "f2422648",
-    "4": "f18e4bd0"
+    "1": "bc79b019",
+    "2": "9a412c67",
+    "3": "7f7b9fdd",
+    "4": "b54f3f11",
+    "5": "e80ba033"
   },
   "september-11": {
     "1": "18538fe4",
@@ -28,4 +29,4 @@ window.ECHOES_AUDIO = {
     "5": "07454899"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793545890; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793548982; // gegen veraltete Aufnahmen im Browser-Cache
