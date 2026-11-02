@@ -630,7 +630,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'apollo-11',
-    status: 'reviewed',
+    status: 'live',
     on: '2026-11-07',
     year: 1969,
     lat: 28.6083,
@@ -644,6 +644,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Man in a village, Nigeria',
         style: 'Nigerian man in his 60s speaking English with a West African accent, warm, amused',
+        voiceId: 'zwbf3iHXH6YGoTCPStfx', voiceName: 'Dayo (nigerian)',
         pitch: 0.9, rate: 0.95,
         text: 'We gathered around the only television in the village, running off a car battery. The picture was ghostly, grey on grey. My grandmother refused to watch. She sat by the fire shelling groundnuts and said that if it was truly important, it would still be true in the morning.',
         note: 'The pictures were broadcast live around the world – to around 600 million viewers.',
@@ -651,6 +652,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Student',
         style: 'American woman in her early 20s, dreamy, a little sad',
+        voiceId: 'tnSpp4vdxKPjI9w0GnoV', voiceName: 'Hope (american)',
         pitch: 1.1, rate: 1,
         text: 'Everyone had long hair and a transistor radio, and the war was on every news bulletin. My boyfriend had just been drafted. That summer, for one night, nobody argued about anything.',
         note: 'In 1969 the Vietnam War divided the USA – the landing was a rare moment of unity.',
@@ -658,6 +660,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Motel owner',
         style: 'Chatty Southern US woman in her 50s, sunny',
+        voiceId: 'DLsHlh26Ugcm6ELvS0qi', voiceName: 'Ms. Walker – Warm, Reassuring, and Round (us southern)',
         pitch: 1.05, rate: 1.05,
         text: 'For a week every motel from here to Orlando was full. People camped on the beaches and along the river among the mosquitoes and the alligators, cars bumper to bumper in the July heat.',
         note: 'Around a million people came to Florida’s Space Coast to watch the launch.',
@@ -665,6 +668,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Engineer in the firing room',
         style: 'American engineer in his 30s, measured, quietly emotional',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.95, rate: 0.95,
         text: 'The ground shook so hard I felt it in my teeth. Four days later we sat around a crackling speaker, listening to a voice from a quarter of a million miles away telling us they had landed.',
         note: 'The Saturn V was the most powerful rocket ever flown at the time.',
@@ -672,6 +676,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Launch controller, Cape Kennedy, Florida',
         style: 'Calm American man, precise, proud',
+        voiceId: 'uju3wxzG5OhpWcoi3SMy', voiceName: 'Michael C. Vincent (american)',
         pitch: 0.9, rate: 0.95,
         text: 'On 16 July 1969 Apollo 11 lifted off here at Cape Kennedy in Florida. Four days later, on 20 July, two men walked on the Moon for the first time.',
         note: 'Neil Armstrong and Buzz Aldrin walked on the Moon; Michael Collins stayed in orbit.',
@@ -1933,6 +1938,56 @@ window.ECHOES_DAYS = [
         pitch: 0.85, rate: 0.9,
         text: 'On the fourth of January 2010 the Burj Khalifa opened here in Dubai, in the United Arab Emirates. At 828 metres it became the tallest building in the world. Until that evening everyone had called it Burj Dubai.',
         note: 'The tower has more than 160 floors; its fastest lifts travel about 10 metres per second.',
+      },
+    ],
+  },
+
+  {
+    id: 'iphone-presentation',
+    status: 'draft',
+    year: 2007,
+    lat: 37.7841,
+    lon: -122.4013,
+    title: 'The first iPhone is presented',
+    answers: ['iphone', 'iphone presentation', 'iphone launch', 'first iphone', 'iphone keynote', 'presentation of the iphone', 'apple iphone', 'macworld', 'macworld 2007', 'iphone vorstellung', 'vorstellung des iphone', 'erstes iphone'],
+    date: '9 January 2007',
+    place: 'Macworld Conference & Expo, Moscone Center, San Francisco, USA',
+    summary: 'At the Macworld keynote in San Francisco, Apple chief Steve Jobs presented the iPhone – a phone, a music player and an internet device in one, controlled almost entirely with the fingers on a large touchscreen instead of a keyboard. It went on sale in the USA that June. The iPhone did not invent the smartphone, but it changed what people expected from one and started the age of apps and the always-online pocket computer.',
+    voices: [
+      {
+        who: 'Tea picker, Sri Lanka',
+        style: 'Older Sri Lankan woman speaking English with a soft Sinhala accent, slow and amused',
+        pitch: 1, rate: 0.88,
+        text: 'My grandson came up the hill waving a newspaper page with a picture of a small black slab. He said: Achchi, one day everyone will carry a window in their pocket. I laughed and went back to the bushes. Now I pay for my tea on such a window.',
+        note: 'Within a decade, cheap touchscreen phones had spread to villages all over Asia and Africa – often people’s first access to the internet.',
+      },
+      {
+        who: 'Shop assistant, electronics store',
+        style: 'Young man in his early 20s, fast and slightly sarcastic',
+        pitch: 1.05, rate: 1.08,
+        text: 'Right after Christmas we were still sold out of that new games console with the motion remote. Customers wanted flat screens, everyone uploaded shaky clips to that young video site, my friends lived on MySpace. House prices only went up, apparently forever.',
+        note: 'The Nintendo Wii (late 2006), YouTube (founded 2005) and MySpace were everywhere; the US housing bubble was about to burst.',
+      },
+      {
+        who: 'Bicycle courier',
+        style: 'Woman in her 30s, West Coast American accent, upbeat, slightly out of breath',
+        pitch: 1.1, rate: 1.02,
+        text: 'Winter here means rain and fog rolling in off a cold ocean, then sun by noon. Steep hills, painted wooden houses, a bay full of ferries. Half my deliveries go to little software start-ups in old warehouses south of downtown, all dreaming of the next big thing.',
+        note: 'The South of Market district had filled with internet companies since the dot-com boom of the late 1990s.',
+      },
+      {
+        who: 'Tech journalist',
+        style: 'American man in his 40s, measured but excited, a reporter who has seen many launches',
+        pitch: 0.92, rate: 1,
+        text: 'Thousands of us in a dark hall, laptops open, blogging live. A man in a black turtleneck held up a phone with no keyboard at all – one button, one big glass screen. He flicked through songs and photos with a finger, and the whole room gasped like children.',
+        note: 'Most smartphones of the time had small physical keyboards or a stylus. Controlling a phone with several fingers on the glass was new to almost everyone in the hall.',
+      },
+      {
+        who: 'Conference technician, San Francisco',
+        style: 'American man in his 50s, calm and dry, backstage veteran',
+        pitch: 0.85, rate: 0.92,
+        text: 'On the ninth of January 2007, at the Macworld conference in the Moscone Center in San Francisco, Steve Jobs presented the first iPhone. It went on sale that June, and phones have never looked the same since.',
+        note: 'The first iPhone had no App Store and no 3G; both came a year later. Well over two billion iPhones have been sold since.',
       },
     ],
   },

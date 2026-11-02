@@ -1,5 +1,12 @@
 // Automatisch erzeugt von tools/make_voices.py – pro Stimme der Fingerabdruck ihres Textes
 window.ECHOES_AUDIO = {
+  "apollo-11": {
+    "1": "9eeb0657",
+    "2": "1c36e266",
+    "3": "dcfcdc22",
+    "4": "178aa648",
+    "5": "13cc0b1e"
+  },
   "berlin-wall": {
     "1": "28e1970a",
     "2": "d8ad10c5",
@@ -64,4 +71,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793611095; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793629248; // gegen veraltete Aufnahmen im Browser-Cache

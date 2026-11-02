@@ -1,5 +1,32 @@
 // Automatisch erzeugt von tools/loudness.py – Sprachlautstärke vor/nach dem Angleichen (dBFS)
 window.ECHOES_LEVELS = {
+  "apollo-11": {
+    "1": {
+      "before": -15.7,
+      "after": -19.9,
+      "mtime": 1793629220
+    },
+    "2": {
+      "before": -22.3,
+      "after": -20.0,
+      "mtime": 1793629232
+    },
+    "3": {
+      "before": -21.2,
+      "after": -20.0,
+      "mtime": 1793629244
+    },
+    "4": {
+      "before": -22.6,
+      "after": -20.0,
+      "mtime": 1793629246
+    },
+    "5": {
+      "before": -24.7,
+      "after": -20.1,
+      "mtime": 1793629247
+    }
+  },
   "berlin-wall": {
     "1": {
       "before": -17.4,
