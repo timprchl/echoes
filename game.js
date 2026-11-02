@@ -42,6 +42,7 @@
     play: 'Listen',
     score: 'points',
     nameOpen: 'Name the event',
+    nameLater: 'Maybe next guess',
     namePlace: 'What happened?',
     nameHint: 'One try · no penalty if wrong',
     nameOk: b => `Spot on · +${fmt(b)}`,
@@ -100,10 +101,186 @@
   svg.append('defs').html('<marker id="arrowHead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"></path></marker>');
   let countries = [];
 
+  // Nachtbild der Erde (NASA Black Marble) per WebGL unter dem SVG – gleiche Projektion, Pins & Co. bleiben im SVG.
+  // Grundbild vendor/night-earth.jpg (10 px/Grad); beim Zoomen kommen schärfere Kacheln aus tiles/night/ dazu
+  // (30–240 px/Grad, nur die sichtbaren). Ohne WebGL oder solange das Bild lädt, bleibt der helle Globus.
+  const night = (() => {
+    const lens = document.querySelector('.globe-lens');
+    const canvas = document.createElement('canvas');
+    canvas.className = 'night';
+    const gl = canvas.getContext('webgl', { premultipliedAlpha: true, antialias: false });
+    if (!gl) return { draw() {} };
+    const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
+    const prog = gl.createProgram();
+    gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p; varying vec2 uv; void main(){ uv = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }'));
+    gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, `precision highp float;
+      varying vec2 uv; uniform sampler2D tex; uniform vec2 rot; uniform float scale; uniform float px;
+      uniform vec4 box; // Bildausschnitt: Westrand, Nordrand, Breite, Höhe (Bogenmaß)
+      const float PI = 3.14159265;
+      void main() {
+        // Pixel → Projektionskoordinaten (SVG-viewBox 20…480, Mitte 250, y nach unten)
+        vec2 s = vec2(20. + uv.x * 460., 20. + (1. - uv.y) * 460.);
+        float X = (s.x - 250.) / scale, Y = (250. - s.y) / scale;
+        float r2 = X * X + Y * Y;
+        if (r2 > 1.) { gl_FragColor = vec4(0.); return; }
+        float Z = sqrt(1. - r2);
+        // Umkehrung von d3.geoOrthographic().rotate([λ, φ])
+        float lon = atan(X, Z * cos(rot.y) + Y * sin(rot.y)) - rot.x;
+        float lat = asin(clamp(Y * cos(rot.y) - Z * sin(rot.y), -1., 1.));
+        lon = mod(lon + PI, 2. * PI) - PI;
+        vec2 t = vec2((lon - box.x) / box.z, (box.y - lat) / box.w);
+        if (t.x < 0. || t.x > 1. || t.y < 0. || t.y > 1.) discard;
+        vec3 c = texture2D(tex, t).rgb * 1.35;
+        // Atmosphäre: zum Rand hin bläulicher Schimmer
+        float rim = pow(1. - Z, 2.5);
+        c = mix(c, vec3(.36, .55, 1.), rim * .55);
+        float edge = 1. - smoothstep(1. - px * 1.5, 1., sqrt(r2));
+        gl_FragColor = vec4(c * edge, edge);
+      }`));
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return { draw() {} };
+    gl.useProgram(prog);
+    gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    const loc = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+    const u = n => gl.getUniformLocation(prog, n);
+    const D = Math.PI / 180;
+    const texture = img => {
+      const t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      return t;
+    };
+
+    let base = null;
+    const img = new Image();
+    img.onload = () => {
+      base = texture(img);
+      lens.prepend(canvas);
+      draw();
+      requestAnimationFrame(() => lens.classList.add('night'));
+    };
+    img.src = 'vendor/night-earth.jpg';
+
+    // --- Detail-Kacheln ---
+    let index = null;
+    fetch('tiles/night/index.json').then(r => r.ok ? r.json() : null).then(j => { index = j; draw(); }).catch(() => {});
+    const cache = new Map(); // "n/x_y" → { tex, used }
+    const loading = new Set();
+    const queue = [];
+    let clock = 0;
+    const has = (lv, x, y) => lv.have[y * lv.w + x] === '1';
+    function request(key) {
+      if (cache.has(key) || loading.has(key) || queue.includes(key)) return;
+      queue.push(key);
+      pump();
+    }
+    function pump() {
+      while (loading.size < 6 && queue.length) {
+        const key = queue.shift();
+        loading.add(key);
+        const im = new Image();
+        im.onload = () => { cache.set(key, { tex: texture(im), used: clock }); loading.delete(key); schedule(); pump(); };
+        im.onerror = () => { loading.delete(key); pump(); };
+        im.src = `tiles/night/${key}.jpg`;
+      }
+    }
+    function evict() {
+      if (cache.size <= 160) return;
+      [...cache.entries()].sort((a, b) => a[1].used - b[1].used).slice(0, cache.size - 160)
+        .forEach(([key, t]) => { gl.deleteTexture(t.tex); cache.delete(key); });
+    }
+    // sichtbare Kacheln einer Stufe: Bildschirm in einem Raster abtasten, pro Kachel den Bildschirm-Ausschnitt merken
+    function visibleTiles(lv, size) {
+      const tiles = new Map();
+      const N = 20, step = 460 / N;
+      for (let j = 0; j <= N; j++) {
+        for (let i = 0; i <= N; i++) {
+          const sx = 20 + i * step, sy = 20 + j * step;
+          const c = projection.invert([sx, sy]);
+          if (!c || !visible(c)) continue;
+          const x = Math.min(lv.w - 1, Math.floor((c[0] + 180) / lv.deg));
+          const y = Math.min(lv.h - 1, Math.floor((90 - c[1]) / lv.deg));
+          if (!has(lv, x, y)) continue;
+          const key = `${lv.n}/${x}_${y}`;
+          const b = tiles.get(key) || { x, y, x0: sx, x1: sx, y0: sy, y1: sy, d: Infinity };
+          b.x0 = Math.min(b.x0, sx); b.x1 = Math.max(b.x1, sx); b.y0 = Math.min(b.y0, sy); b.y1 = Math.max(b.y1, sy);
+          b.d = Math.min(b.d, Math.hypot(sx - 250, sy - 250));
+          tiles.set(key, b);
+        }
+      }
+      // Ausschnitt um einen Rasterschritt vergrößern und in Canvas-Pixel umrechnen
+      const k = size / 460;
+      tiles.forEach(b => {
+        b.sx = Math.max(0, Math.floor((b.x0 - step - 20) * k));
+        b.sy = Math.max(0, Math.floor((480 - b.y1 - step) * k));
+        b.sw = Math.min(size, Math.ceil((b.x1 + step - 20) * k)) - b.sx;
+        b.sh = Math.min(size, Math.ceil((480 - b.y0 + step) * k)) - b.sy;
+      });
+      return tiles;
+    }
+
+    let size = 0;
+    function draw() {
+      if (!base) return;
+      size = Math.round(lens.clientWidth * Math.min(2, devicePixelRatio || 1));
+      if (canvas.width !== size) { canvas.width = canvas.height = size; gl.viewport(0, 0, size, size); }
+      const [l, p] = projection.rotate();
+      gl.uniform2f(u('rot'), l * D, p * D);
+      gl.uniform1f(u('scale'), projection.scale());
+      gl.uniform1f(u('px'), 460 / size / projection.scale());
+      gl.disable(gl.SCISSOR_TEST);
+      gl.clearColor(0, 0, 0, 0);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.bindTexture(gl.TEXTURE_2D, base);
+      gl.uniform4f(u('box'), -Math.PI, Math.PI / 2, 2 * Math.PI, Math.PI);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      if (!index) return;
+      // benötigte Schärfe: Bildschirm-Pixel pro Grad in der Globusmitte
+      const need = projection.scale() * D * size / 460;
+      const levels = index.levels.filter(lv => index.tile / lv.deg / 2 < need); // nur Stufen, die schärfer sind als das Bild davor
+      if (!levels.length) return;
+      const top = levels.find(lv => index.tile / lv.deg >= need * .8) || levels[levels.length - 1];
+      clock++;
+      gl.enable(gl.SCISSOR_TEST);
+      for (const lv of levels) {
+        if (lv.n > top.n) break;
+        const tiles = visibleTiles(lv, size);
+        if (lv === top) [...tiles.entries()].sort((a, b) => a[1].d - b[1].d).forEach(([key]) => request(key));
+        tiles.forEach((b, key) => {
+          const t = cache.get(key);
+          if (!t || b.sw <= 0 || b.sh <= 0) return;
+          t.used = clock;
+          gl.scissor(b.sx, b.sy, b.sw, b.sh);
+          gl.bindTexture(gl.TEXTURE_2D, t.tex);
+          gl.uniform4f(u('box'), (b.x * lv.deg - 180) * D, (90 - b.y * lv.deg) * D, lv.deg * D, lv.deg * D);
+          gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+        });
+      }
+      // nicht mehr gebrauchte Ladewünsche verwerfen (z. B. nach dem Wegdrehen)
+      queue.splice(0, queue.length, ...queue.filter(key => key.startsWith(`${top.n}/`)));
+      evict();
+    }
+    let pending = false;
+    const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; draw(); }); } };
+    addEventListener('resize', schedule);
+    return { draw };
+  })();
+
   const center = () => { const r = projection.rotate(); return [-r[0], -r[1]]; };
   const visible = c => d3.geoDistance(c, center()) < Math.PI / 2 - 0.02;
 
   function drawGlobe() {
+    night.draw();
+    // die Ländergrenzen sind grob (1:110 Mio.) – tief hineingezoomt blenden sie aus, das Satellitenbild übernimmt
+    const z = projection.scale() / BASE;
+    svg.style('--borders', z <= 4 ? 1 : Math.max(0, 1 - (z - 4) / 6));
     gSphere.attr('d', path);
     gGrat.attr('d', path);
     gLand.selectAll('path').data(countries).join('path').attr('class', 'land').attr('d', path);
@@ -160,7 +337,7 @@
     }));
 
   function zoom(f) {
-    projection.scale(Math.max(BASE, Math.min(BASE * 8, projection.scale() * f)));
+    projection.scale(Math.max(BASE, Math.min(BASE * 40, projection.scale() * f))); // bis 40× – darunter scharf dank Detail-Kacheln
     drawGlobe();
   }
   svg.node().addEventListener('wheel', e => { e.preventDefault(); zoom(e.deltaY < 0 ? 1.12 : 1 / 1.12); }, { passive: false });
@@ -315,8 +492,8 @@
     lastHeard = state.heard;
     const shown = state.done ? n : state.heard;
     const idx = viewing ?? (state.done ? -1 : state.heard - 1);
-    // vor der ersten Stimme liegt alles außer der Mitte unscharf im Hintergrund
-    document.body.classList.toggle('veiled', !state.done && state.heard === 0);
+    // vor der ersten Stimme ist nur die Mitte zu sehen; der Rest fliegt beim Start herein
+    document.body.classList.toggle('veiled', !state.done && state.heard === 0 && !document.body.classList.contains('arriving'));
 
     if (idx >= 0) {
       const v = day.voices[idx];
@@ -414,6 +591,7 @@
   }
   const nameBonus = () => NAME_BONUS[Math.max(0, state.heard - 1)];
   let nameOpen = false;
+  let remindLater = -1; // „Maybe next guess“: bis zum nächsten Tipp nicht mehr nachfragen
   function renderNameIt() {
     const box = $('#nameIt');
     box.hidden = !state.named && (state.done || state.heard === 0);
@@ -426,9 +604,18 @@
       return;
     }
     if (!nameOpen) {
-      box.className = 'name-it';
-      box.innerHTML = `<button class="ni-toggle" id="niToggle"><span class="ni-pen">✎</span>${t().nameOpen}<span class="ni-bonus">+${fmt(nameBonus())}</span></button>`;
+      // Erinnerung: Pin und Jahr stehen, gleich wird getippt – letzte Gelegenheit für den vollen Bonus
+      const remind = !!pin && year != null && remindLater !== state.guesses.length;
+      if (remind === box.classList.contains('remind') && $('#niToggle')) {
+        $('#niToggle .ni-bonus').textContent = `+${fmt(nameBonus())}`;
+        return;
+      }
+      // vor dem Tippen hebt sich das Feld dreidimensional aus dem Bildschirm; „Maybe next guess“ legt es zurück
+      box.className = `name-it${remind ? ' remind' : ''}`;
+      box.innerHTML = `<button class="ni-toggle" id="niToggle"><span class="ni-pen">✎</span>${t().nameOpen}<span class="ni-bonus">+${fmt(nameBonus())}</span></button>`
+        + (remind ? `<button class="ni-later" id="niLater">${t().nameLater}</button>` : '');
       $('#niToggle').onclick = () => { nameOpen = true; renderNameIt(); $('#niInput').focus(); };
+      if (remind) $('#niLater').onclick = () => { remindLater = state.guesses.length; renderNameIt(); };
       return;
     }
     if ($('#niInput')) { box.querySelector('.ni-hint b').textContent = `+${fmt(nameBonus())}`; return; } // Eingabe behalten
@@ -564,6 +751,7 @@
 
     // Tipp-Knopf als Abfolge: erst Pin, dann Jahr, dann abgeben
     const step = !pin ? 1 : year == null ? 2 : 3;
+    renderNameIt(); // vor dem Tippen den Namens-Bonus hervorheben
     const guess = $('#guessBtn');
     guess.hidden = state.done;
     $('#timeline').hidden = state.done;
@@ -798,7 +986,12 @@
       wrap.append(ring);
     }
     $('.voice-stage').classList.add('leaving');
-    document.body.classList.remove('veiled'); // Hintergrund wird langsam scharf
+    // Spielfeld fliegt von unten herein, kurz nachdem die Stimme startet
+    setTimeout(() => {
+      document.body.classList.add('arriving');
+      document.body.classList.remove('veiled');
+      setTimeout(() => document.body.classList.remove('arriving'), 1900);
+    }, 500);
     setTimeout(nextVoice, 1400);
   }
   // Tipp abgeben: Ring um den Knopf, danach Echo-Ringe am Pin auf dem Globus
