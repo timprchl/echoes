@@ -352,7 +352,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'chile-mine',
-    status: 'reviewed',
+    status: 'approved',
     year: 2010,
     lat: -27.16,
     lon: -70.5,
@@ -365,6 +365,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Night nurse, Japan',
         style: 'Soft-spoken Japanese woman in her 30s speaking English, tired and moved',
+        voiceId: 'u6a6bRv82Zfi9NzoIqvt', voiceName: 'Lia (japanese)',
         pitch: 1.05, rate: 0.95,
         text: 'I spent the whole night in the hospital break room with strangers, all of us staring at a screen where almost nothing happened – just a wheel turning, slowly, for hours. Every time it stopped, we held our breath. When it was over, I cried, and I don’t even know why.',
         note: 'Around a billion people around the world watched the rescue live.',
@@ -372,6 +373,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Video technician',
         style: 'Focused man in his 30s, technical, then overwhelmed with emotion',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.95, rate: 1.0,
         text: 'We lowered a camera no bigger than a lipstick on a fibre-optic cable – the newest thing we had. On the little screen the picture flickered, then a face appeared, then a thumb held up. Grown men around me were sobbing.',
         note: 'Tiny cameras, video calls and fibre-optic cables kept contact going for weeks.',
@@ -379,6 +381,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Wife in the camp',
         style: 'Chilean woman in her 40s, Spanish accent, hopeful and strong',
+        voiceId: 'pBZVCk298iJlHAcHQwLr', voiceName: 'Leoni Vergara (spanish)',
         pitch: 1.05, rate: 1.0,
         text: 'We lived for weeks in tents in the driest desert on Earth – freezing at night, sun like fire by day, not a drop of rain. We called our camp “Esperanza” and sang around the fire every evening.',
         note: 'The families’ camp in the Atacama Desert was called Campamento Esperanza – Camp Hope.',
@@ -386,6 +389,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Rescue worker',
         style: 'Steady man in his 50s, Spanish accent, deeply moved',
+        voiceId: 'AsHHje51j2aYdrvLDHfG', voiceName: 'Carlos (spanish)',
         pitch: 0.9, rate: 0.95,
         text: 'The capsule was barely wider than a man’s shoulders, painted in the colours of our flag. One by one they came up through 700 metres of rock – thirty-three of them – and each one hugged his family in the floodlights.',
         note: 'The rescue capsule “Fénix 2” brought the miners up one at a time.',
@@ -393,6 +397,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Miner, San José mine, Chile',
         style: 'Rough-voiced Chilean miner, Spanish accent, grateful and calm',
+        voiceId: 'lOEtO6uKXvOvJeMZaY4u', voiceName: 'Robert (spanish)',
         pitch: 0.85, rate: 0.9,
         text: 'For 69 days we were trapped 700 metres beneath the Atacama. In October 2010 the capsule brought us up into the light, one after another. On day 17 we had sent up a note: we are fine, all 33.',
         note: 'The note “Estamos bien en el refugio los 33” became famous worldwide.',

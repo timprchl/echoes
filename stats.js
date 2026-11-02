@@ -221,5 +221,44 @@ window.EchoesStats = (() => {
     }).catch(() => {});
   }
 
-  return { open, close, available, report };
+  // kurze Frage vor der Auflösung: wie schwer war es, und optional ein Satz. Ergebnis: Promise, das nach
+  // „Send“ oder „Skip“ erfüllt wird – erst dann zeigt das Spiel die Lösung.
+  function askFeedback({ day, dayNo }) {
+    if (!window.ECHOES_STATS_URL) return Promise.resolve();
+    return new Promise(done => {
+      const dlg = document.createElement('dialog');
+      dlg.className = 'fb';
+      let choice = null;
+      dlg.innerHTML = `
+        <div class="eyebrow">Before the answer</div>
+        <h2>How was today’s round?</h2>
+        <div class="fb-choices">
+          <button data-d="easy">Too easy</button><button data-d="right">Just right</button><button data-d="hard">Too hard</button>
+        </div>
+        <textarea maxlength="500" rows="3" placeholder="Anything else? Ideas, confusing voices, bugs … (optional)"></textarea>
+        <p class="fb-note">Anonymous – please don’t write your name or other personal details.</p>
+        <div class="fb-actions"><button class="textbtn" data-skip>Skip</button><button class="pill" data-send disabled>Send &amp; show answer</button></div>`;
+      document.body.append(dlg);
+      const send = dlg.querySelector('[data-send]');
+      const ta = dlg.querySelector('textarea');
+      const update = () => { send.disabled = !choice && !ta.value.trim(); };
+      dlg.querySelectorAll('[data-d]').forEach(b => {
+        b.onclick = () => { choice = b.dataset.d; dlg.querySelectorAll('[data-d]').forEach(x => x.classList.toggle('on', x === b)); update(); };
+      });
+      ta.oninput = update;
+      const finish = () => { dlg.close(); dlg.remove(); done(); };
+      dlg.querySelector('[data-skip]').onclick = finish;
+      dlg.addEventListener('cancel', e => { e.preventDefault(); finish(); });
+      send.onclick = () => {
+        fetch(`${window.ECHOES_STATS_URL}/api/feedback`, {
+          method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ dayNo, dayId: day.id, device: Echoes.deviceId(), difficulty: choice, text: ta.value.trim() }),
+        }).catch(() => {});
+        finish();
+      };
+      dlg.showModal();
+    });
+  }
+
+  return { open, close, available, report, askFeedback };
 })();

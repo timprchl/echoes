@@ -477,15 +477,26 @@
     save();
     if (state.done) {
       stopSpeaking();
-      revealing = true;
-      renderAll();
-      revealing = false;
-      flyTo(target).then(() => { echoAt(target); haptic([30, 60, 30, 60, 90]); });
-      countUp();
+      // vor der Auflösung kurz nach Feedback fragen (einmal pro Tag), dann erst die Lösung zeigen
+      if (!state.feedbackAsked) {
+        state.feedbackAsked = true;
+        save();
+        EchoesStats.askFeedback({ day, dayNo }).then(reveal);
+      } else reveal();
     } else {
       renderAll();
       flyTo([g.lon, g.lat], projection.scale()); // Pfeil zum Ziel ins Bild drehen
     }
+  }
+
+  // Auflösung: Ergebnis gestaffelt einblenden, Globus fliegt zur Lösung
+  function reveal() {
+    const target = [day.lon, day.lat];
+    revealing = true;
+    renderAll();
+    revealing = false;
+    flyTo(target).then(() => { echoAt(target); haptic([30, 60, 30, 60, 90]); });
+    countUp();
   }
 
   // Auflösung: Punkte zählen von 10.000 auf das Ergebnis herunter, danach erst der Titel (per CSS-Verzögerung)

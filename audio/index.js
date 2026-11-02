@@ -14,6 +14,13 @@ window.ECHOES_AUDIO = {
     "4": "b54f3f11",
     "5": "e80ba033"
   },
+  "chile-mine": {
+    "1": "fbc6ea40",
+    "2": "820f793d",
+    "3": "c5daf0bc",
+    "4": "324fd957",
+    "5": "08171383"
+  },
   "everest": {
     "1": "7e87513a",
     "2": "b147c730",
@@ -43,4 +50,4 @@ window.ECHOES_AUDIO = {
     "5": "07454899"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793560402; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793608863; // gegen veraltete Aufnahmen im Browser-Cache

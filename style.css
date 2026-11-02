@@ -768,3 +768,26 @@ a.cr-dcell:hover { border-color: var(--ink); }
   .cr-dcell { min-height: 54px; }
 }
 @media (max-width: 900px) { .cr-dmeta > span:last-child { display: none; } }
+
+/* --- Feedback vor der Auflösung --- */
+dialog.fb { max-width: 440px; padding: 26px 26px 20px; text-align: center; }
+dialog.fb h2 { margin: 8px 0 16px; font: 400 26px/1.2 var(--serif); }
+.fb-choices { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.fb-choices button { padding: 10px 16px; border-radius: 999px; border: 1px solid var(--faint); font-size: 14px; background: var(--card); }
+.fb-choices button:hover { border-color: var(--ink); }
+.fb-choices button.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+dialog.fb textarea { width: 100%; margin-top: 16px; border: 1px solid var(--faint); border-radius: 12px; padding: 10px 12px; font: 14px/1.4 var(--sans); resize: vertical; }
+.fb-note { margin: 6px 0 0; font-size: 11px; color: var(--muted); }
+.fb-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+
+.fb-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 24px; }
+.fb-days { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.fb-days li { display: grid; grid-template-columns: 160px 1fr 28px; gap: 10px; align-items: center; font-size: 12px; }
+.fb-days a { color: inherit; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.fb-days .num { text-align: right; color: #898781; font-variant-numeric: tabular-nums; }
+.fb-comments { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; max-height: 420px; overflow-y: auto; }
+.fb-comments li { background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+.fb-comments p { margin: 0 0 4px; font-size: 14px; line-height: 1.5; white-space: pre-wrap; }
+.fb-comments small { font-size: 11px; color: #898781; }
+#feedback .textbtn { font-size: 12px; color: #d97757; }
+@media (max-width: 900px) { .fb-grid { grid-template-columns: 1fr; } }

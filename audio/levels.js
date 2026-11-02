@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793548981
     }
   },
+  "chile-mine": {
+    "1": {
+      "before": -25.0,
+      "after": -20.2,
+      "mtime": 1793608861
+    },
+    "2": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1793608817
+    },
+    "3": {
+      "before": -21.0,
+      "after": -20.1,
+      "mtime": 1793608820
+    },
+    "4": {
+      "before": -24.5,
+      "after": -20.1,
+      "mtime": 1793608834
+    },
+    "5": {
+      "before": -19.8,
+      "after": -20.0,
+      "mtime": 1793608846
+    }
+  },
   "everest": {
     "1": {
       "before": -22.9,
