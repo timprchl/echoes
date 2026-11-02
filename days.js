@@ -352,7 +352,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'chile-mine',
-    status: 'approved',
+    status: 'live',
     year: 2010,
     lat: -27.16,
     lon: -70.5,
