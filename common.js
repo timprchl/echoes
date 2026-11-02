@@ -18,7 +18,7 @@ window.Echoes = (() => {
   // Punkte: alle starten mit 10.000. Jede gehörte Stimme und jeder Fehlversuch kostet.
   const RULES = {
     START_POINTS: 10000,
-    VOICE_COST: [500, 750, 1000, 1000, 1000],
+    VOICE_COST: [0, 750, 1000, 1000, 1000], // die erste Stimme ist frei
     MISS_COST: 750,     // pro Fehlversuch bei Tipp 1–2
     TRIES: 2,           // Tipps mit Treffer-Prüfung; danach kommt der finale Tipp
     YEAR_COST: 150,     // finaler Tipp: pro Jahr daneben …
@@ -112,7 +112,7 @@ window.Echoes = (() => {
       },
       {
         title: 'Every voice gets closer.',
-        text: 'The first voice is far away and vague, the fifth is right there. Every voice costs points – you start with 10,000.',
+        text: 'The first voice is far away and vague, the fifth is right there. The first one is free, every further voice costs points – you start with 10,000.',
         art: `<div class="g-costs"><span>−500</span><span>−750</span><span>−1,000</span><span>−1,000</span><span>−1,000</span></div>
           <div class="g-meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="g-who">Distance to the event</div>`,
       },

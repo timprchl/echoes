@@ -524,7 +524,7 @@ window.ECHOES_DAYS = [
   {
     id: 'hindenburg',
     status: 'reviewed',
-    on: '2026-11-10',
+    on: '2026-11-20',
     year: 1937,
     lat: 40.0335,
     lon: -74.3535,
@@ -737,7 +737,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'tsunami-2004',
-    status: 'reviewed',
+    status: 'voiced',
     on: '2026-11-09',
     year: 2004,
     lat: 5.5483,
@@ -751,6 +751,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Grandmother, Sweden',
         style: 'Elderly Swedish woman speaking English with an accent, quiet and steady, grieving',
+        voiceId: 'oVXQ3H21hRI9OtM4YH5K', voiceName: 'Freya (swedish)',
         pitch: 1, rate: 0.85,
         text: 'Every Christmas my son flew somewhere warm with his wife and the little ones. That year the phone didn’t ring on Boxing Day, or the day after. I still lay a place for them at the Christmas table.',
         note: 'Sweden lost more than 500 citizens, most of them holidaying in Thailand.',
@@ -758,6 +759,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Backpacker',
         style: 'Young Australian man, relaxed and sunny',
+        voiceId: 'sai9UY7iXkRDSsXHR0bZ', voiceName: 'Ben (australian)',
         pitch: 1.05, rate: 1.05,
         text: 'I had one of those new digital cameras and uploaded my photos at an internet café, fifty cents for half an hour. The owner played the same pop song all day, and every email I sent home said the same word: paradise.',
         note: 'Digital cameras and internet cafés: in the 2000s, tourists’ own videos showed the disaster to the world.',
@@ -765,6 +767,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Hotel waiter',
         style: 'Indonesian man in his 20s, gentle, Indonesian accent',
+        voiceId: '4h05pJAlcSqTMs5KRd8X', voiceName: 'Zephlyn (indonesian)',
         pitch: 1, rate: 0.95,
         text: 'The day after Christmas the beach was full, the call to prayer floated over the palm trees, and the sea was warm as bathwater. In the morning the earth shook a little – but it often did.',
         note: 'The earthquake struck just before 8 am local time; the first waves arrived within about 20 minutes.',
@@ -772,6 +775,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Survivor',
         style: 'Indonesian woman in her 30s, hushed, haunted',
+        voiceId: 'I7sakys8pBZ1Z5f0UhT9', voiceName: 'Putri Maharani (javanese)',
         pitch: 1, rate: 0.9,
         text: 'Then the sea went out, far out, and children ran to pick up the fish flapping on the sand. Someone shouted. A dark wall came towards us, taller than the mosque roofs, and boats, cars and houses moved inland like toys.',
         note: 'The sea drawing back is a warning sign of a tsunami – few people knew it then.',
@@ -779,6 +783,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Teacher, Banda Aceh, Indonesia',
         style: 'Indonesian man in his 40s, calm, dignified, Indonesian accent',
+        voiceId: 'JEyYjYhKfZusWtpp0Hhs', voiceName: 'Dave Chen (indonesian)',
         pitch: 0.9, rate: 0.9,
         text: 'On 26 December 2004 an earthquake under the Indian Ocean sent waves onto the coasts of fourteen countries. Here in Banda Aceh, in Indonesia, the water took tens of thousands of our people.',
         note: 'Afterwards, a tsunami warning system was built for the Indian Ocean.',
@@ -1140,7 +1145,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'eiffel-tower',
-    status: 'draft',
+    status: 'voiced',
     on: '2026-11-08',
     year: 1889,
     lat: 48.8584,
@@ -1154,6 +1159,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Planter’s daughter',
         style: 'Elderly Brazilian woman, Portuguese accent, dreamy',
+        voiceId: 'fNmw8sukfGuvWVOp33Ge', voiceName: 'Tosca (standard)',
         pitch: 1, rate: 0.9,
         text: 'Papa came home from a long sea voyage and could talk of nothing else: electric lights at night, a palace full of machines, crowds from every country. He brought us a little brass souvenir. It stood on our piano for fifty years.',
         note: 'Visitors came from all over the world; souvenir models were sold by the thousand.',
@@ -1161,6 +1167,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Photographer',
         style: 'French man in his 40s, French accent, enthusiastic',
+        voiceId: 'xTZlmU8dKXdyk4XGYGFg', voiceName: 'Antoine (french)',
         pitch: 0.95, rate: 1.05,
         text: 'Ladies in bustles, gas lamps giving way to electric bulbs, a talking machine that made the crowd scream. Everyone wanted their picture taken in front of something new, and I had to hide under my black cloth all day.',
         note: 'Edison’s phonograph was one of the sensations of the fair.',
@@ -1168,6 +1175,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Painter',
         style: 'Older French man, French accent, haughty',
+        voiceId: 'pB0wYnYoA5t7xU302lqw', voiceName: 'JC (french)',
         pitch: 0.85, rate: 0.95,
         text: 'Two hundred of us signed a letter against it – a useless, monstrous chimney, we called it, rising over our beautiful city of grey roofs, river bridges and cafés.',
         note: 'Artists published a protest against the tower before it was finished.',
@@ -1175,6 +1183,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Riveter',
         style: 'French man in his 30s, rough, proud',
+        voiceId: 'bObiIpcSB2feMOHORpee', voiceName: 'Antonin (french)',
         pitch: 0.9, rate: 1,
         text: 'Two years, two and a half million rivets, heated red and hammered in high above the river. When it was finished, it was the tallest thing human beings had ever built.',
         note: 'At 300 metres it was the tallest structure in the world until 1930.',
@@ -1182,6 +1191,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Lift operator, Paris',
         style: 'French woman in her 40s, French accent, clear',
+        voiceId: '1hIScOW98xkqE5ttC10C', voiceName: 'Mariva Viva Muse (french)',
         pitch: 1.05, rate: 0.95,
         text: 'In spring 1889 the Eiffel Tower opened in Paris as the entrance to the World’s Fair – three hundred metres of iron above the Seine.',
         note: 'It was meant to stand for only 20 years.',
@@ -1399,7 +1409,7 @@ window.ECHOES_DAYS = [
   {
     id: 'waterloo',
     status: 'draft',
-    on: '2026-11-18',
+    on: '2026-11-21',
     year: 1815,
     lat: 50.6787,
     lon: 4.4044,
@@ -1500,6 +1510,7 @@ window.ECHOES_DAYS = [
   {
     id: 'indian-independence',
     status: 'draft',
+    on: '2026-11-22',
     year: 1947,
     lat: 28.6562,
     lon: 77.241,
@@ -1600,6 +1611,7 @@ window.ECHOES_DAYS = [
   {
     id: 'pearl-harbor',
     status: 'draft',
+    on: '2026-11-23',
     year: 1941,
     lat: 21.3649,
     lon: -157.95,
@@ -1850,6 +1862,7 @@ window.ECHOES_DAYS = [
   {
     id: 'rumble-in-the-jungle',
     status: 'draft',
+    on: '2026-11-25',
     year: 1974,
     lat: -4.3307,
     lon: 15.3006,
@@ -1900,6 +1913,7 @@ window.ECHOES_DAYS = [
   {
     id: 'burj-khalifa',
     status: 'draft',
+    on: '2026-11-10',
     year: 2010,
     lat: 25.1972,
     lon: 55.2744,
@@ -1950,6 +1964,7 @@ window.ECHOES_DAYS = [
   {
     id: 'iphone-presentation',
     status: 'draft',
+    on: '2026-11-24',
     year: 2007,
     lat: 37.7841,
     lon: -122.4013,
@@ -1993,6 +2008,158 @@ window.ECHOES_DAYS = [
         pitch: 0.85, rate: 0.92,
         text: 'On the ninth of January 2007, at the Macworld conference in the Moscone Center in San Francisco, Steve Jobs presented the first iPhone. It went on sale that June, and phones have never looked the same since.',
         note: 'The first iPhone had no App Store and no 3G; both came a year later. Well over two billion iPhones have been sold since.',
+      },
+    ],
+  },
+
+  {
+    id: 'moscow-rock-1991',
+    status: 'draft',
+    year: 1991,
+    lat: 55.8336,
+    lon: 37.4458,
+    title: 'Monsters of Rock in Moscow',
+    answers: ['monsters of rock', 'monsters of rock 1991', 'monsters of rock moscow', 'moscow rock concert', 'rock concert moscow', 'rock concert in moscow', 'tushino', 'tushino concert', 'tushino airfield', 'metallica moscow', 'ac/dc moscow', 'acdc moscow', 'rockkonzert moskau', 'rockkonzert in moskau', 'moskau 1991'],
+    date: '28 September 1991',
+    place: 'Tushino airfield, Moscow, Soviet Union',
+    summary: 'Barely a month after the failed August coup against Mikhail Gorbachev, the touring festival Monsters of Rock gave a free open-air concert on the old Tushino airfield in Moscow, with AC/DC, Metallica, Pantera, The Black Crowes and the Soviet band E.S.T. Estimates range from half a million to well over a million people. For many young Soviets it felt like a celebration of a new freedom – though soldiers and police guarding the field also beat some fans. Three months later the Soviet Union ceased to exist.',
+    voices: [
+      {
+        who: 'Long-distance lorry driver, Brazil',
+        style: 'Brazilian man in his 60s speaking English with a warm Portuguese accent, slow and nostalgic',
+        pitch: 0.9, rate: 0.9,
+        text: 'My nephew left a cassette in my cab, copied so many times it hissed like rain. Loud guitars, a man shouting. He said that, not long before, boys somewhere far away could get into real trouble for a tape like that. I turned it up on the long empty roads.',
+        note: 'Western rock and heavy metal had long been frowned upon or restricted in parts of the Eastern Bloc; fans passed around home-copied tapes.',
+      },
+      {
+        who: 'Touring sound engineer',
+        style: 'British man in his 40s, dry and matter-of-fact, roadie humour',
+        pitch: 0.9, rate: 1,
+        text: 'That year we toured with a tape of bootlegs, a fax machine and a Walkman each. In the winter we watched a war in the desert live on satellite TV in a hotel bar. The wall in that other city had been gone two years, and suddenly every border felt open to a band.',
+        note: 'The Gulf War of early 1991 was the first war watched live around the clock on CNN. The Berlin Wall had fallen in November 1989.',
+      },
+      {
+        who: 'Lighting rigger',
+        style: 'Dutch woman in her 30s speaking English, practical and a little wistful',
+        pitch: 1.05, rate: 1,
+        text: 'Early autumn, already cold at night. Birch trees turning yellow, a wide slow river, endless rows of grey tower blocks, and street signs in letters I could not read. We built the stage on an old runway at the edge of a huge city, under a low white sky.',
+        note: 'The stage stood on a former airfield on the north-western edge of the city, next to the river.',
+      },
+      {
+        who: 'Young conscript',
+        style: 'Russian man around 19 speaking English with a strong Russian accent, quiet, a little ashamed and amazed',
+        pitch: 1, rate: 0.95,
+        text: 'A month earlier tanks had stood in the streets. Now they put us in a line in front of a crowd that went to the horizon – Soviet kids on each other’s shoulders, shirtless, screaming along to American metal. No tickets. Some of us took off our helmets.',
+        note: 'The failed coup of August 1991 had brought tanks into the capital. At the concert, soldiers and police formed cordons; some hit fans with batons, others joined in.',
+      },
+      {
+        who: 'Concert-goer, Moscow',
+        style: 'Russian woman in her 50s speaking English with a light Russian accent, smiling, remembering her youth',
+        pitch: 1, rate: 0.92,
+        text: 'On the twenty-eighth of September 1991, on the Tushino airfield in Moscow, AC/DC, Metallica and others played Monsters of Rock for free. Half a million of us, maybe more. Three months later the Soviet Union was gone.',
+        note: 'The concert was filmed and released as “For Those About to Rock: Monsters in Moscow”. The Soviet Union was formally dissolved on 26 December 1991.',
+      },
+    ],
+  },
+
+  {
+    id: 'bolt-world-record',
+    status: 'draft',
+    on: '2026-11-19',
+    year: 2009,
+    lat: 52.5147,
+    lon: 13.2395,
+    title: 'Usain Bolt’s 100 m world record',
+    answers: ['usain bolt', 'bolt', 'bolt world record', 'usain bolt world record', 'bolt record', '9.58', '958', '9 58', '100m world record', '100 m world record', '100 metres world record', '100 meters world record', 'world record 100m', '100m record', 'world championships berlin', 'berlin 2009', 'bolt weltrekord', 'weltrekord bolt', '100m weltrekord', 'leichtathletik wm berlin'],
+    date: '16 August 2009',
+    place: 'Olympiastadion, Berlin, Germany',
+    summary: 'In the 100 metres final of the World Athletics Championships in Berlin’s Olympic Stadium, the Jamaican sprinter Usain Bolt ran 9.58 seconds. He broke his own world record of 9.69 from the Beijing Olympics a year earlier by 0.11 seconds – the biggest jump since electronic timing began. Tyson Gay of the USA was second in 9.71. Four days later Bolt also set a 200 m world record of 19.19 seconds. Both records still stand.',
+    voices: [
+      {
+        who: 'Barber, Brazil',
+        style: 'Brazilian man in his 50s speaking English with a warm Portuguese accent, cheerful and unhurried',
+        pitch: 0.95, rate: 0.95,
+        text: 'A slow Sunday afternoon, the little television in the corner, a customer half shaved. Suddenly the bar across the street roared, and my shop roared with it. I had not even finished one stroke of the razor. Grown men were hugging strangers on the pavement.',
+        note: 'The race was shown live around the world; in Brazil it was Sunday afternoon.',
+      },
+      {
+        who: 'IT trainee',
+        style: 'Young man in his early 20s, quick and enthusiastic, a bit nerdy',
+        pitch: 1.05, rate: 1.05,
+        text: 'That summer people wore masks against the new flu, and the banks had just been rescued with our money. I had my first phone with a touchscreen and an app with a little blue bird. That evening it filled up with the same three digits, over and over.',
+        note: 'In 2009 the swine flu pandemic and the financial crisis dominated the news; Twitter was growing fast, and smartphones were spreading.',
+      },
+      {
+        who: 'Volunteer in a yellow vest',
+        style: 'Polish woman in her 20s speaking English with a light accent, friendly and observant',
+        pitch: 1.1, rate: 1,
+        text: 'A warm August evening after a thunderstorm; the air smelled of wet lime trees and pine. Around me, the hard, fast language I learned at school. The arena: a huge bowl of grey stone with square pillars, built in a darker decade, ringed by forest and lakes.',
+        note: 'The Olympic Stadium was built for the 1936 Games under the Nazi regime; it lies on the forested western edge of the city, near lakes.',
+      },
+      {
+        who: 'Finish-line photographer',
+        style: 'British man in his 40s, dry, still a little amazed',
+        pitch: 0.9, rate: 1,
+        text: 'Eight men in the blocks, seventy thousand people silent. The tall Jamaican was clear by halfway. When I looked up, the clock showed a time nobody believed – a tenth faster than his own record from the summer before. A mascot bear danced on the track.',
+        note: 'The championships’ mascot was a bear, the symbol of the host city. The previous record of 9.69 had been set at the 2008 Olympics.',
+      },
+      {
+        who: 'Stadium announcer, Berlin',
+        style: 'German man in his 50s speaking English with a German accent, warm, booming voice',
+        pitch: 0.85, rate: 0.95,
+        text: 'On the sixteenth of August 2009, at the World Championships in Berlin’s Olympic Stadium, Usain Bolt ran the hundred metres in nine point five eight seconds. A world record. I had to read the time out twice, because I could not believe it myself.',
+        note: 'Bolt reached a top speed of about 44.7 km/h between 60 and 80 metres. The 9.58 still stands as the world record.',
+      },
+    ],
+  },
+
+  {
+    id: 'chatgpt-launch',
+    status: 'draft',
+    on: '2026-11-18',
+    year: 2022,
+    lat: 37.7623,
+    lon: -122.4148,
+    title: 'ChatGPT is released',
+    answers: ['chatgpt', 'chat gpt', 'chat-gpt', 'chatgpt launch', 'chatgpt release', 'launch of chatgpt', 'release of chatgpt', 'chatgpt presentation', 'chatgpt is released', 'openai', 'open ai', 'openai chatgpt', 'gpt', 'gpt 3.5', 'gpt-3.5', 'ai chatbot', 'chatbot launch'],
+    date: '30 November 2022',
+    place: 'OpenAI, Mission District, San Francisco, USA',
+    summary: 'The San Francisco research lab OpenAI put ChatGPT online as a free “research preview”: a simple chat window in which anyone could ask questions in everyday language and get fluent answers, essays, poems or computer code back. It was built on the language model GPT-3.5. A million people signed up within five days, and by January 2023 an estimated 100 million were using it – faster than any app before. It set off a worldwide race in artificial intelligence and fierce debates about schools, jobs and truth.',
+    voices: [
+      {
+        who: 'Night-shift nurse, Philippines',
+        style: 'Filipino woman in her 40s speaking English with a soft Filipino accent, gentle and thoughtful',
+        pitch: 1, rate: 0.92,
+        text: 'The Christmas lights had been up on our ward since September, as always. After midnight it was quiet. My young colleague sat at the station typing on her phone, smiling, typing again. I asked who she was writing to so late. She said: nobody, really.',
+        note: 'Around the world, people spent their nights trying out the new chatbot in its first weeks. In the Philippines, the Christmas season traditionally starts in September.',
+      },
+      {
+        who: 'University student',
+        style: 'Young woman around 20, quick and wry, a little stressed',
+        pitch: 1.1, rate: 1.05,
+        text: 'The masks were finally off, but everything cost more every week. The World Cup was played in winter, in the desert, and a crypto exchange collapsed overnight. Then, a week before exams, my whole group chat shared screenshots of the same plain white page.',
+        note: 'Late 2022: high inflation after the pandemic, the World Cup in Qatar (from 20 November) and the collapse of the crypto exchange FTX (11 November). Screenshots of ChatGPT answers flooded social media.',
+      },
+      {
+        who: 'Barista',
+        style: 'American man in his 30s, laid-back, a little ironic',
+        pitch: 0.95, rate: 1,
+        text: 'Late autumn, the fog sliding in off the ocean every afternoon, over steep hills and painted wooden houses. Since the pandemic half the office towers stood empty, but my café was full of laptops – young engineers in fleece vests, all whispering about one thing.',
+        note: 'San Francisco is known for its fog, steep hills and colourful Victorian houses. After the pandemic many offices stayed empty, while AI start-ups gathered in the city.',
+      },
+      {
+        who: 'Software engineer',
+        style: 'American woman in her late 20s, fast-talking, still a bit giddy',
+        pitch: 1.05, rate: 1.05,
+        text: 'We called it a research preview – just a chat box. We put it online on a Wednesday and hoped a few thousand people would try it. Five days later a million had signed up. You typed a question in plain English, and the machine wrote back: an essay, a poem, code.',
+        note: 'ChatGPT reached one million users in five days. It was meant as a test to gather feedback, and the servers were often overloaded in the first weeks.',
+      },
+      {
+        who: 'Lab engineer, San Francisco',
+        style: 'American man in his 30s, calm and reflective, quietly amazed',
+        pitch: 0.9, rate: 0.95,
+        text: 'On the thirtieth of November 2022, OpenAI, a lab in San Francisco, released ChatGPT – a chatbot anyone could talk to for free. Within two months, a hundred million people used it. That night I watched the servers groan and thought: this changes everything.',
+        note: 'ChatGPT was built on GPT-3.5. It is considered the fastest-growing consumer app of its time and set off a global race in artificial intelligence.',
       },
     ],
   },

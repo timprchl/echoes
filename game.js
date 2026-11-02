@@ -11,7 +11,7 @@
     firstCaption: 'Play the first voice',
     introEyebrow: n => `${n} voices`,
     introLine: 'Five people lived through it. Who speaks first?',
-    introHint: c => `Hold to play the first voice (−${fmt(c)})`,
+    introHint: 'Hold to play the first voice',
     solved: 'The answer',
     allHeard: 'All voices heard',
     // der Tipp-Knopf führt Schritt für Schritt: Pin → Jahr → abgeben
@@ -22,9 +22,8 @@
     finalCost: 'Final guess: −150 per year and −100 per 500 km off',
     yearUnset: 'Year?',
     hit: 'Hit', final: 'Final',
-    compass: ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'],
     placeOk: 'Place: right area',
-    placeOff: (dir, km) => `Place: about ${fmt(km)} km off – head ${dir}`,
+    placeOff: km => `Place: about ${fmt(km)} km off – on the circle, in the white quarter`,
     yearOk: 'Year: right',
     yearLater: 'Year: later',
     yearEarlier: 'Year: earlier',
@@ -35,7 +34,7 @@
       globe: 'Where did this happen? Tap the globe to set your pin. Drag to spin it.',
       year: 'Now the year: slide by decade, then fine-tune with ‹ ›.',
       lock: 'Hold to lock in. You get two tries, then a final guess.',
-      miss: 'A miss. The arrow on the globe shows which way to look – earlier or later is in the red circle.',
+      miss: 'A miss. The place lies on the red circle around your pin – in the white quarter. Earlier or later shows below.',
       next: 'Stuck? Another voice brings you closer to the moment – but costs points.',
       ok: 'Got it',
     },
@@ -80,6 +79,13 @@
       Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(rad(lon2 - lon1) / 2) ** 2;
     return 2 * R * Math.asin(Math.sqrt(a));
   }
+  // Punkt in gegebener Richtung (Grad, 0 = Norden) und Entfernung (Grad Bogen) vom Startpunkt
+  function destination([lon, lat], b, d) {
+    const p1 = rad(lat), l1 = rad(lon), br = rad(b), dr = rad(d);
+    const p2 = Math.asin(Math.sin(p1) * Math.cos(dr) + Math.cos(p1) * Math.sin(dr) * Math.cos(br));
+    const l2 = l1 + Math.atan2(Math.sin(br) * Math.sin(dr) * Math.cos(p1), Math.cos(dr) - Math.sin(p1) * Math.sin(p2));
+    return [l2 * 180 / Math.PI, p2 * 180 / Math.PI];
+  }
   function bearing([lon1, lat1], [lon2, lat2]) {
     const y = Math.sin(rad(lon2 - lon1)) * Math.cos(rad(lat2));
     const x = Math.cos(rad(lat1)) * Math.sin(rad(lat2)) -
@@ -98,7 +104,6 @@
   const gArcs = svg.append('g');
   const gHint = svg.append('g').attr('class', 'miss-hint');
   const gMarks = svg.append('g');
-  svg.append('defs').html('<marker id="arrowHead" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z"></path></marker>');
   let countries = [];
 
   // Nachtbild der Erde (NASA Black Marble) per WebGL unter dem SVG – gleiche Projektion, Pins & Co. bleiben im SVG.
@@ -291,17 +296,30 @@
     })) : [];
     gArcs.selectAll('path').data(arcs).join('path').attr('class', 'arc').attr('d', path);
 
-    // nach einem Fehlversuch: Pfeil vom letzten Tipp in die richtige Richtung (ein Stück weit, nicht bis zum Ziel)
+    // nach einem Fehlversuch: Zielfernrohr um den letzten Tipp – der Ort liegt auf dem Kreis, im weiß gefärbten Viertel
     const last = state.guesses[state.guesses.length - 1];
     const hint = !state.done && last && !last.hit && last.km > HIT_KM ? (() => {
-      const from = [last.lon, last.lat];
-      const to = d3.geoInterpolate(from, target)(Math.min(0.45, 2600 / last.km));
-      return { line: { type: 'LineString', coordinates: [from, to] }, to, km: last.km };
+      const deg = last.km / R * 180 / Math.PI;
+      const ring = d3.geoCircle().center([last.lon, last.lat]).radius(deg).precision(1)();
+      // Beschriftung oben auf dem Kreis (über den Pol hinaus: am südlichsten Punkt)
+      const label = last.lat + deg <= 90 ? [last.lon, last.lat + deg] : [last.lon, last.lat - deg];
+      // Fadenkreuz nach Norden ausgerichtet; das Viertel in Richtung des Ziels wird weiß
+      const at = (b, d) => destination([last.lon, last.lat], b, d);
+      const q = Math.floor(last.dir / 90) % 4;
+      const quarter = { type: 'Polygon', coordinates: [[[last.lon, last.lat],
+        ...d3.range(q * 90, q * 90 + 90.1, 3).map(b => at(b, deg)), [last.lon, last.lat]]] };
+      const line = (...c) => ({ type: 'LineString', coordinates: c });
+      const cross = [0, 90, 180, 270].map(b => line(at(b, deg * .12), at(b, deg * .5), at(b, deg * 1.08)));
+      const ticks = d3.range(0, 360, 15).map(b => line(at(b, deg * (b % 45 ? .96 : .92)), at(b, deg)));
+      return { ring, label, km: last.km, parts: [
+        { cls: 'scope-fill', d: ring }, { cls: 'scope-quarter', d: quarter }, { cls: 'scope-cross', d: { type: 'MultiLineString', coordinates: cross.map(l => l.coordinates) } },
+        { cls: 'scope-ticks', d: { type: 'MultiLineString', coordinates: ticks.map(l => l.coordinates) } },
+        { cls: 'scope-ring', d: ring }] };
     })() : null;
-    gHint.selectAll('path').data(hint ? [hint] : []).join('path')
-      .attr('class', 'hint-arrow').attr('marker-end', 'url(#arrowHead)').attr('d', h => path(h.line));
-    gHint.selectAll('text').data(hint && visible(hint.to) ? [hint] : []).join('text')
-      .attr('class', 'hint-label').attr('transform', h => `translate(${projection(h.to)})`).attr('dy', -10)
+    gHint.selectAll('path').data(hint ? hint.parts : []).join('path')
+      .attr('class', p => p.cls).attr('d', p => path(p.d));
+    gHint.selectAll('text').data(hint && visible(hint.label) ? [hint] : []).join('text')
+      .attr('class', 'hint-label').attr('transform', h => `translate(${projection(h.label)})`).attr('dy', -8)
       .text(h => `${fmt(h.km)} km`);
 
     const marks = state.guesses.map((g, i) => ({ c: [g.lon, g.lat], cls: 'marker-guess' + (g.hit ? ' hit' : ''), label: i + 1 }));
@@ -521,7 +539,7 @@
           <svg class="hold-ring" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="46"></circle></svg>
           <button class="pill first-play" id="firstPlay" aria-label="${t().firstCaption}">▶</button>
         </div>
-        <p class="stage-hint">${t().introHint(VOICE_COST[0])}</p>
+        <p class="stage-hint">${t().introHint}</p>
       </div>`;
       holdable($('#firstPlay'), 1500, playFirst, $('.first-wrap'));
     }
@@ -673,7 +691,9 @@
       } else reveal();
     } else {
       renderAll();
-      flyTo([g.lon, g.lat], projection.scale()); // Pfeil zum Ziel ins Bild drehen
+      // Umkreis ganz ins Bild holen: Radius auf dem Bildschirm ≈ scale · sin(Winkel)
+      const deg = Math.min(89, g.km / R * 180 / Math.PI);
+      flyTo([g.lon, g.lat], Math.max(BASE, Math.min(projection.scale(), 190 / Math.sin(deg * Math.PI / 180))));
     }
   }
 
@@ -767,8 +787,7 @@
   }
 
   // Hinweis nach einem Fehlversuch: Richtung + Entfernung, früher/später
-  const compass = deg => t().compass[Math.round(deg / 45) % 8];
-  const placeTxt = g => g.km <= HIT_KM ? t().placeOk : t().placeOff(compass(g.dir), g.km);
+  const placeTxt = g => g.km <= HIT_KM ? t().placeOk : t().placeOff(g.km);
   const yearTxt = g => Math.abs(g.dy) <= HIT_YEARS ? t().yearOk : g.dy < 0 ? t().yearLater : t().yearEarlier;
 
   let freshTry = -1; // gerade abgegebener Versuch (für die Animation)
@@ -786,7 +805,7 @@
       else if (state.done) cls += ' unused';
       if (i === freshTry) cls += ' fresh';
       const info = g && !g.hit && !g.final
-        ? `<span class="slot-info">${g.km <= HIT_KM ? '◎' : `<b style="transform:rotate(${g.dir}deg)">↑</b>`} ${fmt(g.km)} km<br>${g.year} · ${Math.abs(g.dy) <= HIT_YEARS ? '✓' : g.dy < 0 ? 'later' : 'earlier'}</span>`
+        ? `<span class="slot-info">${g.km <= HIT_KM ? '◎' : '◯'} ${fmt(g.km)} km<br>${g.year} · ${Math.abs(g.dy) <= HIT_YEARS ? '✓' : g.dy < 0 ? 'later' : 'earlier'}</span>`
         : '';
       const title = g && !g.hit && !g.final ? ` title="${placeTxt(g)}. ${yearTxt(g)}."` : '';
       slots.push(`<div class="${cls}"${title}><span class="slot-main">${main}</span><span class="slot-sub">${sub}</span>${info}</div>`);

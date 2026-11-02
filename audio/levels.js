@@ -136,6 +136,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793611093
     }
   },
+  "eiffel-tower": {
+    "1": {
+      "before": -24.4,
+      "after": -20.2,
+      "mtime": 1793631076
+    },
+    "2": {
+      "before": -16.5,
+      "after": -19.9,
+      "mtime": 1793631087
+    },
+    "3": {
+      "before": -24.3,
+      "after": -20.1,
+      "mtime": 1793631099
+    },
+    "4": {
+      "before": -16.2,
+      "after": -20.0,
+      "mtime": 1793631110
+    },
+    "5": {
+      "before": -13.8,
+      "after": -19.8,
+      "mtime": 1793631125
+    }
+  },
   "everest": {
     "1": {
       "before": -22.9,
@@ -269,6 +296,33 @@ window.ECHOES_LEVELS = {
       "before": -24.6,
       "after": -20.1,
       "mtime": 1793545825
+    }
+  },
+  "tsunami-2004": {
+    "1": {
+      "before": -22.7,
+      "after": -20.0,
+      "mtime": 1793629794
+    },
+    "2": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1793629807
+    },
+    "3": {
+      "before": -18.4,
+      "after": -20.0,
+      "mtime": 1793629810
+    },
+    "4": {
+      "before": -26.0,
+      "after": -20.2,
+      "mtime": 1793629824
+    },
+    "5": {
+      "before": -20.8,
+      "after": -20.0,
+      "mtime": 1793629838
     }
   },
   "wright-flight": {

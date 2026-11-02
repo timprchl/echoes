@@ -35,6 +35,13 @@ window.ECHOES_AUDIO = {
     "4": "a4da14f6",
     "5": "906dbd49"
   },
+  "eiffel-tower": {
+    "1": "03f79485",
+    "2": "3a6e2408",
+    "3": "29455bb5",
+    "4": "e30fdf52",
+    "5": "93a17972"
+  },
   "everest": {
     "1": "7e87513a",
     "2": "b147c730",
@@ -70,6 +77,13 @@ window.ECHOES_AUDIO = {
     "4": "73c17986",
     "5": "07454899"
   },
+  "tsunami-2004": {
+    "1": "ea359bb1",
+    "2": "0242a7b2",
+    "3": "a83d3a2d",
+    "4": "99ce863b",
+    "5": "694ef748"
+  },
   "wright-flight": {
     "1": "a09663c4",
     "2": "aac8ecb4",
@@ -78,4 +92,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793629511; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793631126; // gegen veraltete Aufnahmen im Browser-Cache
