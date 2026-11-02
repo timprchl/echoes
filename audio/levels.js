@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
     }
   },
   "bern-1954": {},
+  "chatgpt-launch": {
+    "1": {
+      "before": -22.9,
+      "after": -20.2,
+      "mtime": 1793637855
+    },
+    "2": {
+      "before": -21.9,
+      "after": -20.0,
+      "mtime": 1793637857
+    },
+    "3": {
+      "before": -22.6,
+      "after": -20.0,
+      "mtime": 1793637858
+    },
+    "4": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1793637870
+    },
+    "5": {
+      "before": -24.8,
+      "after": -20.2,
+      "mtime": 1793637872
+    }
+  },
   "chernobyl": {
     "1": {
       "before": -19.9,

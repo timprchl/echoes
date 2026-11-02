@@ -14,6 +14,13 @@ window.ECHOES_AUDIO = {
     "4": "af7eac32",
     "5": "8966a64d"
   },
+  "chatgpt-launch": {
+    "1": "548f90ce",
+    "2": "81298cc7",
+    "3": "d6fb9318",
+    "4": "7648508c",
+    "5": "a9d18222"
+  },
   "chernobyl": {
     "1": "bc79b019",
     "2": "9a412c67",
@@ -92,4 +99,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793631126; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793637873; // gegen veraltete Aufnahmen im Browser-Cache
