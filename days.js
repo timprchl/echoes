@@ -1291,7 +1291,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'march-on-washington',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-13',
     year: 1963,
     lat: 38.8893,
@@ -1305,6 +1305,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Schoolteacher, Ghana',
         style: 'Older Ghanaian man speaking English with a West African accent, gentle and reflective',
+        voiceId: 'x3gYeuNB0kLLYxOZsaSh', voiceName: 'Shrey (indian)',
         pitch: 0.9, rate: 0.9,
         text: 'The old man at the end of our road died in his sleep that night. He had come to us from across the ocean, very late in his life, and the children called him Grandfather Books. In the morning someone said he had waited his whole life for one day, and missed it by a single night.',
         note: 'The civil rights scholar W. E. B. Du Bois died in Accra, Ghana, on the eve of the march; his death was announced to the crowd.',
@@ -1312,6 +1313,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Radio repairman',
         style: 'Man in his 50s, warm and steady, slightly gravelly, American',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.85, rate: 0.95,
         text: 'That summer every kid wanted a transistor radio, and I fixed a dozen a week. Colour television was for rich folks – the rest of us saved up for a black-and-white set. That afternoon I had three of them in my shop window, all on the same channel, and people stood outside in their best clothes, not saying a word.',
         note: 'In 1963 transistor radios were everywhere and colour TV was still rare; the major networks broadcast the march live.',
@@ -1319,6 +1321,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Church choir singer',
         style: 'Woman in her 30s, soft Southern drawl, bright and musical',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 1,
         text: 'We left the red dirt and cotton fields of home in thick, sticky heat and rode north overnight. By morning we were walking across wide green lawns in a city of white marble, singing our Sunday hymns, our shoes in our hands.',
         note: 'Many marchers came by bus from the segregated South; the late-August day was hot and humid.',
@@ -1326,6 +1329,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Union steelworker',
         style: 'Man in his 40s, Midwestern American, deep and moved, voice catching',
+        voiceId: 'uju3wxzG5OhpWcoi3SMy', voiceName: 'Michael C. Vincent (american)',
         pitch: 0.85, rate: 0.9,
         text: 'A quarter of a million people, Black and white, marching for jobs and freedom in the capital of the United States. The last speaker set his notes aside and began to talk about a dream. The whole crowd went quiet, then roared.',
         note: 'The speaker departed from his prepared text; the “dream” passage was partly improvised.',
@@ -1333,6 +1337,7 @@ window.ECHOES_DAYS = [
       {
         who: 'March marshal, Washington, D.C.',
         style: 'Woman in her 60s, African American, clear, dignified and proud',
+        voiceId: '8B4Pfz8BwZh0sAFOespj', voiceName: 'Ira Queen (african)',
         pitch: 1, rate: 0.9,
         text: 'On 28 August 1963, at the March on Washington, Martin Luther King Jr. spoke from the steps of the Lincoln Memorial. His speech became known as “I Have a Dream”.',
         note: 'The march helped pave the way for the Civil Rights Act of 1964 and the Voting Rights Act of 1965.',

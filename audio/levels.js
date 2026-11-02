@@ -190,6 +190,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793554512
     }
   },
+  "march-on-washington": {
+    "1": {
+      "before": -25.9,
+      "after": -20.1,
+      "mtime": 1793629503
+    },
+    "2": {
+      "before": -22.5,
+      "after": -20.0,
+      "mtime": 1793629504
+    },
+    "3": {
+      "before": -23.9,
+      "after": -20.0,
+      "mtime": 1793629506
+    },
+    "4": {
+      "before": -24.8,
+      "after": -20.1,
+      "mtime": 1793629507
+    },
+    "5": {
+      "before": -34.3,
+      "after": -20.5,
+      "mtime": 1793629509
+    }
+  },
   "september-11": {
     "1": {
       "before": -26.6,

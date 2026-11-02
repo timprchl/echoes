@@ -49,6 +49,13 @@ window.ECHOES_AUDIO = {
     "4": "3ca5c8b5",
     "5": "c1a924f2"
   },
+  "march-on-washington": {
+    "1": "4a95fa46",
+    "2": "1c68bb1e",
+    "3": "ece3e64f",
+    "4": "151067e2",
+    "5": "05e4c2d7"
+  },
   "september-11": {
     "1": "18538fe4",
     "2": "80e94dd3",
@@ -71,4 +78,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793629248; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793629511; // gegen veraltete Aufnahmen im Browser-Cache
