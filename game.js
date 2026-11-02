@@ -59,7 +59,7 @@
   const $ = s => document.querySelector(s);
 
   const { no: dayNo, day, key: KEY } = Echoes.currentDay();
-  if (!Echoes.DEV && day.status !== 'approved' && day.status !== 'live') {
+  if (!day || (!Echoes.DEV && day.status !== 'approved' && day.status !== 'live')) {
     document.querySelector('.stage').innerHTML = '<p class="not-ready">Today’s event is still being prepared. Come back soon.</p>';
     document.querySelector('.ai-note').hidden = true;
     return;

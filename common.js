@@ -34,18 +34,23 @@ window.Echoes = (() => {
 
   const fmt = n => Math.round(n).toLocaleString('en-GB');
 
-  // Tag bestimmen (Wechsel um lokale Mitternacht, ?day=N zum Testen)
+  // Tag bestimmen: jedes Ereignis hat ein festes Datum (`on`). Wechsel um lokale Mitternacht.
+  // Die Tagesnummer (1 = 1. November 2026) bleibt für Spielstand und Statistik erhalten.
+  // Zum Testen: ?day=N
+  const pad2 = n => String(n).padStart(2, '0');
+  const isoDate = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
+  const dateOfNo = no => new Date(START.getFullYear(), START.getMonth(), START.getDate() + no - 1);
+  const noOfDate = d => Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - START) / 864e5) + 1;
+  const noOfIso = iso => { const [y, m, d] = iso.split('-').map(Number); return noOfDate(new Date(y, m - 1, d)); };
   function todayNumber() {
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    return Math.max(0, Math.round((today - START) / 864e5)) + 1;
+    return Math.max(1, noOfDate(new Date()));
   }
   function currentDay() {
-    const days = window.ECHOES_DAYS;
     const param = DEV ? parseInt(params.get('day'), 10) : NaN;
     const no = param > 0 ? param : todayNumber();
-    const day = days[(no - 1) % days.length];
-    return { no, day, key: `echoes.v2.${no}.${day.id}` };
+    const on = isoDate(dateOfNo(no));
+    const day = window.ECHOES_DAYS.find(d => d.on === on) || null; // null: für heute ist nichts eingeplant
+    return { no, day, key: `echoes.v2.${no}.${day ? day.id : 'none'}` };
   }
   // ?day=N an Links weiterreichen, damit der Prototyp-Tag erhalten bleibt
   const withDay = href => {
@@ -84,8 +89,8 @@ window.Echoes = (() => {
   }
 
   // Prototyp: Links zu allen vorhandenen Tagen
-  const dayLinks = page => window.ECHOES_DAYS
-    .map((_, i) => `<a href="${page}?day=${i + 1}">${i + 1}</a>`).join(' · ');
+  const dayLinks = page => window.ECHOES_DAYS.filter(d => d.on).sort((a, b) => a.on.localeCompare(b.on))
+    .map(d => { const no = noOfIso(d.on); return `<a href="${page}?day=${no}" title="${d.on}">${no}</a>`; }).join(' · ');
 
   // --- Guide: kurze Schritt-für-Schritt-Erklärung ---
   const GUIDE = {
@@ -175,5 +180,5 @@ window.Echoes = (() => {
     return id;
   }
 
-  return { DEV, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  return { isoDate, dateOfNo, noOfIso, DEV, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();
