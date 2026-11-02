@@ -10,7 +10,9 @@ window.Echoes = (() => {
   // Spieler-Statistik (stats-server/, läuft als Cloudflare Pages – *.workers.dev war nicht erreichbar).
   // Im Entwicklermodus wird nichts gemeldet, außer mit ?stats=local gegen `npx wrangler dev`.
   const STATS_LIVE = 'https://echoes-stats.pages.dev';
-  const STATS_URL = DEV ? (params.get('stats') === 'local' ? 'http://localhost:8787' : '') : STATS_LIVE;
+  // Probespiel aus dem Control Room (nur lokal): ?test – nichts wird gespeichert oder gemeldet, jedes Laden ist eine neue Runde
+  const TEST = DEV && params.has('test');
+  const STATS_URL = TEST ? '' : DEV ? (params.get('stats') === 'local' ? 'http://localhost:8787' : '') : STATS_LIVE;
   if (STATS_URL) window.ECHOES_STATS_URL = STATS_URL;
 
   // Punkte: alle starten mit 10.000. Jede gehörte Stimme und jeder Fehlversuch kostet.
@@ -21,7 +23,7 @@ window.Echoes = (() => {
     TRIES: 2,           // Tipps mit Treffer-Prüfung; danach kommt der finale Tipp
     YEAR_COST: 150,     // finaler Tipp: pro Jahr daneben …
     KM_COST: 100 / 500, // … und pro km daneben (100 Punkte je 500 km)
-    HIT_YEARS: 1,       // Treffer: Jahr ±1 …
+    HIT_YEARS: 1,       // Treffer: Jahr ±1 (bei Ereignissen über mehrere Jahre: Anfang −1 bis Ende +1) …
     HIT_KM: 600,        // … und höchstens so weit entfernt
     NAME_BONUS: [1500, 1200, 900, 600, 300], // Event richtig benannt, je nach gehörten Stimmen (ein Versuch)
   };
@@ -38,6 +40,10 @@ window.Echoes = (() => {
   // Die Tagesnummer (1 = 1. November 2026) bleibt für Spielstand und Statistik erhalten.
   // Zum Testen: ?day=N
   const pad2 = n => String(n).padStart(2, '0');
+  // Jahre: ab 1700. Ein Ereignis kann über mehrere Jahre gehen (yearEnd); dann zählt der Abstand zum nächsten Ende.
+  const YEAR_MIN = 1700, YEAR_MAX = 2026;
+  const yearOff = (day, y) => y < day.year ? y - day.year : y > (day.yearEnd ?? day.year) ? y - (day.yearEnd ?? day.year) : 0;
+  const yearLabel = day => day.yearEnd && day.yearEnd !== day.year ? `${day.year}–${day.yearEnd}` : String(day.year);
   const isoDate = d => `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}`;
   const dateOfNo = no => new Date(START.getFullYear(), START.getMonth(), START.getDate() + no - 1);
   const noOfDate = d => Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - START) / 864e5) + 1;
@@ -46,6 +52,9 @@ window.Echoes = (() => {
     return Math.max(1, noOfDate(new Date()));
   }
   function currentDay() {
+    // Probespiel: jedes Ereignis über seine ID, auch aus dem Pool (ohne Datum)
+    const byId = TEST && params.get('id') ? window.ECHOES_DAYS.find(d => d.id === params.get('id')) : null;
+    if (byId) return { no: byId.on ? noOfIso(byId.on) : 0, day: byId, key: 'echoes.test' };
     const param = DEV ? parseInt(params.get('day'), 10) : NaN;
     const no = param > 0 ? param : todayNumber();
     const on = isoDate(dateOfNo(no));
@@ -114,7 +123,7 @@ window.Echoes = (() => {
       },
       {
         title: 'Two guesses, then the final.',
-        text: 'Get it right (±1 year, within 600 km) and you win the round. A miss costs 750. The third guess is final: −150 per year and −100 per 500 km off. Know what it is? Name the event for a bonus – the earlier, the bigger.',
+        text: 'Get it right (±1 year – or anywhere in the span for longer events – within 600 km) and you win the round. A miss costs 750. The third guess is final: −150 per year and −100 per 500 km off. Know what it is? Name the event for a bonus – the earlier, the bigger.',
         art: `<div class="g-tries"><span class="miss">1<small>−750</small></span><span class="miss">2<small>−750</small></span><span class="final">★<small>Final</small></span></div>`,
       },
       {
@@ -180,5 +189,5 @@ window.Echoes = (() => {
     return id;
   }
 
-  return { isoDate, dateOfNo, noOfIso, DEV, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, DEV, TEST, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();

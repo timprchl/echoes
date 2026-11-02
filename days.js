@@ -10,6 +10,8 @@
 //   5  Resolution: place, date, name.
 // The `who` label is a hint too: the event's place only appears in voice 5's label.
 //
+// `year` – the year of the event. `yearEnd` (optional) – last year, for events that ran longer (e.g. a war);
+//   any year from year−1 to yearEnd+1 then counts as right. Years from 1700 on.
 // `answers` – accepted answers for the “Name the event” bonus (case and punctuation don't matter).
 // `on` – the date the event is played (YYYY-MM-DD). Events without `on` are in the pool:
 //   written, but not scheduled yet – pick a date for them in the Control Room calendar.
@@ -1490,7 +1492,7 @@ window.ECHOES_DAYS = [
     status: 'draft',
     year: 1947,
     lat: 28.6562,
-    lon: 77.2410,
+    lon: 77.241,
     title: 'India becomes independent',
     answers: ['indian independence', 'independence of india', 'india independence', 'india independent', 'indian independence day', 'partition', 'partition of india', 'end of the raj', 'end of british rule in india', 'unabhängigkeit indiens', 'unabhangigkeit indiens', 'indische unabhängigkeit', 'indische unabhangigkeit', 'teilung indiens'],
     date: '15 August 1947',
@@ -1539,8 +1541,8 @@ window.ECHOES_DAYS = [
     id: 'korean-war',
     status: 'draft',
     year: 1950,
-    lat: 37.9560,
-    lon: 126.6770,
+    lat: 37.956,
+    lon: 126.677,
     title: 'Outbreak of the Korean War',
     answers: ['korean war', 'korea war', 'the korean war', 'outbreak of the korean war', 'war in korea', 'koreakrieg', 'korea krieg', 'forgotten war', '6.25 war', '625 war'],
     date: '25 June 1950',
@@ -1590,7 +1592,7 @@ window.ECHOES_DAYS = [
     status: 'draft',
     year: 1941,
     lat: 21.3649,
-    lon: -157.9500,
+    lon: -157.95,
     title: 'The attack on Pearl Harbor',
     answers: ['pearl harbor', 'pearl harbour', 'attack on pearl harbor', 'attack on pearl harbour', 'pearl harbor attack', 'bombing of pearl harbor', 'angriff auf pearl harbor', 'überfall auf pearl harbor', 'uberfall auf pearl harbor'],
     date: '7 December 1941',
@@ -1690,7 +1692,7 @@ window.ECHOES_DAYS = [
     status: 'draft',
     year: 1949,
     lat: 38.8936,
-    lon: -77.0290,
+    lon: -77.029,
     title: 'NATO is founded',
     answers: ['nato', 'nato founded', 'founding of nato', 'nato founding', 'north atlantic treaty', 'north atlantic treaty organization', 'north atlantic treaty organisation', 'washington treaty', 'gründung der nato', 'grundung der nato', 'nordatlantikvertrag', 'nordatlantikpakt', 'otan'],
     date: '4 April 1949',

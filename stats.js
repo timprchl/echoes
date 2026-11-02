@@ -77,7 +77,7 @@ window.EchoesStats = (() => {
     // wann (Jahr): Jahrzehnte um die Antwort herum
     const answerDec = Math.floor(day.year / 10) * 10;
     const decades = {};
-    for (let d = 1800; d <= 2020; d += 10) {
+    for (let d = Echoes.YEAR_MIN; d <= 2020; d += 10) {
       const k = (d - answerDec) / 10;
       decades[d] = Math.exp(-(k * k) / (2 * 1.6 ** 2)) * (0.7 + r() * 0.6) + r() * 0.03;
     }
@@ -105,7 +105,8 @@ window.EchoesStats = (() => {
     const sumCol = c => c.first + c.second + c.final;
     const decs = Object.entries(s.decades).map(([d, p]) => [+d, p]);
     const maxDec = Math.max(...decs.map(([, p]) => p), 1);
-    const answerDec = Math.floor(day.year / 10) * 10;
+    // alle Jahrzehnte, die das Ereignis berührt, gelten als Antwort
+    const isAnswerDec = d => d >= Math.floor(day.year / 10) * 10 && d <= Math.floor((day.yearEnd ?? day.year) / 10) * 10;
     const maxPlace = Math.max(...s.places.map(p => p.pct), 1);
     const places = [...s.places].sort((a, b) => (b.name === mine.answerPlace) - (a.name === mine.answerPlace) || b.pct - a.pct);
 
@@ -142,12 +143,12 @@ window.EchoesStats = (() => {
 
         <div class="stats-head"><span>When they guessed</span><span>Share of guesses per decade</span></div>
         <div class="decades">
-          ${decs.map(([d, p]) => `<span class="dec${d === answerDec ? ' answer' : ''}${mine.decades.includes(d) ? ' you' : ''}" title="${d}s · ${p}%">
+          ${decs.map(([d, p]) => `<span class="dec${isAnswerDec(d) ? ' answer' : ''}${mine.decades.includes(d) ? ' you' : ''}" title="${d}s · ${p}%">
             <i style="height:${Math.max(2, p / maxDec * 100)}%"></i>
           </span>`).join('')}
         </div>
-        <div class="dec-axis">${[1800, 1850, 1900, 1950, 2000].map(y => `<span style="left:${(y - 1800) / 230 * 100}%">${y}</span>`).join('')}</div>
-        <div class="legend"><span><i class="sq answer"></i>${day.year}</span><span><i class="sq you"></i>Your guesses</span></div>
+        <div class="dec-axis">${[1700, 1750, 1800, 1850, 1900, 1950, 2000].map(y => `<span style="left:${(y - Echoes.YEAR_MIN) / (2030 - Echoes.YEAR_MIN) * 100}%">${y}</span>`).join('')}</div>
+        <div class="legend"><span><i class="sq answer"></i>${Echoes.yearLabel(day)}</span><span><i class="sq you"></i>Your guesses</span></div>
         ${s.players ? `<p class="stats-foot">${fmt(s.players)} players today</p>` : ''}
       </div>`;
 
@@ -208,7 +209,7 @@ window.EchoesStats = (() => {
       score: Math.max(0, Math.round(state.score ?? 0)), named: !!state.named?.ok,
       guesses: state.guesses.map(g => ({
         country: countries.length ? countryAt(countries, [g.lon, g.lat]) : AT_SEA,
-        decade: Math.max(1800, Math.min(2020, Math.floor(g.year / 10) * 10)),
+        decade: Math.max(Echoes.YEAR_MIN, Math.min(2020, Math.floor(g.year / 10) * 10)),
         km: Math.min(21000, Math.max(0, Math.round(g.km ?? 0))),
         years: Math.min(300, Math.abs(Math.round(g.dy ?? 0))),
       })),

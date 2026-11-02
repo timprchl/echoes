@@ -1,5 +1,5 @@
 (() => {
-  const { store, fmt } = Echoes;
+  const { store, fmt, YEAR_MIN, YEAR_MAX, yearOff } = Echoes;
   const {
     START_POINTS, VOICE_COST, MISS_COST, TRIES, YEAR_COST, KM_COST, HIT_YEARS, HIT_KM, NAME_BONUS,
   } = Echoes.RULES;
@@ -65,10 +65,11 @@
     return;
   }
 
-  let state = store.get(KEY) || { heard: 0, guesses: [], done: false };
+  const TEST = Echoes.TEST; // Probespiel: nichts speichern, nichts melden, kein Feedback
+  let state = (!TEST && store.get(KEY)) || { heard: 0, guesses: [], done: false };
   let pin = null;
   let year = null; // erst gesetzt, wenn der Spieler das Jahr wählt
-  const save = () => store.set(KEY, state);
+  const save = () => { if (!TEST) store.set(KEY, state); };
 
   // --- Geometrie ---
   const R = 6371;
@@ -188,15 +189,15 @@
   // --- Jahr ---
   const yearInput = $('#yearInput'), yearRange = $('#yearRange');
   function setYear(y) {
-    year = y == null ? null : Math.max(1800, Math.min(2026, Math.round(y) || 1950));
+    year = y == null ? null : Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(y) || 1950));
     yearInput.value = year ?? '';
     yearInput.placeholder = t().yearUnset;
     yearRange.value = year == null ? 1910 : Math.min(2020, Math.round(year / 10) * 10);
     $('#timeline').classList.toggle('unset', year == null);
     renderControls();
   }
-  $('#ticks').innerHTML = [1800, 1850, 1900, 1950, 2000].map(y =>
-    `<span style="left:${(y - 1800) / (2026 - 1800) * 100}%">${y}</span>`).join('');
+  $('#ticks').innerHTML = [1700, 1750, 1800, 1850, 1900, 1950, 2000].map(y =>
+    `<span style="left:${(y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN) * 100}%">${y}</span>`).join('');
   // der Regler rastet auf Jahrzehnten ein (mit kleinem Tick), ‹ › stellen das Jahr genau
   yearRange.oninput = () => { setYear(+yearRange.value); haptic(5); };
   yearInput.onchange = () => setYear(yearInput.value === '' ? null : +yearInput.value);
@@ -329,7 +330,7 @@
       $('#voice').innerHTML = resultHtml();
       const sb = $('#statsBtn');
       if (sb) sb.onclick = () => EchoesStats.open({ day, dayNo, state, countries });
-      $('#shareBtn').onclick = async () => {
+      if ($('#shareBtn')) $('#shareBtn').onclick = async () => {
         try { await navigator.clipboard.writeText(shareText()); } catch { prompt('', shareText()); }
         $('#shareBtn').textContent = t().copied;
         $('#shareBtn').classList.add('held');
@@ -457,7 +458,7 @@
     if (!pin || year == null || state.done) return;
     const target = [day.lon, day.lat];
     const km = distanceKm(pin, target);
-    const dy = year - day.year;
+    const dy = yearOff(day, year); // 0 innerhalb der Spanne, sonst Abstand zum nächsten Ende
     const g = {
       lon: pin[0], lat: pin[1], year, dy, heard: state.heard,
       km: Math.round(km), dir: Math.round(bearing(pin, target)),
@@ -472,13 +473,13 @@
     freshTry = state.guesses.length - 1;
     pin = null;
     if (g.hit || g.final) { state.done = true; viewing = null; }
-    if (state.done) { state.score = score(); state.endedAt = Date.now(); Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
-    if (state.done) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
+    if (state.done) { state.score = score(); state.endedAt = Date.now(); if (!TEST) Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
+    if (state.done && !TEST) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
     save();
     if (state.done) {
       stopSpeaking();
       // vor der Auflösung kurz nach Feedback fragen (einmal pro Tag), dann erst die Lösung zeigen
-      if (!state.feedbackAsked) {
+      if (!state.feedbackAsked && !TEST) {
         state.feedbackAsked = true;
         save();
         EchoesStats.askFeedback({ day, dayNo }).then(reveal);
@@ -628,8 +629,8 @@
       <p class="summary"${d(2.6)}>${esc(day.summary)}</p>
       <p class="when"${d(2.9)}>${t().notes}</p>
       <div class="result-actions"${d(3)}>
-        <button class="pill" id="shareBtn">${t().share}</button>
-        ${EchoesStats.available() ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
+        ${TEST ? '<button class="pill" id="againBtn">Play again</button>' : `<button class="pill" id="shareBtn">${t().share}</button>`}
+        ${EchoesStats.available() && !TEST ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
       </div>
       <p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
     </div>`;
@@ -807,6 +808,15 @@
   }, $('#guessBtn').parentNode);
   $('#helpBtn').onclick = () => Echoes.showGuide();
   $('#resetBtn').onclick = () => { store.del(KEY); location.reload(); };
+  if (TEST) {
+    document.body.classList.add('test-play');
+    const tag = document.createElement('div');
+    tag.className = 'test-tag';
+    tag.innerHTML = 'Test play · not saved, not counted · <button class="link">restart</button>';
+    tag.querySelector('button').onclick = () => location.reload();
+    document.body.append(tag);
+    document.addEventListener('click', e => { if (e.target.closest('#againBtn')) location.reload(); });
+  }
 
   renderAll();
   setYear(null);
