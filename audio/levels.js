@@ -82,6 +82,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793608846
     }
   },
+  "cuban-missile-crisis": {
+    "1": {
+      "before": -23.0,
+      "after": -20.2,
+      "mtime": 1793611068
+    },
+    "2": {
+      "before": -24.6,
+      "after": -20.0,
+      "mtime": 1793611069
+    },
+    "3": {
+      "before": -22.8,
+      "after": -20.1,
+      "mtime": 1793611071
+    },
+    "4": {
+      "before": -24.2,
+      "after": -20.0,
+      "mtime": 1793611082
+    },
+    "5": {
+      "before": -21.3,
+      "after": -20.1,
+      "mtime": 1793611093
+    }
+  },
   "everest": {
     "1": {
       "before": -22.9,
@@ -188,6 +215,33 @@ window.ECHOES_LEVELS = {
       "before": -24.6,
       "after": -20.1,
       "mtime": 1793545825
+    }
+  },
+  "wright-flight": {
+    "1": {
+      "before": -16.6,
+      "after": -19.7,
+      "mtime": 1793610922
+    },
+    "2": {
+      "before": -22.7,
+      "after": -20.1,
+      "mtime": 1793610923
+    },
+    "3": {
+      "before": -15.0,
+      "after": -20.0,
+      "mtime": 1793610936
+    },
+    "4": {
+      "before": -23.2,
+      "after": -20.1,
+      "mtime": 1793610950
+    },
+    "5": {
+      "before": -16.5,
+      "after": -19.9,
+      "mtime": 1793610963
     }
   }
 };

@@ -21,6 +21,13 @@ window.ECHOES_AUDIO = {
     "4": "324fd957",
     "5": "08171383"
   },
+  "cuban-missile-crisis": {
+    "1": "8a9d549b",
+    "2": "d2f0f0e0",
+    "3": "5855c28d",
+    "4": "a4da14f6",
+    "5": "906dbd49"
+  },
   "everest": {
     "1": "7e87513a",
     "2": "b147c730",
@@ -48,6 +55,13 @@ window.ECHOES_AUDIO = {
     "3": "e46d7a64",
     "4": "73c17986",
     "5": "07454899"
+  },
+  "wright-flight": {
+    "1": "a09663c4",
+    "2": "aac8ecb4",
+    "3": "8bd91578",
+    "4": "9199a244",
+    "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793608863; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793611095; // gegen veraltete Aufnahmen im Browser-Cache

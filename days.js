@@ -137,7 +137,7 @@ window.ECHOES_DAYS = [
   {
     id: 'titanic',
     status: 'live',
-    on: '2026-11-16',
+    on: '2026-11-11',
     year: 1912,
     lat: 41.73,
     lon: -49.95,
@@ -249,7 +249,7 @@ window.ECHOES_DAYS = [
   {
     id: 'krakatau',
     status: 'live',
-    on: '2026-11-05',
+    on: '2026-11-13',
     year: 1883,
     lat: -6.1,
     lon: 105.42,
@@ -361,7 +361,7 @@ window.ECHOES_DAYS = [
   {
     id: 'chile-mine',
     status: 'live',
-    on: '2026-11-07',
+    on: '2026-11-15',
     year: 2010,
     lat: -27.16,
     lon: -70.5,
@@ -417,7 +417,7 @@ window.ECHOES_DAYS = [
   {
     id: 'bern-1954',
     status: 'reviewed',
-    on: '2026-11-08',
+    on: '2026-11-14',
     year: 1954,
     lat: 46.96,
     lon: 7.46,
@@ -467,8 +467,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'wright-flight',
-    status: 'reviewed',
-    on: '2026-11-09',
+    status: 'live',
+    on: '2026-11-03',
     year: 1903,
     lat: 36.0176,
     lon: -75.668,
@@ -481,6 +481,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Kite maker’s grandson, China',
         style: 'Elderly Chinese man speaking English with a soft accent, slow and reverent',
+        voiceId: 'h1i3CVVBUuF6s46cxUGG', voiceName: 'Andy Lin (chinese)',
         pitch: 0.9, rate: 0.9,
         text: 'My grandfather built kites for the festivals all his life. When a newspaper from abroad reached our town with a strange drawing in it, he studied it for a long time. Then he said quietly: so they have done it – the thing we dreamed of for a thousand years.',
         note: 'Kites were invented in China more than 2,000 years ago; news of the flight spread slowly around the world.',
@@ -488,6 +489,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Bicycle customer',
         style: 'Friendly American man in his 30s, Midwestern accent, curious',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 1, rate: 1,
         text: 'Two brothers fixed my bicycle in their little shop. In the back room there were strange things made of muslin and spruce wood, and a small engine they had built themselves, because nobody would sell them one light enough.',
         note: 'The Wrights ran a bicycle shop in Dayton, Ohio, and built their own lightweight engine.',
@@ -495,6 +497,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Lifesaving station man',
         style: 'Weathered coastal man in his 40s, Southern US accent, dry humour',
+        voiceId: 'Cb8NLd0sUB8jI4MW2f9M', voiceName: 'Jedediah (us southern)',
         pitch: 0.9, rate: 0.95,
         text: 'Out on these dunes the wind never stops – that’s why they came. In December the sand blows sideways and the sea is grey. We pulled shipwrecked sailors out of the surf for a living, and we thought these two were mad.',
         note: 'The brothers chose the Outer Banks for their steady winds; men from the local lifesaving station helped and watched.',
@@ -502,6 +505,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Witness on the beach',
         style: 'American man, hushed and amazed, speaking slowly',
+        voiceId: 'uju3wxzG5OhpWcoi3SMy', voiceName: 'Michael C. Vincent (american)',
         pitch: 0.95, rate: 0.9,
         text: 'The machine rattled down a wooden rail into the wind, lifted, wobbled – and stayed up. Twelve seconds. Only five of us saw it. One of us took the photograph, and his hands were shaking.',
         note: 'The famous photo of the first flight was taken by a lifesaving station man who had never used a camera before.',
@@ -509,6 +513,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Telegraph operator, Kitty Hawk',
         style: 'Calm American man, precise, quietly proud',
+        voiceId: 'wBXNqKUATyqu0RtYt25i', voiceName: 'Adam (american)',
         pitch: 0.95, rate: 1,
         text: 'On 17 December 1903 the Wright brothers made the first powered flight here at Kitty Hawk, North Carolina. I sent the telegram to their father: success, four flights.',
         note: 'The longest of the four flights that day lasted 59 seconds and covered 260 metres.',
@@ -569,8 +574,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'cuban-missile-crisis',
-    status: 'reviewed',
-    on: '2026-11-11',
+    status: 'live',
+    on: '2026-11-05',
     year: 1962,
     lat: 23.1136,
     lon: -82.3666,
@@ -583,6 +588,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Mother in a Russian village',
         style: 'Elderly Russian woman speaking English with a heavy accent, worried and tender',
+        voiceId: 'GCPLhb1XrVwcoKUJYcvz', voiceName: 'Nadya (russian)',
         pitch: 1, rate: 0.9,
         text: 'My son wrote that they were packing skis and felt boots for a secret trip. Then nothing for weeks. When his next letter finally came, it smelled of salt and something sweet, and he wasn’t allowed to say where he was.',
         note: 'Soviet soldiers were issued winter gear so that nobody would guess their tropical destination.',
@@ -590,6 +596,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Schoolteacher',
         style: 'American woman in her 30s, kind but anxious',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 1,
         text: 'We practised hiding under our desks with our hands over our necks. A man came round selling fallout shelters door to door. At break the children danced the twist, and then asked me if the world would end before the weekend.',
         note: '“Duck and cover” drills and home fallout shelters were part of everyday life in the early 1960s.',
@@ -597,6 +604,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Sugar cane cutter',
         style: 'Cuban man in his 30s, Spanish accent, easy-going then puzzled',
+        voiceId: 'AsHHje51j2aYdrvLDHfG', voiceName: 'Carlos (spanish)',
         pitch: 0.95, rate: 1,
         text: 'We cut cane along the coast road in the heat, singing. That autumn trucks came at night, long ones under tarpaulins, too long to turn the corners of our village. Soldiers who spoke no Spanish asked us for water.',
         note: 'The missiles were moved at night along Cuba’s country roads.',
@@ -604,6 +612,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Navy sailor',
         style: 'Young American sailor, tense, speaking low',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 0.95, rate: 1,
         text: 'For thirteen days our ships formed a line across the sea, and we waited for theirs. Every hour the radio said they were coming closer. Then one morning the first freighter stopped dead in the water – and turned around.',
         note: 'The US Navy blockaded Cuba; Soviet ships heading for the island turned back.',
@@ -611,6 +620,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Fisherman, Havana',
         style: 'Older Cuban fisherman, Spanish accent, calm and grave',
+        voiceId: 'r2goToszgNLUzvFARGqy', voiceName: 'Paul Urbina (spanish)',
         pitch: 0.9, rate: 0.9,
         text: 'In October 1962 the world held its breath over Cuba. Soviet nuclear missiles stood on our island, ninety miles from America, and for thirteen days nobody knew if there would be war.',
         note: 'In return, the US secretly agreed to remove its own missiles from Turkey.',
@@ -621,7 +631,7 @@ window.ECHOES_DAYS = [
   {
     id: 'apollo-11',
     status: 'reviewed',
-    on: '2026-11-12',
+    on: '2026-11-07',
     year: 1969,
     lat: 28.6083,
     lon: -80.6041,
@@ -672,7 +682,7 @@ window.ECHOES_DAYS = [
   {
     id: 'channel-tunnel',
     status: 'reviewed',
-    on: '2026-11-13',
+    on: '2026-11-12',
     year: 1994,
     lat: 51.0125,
     lon: 1.5,
@@ -723,7 +733,7 @@ window.ECHOES_DAYS = [
   {
     id: 'tsunami-2004',
     status: 'reviewed',
-    on: '2026-11-14',
+    on: '2026-11-09',
     year: 2004,
     lat: 5.5483,
     lon: 95.3238,
@@ -774,7 +784,6 @@ window.ECHOES_DAYS = [
   {
     id: 'tutankhamun',
     status: 'draft',
-    on: '2026-11-20',
     year: 1922,
     lat: 25.7402,
     lon: 32.6014,
@@ -1125,7 +1134,7 @@ window.ECHOES_DAYS = [
   {
     id: 'eiffel-tower',
     status: 'draft',
-    on: '2026-11-15',
+    on: '2026-11-08',
     year: 1889,
     lat: 48.8584,
     lon: 2.2945,
