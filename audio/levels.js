@@ -136,6 +136,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793608846
     }
   },
+  "christmas-truce": {
+    "1": {
+      "before": -17.4,
+      "after": -20.0,
+      "mtime": 1793875896
+    },
+    "2": {
+      "before": -25.3,
+      "after": -20.0,
+      "mtime": 1793875898
+    },
+    "3": {
+      "before": -22.8,
+      "after": -20.1,
+      "mtime": 1793875900
+    },
+    "4": {
+      "before": -21.2,
+      "after": -20.0,
+      "mtime": 1793875902
+    },
+    "5": {
+      "before": -22.4,
+      "after": -20.1,
+      "mtime": 1793875915
+    }
+  },
   "cuban-missile-crisis": {
     "1": {
       "before": -23.0,

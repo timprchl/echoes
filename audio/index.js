@@ -35,6 +35,13 @@ window.ECHOES_AUDIO = {
     "4": "324fd957",
     "5": "08171383"
   },
+  "christmas-truce": {
+    "1": "913e4c91",
+    "2": "1d90d167",
+    "3": "fdc9f551",
+    "4": "c8a2dc88",
+    "5": "59c477a5"
+  },
   "cuban-missile-crisis": {
     "1": "8a9d549b",
     "2": "d2f0f0e0",
@@ -99,4 +106,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793637873; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793875916; // gegen veraltete Aufnahmen im Browser-Cache

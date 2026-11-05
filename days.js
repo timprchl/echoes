@@ -1096,7 +1096,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'christmas-truce',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-11',
     year: 1914,
     lat: 50.73,
@@ -1110,6 +1110,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Mother',
         style: 'Older woman, soft, careful, slightly trembling',
+        voiceId: 'wGcFBfKz5yUQqhqr0mVy', voiceName: 'Maria Moody (american)',
         pitch: 1, rate: 0.9,
         text: 'Every week I wrote him a letter and knitted something warm. That winter a parcel came back from him instead: a strange button, a cigar and a note saying he had shaken hands with a man he was supposed to hate.',
         note: 'Soldiers swapped buttons, cigars and food as souvenirs.',
@@ -1117,6 +1118,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Young brother',
         style: 'Young man of about 18, earnest, idealistic',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 1.05, rate: 1.05,
         text: 'The posters said it would all be over by Christmas. My brothers marched off cheering, with flowers in their caps, and the newspapers printed maps with little flags that hardly ever moved.',
         note: 'Many believed the war would be over by Christmas 1914.',
@@ -1124,6 +1126,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Farmer',
         style: 'Belgian man in his 60s, French-accented English, weary',
+        voiceId: 'pB0wYnYoA5t7xU302lqw', voiceName: 'JC (french)',
         pitch: 0.85, rate: 0.9,
         text: 'Flat land, wet clay, rain every day. The ditches between our fields filled with water and the poplars were shot to splinters. On cold nights we heard singing in two languages from the trenches.',
         note: 'The front ran through the flat, wet fields of Flanders.',
@@ -1131,6 +1134,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Soldier',
         style: 'British man in his 20s, quiet, amazed',
+        voiceId: '8JVbfL6oEdmuxKn5DK2C', voiceName: 'Johnny Kid (british)',
         pitch: 0.95, rate: 0.95,
         text: 'On Christmas Eve candles appeared along their trench and they sang Silent Night. In the morning we climbed out, swapped cigarettes in the mud between the lines – and somebody kicked a ball.',
         note: 'In some places soldiers played football in no man’s land.',
@@ -1138,6 +1142,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Chaplain, Flanders, Belgium',
         style: 'Older British man, calm, reflective',
+        voiceId: 'L1aJrPa7pLJEyYlh3Ilq', voiceName: 'Oliver (british)',
         pitch: 0.85, rate: 0.9,
         text: 'At Christmas 1914, in the first winter of the First World War, British and German soldiers along the front in Flanders stopped fighting and met in no man’s land.',
         note: 'Commanders on both sides made sure the truce was never repeated on that scale.',
