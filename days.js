@@ -1152,7 +1152,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'eiffel-tower',
-    status: 'voiced',
+    status: 'live',
     on: '2026-11-08',
     year: 1889,
     lat: 48.8584,
