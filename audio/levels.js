@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
     }
   },
   "bern-1954": {},
+  "burj-khalifa": {
+    "1": {
+      "before": -22.9,
+      "after": -20.1,
+      "mtime": 1793965817
+    },
+    "2": {
+      "before": -18.1,
+      "after": -19.9,
+      "mtime": 1793965833
+    },
+    "3": {
+      "before": -24.2,
+      "after": -20.1,
+      "mtime": 1793965845
+    },
+    "4": {
+      "before": -22.5,
+      "after": -20.1,
+      "mtime": 1793965847
+    },
+    "5": {
+      "before": -23.9,
+      "after": -20.0,
+      "mtime": 1793965849
+    }
+  },
   "chatgpt-launch": {
     "1": {
       "before": -22.9,

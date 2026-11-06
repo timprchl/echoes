@@ -14,6 +14,13 @@ window.ECHOES_AUDIO = {
     "4": "af7eac32",
     "5": "8966a64d"
   },
+  "burj-khalifa": {
+    "1": "9c636d52",
+    "2": "aa6542d0",
+    "3": "c005962d",
+    "4": "89f0e48b",
+    "5": "de5d76f3"
+  },
   "chatgpt-launch": {
     "1": "548f90ce",
     "2": "81298cc7",
@@ -106,4 +113,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1793875916; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1793965850; // gegen veraltete Aufnahmen im Browser-Cache

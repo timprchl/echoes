@@ -686,7 +686,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'channel-tunnel',
-    status: 'reviewed',
+    status: 'draft',
     on: '2026-11-12',
     year: 1994,
     lat: 51.0125,
@@ -737,7 +737,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'tsunami-2004',
-    status: 'voiced',
+    status: 'live',
     on: '2026-11-09',
     year: 2004,
     lat: 5.5483,
@@ -1918,7 +1918,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'burj-khalifa',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-10',
     year: 2010,
     lat: 25.1972,
@@ -1932,6 +1932,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Grandmother, Nepal',
         style: 'Older Nepali woman speaking English with a soft accent, slow and tender',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1, rate: 0.85,
         text: 'My son rang in the first week of the new year, his voice small and crackling. Ama, he said, tonight they light up the thing I carried for years. I did not understand. I looked at our own mountains and thought: he must mean something like these.',
         note: 'Many of the workers came from Nepal, India, Bangladesh and Pakistan and sent their wages home.',
@@ -1939,6 +1940,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Hotel receptionist',
         style: 'Young woman in her 20s, Eastern European accent, quick and a bit ironic',
+        voiceId: '2t85BBUECtLLKQzxLD95', voiceName: 'Amber (croatian)',
         pitch: 1.1, rate: 1.05,
         text: 'Everyone held up one of those new touchscreen phones, filming and posting straight to Facebook. The crash the year before had wiped out half the money in town – a party on an overdraft, we joked. The guests only talked about a film with tall blue aliens.',
         note: 'Smartphones and social media were spreading fast; the 2008 financial crisis hit the city’s property boom hard. “Avatar” was the hit film of that winter.',
@@ -1946,6 +1948,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Taxi driver',
         style: 'Indian man in his 40s, Malayali accent, chatty and warm',
+        voiceId: 'tTZ0TVc9Q1bbWngiduLK', voiceName: 'Rudra (indian)',
         pitch: 0.95, rate: 1,
         text: 'In winter the desert is kind: warm days, cool nights. My radio played Malayalam songs, my passengers spoke Arabic, Russian, Urdu, English. Out of the window: cranes, cranes, cranes, and a haze of sand hiding the warm, shallow sea.',
         note: 'Most residents of the city are foreigners; Malayalis from Kerala are one of the largest groups.',
@@ -1953,6 +1956,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Window-cleaning foreman',
         style: 'South Asian man in his 30s, steady and proud, slight laugh in his voice',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.9, rate: 0.95,
         text: 'Our cradle hangs from the top of the tallest building on Earth, over eight hundred metres up. That night the whole needle lit up, fireworks burst from every level, and at the last moment it got a new name – a thank-you to the neighbouring emirate that paid.',
         note: 'Cleaning the 24,000 windows takes a team about three months. The new name honoured Abu Dhabi, which had lent Dubai billions.',
@@ -1960,6 +1964,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Lift engineer, Dubai',
         style: 'Arab man in his 40s, calm and precise, quietly proud',
+        voiceId: 'uju3wxzG5OhpWcoi3SMy', voiceName: 'Michael C. Vincent (american)',
         pitch: 0.85, rate: 0.9,
         text: 'On the fourth of January 2010 the Burj Khalifa opened here in Dubai, in the United Arab Emirates. At 828 metres it became the tallest building in the world. Until that evening everyone had called it Burj Dubai.',
         note: 'The tower has more than 160 floors; its fastest lifts travel about 10 metres per second.',
