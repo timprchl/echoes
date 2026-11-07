@@ -96,7 +96,7 @@
   // --- Globus ---
   const W = 500, BASE = 230;
   const svg = d3.select('#globe');
-  const projection = d3.geoOrthographic().translate([W / 2, W / 2]).scale(BASE).clipAngle(90).rotate([-10, -30]);
+  const projection = d3.geoOrthographic().translate([W / 2, W / 2]).scale(BASE).clipAngle(90).rotate([-10, -30]).precision(.7); // etwas gröber nachrechnen – spart Zeit pro Bild, sieht gleich aus
   const path = d3.geoPath(projection);
   const gSphere = svg.append('path').datum({ type: 'Sphere' }).attr('class', 'sphere');
   const gGrat = svg.append('path').datum(d3.geoGraticule10()).attr('class', 'grat');
@@ -111,6 +111,9 @@
   // Je Ebene ein Grundbild in vendor/ und schärfere Kacheln aus tiles/<name>/ (nur die sichtbaren, bis ≈ 230 px/Grad).
   // Ohne WebGL oder solange die Bilder laden, bleibt der helle Globus.
   const lens = document.querySelector('.globe-lens');
+  let lensPx = 0;
+  const lensSize = () => lensPx || (lensPx = Math.round(lens.clientWidth * Math.min(2, devicePixelRatio || 1)));
+  addEventListener('resize', () => { lensPx = 0; });
   function earthLayer(name, gain, onReady) {
     const canvas = document.createElement('canvas');
     canvas.className = `earth ${name}`;
@@ -208,7 +211,7 @@
     // sichtbare Kacheln einer Stufe: Bildschirm in einem Raster abtasten, pro Kachel den Bildschirm-Ausschnitt merken
     function visibleTiles(lv, size) {
       const tiles = new Map();
-      const N = 20, step = 460 / N;
+      const N = 14, step = 460 / N;
       for (let j = 0; j <= N; j++) {
         for (let i = 0; i <= N; i++) {
           const sx = 20 + i * step, sy = 20 + j * step;
@@ -238,7 +241,7 @@
     let size = 0;
     function draw() {
       if (!base) return;
-      size = Math.round(lens.clientWidth * Math.min(2, devicePixelRatio || 1));
+      size = lensSize(); // gemerkt statt jedes Mal gemessen – das Messen erzwingt sonst ein Layout pro Bild
       if (canvas.width !== size) { canvas.width = canvas.height = size; gl.viewport(0, 0, size, size); }
       const [l, p] = projection.rotate();
       gl.uniform2f(u('rot'), l * D, p * D);
@@ -261,6 +264,7 @@
       gl.enable(gl.SCISSOR_TEST);
       for (const lv of levels) {
         if (lv.n > top.n) break;
+        if (lv.n < top.n - 1) continue; // gröbere Stufen liegt das Grundbild ohnehin darunter
         const tiles = visibleTiles(lv, size);
         if (lv === top) [...tiles.entries()].sort((a, b) => a[1].d - b[1].d).forEach(([key]) => request(key));
         tiles.forEach((b, key) => {
@@ -285,7 +289,7 @@
   // Nacht beim Start; Tag lädt im Hintergrund nach und übernimmt, sobald hineingezoomt wird
   const ZOOMED = 1.05;
   const nightEarth = earthLayer('night', 1.35, () => { drawGlobe(); requestAnimationFrame(() => lens.classList.add('night')); dayEarth.load(); });
-  const dayEarth = earthLayer('day', 1, () => drawGlobe());
+  const dayEarth = earthLayer('day', 1.3, () => drawGlobe()); // Blue Marble ist recht dunkel – etwas aufhellen
   let mode = null, switchedAt = 0;
   function drawEarth() {
     const want = dayEarth.ready && projection.scale() > BASE * ZOOMED ? 'day' : 'night';
@@ -293,6 +297,7 @@
       mode = want;
       switchedAt = performance.now();
       lens.classList.toggle('day', mode === 'day');
+      if (mode === 'day') lens.classList.add('night'); // Satelliten-Darstellung an, auch falls die Nacht-Ebene noch nicht so weit ist
       setTimeout(drawGlobe, 750); // nach der Überblendung die ausgeblendete Ebene nicht mehr zeichnen
     }
     // beim Wechsel kurz beide zeichnen (Überblendung per CSS), sonst nur die sichtbare Ebene
@@ -304,7 +309,14 @@
   const center = () => { const r = projection.rotate(); return [-r[0], -r[1]]; };
   const visible = c => d3.geoDistance(c, center()) < Math.PI / 2 - 0.02;
 
+  // höchstens ein Bild pro Bildschirm-Frame, egal wie viele Maus- oder Touch-Ereignisse kommen
+  let framePending = false;
   function drawGlobe() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(() => { framePending = false; renderGlobe(); });
+  }
+  function renderGlobe() {
     drawEarth();
     gSphere.attr('d', path);
     gGrat.attr('d', path);
@@ -357,30 +369,75 @@
       .call(g => g.select('text').text(m => m.label));
   }
 
-  let moved = 0;
+  // Drehen: der Globus folgt dem Finger und dreht nach dem Loslassen mit Schwung kurz weiter
+  let moved = 0, vel = [0, 0], lastMove = 0, spin = null;
+  const turn = (dx, dy) => {
+    const k = 75 / projection.scale();
+    const [l, p] = projection.rotate();
+    projection.rotate([l + dx * k, Math.max(-80, Math.min(80, p - dy * k))]);
+  };
+  const stopSpin = () => { if (spin) cancelAnimationFrame(spin); spin = null; };
   svg.call(d3.drag()
     .container(function () { return this; })
-    .on('start', () => { moved = 0; })
+    .on('start', () => { moved = 0; vel = [0, 0]; stopSpin(); stopZoom(); })
     .on('drag', e => {
       moved += Math.abs(e.dx) + Math.abs(e.dy);
-      const k = 75 / projection.scale();
-      const [l, p] = projection.rotate();
-      projection.rotate([l + e.dx * k, Math.max(-80, Math.min(80, p - e.dy * k))]);
+      const now = performance.now(), dt = Math.max(8, now - lastMove);
+      lastMove = now;
+      vel = [vel[0] * .4 + e.dx / dt * .6, vel[1] * .4 + e.dy / dt * .6]; // geglättet, in Einheiten pro ms
+      turn(e.dx, e.dy);
       drawGlobe();
     })
     .on('end', e => {
-      if (moved > 4 || state.done) return;
+      if (moved > 4) {
+        // Schwung: nur wenn der Finger zuletzt noch in Bewegung war
+        if (performance.now() - lastMove > 80 || Math.hypot(...vel) < .05) return;
+        let t = performance.now();
+        const step = now => {
+          const dt = now - t; t = now;
+          vel = vel.map(v => v * Math.pow(.94, dt / 16.7));
+          if (Math.hypot(...vel) < .01) { spin = null; return; }
+          turn(vel[0] * dt, vel[1] * dt);
+          renderGlobe();
+          spin = requestAnimationFrame(step);
+        };
+        spin = requestAnimationFrame(step);
+        return;
+      }
+      if (state.done) return;
       const c = projection.invert([e.x, e.y]);
       if (c && visible(c)) { pin = c; haptic(8); drawGlobe(); renderControls(); }
     }));
 
+  // Zoomen gleitet zum Ziel, statt zu springen (Knöpfe, Mausrad, Trackpad)
+  const MIN_SCALE = BASE, MAX_SCALE = BASE * 40; // bis 40× – darunter scharf dank Detail-Kacheln
+  let zoomGoal = null, zoomAnim = null;
+  const stopZoom = () => { if (zoomAnim) cancelAnimationFrame(zoomAnim); zoomAnim = null; zoomGoal = null; };
   function zoom(f) {
-    projection.scale(Math.max(BASE, Math.min(BASE * 40, projection.scale() * f))); // bis 40× – darunter scharf dank Detail-Kacheln
-    drawGlobe();
+    zoomGoal = Math.max(MIN_SCALE, Math.min(MAX_SCALE, (zoomGoal ?? projection.scale()) * f));
+    if (zoomAnim) return;
+    let t = performance.now();
+    const step = now => {
+      const dt = now - t; t = now;
+      const cur = projection.scale();
+      // pro Frame ein gutes Stück näher (logarithmisch, damit 1× → 40× genauso weich ist wie 1× → 2×)
+      const k = 1 - Math.pow(.78, dt / 16.7);
+      const next = Math.exp(Math.log(cur) + (Math.log(zoomGoal) - Math.log(cur)) * k);
+      if (Math.abs(next / zoomGoal - 1) < .002) { projection.scale(zoomGoal); renderGlobe(); zoomAnim = null; zoomGoal = null; return; }
+      projection.scale(next);
+      renderGlobe();
+      zoomAnim = requestAnimationFrame(step);
+    };
+    zoomAnim = requestAnimationFrame(step);
   }
-  svg.node().addEventListener('wheel', e => { e.preventDefault(); zoom(e.deltaY < 0 ? 1.12 : 1 / 1.12); }, { passive: false });
-  $('#zoomIn').onclick = () => zoom(1.4);
-  $('#zoomOut').onclick = () => zoom(1 / 1.4);
+  svg.node().addEventListener('wheel', e => {
+    e.preventDefault();
+    // Trackpad liefert viele kleine Schritte, das Mausrad wenige große – beides proportional umsetzen
+    const dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
+    zoom(Math.exp(-Math.max(-120, Math.min(120, dy)) * .0035));
+  }, { passive: false });
+  $('#zoomIn').onclick = () => zoom(1.6);
+  $('#zoomOut').onclick = () => zoom(1 / 1.6);
 
   function flyTo([lon, lat], scale = BASE * 1.6) {
     const from = projection.rotate();
@@ -390,9 +447,10 @@
     while (from[0] - to[0] > 180) to[0] += 360;
     const ri = d3.interpolate(from, to);
     const si = d3.interpolate(projection.scale(), scale);
+    stopSpin(); stopZoom();
     return d3.transition().duration(1200).tween('fly', () => tt => {
       projection.rotate(ri(tt)).scale(si(tt));
-      drawGlobe();
+      renderGlobe();
     }).end().catch(() => {});
   }
 
