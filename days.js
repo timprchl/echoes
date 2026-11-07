@@ -2706,8 +2706,8 @@ window.ECHOES_DAYS = [
         who: 'Student',
         style: 'Woman in her 70s remembering her youth, lively and a little rebellious',
         pitch: 1.1, rate: 1.05,
-        text: 'That year the young wore flowers in their hair, and the radio played songs about love and peace. A war in the jungle filled every newspaper. Television was spreading all over the world – everywhere, it seemed, except where we lived.',
-        note: '1967 was the “Summer of Love” during the Vietnam War. South Africa only introduced television in 1976.',
+        text: 'That summer the young wore flowers in their hair, and four lads sang about a lonely hearts club band in bright military coats. A war in the jungle filled every newspaper. Television was everywhere – except where we lived.',
+        note: '1967 was the “Summer of Love” during the Vietnam War, and the Beatles released “Sgt. Pepper’s Lonely Hearts Club Band”. South Africa only introduced television in 1976.',
       },
       {
         who: 'Fruit seller',
@@ -2720,7 +2720,7 @@ window.ECHOES_DAYS = [
         who: 'Theatre nurse',
         style: 'South African woman in her 30s speaking English with an Afrikaans accent, calm and precise',
         pitch: 1.05, rate: 0.95,
-        text: 'A young woman was hit by a car on a Saturday afternoon. That night her heart was put into a grocer whose own was failing. When it began to beat in his chest, nobody in the theatre spoke. By morning the whole world was calling our country.',
+        text: 'A young woman was hit by a car on a Saturday. That night her heart was put into a dying grocer – something no surgeon anywhere had ever done. When it began to beat in his chest, nobody spoke. By morning the whole world was calling our country.',
         note: 'The donor’s father agreed to the donation; the operation took about five hours.',
       },
       {
