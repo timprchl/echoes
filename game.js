@@ -106,20 +106,21 @@
   const gMarks = svg.append('g');
   let countries = [];
 
-  // Nachtbild der Erde (NASA Black Marble) per WebGL unter dem SVG – gleiche Projektion, Pins & Co. bleiben im SVG.
-  // Grundbild vendor/night-earth.jpg (10 px/Grad); beim Zoomen kommen schärfere Kacheln aus tiles/night/ dazu
-  // (30–240 px/Grad, nur die sichtbaren). Ohne WebGL oder solange das Bild lädt, bleibt der helle Globus.
-  const night = (() => {
-    const lens = document.querySelector('.globe-lens');
+  // Satellitenbilder der Erde per WebGL unter dem SVG – gleiche Projektion, Grenzen, Pins & Co. bleiben im SVG.
+  // Zwei Ebenen: Nacht (NASA Black Marble) beim Start, Tag (NASA Blue Marble) sobald man hineinzoomt.
+  // Je Ebene ein Grundbild in vendor/ und schärfere Kacheln aus tiles/<name>/ (nur die sichtbaren, bis ≈ 230 px/Grad).
+  // Ohne WebGL oder solange die Bilder laden, bleibt der helle Globus.
+  const lens = document.querySelector('.globe-lens');
+  function earthLayer(name, gain, onReady) {
     const canvas = document.createElement('canvas');
-    canvas.className = 'night';
+    canvas.className = `earth ${name}`;
     const gl = canvas.getContext('webgl', { premultipliedAlpha: true, antialias: false });
-    if (!gl) return { draw() {} };
+    if (!gl) return { draw() {}, load() {}, ready: false };
     const sh = (type, src) => { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; };
     const prog = gl.createProgram();
     gl.attachShader(prog, sh(gl.VERTEX_SHADER, 'attribute vec2 p; varying vec2 uv; void main(){ uv = p * .5 + .5; gl_Position = vec4(p, 0., 1.); }'));
     gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, `precision highp float;
-      varying vec2 uv; uniform sampler2D tex; uniform vec2 rot; uniform float scale; uniform float px;
+      varying vec2 uv; uniform sampler2D tex; uniform vec2 rot; uniform float scale; uniform float px; uniform float gain;
       uniform vec4 box; // Bildausschnitt: Westrand, Nordrand, Breite, Höhe (Bogenmaß)
       const float PI = 3.14159265;
       void main() {
@@ -135,7 +136,7 @@
         lon = mod(lon + PI, 2. * PI) - PI;
         vec2 t = vec2((lon - box.x) / box.z, (box.y - lat) / box.w);
         if (t.x < 0. || t.x > 1. || t.y < 0. || t.y > 1.) discard;
-        vec3 c = texture2D(tex, t).rgb * 1.35;
+        vec3 c = texture2D(tex, t).rgb * gain;
         // Atmosphäre: zum Rand hin bläulicher Schimmer
         float rim = pow(1. - Z, 2.5);
         c = mix(c, vec3(.36, .55, 1.), rim * .55);
@@ -143,7 +144,7 @@
         gl_FragColor = vec4(c * edge, edge);
       }`));
     gl.linkProgram(prog);
-    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return { draw() {} };
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) return { draw() {}, load() {}, ready: false };
     gl.useProgram(prog);
     gl.bindBuffer(gl.ARRAY_BUFFER, gl.createBuffer());
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
@@ -164,18 +165,21 @@
     };
 
     let base = null;
-    const img = new Image();
-    img.onload = () => {
-      base = texture(img);
-      lens.prepend(canvas);
-      draw();
-      requestAnimationFrame(() => lens.classList.add('night'));
-    };
-    img.src = 'vendor/night-earth.jpg';
+    const layer = { draw, load, ready: false };
+    function load() {
+      const img = new Image();
+      img.onload = () => {
+        base = texture(img);
+        lens.prepend(canvas);
+        layer.ready = true;
+        onReady();
+      };
+      img.src = `vendor/${name}-earth.jpg`;
+    }
 
     // --- Detail-Kacheln ---
     let index = null;
-    fetch('tiles/night/index.json').then(r => r.ok ? r.json() : null).then(j => { index = j; draw(); }).catch(() => {});
+    fetch(`tiles/${name}/index.json`).then(r => r.ok ? r.json() : null).then(j => { index = j; draw(); }).catch(() => {});
     const cache = new Map(); // "n/x_y" → { tex, used }
     const loading = new Set();
     const queue = [];
@@ -193,7 +197,7 @@
         const im = new Image();
         im.onload = () => { cache.set(key, { tex: texture(im), used: clock }); loading.delete(key); schedule(); pump(); };
         im.onerror = () => { loading.delete(key); pump(); };
-        im.src = `tiles/night/${key}.jpg`;
+        im.src = `tiles/${name}/${key}.jpg`;
       }
     }
     function evict() {
@@ -240,6 +244,7 @@
       gl.uniform2f(u('rot'), l * D, p * D);
       gl.uniform1f(u('scale'), projection.scale());
       gl.uniform1f(u('px'), 460 / size / projection.scale());
+      gl.uniform1f(u('gain'), gain);
       gl.disable(gl.SCISSOR_TEST);
       gl.clearColor(0, 0, 0, 0);
       gl.clear(gl.COLOR_BUFFER_BIT);
@@ -275,20 +280,35 @@
     let pending = false;
     const schedule = () => { if (!pending) { pending = true; requestAnimationFrame(() => { pending = false; draw(); }); } };
     addEventListener('resize', schedule);
-    return { draw };
-  })();
+    return layer;
+  }
+  // Nacht beim Start; Tag lädt im Hintergrund nach und übernimmt, sobald hineingezoomt wird
+  const ZOOMED = 1.05;
+  const nightEarth = earthLayer('night', 1.35, () => { drawGlobe(); requestAnimationFrame(() => lens.classList.add('night')); dayEarth.load(); });
+  const dayEarth = earthLayer('day', 1, () => drawGlobe());
+  let mode = null, switchedAt = 0;
+  function drawEarth() {
+    const want = dayEarth.ready && projection.scale() > BASE * ZOOMED ? 'day' : 'night';
+    if (want !== mode) {
+      mode = want;
+      switchedAt = performance.now();
+      lens.classList.toggle('day', mode === 'day');
+      setTimeout(drawGlobe, 750); // nach der Überblendung die ausgeblendete Ebene nicht mehr zeichnen
+    }
+    // beim Wechsel kurz beide zeichnen (Überblendung per CSS), sonst nur die sichtbare Ebene
+    const fading = performance.now() - switchedAt < 700;
+    if (mode === 'night' || fading) nightEarth.draw();
+    if (mode === 'day' || fading) dayEarth.draw();
+  }
 
   const center = () => { const r = projection.rotate(); return [-r[0], -r[1]]; };
   const visible = c => d3.geoDistance(c, center()) < Math.PI / 2 - 0.02;
 
   function drawGlobe() {
-    night.draw();
-    // die Ländergrenzen sind grob (1:110 Mio.) – tief hineingezoomt blenden sie aus, das Satellitenbild übernimmt
-    const z = projection.scale() / BASE;
-    svg.style('--borders', z <= 4 ? 1 : Math.max(0, 1 - (z - 4) / 6));
+    drawEarth();
     gSphere.attr('d', path);
     gGrat.attr('d', path);
-    gLand.selectAll('path').data(countries).join('path').attr('class', 'land').attr('d', path);
+    gLand.selectAll('path').data(borders()).join('path').attr('class', 'land').attr('d', path);
 
     const target = [day.lon, day.lat];
     const arcs = state.done ? state.guesses.filter(g => !g.hit).map(g => ({
@@ -376,10 +396,40 @@
     }).end().catch(() => {});
   }
 
+  // Ländergrenzen in jeder Zoomstufe: grob (1:110 Mio.) für den Überblick, feiner beim Hineinzoomen –
+  // 1:50 Mio. ab 2,5×, 1:10 Mio. ab 10× (dann nur die Länder in der Nähe, damit das Drehen flüssig bleibt)
+  const fine = { '50m': null, '10m': null };
+  const loadingBorders = new Set();
+  function loadBorders(res) {
+    if (fine[res] || loadingBorders.has(res)) return;
+    loadingBorders.add(res);
+    d3.json(`vendor/countries-${res}.json`).then(world => {
+      fine[res] = topojson.feature(world, world.objects.countries).features.map(f => ({ f, b: d3.geoBounds(f) }));
+      drawGlobe();
+    }).catch(() => loadingBorders.delete(res));
+  }
+  function borders() {
+    const z = projection.scale() / BASE;
+    if (z >= 2.5) loadBorders('50m');
+    if (z >= 6) loadBorders('10m');
+    const set = z >= 10 && fine['10m'] ? fine['10m'] : z >= 2.5 && fine['50m'] ? fine['50m'] : null;
+    if (!set) return countries;
+    // grob vorsortieren: nur Länder, deren Rechteck in der Nähe der Bildmitte liegt
+    const [cl, cp] = center();
+    const r = Math.min(90, Math.asin(Math.min(1, 330 / projection.scale())) * 180 / Math.PI + 2);
+    const near = ({ b: [[w, s], [e, n]] }) => {
+      if (cp - r > n || cp + r < s) return false;
+      if (w > e || Math.abs(cp) + r > 80) return true; // über die Datumsgrenze oder nahe am Pol: nicht ausschließen
+      const dl = Math.min(Math.abs(((cl - w + 540) % 360) - 180), Math.abs(((cl - e + 540) % 360) - 180));
+      return (cl >= w && cl <= e) || dl <= r / Math.max(.2, Math.cos(cp * Math.PI / 180));
+    };
+    return set.filter(near).map(x => x.f);
+  }
   d3.json('vendor/countries-110m.json').then(world => {
     countries = topojson.feature(world, world.objects.countries).features;
     drawGlobe();
   });
+  nightEarth.load();
 
   // --- Jahr ---
   const yearInput = $('#yearInput'), yearRange = $('#yearRange');
