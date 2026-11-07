@@ -421,7 +421,7 @@
       const dt = now - t; t = now;
       const cur = projection.scale();
       // pro Frame ein gutes Stück näher (logarithmisch, damit 1× → 40× genauso weich ist wie 1× → 2×)
-      const k = 1 - Math.pow(.78, dt / 16.7);
+      const k = 1 - Math.pow(.6, dt / 16.7); // ≈ 0,15 s bis zum Ziel
       const next = Math.exp(Math.log(cur) + (Math.log(zoomGoal) - Math.log(cur)) * k);
       if (Math.abs(next / zoomGoal - 1) < .002) { projection.scale(zoomGoal); renderGlobe(); zoomAnim = null; zoomGoal = null; return; }
       projection.scale(next);
@@ -434,10 +434,10 @@
     e.preventDefault();
     // Trackpad liefert viele kleine Schritte, das Mausrad wenige große – beides proportional umsetzen
     const dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY;
-    zoom(Math.exp(-Math.max(-120, Math.min(120, dy)) * .0035));
+    zoom(Math.exp(-Math.max(-120, Math.min(120, dy)) * .006));
   }, { passive: false });
-  $('#zoomIn').onclick = () => zoom(1.6);
-  $('#zoomOut').onclick = () => zoom(1 / 1.6);
+  $('#zoomIn').onclick = () => zoom(2.2);
+  $('#zoomOut').onclick = () => zoom(1 / 2.2);
 
   function flyTo([lon, lat], scale = BASE * 1.6) {
     const from = projection.rotate();
