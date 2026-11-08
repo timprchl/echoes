@@ -19,7 +19,9 @@
   const t = () => STR;
 
   const { no: dayNo, key } = Echoes.currentDay();
-  const state = store.get(key);
+  let state = store.get(key);
+  // nach dem Abgleich mit dem Konto: heutiger Stand und Serie können sich geändert haben
+  document.addEventListener('echoes:synced', () => { state = store.get(key); render(); });
 
   function render() {
     $('#dayLabel').textContent = `${t().day(dayNo)} · ${t().date(new Date())}`;
@@ -29,6 +31,7 @@
     $('#heroSub').textContent = t().sub;
     $('#guideLink').textContent = t().guide;
     $('#guideBtn').textContent = t().guide;
+    $('#archiveLink').hidden = !window.EchoesAccount?.available(); // Archiv erst mit Konten
 
     const play = $('#playBtn');
     play.href = Echoes.withDay('play.html');

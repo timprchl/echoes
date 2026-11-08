@@ -6,6 +6,10 @@
 
   const STR = {
     day: n => `No. ${String(n).padStart(3, '0')} · Today’s event`,
+    archiveDay: n => `No. ${String(n).padStart(3, '0')} · Archive`,
+    keepStreak: 'Keep your streak on every device – sign in',
+    backArchive: 'Back to the archive',
+    archiveNote: 'Archive round – does not count towards your streak.',
     voiceTag: 'Voice',
     nextCaption: 'Hold to hear the next voice',
     firstCaption: 'Play the first voice',
@@ -67,10 +71,17 @@
   }
 
   const TEST = Echoes.TEST; // Probespiel: nichts speichern, nichts melden, kein Feedback
-  let state = (!TEST && store.get(KEY)) || { heard: 0, guesses: [], done: false };
+  const ARCHIVE = Echoes.ARCHIVE; // vergangener Tag aus dem Archiv: gespeichert, aber keine Serie, keine Statistik
+  let state = (!TEST && store.get(KEY)) || { heard: 0, guesses: [], done: false, ...(ARCHIVE ? { archive: true } : {}) };
   let pin = null;
   let year = null; // erst gesetzt, wenn der Spieler das Jahr wählt
-  const save = () => { if (!TEST) store.set(KEY, state); };
+  const save = () => {
+    if (TEST) return;
+    store.set(KEY, state);
+    window.EchoesAccount?.saveDay(dayNo, day.id, state); // angemeldet: auch auf dem Server
+  };
+  // auf einem anderen Gerät schon fertig gespielt (kommt beim Abgleich nach dem Laden): diesen Stand zeigen
+  document.addEventListener('echoes:synced', () => { if (!TEST && !state.done && store.get(KEY)?.done) location.reload(); });
 
   // --- Geometrie ---
   const R = 6371;
@@ -651,6 +662,7 @@
       $('#voice').innerHTML = resultHtml();
       const sb = $('#statsBtn');
       if (sb) sb.onclick = () => EchoesStats.open({ day, dayNo, state, countries });
+      if ($('#acctCta')) $('#acctCta').onclick = () => EchoesAccount.open();
       if ($('#shareBtn')) $('#shareBtn').onclick = async () => {
         try { await navigator.clipboard.writeText(shareText()); } catch { prompt('', shareText()); }
         $('#shareBtn').textContent = t().copied;
@@ -804,13 +816,13 @@
     freshTry = state.guesses.length - 1;
     pin = null;
     if (g.hit || g.final) { state.done = true; viewing = null; }
-    if (state.done) { state.score = score(); state.endedAt = Date.now(); if (!TEST) Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
-    if (state.done && !TEST) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
+    if (state.done) { state.score = score(); state.endedAt = Date.now(); if (!TEST && !ARCHIVE) Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
+    if (state.done && !TEST && !ARCHIVE) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
     save();
     if (state.done) {
       stopSpeaking();
       // vor der Auflösung kurz nach Feedback fragen (einmal pro Tag), dann erst die Lösung zeigen
-      if (!state.feedbackAsked && !TEST) {
+      if (!state.feedbackAsked && !TEST && !ARCHIVE) {
         state.feedbackAsked = true;
         save();
         EchoesStats.askFeedback({ day, dayNo }).then(reveal);
@@ -989,16 +1001,18 @@
       <p class="when"${d(2.9)}>${t().notes}</p>
       <div class="result-actions"${d(3)}>
         ${TEST ? '<button class="pill" id="againBtn">Play again</button>' : `<button class="pill" id="shareBtn">${t().share}</button>`}
-        ${EchoesStats.available() && !TEST ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
+        ${EchoesStats.available() && !TEST && !ARCHIVE ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
       </div>
-      <p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
+      ${ARCHIVE ? `<p class="come-back"${d(3.2)}>${t().archiveNote} <a href="archive.html">${t().backArchive}</a></p>`
+        : `<p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
+      ${!TEST && window.EchoesAccount?.available() && !EchoesAccount.signedIn() ? `<p class="acct-cta"${d(3.4)}><button class="textbtn" id="acctCta">${t().keepStreak}</button></p>` : ''}`}
     </div>`;
   }
 
   setInterval(() => { const el = $('#nextIn'); if (el) el.textContent = t().nextIn(Echoes.untilMidnight()); }, 1000);
 
   function renderStatic() {
-    $('#dayLabel').textContent = t().day(dayNo);
+    $('#dayLabel').textContent = ARCHIVE ? t().archiveDay(dayNo) : t().day(dayNo);
     $('#scoreLabel').textContent = t().score;
     $('#protoLabel').textContent = t().proto;
     $('#dayLinks').innerHTML = Echoes.dayLinks('play.html');
