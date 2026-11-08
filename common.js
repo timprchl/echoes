@@ -51,11 +51,17 @@ window.Echoes = (() => {
   function todayNumber() {
     return Math.max(1, noOfDate(new Date()));
   }
+  // Archiv: ein vergangener Tag, nur für Angemeldete (play.html?day=N&archive) – zählt nicht zur Serie
+  const signedIn = () => !!store.get('echoes.session')?.token;
+  const archiveNo = () => {
+    const n = parseInt(params.get('day'), 10);
+    return params.has('archive') && signedIn() && n > 0 && n < todayNumber() ? n : 0;
+  };
   function currentDay() {
     // Probespiel: jedes Ereignis über seine ID, auch aus dem Pool (ohne Datum)
     const byId = TEST && params.get('id') ? window.ECHOES_DAYS.find(d => d.id === params.get('id')) : null;
     if (byId) return { no: byId.on ? noOfIso(byId.on) : 0, day: byId, key: 'echoes.test' };
-    const param = DEV ? parseInt(params.get('day'), 10) : NaN;
+    const param = DEV ? parseInt(params.get('day'), 10) : archiveNo() || NaN;
     const no = param > 0 ? param : todayNumber();
     const on = isoDate(dateOfNo(no));
     const day = window.ECHOES_DAYS.find(d => d.on === on) || null; // null: für heute ist nichts eingeplant
@@ -189,5 +195,6 @@ window.Echoes = (() => {
     return id;
   }
 
-  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, DEV, TEST, START, STATS_LIVE, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  const ARCHIVE = !TEST && params.has('archive') && signedIn() && parseInt(params.get('day'), 10) < todayNumber();
+  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();

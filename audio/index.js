@@ -79,10 +79,10 @@ window.ECHOES_AUDIO = {
   },
   "krakatau": {
     "1": "090cf3a3",
-    "2": "5bdbf2db",
-    "3": "5e623693",
-    "4": "3ca5c8b5",
-    "5": "c1a924f2"
+    "2": "bb06a1e1",
+    "3": "8037c584",
+    "4": "83fec462",
+    "5": "879cd3e8"
   },
   "march-on-washington": {
     "1": "4a95fa46",
@@ -120,4 +120,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794162384; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794163052; // gegen veraltete Aufnahmen im Browser-Cache

@@ -255,7 +255,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'krakatau',
-    status: 'reviewed',
+    status: 'voiced',
     on: '2026-11-14',
     year: 1883,
     lat: -6.1,
@@ -279,7 +279,7 @@ window.ECHOES_DAYS = [
         style: 'Precise English clerk in his 30s, crisp, then alarmed',
         voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 1.05,
-        text: 'The cable brought news from the other side of the world faster than any ship – hours instead of weeks. That morning the line went dead in the middle of a sentence. The last words were about darkness at midday and ash falling. Then nothing.',
+        text: 'Gas lamps, steamships, and a cable under the sea barely twenty years old. News crossed the world in hours, not weeks. That morning our line from the east went dead mid-sentence: darkness at midday, ash falling.',
         note: 'Undersea telegraph cables made this one of the first disasters the world heard about within hours.',
       },
       {
@@ -287,24 +287,24 @@ window.ECHOES_DAYS = [
         style: 'Dutch man in his 40s, relaxed and ironic at first, Dutch accent',
         voiceId: '33TnQ4T1Fu1IUNLy4MCf', voiceName: 'Max (dutch)',
         pitch: 0.9, rate: 1,
-        text: 'Heat like a wet blanket, rice paddies steaming below the ridge of volcanoes. Ships left for Holland with pepper and coffee. For weeks the island in the strait had rumbled and smoked; we joked, and ladies took a steamer out to watch.',
-        note: 'The area was part of the Dutch East Indies. The volcano had been active since May.',
+        text: 'Heat like a wet blanket, rice paddies below a chain of volcanoes. Dutch officials gave orders, Malay servants answered, ships took pepper and coffee home. In the narrow strait between two great islands, a small one had smoked since May.',
+        note: 'The area was part of the Dutch East Indies, with Dutch rulers and Malay-speaking locals. The volcano had been active since May.',
       },
       {
         who: 'Sailor on a merchant ship',
         style: 'Weathered sailor, shaken, slow and vivid',
         voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.85, rate: 0.9,
-        text: 'A bang that burst my crew\'s eardrums. The smoking island in the strait, between two great islands, blew itself apart. Ash and hot stones fell, noon turned black, and a wave swept the Dutch colony\'s coast towns away.',
-        note: 'The explosion was heard almost 5,000 km away – probably the loudest sound in recorded history.',
+        text: 'The smoking island\'s mountain blew itself apart with a bang that burst my crew\'s eardrums. Noon turned black, hot stones and ash fell, pumice choked the sea, and a huge wave erased the Dutch colony\'s coast towns on both shores.',
+        note: 'The explosion was heard almost 5,000 km away, probably the loudest sound in recorded history. Pumice rafts floated for months.',
       },
       {
-        who: 'Fisherman, Anyer, Java',
+        who: 'Fisherman, Anyer, Java, Dutch East Indies',
         style: 'Old Javanese fisherman, quiet and grieving, Indonesian accent',
         voiceId: '4h05pJAlcSqTMs5KRd8X', voiceName: 'Zephlyn (indonesian)',
         pitch: 0.9, rate: 0.85,
-        text: 'On 27 August 1883 Krakatoa, the volcano in the Sunda Strait between Java and Sumatra, blew itself apart. Then came waves taller than the palm trees and took our village with them.',
-        note: 'More than 36,000 people died, most of them in the tsunamis.',
+        text: 'Monday, 27 August 1883: Krakatoa, the volcano island in the Sunda Strait between Java and Sumatra, exploded in the loudest bang ever heard. Waves taller than palm trees swallowed Anyer, Merak and our village.',
+        note: 'More than 36,000 people died, most of them in the tsunamis. Krakatoa\'s eruption peaked on 27 August 1883. Today the area is part of Indonesia.',
       },
     ],
   },
@@ -691,7 +691,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'channel-tunnel',
-    status: 'voiced',
+    status: 'live',
     on: '2026-11-12',
     year: 1994,
     lat: 51.0125,
