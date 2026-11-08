@@ -26,7 +26,10 @@
           <input type="number" id="yearInput" min="1700" max="2026">
           <button class="nudge" data-step="1" aria-label="+1">›</button>
         </div>
-        <input type="range" id="yearRange" min="1700" max="2020" step="10">
+        <div class="year-track">
+          <div class="year-window" id="yearWindow" hidden></div>
+          <input type="range" id="yearRange" min="1700" max="2020" step="10">
+        </div>
         <div class="ticks" id="ticks"></div>
       </div>
 

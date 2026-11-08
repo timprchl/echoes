@@ -196,6 +196,26 @@ body.arriving .panel > :nth-child(2) { animation-delay: 0.34s; }
   box-shadow: 0 0 0 4px var(--bg);
 }
 #yearRange::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: var(--ink); border: 0; }
+/* nach Fehlversuchen: noch mögliche Jahre als kräftiger Abschnitt auf dem Strich (Daumen läuft von 10px bis 100%−10px) */
+.year-track { position: relative; }
+.year-window {
+  position: absolute; top: 15.5px; height: 3px; border-radius: 2px; background: var(--ink); pointer-events: none;
+  left: calc(10px + var(--a) * (100% - 20px)); width: max(3px, calc((var(--b) - var(--a)) * (100% - 20px)));
+  transition: left .5s cubic-bezier(.2, 1, .3, 1), width .5s cubic-bezier(.2, 1, .3, 1);
+}
+/* Pfeilspitzen: links → „später“, rechts ← „früher“ */
+.year-window.from-lo::before, .year-window.from-hi::after {
+  content: ''; position: absolute; top: 50%; width: 0; height: 0; transform: translateY(-50%);
+  border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+}
+.year-window.from-lo::before { left: -2px; border-left: 9px solid var(--ink); }
+.year-window.from-hi::after { right: -2px; border-right: 9px solid var(--ink); }
+/* der Strich selbst liegt unter dem Abschnitt (die Regler-Spur ist durchsichtig, sonst kreuzt sie den Abschnitt) */
+.year-track::before { content: ''; position: absolute; left: 0; right: 0; top: 16.5px; height: 1px; background: var(--faint); }
+.year-window:not([hidden]) ~ #yearRange::-webkit-slider-runnable-track { background: transparent; }
+.year-window:not([hidden]) ~ #yearRange::-moz-range-track { background: transparent; }
+.year-track:has(.year-window:not([hidden]))::before { background: var(--line); }
+#yearRange { position: relative; }
 .ticks { position: relative; height: 14px; margin: 0 7px; font-size: 10px; letter-spacing: .08em; color: var(--muted); }
 .ticks span { position: absolute; transform: translateX(-50%); }
 
@@ -549,6 +569,8 @@ body.stats-open { overflow: hidden; }
 .scope-quarter { fill: rgba(255, 255, 255, .34); stroke: rgba(255, 255, 255, .7); stroke-width: 1; stroke-linejoin: round; }
 .globe-lens:not(.night) .scope-quarter { fill: rgba(0, 0, 0, .10); stroke: rgba(0, 0, 0, .3); }
 .miss-hint .scope-quarter { animation-delay: .55s; }
+.miss-hint .scope-band { animation-delay: .15s; }
+.scope-band { fill: color-mix(in srgb, var(--scope) 22%, transparent); stroke: none; }
 .scope-ring { fill: none; stroke: var(--scope); stroke-width: 2; filter: drop-shadow(0 0 3px color-mix(in srgb, var(--scope) 60%, transparent)); }
 .scope-ticks { fill: none; stroke: var(--scope); stroke-width: 1.4; stroke-linecap: round; }
 .scope-cross { fill: none; stroke: var(--scope); stroke-width: 1; opacity: .7; stroke-dasharray: 2 4; }

@@ -23,7 +23,8 @@
     yearUnset: 'Year?',
     hit: 'Hit', final: 'Final',
     placeOk: 'Place: right area',
-    placeOff: km => `Place: about ${fmt(km)} km off – on the circle, in the white quarter`,
+    placeOff: ([a, b]) => `Place: ${fmt(a)}–${fmt(b)} km off – somewhere in the red band, in the white quarter`,
+    near: 'close',
     yearOk: 'Year: right',
     yearLater: 'Year: later',
     yearEarlier: 'Year: earlier',
@@ -34,7 +35,7 @@
       globe: 'Where did this happen? Tap the globe to set your pin. Drag to spin it.',
       year: 'Now the year: slide by decade, then fine-tune with ‹ ›.',
       lock: 'Hold to lock in. You get two tries, then a final guess.',
-      miss: 'A miss. The place lies on the red circle around your pin – in the white quarter. Earlier or later shows below.',
+      miss: 'A miss. The place lies somewhere in the red band around your pin – in the white quarter. The dark stretch on the year bar shows which years are still possible.',
       next: 'Stuck? Another voice brings you closer to the moment – but costs points.',
       ok: 'Got it',
     },
@@ -91,6 +92,16 @@
     const x = Math.cos(rad(lat1)) * Math.sin(rad(lat2)) -
       Math.sin(rad(lat1)) * Math.cos(rad(lat2)) * Math.cos(rad(lon2 - lon1));
     return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+  }
+  // Entfernungs-Band nach einem Fehlversuch: etwa halb so breit wie die Entfernung (mind. 500 km),
+  // das Ziel liegt aber nicht in der Mitte, sondern an einer zufälligen – pro Tag und Versuch festen – Stelle
+  function band(g, i) {
+    let h = 2166136261;
+    for (const c of `${day.id}|${i}|${g.lon.toFixed(2)}|${g.lat.toFixed(2)}`) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+    const f = .15 + .7 * ((h >>> 0) / 4294967296);
+    const w = Math.max(500, g.km * .5);
+    const step = w >= 1000 ? 100 : 50;
+    return [Math.max(0, Math.floor((g.km - f * w) / step) * step), Math.ceil((g.km + (1 - f) * w) / step) * step];
   }
 
   // --- Globus ---
@@ -328,31 +339,38 @@
     })) : [];
     gArcs.selectAll('path').data(arcs).join('path').attr('class', 'arc').attr('d', path);
 
-    // nach einem Fehlversuch: Zielfernrohr um den letzten Tipp – der Ort liegt auf dem Kreis, im weiß gefärbten Viertel
+    // nach einem Fehlversuch: Zielfernrohr um den letzten Tipp – der Ort liegt irgendwo im roten Band, im weiß gefärbten Viertel
     const last = state.guesses[state.guesses.length - 1];
     const hint = !state.done && last && !last.hit && last.km > HIT_KM ? (() => {
-      const deg = last.km / R * 180 / Math.PI;
-      const ring = d3.geoCircle().center([last.lon, last.lat]).radius(deg).precision(1)();
+      const [inKm, outKm] = band(last, state.guesses.length - 1);
+      const toDeg = km => km / R * 180 / Math.PI;
+      const dIn = toDeg(inKm), deg = toDeg(outKm);
+      const circle = d => d3.geoCircle().center([last.lon, last.lat]).radius(d).precision(1)();
+      const ring = circle(deg);
+      // Band als Ring: außen der große Kreis, innen der kleine als Loch
+      const bandShape = { type: 'Polygon', coordinates: [ring.coordinates[0], circle(dIn).coordinates[0].slice().reverse()] };
       // Beschriftung oben auf dem Kreis (über den Pol hinaus: am südlichsten Punkt)
       const label = last.lat + deg <= 90 ? [last.lon, last.lat + deg] : [last.lon, last.lat - deg];
-      // Fadenkreuz nach Norden ausgerichtet; das Viertel in Richtung des Ziels wird weiß
+      // Fadenkreuz nach Norden ausgerichtet; das Viertel des Bands in Richtung des Ziels wird weiß
       const at = (b, d) => destination([last.lon, last.lat], b, d);
       const q = Math.floor(last.dir / 90) % 4;
-      const quarter = { type: 'Polygon', coordinates: [[[last.lon, last.lat],
-        ...d3.range(q * 90, q * 90 + 90.1, 3).map(b => at(b, deg)), [last.lon, last.lat]]] };
+      const arc = d => d3.range(q * 90, q * 90 + 90.1, 3).map(b => at(b, d));
+      const quarter = { type: 'Polygon', coordinates: [[...arc(deg), ...arc(dIn).reverse(), at(q * 90, deg)]] };
       const line = (...c) => ({ type: 'LineString', coordinates: c });
       const cross = [0, 90, 180, 270].map(b => line(at(b, deg * .12), at(b, deg * .5), at(b, deg * 1.08)));
       const ticks = d3.range(0, 360, 15).map(b => line(at(b, deg * (b % 45 ? .96 : .92)), at(b, deg)));
-      return { ring, label, km: last.km, parts: [
-        { cls: 'scope-fill', d: ring }, { cls: 'scope-quarter', d: quarter }, { cls: 'scope-cross', d: { type: 'MultiLineString', coordinates: cross.map(l => l.coordinates) } },
+      const rings = { type: 'MultiPolygon', coordinates: [ring.coordinates, circle(dIn).coordinates] };
+      return { ring, label, text: `${fmt(inKm)}–${fmt(outKm)} km`, parts: [
+        { cls: 'scope-fill', d: ring }, { cls: 'scope-band', d: bandShape }, { cls: 'scope-quarter', d: quarter },
+        { cls: 'scope-cross', d: { type: 'MultiLineString', coordinates: cross.map(l => l.coordinates) } },
         { cls: 'scope-ticks', d: { type: 'MultiLineString', coordinates: ticks.map(l => l.coordinates) } },
-        { cls: 'scope-ring', d: ring }] };
+        { cls: 'scope-ring', d: rings }] };
     })() : null;
     gHint.selectAll('path').data(hint ? hint.parts : []).join('path')
       .attr('class', p => p.cls).attr('d', p => path(p.d));
     gHint.selectAll('text').data(hint && visible(hint.label) ? [hint] : []).join('text')
       .attr('class', 'hint-label').attr('transform', h => `translate(${projection(h.label)})`).attr('dy', -8)
-      .text(h => `${fmt(h.km)} km`);
+      .text(h => h.text);
 
     const marks = state.guesses.map((g, i) => ({ c: [g.lon, g.lat], cls: 'marker-guess' + (g.hit ? ' hit' : ''), label: i + 1 }));
     if (pin && !state.done) marks.push({ c: pin, cls: 'marker-pin', label: '' });
@@ -888,14 +906,40 @@
       : isFinal() ? t().finalGuess : t().guess(attempts + 1);
     $('.globe-lens').classList.toggle('active', !state.done && step === 1);
     $('#timeline').classList.toggle('active', !state.done && step === 2);
+    renderYearWindow();
     // die Kosten stehen an den Kreisen; nur die Regel des finalen Tipps braucht eine Zeile
     $('#playHint').textContent = !state.done && isFinal() ? t().finalCost : '';
     $('#playHint').hidden = !$('#playHint').textContent;
     coach();
   }
 
+  // nach Fehlversuchen: welche Jahre noch als richtig zählen können (früher/später engt von beiden Seiten ein)
+  function yearWindow() {
+    let lo = YEAR_MIN, hi = YEAR_MAX;
+    for (const g of state.guesses) {
+      if (g.hit || g.final) continue;
+      if (Math.abs(g.dy) <= HIT_YEARS) { lo = Math.max(lo, g.year - HIT_YEARS); hi = Math.min(hi, g.year + HIT_YEARS); }
+      else if (g.dy < 0) lo = Math.max(lo, g.year + 1); // später: alles bis einschließlich dieses Jahres fällt weg
+      else hi = Math.min(hi, g.year - 1);
+    }
+    return lo === YEAR_MIN && hi === YEAR_MAX ? null : [lo, hi];
+  }
+  function renderYearWindow() {
+    const w = state.done ? null : yearWindow(), el = $('#yearWindow');
+    el.hidden = !w;
+    if (!w) return;
+    // gleiche Skala wie der Regler (1700–2020), damit der Daumen über dem Abschnitt liegt
+    const lo = +yearRange.min, hi = +yearRange.max, f = y => Math.max(0, Math.min(1, (y - lo) / (hi - lo)));
+    el.style.setProperty('--a', f(w[0] - .5));
+    el.style.setProperty('--b', f(w[1] + .5));
+    el.title = w[0] === w[1] ? `${w[0]}` : `${w[0]}–${w[1]}`;
+    // Pfeile an den Enden, die ein Tipp festgelegt hat: zeigen vom Tipp aus in Richtung der Lösung
+    el.classList.toggle('from-lo', w[0] > YEAR_MIN);
+    el.classList.toggle('from-hi', w[1] < YEAR_MAX);
+  }
+
   // Hinweis nach einem Fehlversuch: Richtung + Entfernung, früher/später
-  const placeTxt = g => g.km <= HIT_KM ? t().placeOk : t().placeOff(g.km);
+  const placeTxt = (g, i) => g.km <= HIT_KM ? t().placeOk : t().placeOff(band(g, i));
   const yearTxt = g => Math.abs(g.dy) <= HIT_YEARS ? t().yearOk : g.dy < 0 ? t().yearLater : t().yearEarlier;
 
   let freshTry = -1; // gerade abgegebener Versuch (für die Animation)
@@ -913,9 +957,9 @@
       else if (state.done) cls += ' unused';
       if (i === freshTry) cls += ' fresh';
       const info = g && !g.hit && !g.final
-        ? `<span class="slot-info">${g.km <= HIT_KM ? '◎' : '◯'} ${fmt(g.km)} km<br>${g.year} · ${Math.abs(g.dy) <= HIT_YEARS ? '✓' : g.dy < 0 ? 'later' : 'earlier'}</span>`
+        ? `<span class="slot-info">${g.km <= HIT_KM ? '◎ ' + t().near : band(g, i).map(fmt).join('–') + ' km'}</span>`
         : '';
-      const title = g && !g.hit && !g.final ? ` title="${placeTxt(g)}. ${yearTxt(g)}."` : '';
+      const title = g && !g.hit && !g.final ? ` title="${placeTxt(g, i)}. ${yearTxt(g)}."` : '';
       slots.push(`<div class="${cls}"${title}><span class="slot-main">${main}</span><span class="slot-sub">${sub}</span>${info}</div>`);
     }
     $('#tries').innerHTML = slots.join('');
