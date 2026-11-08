@@ -21,6 +21,13 @@ window.ECHOES_AUDIO = {
     "4": "89f0e48b",
     "5": "de5d76f3"
   },
+  "channel-tunnel": {
+    "1": "9e2ae5ce",
+    "2": "6e16ed55",
+    "3": "42f4e4cf",
+    "4": "69a54f6f",
+    "5": "30cea7b4"
+  },
   "chatgpt-launch": {
     "1": "548f90ce",
     "2": "81298cc7",
@@ -113,4 +120,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794162311; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794162384; // gegen veraltete Aufnahmen im Browser-Cache

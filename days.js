@@ -691,7 +691,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'channel-tunnel',
-    status: 'draft',
+    status: 'voiced',
     on: '2026-11-12',
     year: 1994,
     lat: 51.0125,
@@ -705,6 +705,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Wife in Osaka',
         style: 'Japanese woman in her 40s speaking English softly, patient and a little lonely',
+        voiceId: 'u6a6bRv82Zfi9NzoIqvt', voiceName: 'Lia (japanese)',
         pitch: 1.05, rate: 0.9,
         text: 'For three winters my husband tended a giant boring machine, built here, on the other side of the world – crawling through rock beneath the sea. He came home pale, with a cough and a piece of white chalk in his pocket. He keeps it by his bed.',
         note: 'Some of the giant tunnel boring machines were built in Japan; the tunnel was dug through chalk.',
@@ -712,6 +713,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Office clerk',
         style: 'British man in his 30s, brisk and self-ironic',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 1.05,
         text: 'I carried a mobile phone the size of a brick and had just sent my first e-mail – to the man at the next desk. My son was saving up for a new games console that played CDs, and every evening he asked me what this World Wide Web was.',
         note: 'In 1994 mobile phones and e-mail were spreading in offices, the web was just reaching the public, and the first CD-based consoles like the PlayStation appeared.',
@@ -719,6 +721,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Ferry deckhand',
         style: 'Gruff English sailor in his 50s, Kent accent, wry',
+        voiceId: 'G17SuINrv2H9FC6nvetn', voiceName: 'Christopher (british)',
         pitch: 0.85, rate: 0.95,
         text: 'For thirty years I worked the ferries across a narrow, grey strait – seasick tourists, duty-free whisky, announcements in two languages. On a clear day you could see the far coast from ours. That spring the bookings began to fall.',
         note: 'The ferries between Dover and Calais, only about 33 km apart, lost many passengers to the tunnel.',
@@ -726,6 +729,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Tunnel worker',
         style: 'Cheerful English tunnel worker in his 40s, proud and emotional',
+        voiceId: 'wyWA56cQNU2KqUW4eCsI', voiceName: 'Clyde (british)',
         pitch: 1, rate: 1,
         text: 'When the last chalk broke away there was a hole the size of a fist, and through it came a hand and a voice in French. That was December, a year after the Wall came down. Three and a half years later, the first trains ran beneath the sea.',
         note: 'The British and French tunnelling teams met on 1 December 1990.',
@@ -733,6 +737,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Train driver, Folkestone',
         style: 'Calm British woman in her 40s, clear and proud',
+        voiceId: '19STyYD15bswVz51nqLf', voiceName: 'Samara X (british)',
         pitch: 1, rate: 0.95,
         text: 'On 6 May 1994 the Channel Tunnel opened between Folkestone in England and Coquelles in France – fifty kilometres, most of it under the sea.',
         note: 'It was opened by Queen Elizabeth II and President François Mitterrand.',

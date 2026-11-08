@@ -82,6 +82,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793965849
     }
   },
+  "channel-tunnel": {
+    "1": {
+      "before": -23.5,
+      "after": -20.2,
+      "mtime": 1794162382
+    },
+    "2": {
+      "before": -21.8,
+      "after": -20.1,
+      "mtime": 1794162352
+    },
+    "3": {
+      "before": -15.6,
+      "after": -20.0,
+      "mtime": 1794162366
+    },
+    "4": {
+      "before": -19.5,
+      "after": -20.0,
+      "mtime": 1794162377
+    },
+    "5": {
+      "before": -21.8,
+      "after": -20.0,
+      "mtime": 1794162379
+    }
+  },
   "chatgpt-launch": {
     "1": {
       "before": -22.9,
