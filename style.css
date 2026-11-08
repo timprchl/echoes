@@ -208,8 +208,9 @@ body.arriving .panel > :nth-child(2) { animation-delay: 0.34s; }
   content: ''; position: absolute; top: 50%; width: 0; height: 0; transform: translateY(-50%);
   border-top: 6px solid transparent; border-bottom: 6px solid transparent;
 }
-.year-window.from-lo::before { left: -2px; border-left: 9px solid var(--ink); }
-.year-window.from-hi::after { right: -2px; border-right: 9px solid var(--ink); }
+/* eingerückt: nach einem Fehlversuch steht der Regler-Knopf genau auf dem getippten Jahr, also am Ende des Abschnitts */
+.year-window.from-lo::before { left: clamp(-2px, calc(50% - 11px), 16px); border-left: 9px solid var(--ink); }
+.year-window.from-hi::after { right: clamp(-2px, calc(50% - 11px), 16px); border-right: 9px solid var(--ink); }
 /* der Strich selbst liegt unter dem Abschnitt (die Regler-Spur ist durchsichtig, sonst kreuzt sie den Abschnitt) */
 .year-track::before { content: ''; position: absolute; left: 0; right: 0; top: 16.5px; height: 1px; background: var(--faint); }
 .year-window:not([hidden]) ~ #yearRange::-webkit-slider-runnable-track { background: transparent; }
