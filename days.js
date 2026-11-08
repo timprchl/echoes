@@ -2,13 +2,18 @@
 // accounts. No quotes from real people.
 //
 // Hint ladder – every day follows it, each voice aims mainly at ONE thing:
-//   1  Feeling, far away: niche, ideally on another continent. Mood and one quiet detail.
+//   1  Feeling, far away: niche, ideally on another continent. Mood and one quiet detail –
+//      but a real, solvable clue: a sharp player must be able to get it from voice 1 alone.
 //      No place, no year, not what the event is.
 //   2  Time: technology and zeitgeist (radio, Walkman, livestream). No place, not the event.
 //   3  Region: climate, language, landscape. No names, not the event itself.
 //   4  Up close: the event becomes recognisable, usually the country too. No names, no date.
 //   5  Resolution: place, date, name.
 // The `who` label is a hint too: the event's place only appears in voice 5's label.
+//
+// Difficulty targets – share of average players who should have it (place AND year) after each voice:
+//   5 % · 25 % · 50 % · 80 % · 95 %   (checked by the guess bot, tools/guess_bot.py; ±10 points is fine).
+//   A day is only voiced once it meets these targets.
 //
 // `year` – the year of the event. `yearEnd` (optional) – last year, for events that ran longer (e.g. a war);
 //   any year from year−1 to yearEnd+1 then counts as right. Years from 1700 on.
@@ -17,7 +22,7 @@
 //   written, but not scheduled yet – pick a date for them in the Control Room calendar.
 // `status` – where the day is in the content pipeline (see studio.html):
 //   draft → reviewed (texts approved) → voiced (recordings made) → approved (playable)
-//   → live (published to GitHub Pages; tools/dev_server.py does this on approve).
+//   → live (published to GitHub Pages with “Publish site”). Voicing needs the difficulty targets met.
 // Outside dev mode only `approved` and `live` days are shown to players.
 //
 // `style` describes the character's voice; `voiceId`/`voiceName` is the matching voice from the
@@ -545,21 +550,21 @@ window.ECHOES_DAYS = [
         who: 'Passenger',
         style: 'Elegant German woman in her 40s, refined, German accent, amused',
         pitch: 1, rate: 0.95,
-        text: 'Breakfast was served on fine china, a pianist played on a piano made of aluminium, and you could post a letter in mid-air. Smoking was allowed in one sealed room only, behind a heavy door, and a steward watched every match.',
-        note: 'The airship was filled with flammable hydrogen – hence the sealed smoking room.',
+        text: 'Last summer we floated low over the Olympic stadium in Berlin and the crowd roared up at us. Now I breakfast on fine china, a pianist plays an aluminium piano, and I post letters in mid-air on the way to America.',
+        note: 'In August 1936 the Hindenburg flew over the opening of the Berlin Olympics; in 1937 it began its second season of Atlantic crossings.',
       },
       {
         who: 'Ground crew sailor',
         style: 'Young American sailor, East Coast accent, tired and wet',
         pitch: 1, rate: 1,
-        text: 'We waited all afternoon at the naval air station for the storm to pass, out in the flat pine country an hour from the big city. Two hundred of us with ropes in our hands, uniforms soaked through.',
+        text: 'We waited all afternoon at the naval air station for the thunderstorm to pass, out in the flat pine country an hour from the skyscrapers of the big city. Two hundred of us with ropes in our hands, uniforms soaked through.',
         note: 'Lakehurst lies in the New Jersey Pine Barrens, about an hour from New York; thunderstorms delayed the landing.',
       },
       {
         who: 'Newsreel cameraman',
         style: 'American man in his 40s, shaken, speaking slowly',
         pitch: 0.9, rate: 0.9,
-        text: 'She came in slowly, nose first, the ropes dropping. Then a flicker at the tail, and in thirty seconds the whole giant was a torch falling onto the sand. I kept filming. I don’t know why.',
+        text: 'The great German airship, the biggest thing that ever flew, came in on her first crossing of the new season, ropes dropping. Then a flicker by the swastikas on her tail, and in thirty seconds she was a torch on American sand. I kept filming.',
         note: 'Several newsreel crews filmed the landing – the footage was shown in cinemas worldwide.',
       },
       {
@@ -701,28 +706,28 @@ window.ECHOES_DAYS = [
         who: 'Wife in Osaka',
         style: 'Japanese woman in her 40s speaking English softly, patient and a little lonely',
         pitch: 1.05, rate: 0.9,
-        text: 'My husband was away for three winters on the other side of the world, working where the sun never shines. He came home pale, with a cough and a small piece of white stone in his pocket. He keeps it by his bed.',
+        text: 'For three winters my husband tended a giant boring machine, built here, on the other side of the world – crawling through rock beneath the sea. He came home pale, with a cough and a piece of white chalk in his pocket. He keeps it by his bed.',
         note: 'Some of the giant tunnel boring machines were built in Japan; the tunnel was dug through chalk.',
       },
       {
-        who: 'Commuter',
+        who: 'Office clerk',
         style: 'British man in his 30s, brisk and self-ironic',
         pitch: 0.95, rate: 1.05,
-        text: 'I had a mobile phone the size of a brick and a fax machine at home, and I thought I was the future. My office told me that soon I would have breakfast in one capital and lunch in the other.',
-        note: 'With the tunnel, the train from London to Paris took about three hours.',
+        text: 'I carried a mobile phone the size of a brick and had just sent my first e-mail – to the man at the next desk. My son was saving up for a new games console that played CDs, and every evening he asked me what this World Wide Web was.',
+        note: 'In 1994 mobile phones and e-mail were spreading in offices, the web was just reaching the public, and the first CD-based consoles like the PlayStation appeared.',
       },
       {
         who: 'Ferry deckhand',
         style: 'Gruff English sailor in his 50s, Kent accent, wry',
         pitch: 0.85, rate: 0.95,
-        text: 'For thirty years I worked the ferries across the grey water between the white cliffs – seasick tourists, duty-free whisky, rain in two languages. That year the passengers thinned out, and the company stopped hiring.',
-        note: 'The ferries between Dover and Calais lost many passengers to the tunnel.',
+        text: 'For thirty years I worked the ferries across a narrow, grey strait – seasick tourists, duty-free whisky, announcements in two languages. On a clear day you could see the far coast from ours. That spring the bookings began to fall.',
+        note: 'The ferries between Dover and Calais, only about 33 km apart, lost many passengers to the tunnel.',
       },
       {
         who: 'Tunnel worker',
         style: 'Cheerful English tunnel worker in his 40s, proud and emotional',
         pitch: 1, rate: 1,
-        text: 'When the last bit of chalk broke away there was a hole the size of a fist, and through it came a hand and a voice in French. We swapped flags and champagne, and a few years later the first trains ran beneath the sea.',
+        text: 'When the last chalk broke away there was a hole the size of a fist, and through it came a hand and a voice in French. That was December, a year after the Wall came down. Three and a half years later, the first trains ran beneath the sea.',
         note: 'The British and French tunnelling teams met on 1 December 1990.',
       },
       {
@@ -965,21 +970,21 @@ window.ECHOES_DAYS = [
         who: 'Shop assistant',
         style: 'Young woman in her 20s, quick and cheerful',
         pitch: 1.1, rate: 1.05,
-        text: 'Pagers on every belt, phones the size of a shoe, karaoke till dawn. Everyone was counting down – somewhere in a big square there was even a giant clock ticking off the seconds until one particular midnight.',
+        text: 'Tamagotchis beeping in school bags, pagers on every belt, phones the size of a shoe. On a huge square far to the north, a giant clock counted down the days to one midnight, and people argued whether it meant a homecoming or a goodbye.',
         note: 'A countdown clock in Beijing showed the days and seconds until the handover.',
       },
       {
         who: 'Ferry deckhand',
         style: 'Cantonese man in his 50s speaking English with an accent, relaxed',
         pitch: 0.9, rate: 0.95,
-        text: 'The harbour never sleeps: ferries, junks, towers lit up green and gold. That summer the rain came down warm and heavy like a curtain. On deck you hear Cantonese, on the old posters you read English.',
+        text: 'The harbour never sleeps: ferries, junks, towers lit up green and gold, the summer rain warm and heavy. On deck you hear Cantonese, but the street signs are in English and the coins still carry the Queen – for a few more weeks.',
         note: 'Victoria Harbour sits between Hong Kong Island and Kowloon.',
       },
       {
         who: 'Military bandsman',
         style: 'British man in his 30s, steady, a little wistful',
         pitch: 0.95, rate: 0.95,
-        text: 'At midnight one flag came down and another went up, in pouring rain. The prince sailed away on the royal yacht, and the soldiers who marched in at dawn spoke a different language.',
+        text: 'At midnight our flag came down after more than 150 years, and a red one with five yellow stars went up, in pouring rain. The prince and the last governor sailed off on the royal yacht; at dawn the new army marched in.',
         note: 'The British flag was lowered at midnight; Chinese troops entered the next morning.',
       },
       {
@@ -1016,21 +1021,21 @@ window.ECHOES_DAYS = [
         who: 'Schoolboy',
         style: 'Young man of about 18, eager, quick',
         pitch: 1.1, rate: 1.1,
-        text: 'Everyone in my class had the same live feed open under their desks. Prayers in fifty languages, a famous football club offering tickets, a billionaire building a tiny submarine – and nobody knew how it would end.',
-        note: 'The rescue was followed live on social media around the world.',
+        text: 'Everyone in my class had the same livestream open under the desks. A group of boys not much younger than us, stuck in a cave behind the floodwater, and divers flying in from all over the world – nobody knew how it would end.',
+        note: 'The rescue was followed live on social media around the world; the trapped boys were 11 to 16.',
       },
       {
         who: 'Rice farmer',
         style: 'Thai man in his 50s speaking English with an accent, calm',
         pitch: 0.9, rate: 0.9,
-        text: 'The monsoon came early that year. Water ran down the mountain into the jungle, and in the temples the monks prayed day and night. We let them pump the water from the hills into our own rice fields.',
+        text: 'The monsoon came early that year. Water ran off the misty border mountains into the jungle, and in the temples the monks prayed day and night. We let them pump the water from the hills into our own rice fields.',
         note: 'Farmers accepted flooded fields so the water could be pumped out of the cave.',
       },
       {
         who: 'Navy diver',
         style: 'Thai man in his 30s, steady, determined',
         pitch: 0.95, rate: 0.95,
-        text: 'Thirteen of them – twelve boys and their coach – sat on a muddy ledge kilometres inside the mountain. We brought them out one by one through flooded tunnels, asleep, wrapped like parcels.',
+        text: 'The summer of the World Cup in Russia, twelve boys from a football team and their coach sat on a muddy ledge deep in a mountain in the far north of Thailand, by the Myanmar border. We carried them out through flooded tunnels, asleep.',
         note: 'The boys were sedated and carried out over three days.',
       },
       {
@@ -1074,15 +1079,15 @@ window.ECHOES_DAYS = [
         who: 'Ferry captain',
         style: 'Weathered man in his 60s, relaxed Australian drawl',
         pitch: 0.85, rate: 0.95,
-        text: 'Every morning I steer past the great steel arch of the bridge, between purple jacaranda trees and sunburnt tourists, with the harbour so blue it hurts your eyes.',
-        note: 'The site lies on Sydney Harbour, next to the Harbour Bridge.',
+        text: 'I’ve run this ferry since 1959, the year they started digging on the point – nearly fifteen years, and now it’s finally done. Every morning I pass under the big steel coat-hanger of a bridge, the harbour so blue it hurts your eyes.',
+        note: 'The site lies on Sydney Harbour, next to the Harbour Bridge, which locals call “the Coathanger”. Construction began in 1959.',
       },
       {
         who: 'Stagehand',
         style: 'Young Australian woman, bright and excited',
         pitch: 1.1, rate: 1.05,
-        text: 'Fourteen years of building – white tiles on concrete shells like sails on the water. On opening night the fireworks burst over the harbour, and the whole shore was packed with people.',
-        note: 'The roof shells are covered with more than a million tiles.',
+        text: 'Fourteen years after the first digging – white tiles on concrete shells like sails on the water. The Queen herself came to open it, fireworks burst over the harbour, and the whole shore was packed with people.',
+        note: 'The roof shells are covered with more than a million tiles. Queen Elizabeth II opened the building, 14 years after work began.',
       },
       {
         who: 'Usher, Sydney',
@@ -1386,22 +1391,22 @@ window.ECHOES_DAYS = [
         who: 'War correspondent',
         style: 'British man in his 40s, dry and observant, a little hoarse',
         pitch: 0.9, rate: 0.95,
-        text: 'The old town was mostly rubble, and women passed bricks hand to hand in the frost. We pressmen slept in the castle of a family of pencil makers outside the city. At night the locals spoke a soft, rolling dialect I never quite managed to follow.',
-        note: 'The press camp was in the Faber-Castell castle in Stein; Nuremberg’s old town had been almost entirely destroyed by bombing.',
+        text: 'The first winter of peace. We filed our copy by teleprinter every night from a pencil-maker’s castle turned press camp. Cigarettes were worth more than money – I paid my driver in American packets. Greatcoats everywhere, badges cut off.',
+        note: 'In occupied Germany in the winter of 1945/46, cigarettes served as an unofficial currency. The trial press camp was in the Faber-Castell castle in Stein near Nuremberg; reports were filed by teleprinter.',
       },
       {
-        who: 'Interpreter',
+        who: 'Translator',
         style: 'Woman in her 20s, precise and quick, light French accent',
         pitch: 1.1, rate: 1.05,
-        text: 'Nobody had ever tried it before: I spoke into a microphone while the other person was still talking. Every seat had heavy headphones and a little dial – one channel per language. Most of us had only just come out of the war, ration books still in our handbags.',
-        note: 'Simultaneous interpretation via headphones was used here on a large scale for the first time, in four languages.',
+        text: 'The city was built of red sandstone, broken now and black with soot, and beyond it dark pine forests stood white with frost. The locals rolled their r’s in a soft dialect my German teacher had never taught me. At night I dreamed in four languages.',
+        note: 'Nuremberg’s red-sandstone old town had been almost entirely destroyed by bombing; the city is surrounded by Franconian pine forests. The trial was interpreted into four languages.',
       },
       {
         who: 'Guard, US Army',
         style: 'American man in his early 20s, Midwestern, earnest, voice low',
         pitch: 0.9, rate: 0.9,
-        text: 'Twenty-one men in the dock, men whose names had filled the newspapers for years, and judges from four nations in front of them. One day the prosecutors showed films of the camps. When the lights came back on, nobody in that courtroom could look anywhere but at the floor.',
-        note: 'Film footage of the liberated concentration camps was shown in court on 29 November 1945.',
+        text: 'Twenty-one men in the dock, judges from four nations before them – in the very city where those men had staged their great torchlit party rallies. One day the prosecutors showed films of the camps. Afterwards nobody in that courtroom could lift their eyes.',
+        note: 'Nuremberg had been the site of the Nazi Party rallies. Film footage of the liberated concentration camps was shown in court on 29 November 1945.',
       },
       {
         who: 'Court stenographer, Nuremberg',
@@ -1444,14 +1449,14 @@ window.ECHOES_DAYS = [
         who: 'Farmer’s daughter',
         style: 'Young woman around 18, Flemish accent in English, nervous and fast',
         pitch: 1.15, rate: 1.05,
-        text: 'The rain came down all night and flattened the rye that stood up to my shoulders. In our village the old people speak Flemish, the gentlemen speak French – and that week strangers in red and blue coats spoke every language at our well.',
+        text: 'The rain came down all night and flattened the rye up to my shoulders. Here the old folk speak Flemish and the gentlemen French. Now soldiers in strange uniforms sleep in every barn, and Father has hidden our horses deep in the beech wood.',
         note: 'Heavy rain the night before turned the fields into deep mud and delayed the start of the battle until late morning.',
       },
       {
         who: 'Infantryman, Highland regiment',
         style: 'Scottish man in his 20s, hoarse and shaken, speaking low and slowly',
         pitch: 0.85, rate: 0.9,
-        text: 'All afternoon we stood in squares on a muddy ridge in the Low Countries while armoured horsemen rode at us, wave after wave. At evening the Emperor’s own guard came up the slope – and broke. Then a cheer: the Prussians were coming in from the east.',
+        text: 'All afternoon we stood in squares on a muddy ridge south of Brussels while the Emperor’s armoured horsemen rode at us. At evening his Old Guard came up the slope – and broke. Then the Prussians poured in from the east. Twenty years of war, over in one evening.',
         note: 'Infantry squares held off repeated French cavalry charges. The failed attack of the Imperial Guard and the arrival of the Prussians decided the battle.',
       },
       {
@@ -1638,15 +1643,15 @@ window.ECHOES_DAYS = [
         who: 'Teenage girl',
         style: 'American girl of about 15, bright and quick, turning hushed',
         pitch: 1.15, rate: 1.05,
-        text: 'Europe had been at war for two years, but it felt very far away. That Sunday the radio played swing, all trumpets, and my sister practised the jitterbug in her bobby socks. Then an announcer cut in, and Dad told us all to hush.',
-        note: 'Most Americans heard the news by radio on Sunday afternoon. Swing was the big music of the time.',
+        text: 'Our radio had a glowing dial and a walnut case, and it was always on. Big bands, all trumpets, and my sister practising the jitterbug in her bobby socks. Dad only listened for the news from overseas and said it was none of our business.',
+        note: 'Swing big bands and the jitterbug were the craze of the late 1930s and early 1940s. Until late 1941 many Americans wanted to stay out of the war in Europe; most heard of the attack by radio.',
       },
       {
-        who: 'Flower-garland maker',
+        who: 'Cane cutter’s daughter',
         style: 'Older woman, warm Pacific-island English, slow and melodic',
         pitch: 1, rate: 0.85,
-        text: 'We lived on a green island with sharp volcanic ridges and warm trade winds. My grandmother spoke our old island language, and Sundays smelled of flowers and the sea. Big grey ships lay in the harbour like sleeping whales.',
-        note: 'The Hawaiian Islands are volcanic; the trade winds blow almost all year.',
+        text: 'We lived on a green island with sharp volcanic ridges and warm trade winds, far out in a very big ocean. My grandmother spoke our old island language, and the sugar-cane fields ran right down to the sea.',
+        note: 'The Hawaiian Islands are volcanic; the trade winds blow almost all year, and sugar cane was the main crop.',
       },
       {
         who: 'Sailor’s brother',
@@ -1882,29 +1887,29 @@ window.ECHOES_DAYS = [
         who: 'Shepherd’s daughter, Pakistan',
         style: 'Older Pakistani woman speaking English with a soft Punjabi accent, warm and remembering',
         pitch: 1.05, rate: 0.9,
-        text: 'Before the morning prayer my father sat on the roof with the little radio pressed to his ear, and half the village climbed up after him in blankets. We understood nothing of the foreign voice, only the roaring. When it stopped, he lifted me up to the stars.',
-        note: 'The fight was broadcast on radio and television around the world; Ali was especially admired across Africa and Asia.',
+        text: 'Before the morning prayer my father sat on the roof with the little radio pressed to his ear, half the village around him in blankets. A boxer far away, a Muslim like us, was fighting the giant. When the roaring stopped, my father lifted me up to the stars.',
+        note: 'The fight was broadcast on radio and television around the world. Ali had converted to Islam and was especially admired across Africa and the Muslim world.',
       },
       {
         who: 'Television engineer',
         style: 'British man in his 30s, brisk and technical, a little proud',
         pitch: 0.95, rate: 1.05,
-        text: 'We bounced the picture off a satellite into cinemas thousands of miles away, live, which still felt like magic. Everyone on the crew had sideburns and flared trousers. The schedule was set for their evening, so for us it had to start in the dead of night.',
-        note: 'The fight was shown live via satellite on closed-circuit screens in cinemas and arenas – it started around 4 am local time for American prime time.',
+        text: 'We bounced the picture off a satellite into cinemas across America, live, timed for their evening, so for us it was the dead of night. The crew all had sideburns and flares, and the only news from home was Watergate and a president who had just resigned.',
+        note: 'The fight was shown live via satellite on closed-circuit screens in cinemas and arenas – it started around 4 am local time for American prime time. President Nixon had resigned over Watergate in August 1974.',
       },
       {
         who: 'Bar musician',
         style: 'Central African man in his 40s, French accent, relaxed and musical',
         pitch: 0.9, rate: 0.95,
-        text: 'The rainy season was overdue and the air was thick as soup. Across the wide brown river you could see the lights of another capital. Every bar played guitar rumba until morning, and the street sellers shouted in Lingala and in French.',
-        note: 'Kinshasa and Brazzaville face each other across the Congo River – the two closest capitals in the world. Congolese rumba was the sound of the city.',
+        text: 'The rainy season was overdue and the air was thick as soup. Across the great brown river we saw the lights of another capital. Every bar played guitar rumba, street sellers shouted in Lingala and French, and the country’s new name was still fresh paint.',
+        note: 'Kinshasa and Brazzaville face each other across the Congo River – the two closest capitals in the world. Congolese rumba was the sound of the city. The country had been renamed Zaire in 1971.',
       },
       {
         who: 'Ringside photographer',
         style: 'American woman in her 30s, fast-talking, still amazed',
         pitch: 1.1, rate: 1.05,
-        text: 'Sixty thousand in the stands at four in the morning. The older man lay back on the ropes and let the champion pound him, round after round, while the crowd chanted for him to kill. In the eighth he struck back and the giant went down. Then the rains broke.',
-        note: 'Ali’s tactic later became known as “rope-a-dope”. The crowd chanted “Ali, bomaye!” – “Ali, kill him!” in Lingala. The rainy season began shortly after the fight.',
+        text: 'Sixty thousand in a stadium in Zaire at four in the morning, all cheering the old champion who had refused to fight in Vietnam. He lay on the ropes while the young champion pounded him, round after round. In the eighth he struck back and the giant went down.',
+        note: 'Ali had been stripped of his title in 1967 for refusing the Vietnam draft. His tactic later became known as “rope-a-dope”. The crowd chanted “Ali, bomaye!” – “Ali, kill him!” in Lingala.',
       },
       {
         who: 'Stadium cleaner, Kinshasa',
@@ -1996,21 +2001,21 @@ window.ECHOES_DAYS = [
         who: 'Shop assistant, electronics store',
         style: 'Young man in his early 20s, fast and slightly sarcastic',
         pitch: 1.05, rate: 1.08,
-        text: 'Right after Christmas we were still sold out of that new games console with the motion remote. Customers wanted flat screens, everyone uploaded shaky clips to that young video site, my friends lived on MySpace. House prices only went up, apparently forever.',
-        note: 'The Nintendo Wii (late 2006), YouTube (founded 2005) and MySpace were everywhere; the US housing bubble was about to burst.',
+        text: 'After Christmas everyone still wanted thinner flip phones and little white music players with earbuds. People bought their first flat screens on credit, and kids filmed everything for some new video website. Prices, they said, only went up.',
+        note: 'Flip phones, iPods and online video (YouTube was founded in 2005) were everywhere; the US housing bubble was about to burst.',
       },
       {
         who: 'Bicycle courier',
         style: 'Woman in her 30s, West Coast American accent, upbeat, slightly out of breath',
         pitch: 1.1, rate: 1.02,
-        text: 'Winter here means rain and fog rolling in off a cold ocean, then sun by noon. Steep hills, painted wooden houses, a bay full of ferries. Half my deliveries go to little software start-ups in old warehouses south of downtown, all dreaming of the next big thing.',
+        text: 'Winter here means rain and a grey fog swallowing the big red bridge, then sun by noon. I race past the clanging cable cars to little software start-ups in old brick warehouses near the docks, all dreaming of the next big thing.',
         note: 'The South of Market district had filled with internet companies since the dot-com boom of the late 1990s.',
       },
       {
         who: 'Tech journalist',
         style: 'American man in his 40s, measured but excited, a reporter who has seen many launches',
         pitch: 0.92, rate: 1,
-        text: 'Thousands of us in a dark hall, laptops open, blogging live. A man in a black turtleneck held up a phone with no keyboard at all – one button, one big glass screen. He flicked through songs and photos with a finger, and the whole room gasped like children.',
+        text: 'A week into the new year, thousands of us in a dark hall, blogging live. The computer boss in the black turtleneck held up a phone with no keyboard – one button, one glass screen. A music player, a phone and the internet in one, he said. We gasped.',
         note: 'Most smartphones of the time had small physical keyboards or a stylus. Controlling a phone with several fingers on the glass was new to almost everyone in the hall.',
       },
       {
@@ -2090,8 +2095,8 @@ window.ECHOES_DAYS = [
         who: 'Barber, Brazil',
         style: 'Brazilian man in his 50s speaking English with a warm Portuguese accent, cheerful and unhurried',
         pitch: 0.95, rate: 0.95,
-        text: 'A slow Sunday afternoon, the little television in the corner, a customer half shaved. Suddenly the bar across the street roared, and my shop roared with it. I had not even finished one stroke of the razor. Grown men were hugging strangers on the pavement.',
-        note: 'The race was shown live around the world; in Brazil it was Sunday afternoon.',
+        text: 'A slow Sunday afternoon, the little television in the corner, a customer half shaved. The bar across the street roared, and my shop with it. Under ten seconds – not even one stroke of the razor. Grown men hugged strangers on the pavement.',
+        note: 'The race lasted under ten seconds and was shown live around the world; in Brazil it was Sunday afternoon.',
       },
       {
         who: 'IT trainee',
@@ -2104,15 +2109,15 @@ window.ECHOES_DAYS = [
         who: 'Volunteer in a yellow vest',
         style: 'Polish woman in her 20s speaking English with a light accent, friendly and observant',
         pitch: 1.1, rate: 1,
-        text: 'A warm August evening after a thunderstorm; the air smelled of wet lime trees and pine. Around me, the hard, fast language I learned at school. The arena: a huge bowl of grey stone with square pillars, built in a darker decade, ringed by forest and lakes.',
-        note: 'The Olympic Stadium was built for the 1936 Games under the Nazi regime; it lies on the forested western edge of the city, near lakes.',
+        text: 'A warm August evening after a thunderstorm; wet lime trees and pine on flat, sandy land full of lakes. Around me, a language of hard consonants I half learned at school. Home was only a few hours away by train.',
+        note: 'The volunteer came from neighbouring Poland, where many pupils learn German. Berlin lies in the flat, sandy, pine-and-lake country of Brandenburg.',
       },
       {
         who: 'Finish-line photographer',
         style: 'British man in his 40s, dry, still a little amazed',
         pitch: 0.9, rate: 1,
-        text: 'Eight men in the blocks, seventy thousand people silent. The tall Jamaican was clear by halfway. When I looked up, the clock showed a time nobody believed – a tenth faster than his own record from the summer before. A mascot bear danced on the track.',
-        note: 'The championships’ mascot was a bear, the symbol of the host city. The previous record of 9.69 had been set at the 2008 Olympics.',
+        text: 'Eight men in the blocks, in a grey stone stadium built for the Olympics of the 1930s. The tall Jamaican was clear by halfway. The clock showed a time nobody believed – a full tenth faster than his record in China the summer before.',
+        note: 'The Olympic Stadium was built for the 1936 Games under the Nazi regime. The previous record of 9.69 had been set at the 2008 Olympics in Beijing; this race was the World Championships final a year later.',
       },
       {
         who: 'Stadium announcer, Berlin',
@@ -2304,21 +2309,21 @@ window.ECHOES_DAYS = [
         who: 'Office worker',
         style: 'Woman in her 30s, brisk and ironic',
         pitch: 1.1, rate: 1.05,
-        text: 'That summer an island nation voted to leave its union, a reality-TV businessman was running for president, and everyone filmed themselves with puppy ears on their faces. The Olympics were weeks away in South America. My battery never lasted past lunch.',
-        note: '2016: the Brexit vote in June, the US election campaign, Snapchat filters and the Olympics in Rio in August.',
+        text: 'That summer everyone sent each other selfies with puppy ears drawn on their faces and carried a power bank like a spare lung. The Olympics were heading to South America, and our own election campaign was the loudest anyone could remember.',
+        note: '2016: Snapchat face filters were everywhere, Rio hosted the first Olympics in South America, and the US presidential campaign dominated the news.',
       },
       {
         who: 'Bike-taxi rider',
         style: 'West African man in his 30s speaking English with a light accent, cheerful and chatty',
         pitch: 0.95, rate: 1.05,
-        text: 'July, the air thick as soup. A long green rectangle of meadows, lakes and rocky outcrops, walled in by towers on every side. Horse carriages, joggers, a hundred languages at the fountain. At night the skyline glows on all four edges of the trees.',
-        note: 'Central Park is a 4 km long rectangle of meadows, lakes and rock in the middle of Manhattan.',
+        text: 'July, the air thick as soup, thunder every evening. Sirens bouncing between brick and glass, a ferry horn from the river, joggers everywhere. I pedal tourists along shady paths under the towers, a hundred languages in the back seat.',
+        note: 'Hot, humid summers with evening thunderstorms are typical of the big cities on the US East Coast – New York among them.',
       },
       {
         who: 'Park ranger',
         style: 'American woman in her 40s, deadpan, still a little baffled',
         pitch: 1, rate: 1,
-        text: 'One night hundreds of people sprinted across the lawn at once, phones raised, screaming. Someone had spotted a rare blue creature by the lake – a creature that does not exist. A Japanese cartoon game, played on American streets. Cars stopped dead in traffic.',
+        text: 'One night hundreds of people sprinted across the big park at once, phones raised, screaming, towers glowing on every side. Someone had spotted a rare blue creature by the lake – one that does not exist. A Japanese cartoon game, in America’s biggest city.',
         note: 'In July 2016 a video went viral of a crowd stampeding through Central Park to catch a rare Vaporeon.',
       },
       {
@@ -2355,8 +2360,8 @@ window.ECHOES_DAYS = [
         who: 'Dance-hall pianist',
         style: 'Man in his 30s, jaunty and charming, a showman',
         pitch: 1, rate: 1.05,
-        text: 'Short skirts, short hair, and the Charleston every night. The films had just learned to talk, and a young pilot had flown alone across the ocean the year before. My wireless set was the pride of the street – I listened to dance bands through headphones.',
-        note: 'Late 1920s: the jazz age, the first sound films (1927) and Charles Lindbergh’s solo flight across the Atlantic (1927).',
+        text: 'The pictures had only just learned to talk, and all summer the crowd at the bar argued about the Olympics in Amsterdam. Short skirts, short hair, the Charleston every night – and my wireless set the pride of the street.',
+        note: 'Late 1920s: the Charleston craze and the first sound films (from 1927). The Summer Olympics of 1928 were held in Amsterdam.',
       },
       {
         who: 'Railway porter',
@@ -2369,8 +2374,8 @@ window.ECHOES_DAYS = [
         who: 'Laboratory assistant',
         style: 'British woman in her 20s, precise and lively',
         pitch: 1.1, rate: 1,
-        text: 'The doctor came back from his holiday and sorted through his old dishes of germs. One had a fluffy blue-green mould, and around it the bacteria had simply died. He was untidy, thank goodness. Years passed before anyone turned that mould into a medicine.',
-        note: 'Fleming had left his cultures of Staphylococcus on the bench during his holiday; a Penicillium mould spore had landed on one of them.',
+        text: 'The doctor, a quiet Scot, came back from his holiday and sorted his old dishes of germs. One had a fluffy blue-green mould, and around it the bacteria had simply died. That same year we girls finally got the vote at twenty-one, like the men.',
+        note: 'Fleming had left his cultures of Staphylococcus on the bench during his holiday; a Penicillium mould spore had landed on one of them. In 1928 British women won the vote on equal terms with men, from age 21.',
       },
       {
         who: 'Hospital porter, London',
@@ -2396,31 +2401,31 @@ window.ECHOES_DAYS = [
     summary: 'Minutes after take-off from LaGuardia Airport, US Airways Flight 1549 flew into a flock of Canada geese and lost both engines. Captain Chesley Sullenberger and First Officer Jeffrey Skiles glided the Airbus A320 onto the icy Hudson River beside Manhattan. Ferries and rescue boats reached the plane within minutes, and all 155 people on board survived. The first photo of the plane in the water was posted on Twitter.',
     voices: [
       {
-        who: 'Grandmother, Chile',
-        style: 'Chilean woman in her 70s speaking English with a Spanish accent, warm and wise',
-        pitch: 1.05, rate: 0.9,
-        text: 'My grandson phoned me that evening, which he never does in harvest time. He said he had seen something on the television that made him believe in people again. I asked what. He laughed and said only one word: calm. Then he had to go back to the grapes.',
-        note: 'The rescue was shown live around the world; in Chile, January is high summer.',
+        who: 'Retired pilot, Australia',
+        style: 'Australian man in his 70s, dry, warm and unhurried',
+        pitch: 0.85, rate: 0.95,
+        text: 'We old pilots practise ditching for forty years and pray we never have to. That week at the club nobody talked of anything else: one photo of grey water, and people standing in a row on a wing, calm as if they were waiting for a tram.',
+        note: 'Landing an airliner on water without a single death is extremely rare; the photo of passengers on the wings went around the world.',
       },
       {
         who: 'Laid-off banker',
         style: 'American man in his 40s, wry and tired',
         pitch: 0.9, rate: 1,
-        text: 'Banks had fallen like dominoes that autumn; I carried my desk home in a cardboard box. Everyone clutched a little black phone with a keyboard, thumbs busy. A new president was days from taking office, and people were talking about hope.',
-        note: 'The financial crisis of 2008, BlackBerry phones, and Barack Obama’s inauguration on 20 January 2009.',
+        text: 'That autumn the money went wrong everywhere; I carried my desk home in a cardboard box. That winter the whole country waited for a young new president to be sworn in, and a friend showed me a new site where you post one short sentence for strangers.',
+        note: 'The financial crisis of autumn 2008, Barack Obama’s inauguration on 20 January 2009 and the young Twitter – the first photo of the plane in the river was posted there.',
       },
       {
         who: 'Ferry deckhand',
         style: 'American man in his 30s, New Jersey accent, plain-spoken',
         pitch: 0.95, rate: 1.05,
-        text: 'Mid-January, seven below, the wind cutting off the water. Ice floes on a wide grey river, a cliff of glass towers on one bank, old piers and another state across from it. Gulls everywhere, and geese – big brown honking geese.',
-        note: 'The Hudson separates Manhattan from New Jersey. It was about −7 °C that afternoon, the water about 2 °C.',
+        text: 'Mid-January, seven below, the wind cutting off the water. Ice floes on the wide grey river, the most famous skyline in the world on one bank, old piers on the other. Jets from the airport across town climb right over us – and so do the geese.',
+        note: 'The Hudson separates Manhattan from New Jersey; planes from LaGuardia climb over the city. It was about −7 °C that afternoon, the water about 2 °C.',
       },
       {
         who: 'Ferry captain',
         style: 'American man in his 50s, steady and modest',
         pitch: 0.85, rate: 0.95,
-        text: 'A jet came gliding down the river, low and silent, both engines dead – birds, we learned later. It hit the water, slid, stopped. People stood on the wings in the freezing spray. We turned the boat and pulled them aboard. Every single one lived.',
+        text: 'An airliner came gliding down the river, low and silent, both engines killed by birds just after take-off. It hit the water, slid, stopped. Passengers stood on the wings in freezing spray. Our commuter ferries pulled them aboard – all 155 lived.',
         note: 'Commuter ferries reached the plane within about four minutes.',
       },
       {
@@ -2957,8 +2962,8 @@ window.ECHOES_DAYS = [
         who: 'Shop clerk',
         style: 'Woman in her 30s, prim but curious',
         pitch: 1.1, rate: 1,
-        text: 'Motor cars were still rare enough that children ran after them. Ladies wore enormous hats and marched for the vote. Everyone talked about the crowning of a new king, and about the race to the South Pole. Father bought a gramophone with a brass horn.',
-        note: '1911: suffragettes, the coronation of George V (June) and the race between Amundsen and Scott to the South Pole.',
+        text: 'Children still ran after motor cars, and everyone talked of the new king’s crowning and the race to the South Pole. A young college lecturer bought snow goggles and quinine at our counter, off to hunt for a lost city high in the tropics, he said.',
+        note: '1911: the coronation of George V (June) and the race between Amundsen and Scott to the South Pole. That summer the young Yale lecturer Hiram Bingham set off to look for the lost Inca city of Vilcabamba.',
       },
       {
         who: 'Mule driver',
@@ -2971,7 +2976,7 @@ window.ECHOES_DAYS = [
         who: 'Farmer’s son',
         style: 'Peruvian man in his 70s speaking English with a Spanish accent, amused and proud',
         pitch: 0.9, rate: 0.95,
-        text: 'A tall stranger in a hat came up our hillside in the drizzle, crawling over the log bridge on his knees. My family lived up there, growing potatoes on the old Inca terraces among the walls. He photographed everything. Soon the whole world knew our mountain.',
+        text: 'A tall American professor crawled over the log bridge on his knees and climbed our hillside in the drizzle. My family grew potatoes there on old Inca terraces among granite walls. He photographed everything; soon the world called it the lost city of the Incas.',
         note: 'Two farming families lived on the site in 1911; a boy led Bingham up to the ruins.',
       },
       {
@@ -3058,15 +3063,15 @@ window.ECHOES_DAYS = [
         who: 'Office worker',
         style: 'Woman in her 40s, crisp and sardonic',
         pitch: 1.05, rate: 1.05,
-        text: 'Oil had never been so expensive; filling my car cost half a day’s pay. The first phones with an app shop had just come out, and everyone watched a young senator with a slogan about change. Nobody yet knew the banks were about to fall.',
-        note: 'Summer 2008: record oil prices, the iPhone 3G and App Store (July), Obama’s campaign – a few weeks before Lehman Brothers collapsed.',
+        text: 'Petrol cost more every time I filled the tank, so my husband dusted off his old bicycle. We had just hung our first flat television on the wall, thin as a painting, and our daughter put every photo of her life on the internet for strangers.',
+        note: 'Summer 2008: record oil prices, flat-screen TVs replacing tube sets, social networks spreading worldwide – a few weeks before the financial crisis broke.',
       },
       {
         who: 'Bicycle courier',
         style: 'Young Chinese man speaking English with a Mandarin accent, quick and cheerful',
         pitch: 1, rate: 1.1,
-        text: 'August, heavy and humid, a grey haze over everything. Wide ring roads, grey brick alleys with courtyard houses, cranes over new towers everywhere. That month they took half the cars off the roads so that the sky would turn blue.',
-        note: 'Beijing is known for its ring roads and hutong alleys. Driving bans and factory closures were imposed to reduce smog during the Games.',
+        text: 'Summer, heavy and humid, a yellow haze that hid the sun. Wide roads in rings around the city, grey brick alleys with courtyard houses, cranes over new towers everywhere. In spring the dust blew in from the desert and I rode with a cloth over my mouth.',
+        note: 'Beijing is known for its ring roads, hutong alleys and spring dust storms from the Gobi. Driving bans and factory closures were imposed to reduce smog during the Games.',
       },
       {
         who: 'Drummer',

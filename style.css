@@ -1006,3 +1006,9 @@ body.pv { margin: 0; height: 100vh; display: flex; flex-direction: column; backg
 .ed-facts[open] summary::before { content: '▾'; }
 .ed-facts summary span { color: var(--muted); font-size: 12px; }
 .ed-facts .ed-grid { margin-top: 14px; }
+
+.bot-ready { margin: 0 0 12px; padding: 8px 12px; border-radius: 10px; font-size: 12px; display: flex; gap: 12px; align-items: center; }
+.bot-ready.ok { background: #e8f4ec; color: #1f6b3d; }
+.bot-ready.no { background: #fbeee9; color: #8a3a26; }
+.bot-ready .textbtn { margin-left: auto; white-space: nowrap; }
+.bot-col.under .bot-bar { background: #e8cf8f; }
