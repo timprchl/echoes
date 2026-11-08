@@ -305,19 +305,19 @@ window.ECHOES_LEVELS = {
       "mtime": 1793629503
     },
     "2": {
-      "before": -22.5,
+      "before": -22.4,
       "after": -20.0,
-      "mtime": 1793629504
+      "mtime": 1794162307
     },
     "3": {
-      "before": -23.9,
+      "before": -22.9,
       "after": -20.0,
-      "mtime": 1793629506
+      "mtime": 1794162308
     },
     "4": {
-      "before": -24.8,
-      "after": -20.1,
-      "mtime": 1793629507
+      "before": -24.6,
+      "after": -20.2,
+      "mtime": 1794162310
     },
     "5": {
       "before": -34.3,
