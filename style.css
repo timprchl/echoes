@@ -1212,3 +1212,7 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .arc-tag { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: var(--ink); color: #fff; }
 .arc-lock { font-size: 13px; opacity: .6; }
 .arc-empty { color: var(--muted); font-size: 14px; }
+.cr-players { margin: 0; font-size: 13px; color: var(--muted); }
+.cr-players a { color: inherit; text-decoration: none; }
+.cr-players a:hover { color: var(--ink); }
+.cr-players b { color: var(--ink); font-weight: 600; }
