@@ -24,7 +24,7 @@
   document.addEventListener('echoes:synced', () => { state = store.get(key); render(); });
 
   function render() {
-    $('#dayLabel').textContent = `${t().day(dayNo)} · ${t().date(new Date())}`;
+    $('#dayLabel').textContent = `${t().day(dayNo)} · ${t().date(Echoes.dateOfNo(dayNo))}`;
     $('#headline').textContent = t().headline;
     $('#eyebrow').textContent = t().day(dayNo);
     $('#heroTitle').innerHTML = t().title;

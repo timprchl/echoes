@@ -48,8 +48,16 @@ window.Echoes = (() => {
   const dateOfNo = no => new Date(START.getFullYear(), START.getMonth(), START.getDate() + no - 1);
   const noOfDate = d => Math.round((new Date(d.getFullYear(), d.getMonth(), d.getDate()) - START) / 864e5) + 1;
   const noOfIso = iso => { const [y, m, d] = iso.split('-').map(Number); return noOfDate(new Date(y, m - 1, d)); };
+  // Der Tag wechselt für alle gleichzeitig um Mitternacht deutscher Zeit (MEZ/MESZ), egal wo gespielt wird
+  const TZ = 'Europe/Berlin';
+  function berlinNow() {
+    const p = Object.fromEntries(new Intl.DateTimeFormat('en-GB', {
+      timeZone: TZ, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23',
+    }).formatToParts(new Date()).map(x => [x.type, x.value]));
+    return { iso: `${p.year}-${p.month}-${p.day}`, sec: +p.hour * 3600 + +p.minute * 60 + +p.second };
+  }
   function todayNumber() {
-    return Math.max(1, noOfDate(new Date()));
+    return Math.max(1, noOfIso(berlinNow().iso));
   }
   // Archiv: ein vergangener Tag, nur für Angemeldete (play.html?day=N&archive) – zählt nicht zur Serie
   const signedIn = () => !!store.get('echoes.session')?.token;
@@ -86,11 +94,9 @@ window.Echoes = (() => {
     for (let d = days.has(no) ? no : no - 1; days.has(d); d--) n++;
     return n;
   }
-  // Zeit bis zum nächsten Ereignis (lokale Mitternacht) als hh:mm:ss
+  // Zeit bis zum nächsten Ereignis (Mitternacht deutscher Zeit) als hh:mm:ss
   function untilMidnight() {
-    const now = new Date();
-    const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    const sec = Math.max(0, Math.floor((midnight - now) / 1000));
+    const sec = Math.max(0, 86400 - berlinNow().sec);
     const pad = n => String(n).padStart(2, '0');
     return `${pad(Math.floor(sec / 3600))}:${pad(Math.floor(sec / 60) % 60)}:${pad(sec % 60)}`;
   }
