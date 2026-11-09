@@ -18,8 +18,8 @@ window.Echoes = (() => {
   // Punkte: alle starten mit 10.000. Jede gehörte Stimme und jeder Fehlversuch kostet.
   const RULES = {
     START_POINTS: 10000,
-    VOICE_COST: [0, 750, 1000, 1000, 1000], // die erste Stimme ist frei
-    MISS_COST: 750,     // pro Fehlversuch bei Tipp 1–2
+    VOICE_COST: [0, 750, 750, 750, 750], // die erste Stimme ist frei, jede weitere 750
+    MISS_COST: 1000,    // pro Fehlversuch bei Tipp 1–2 – aber nichts, wenn der Ort stimmt (nur das Jahr falsch)
     TRIES: 2,           // Tipps mit Treffer-Prüfung; danach kommt der finale Tipp
     YEAR_COST: 150,     // finaler Tipp: pro Jahr daneben …
     KM_COST: 100 / 500, // … und pro km daneben (100 Punkte je 500 km)
@@ -124,8 +124,8 @@ window.Echoes = (() => {
       },
       {
         title: 'Every voice gets closer.',
-        text: 'The first voice is far away and vague, the fifth is right there. The first one is free, every further voice costs points – you start with 10,000.',
-        art: `<div class="g-costs"><span>−500</span><span>−750</span><span>−1,000</span><span>−1,000</span><span>−1,000</span></div>
+        text: 'The first voice is far away and vague, the fifth is right there. The first one is free, every further voice costs 750 – you start with 10,000.',
+        art: `<div class="g-costs"><span>free</span><span>−750</span><span>−750</span><span>−750</span><span>−750</span></div>
           <div class="g-meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div><div class="g-who">Distance to the event</div>`,
       },
       {
@@ -135,8 +135,8 @@ window.Echoes = (() => {
       },
       {
         title: 'Two guesses, then the final.',
-        text: 'Get it right (±1 year – or anywhere in the span for longer events – within 600 km) and you win the round. A miss costs 750. The third guess is final: −150 per year and −100 per 500 km off. Know what it is? Name the event for a bonus – the earlier, the bigger.',
-        art: `<div class="g-tries"><span class="miss">1<small>−750</small></span><span class="miss">2<small>−750</small></span><span class="final">★<small>Final</small></span></div>`,
+        text: 'Get it right (±1 year – or anywhere in the span for longer events – within 600 km) and you win the round. A miss costs 1,000 – nothing if the place was right. The third guess is final: −150 per year and −100 per 500 km off. Know what it is? Name the event for a bonus – the earlier, the bigger.',
+        art: `<div class="g-tries"><span class="miss">1<small>−1,000</small></span><span class="miss">2<small>−1,000</small></span><span class="final">★<small>Final</small></span></div>`,
       },
       {
         title: 'Reveal, learn, share.',

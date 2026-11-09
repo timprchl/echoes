@@ -21,7 +21,9 @@
     // der Tipp-Knopf führt Schritt für Schritt: Pin → Jahr → abgeben
     stepPin: '① Tap the globe to set your pin',
     stepYear: '② Now pick the year',
-    stepListen: 'Hear voice 2 first, then guess',
+    ym_early: 'too early', ym_late: 'too late', ym_ok: 'right year',
+    possible: (a, b) => `Still possible: <b>${a}–${b}</b>`,
+    possibleOne: a => `The year is <b>${a}</b>`,
     tomorrow: c => `Tomorrow: a moment from the ${c}`,
     statsTitle: 'Your Echoes',
     statsPlayed: 'Played', statsSolved: 'Solved', statsStreak: 'Streak', statsBest: 'Best',
@@ -32,9 +34,11 @@
     finalCost: 'Final guess: −150 per year and −100 per 500 km off',
     yearUnset: 'Year?',
     hit: 'Hit', final: 'Final',
-    placeOk: 'Place: right area',
+    placeOk: 'Place: right – only the year is off (no points lost)',
+    placeRight: 'Place ✓',
     placeOff: ([a, b]) => `Place: ${fmt(a)}–${fmt(b)} km off – somewhere in the red band, in the white quarter`,
     near: 'close',
+    onlyYear: 'only the year',
     yearOk: 'Year: right',
     yearLater: 'Year: later',
     yearEarlier: 'Year: earlier',
@@ -731,7 +735,7 @@
   // aktueller Punktestand: Start − Stimmen − Fehlversuche − Abzug beim finalen Tipp
   const score = () => Math.max(0, START_POINTS
     - sum(VOICE_COST.slice(0, state.heard))
-    - MISS_COST * state.guesses.filter(g => !g.hit && !g.final).length
+    - MISS_COST * state.guesses.filter(g => !g.hit && !g.final && g.km > HIT_KM).length // Ort richtig, nur Jahr falsch: kein Abzug
     - sum(state.guesses.map(g => g.penalty || 0))) + (state.named?.ok ? state.named.bonus : 0);
 
   // --- Bonus: das Ereignis benennen (ein Versuch, früher = mehr Punkte) ---
@@ -829,7 +833,7 @@
     }
     state.guesses.push(g);
     freshTry = state.guesses.length - 1;
-    pin = null;
+    pin = !g.hit && !g.final && g.km <= HIT_KM ? [g.lon, g.lat] : null; // Ort richtig → Pin bleibt, nur das Jahr anpassen
     if (g.hit || g.final) { state.done = true; viewing = null; }
     if (state.done) { state.score = score(); state.endedAt = Date.now(); if (!TEST && !ARCHIVE) Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
     if (state.done && !TEST && !ARCHIVE) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
@@ -923,16 +927,14 @@
     $('#nextCaption').textContent = next.disabled ? t().allHeard : t().nextCaption;
 
     // Tipp-Knopf als Abfolge: erst Pin, dann Jahr, dann abgeben
-    // erst zuhören: der erste Tipp ist ab Stimme 2 möglich (blindes Raten nach Stimme 1 kostete viele Runden)
-    const listenFirst = !state.done && attempts === 0 && state.heard < 2;
     const step = !pin ? 1 : year == null ? 2 : 3;
     renderNameIt(); // vor dem Tippen den Namens-Bonus hervorheben
     const guess = $('#guessBtn');
     guess.hidden = state.done;
     $('#timeline').hidden = state.done;
-    guess.disabled = step < 3 || listenFirst;
+    guess.disabled = step < 3;
     guess.textContent = step === 1 ? t().stepPin : step === 2 ? t().stepYear
-      : listenFirst ? t().stepListen : isFinal() ? t().finalGuess : t().guess(attempts + 1);
+      : isFinal() ? t().finalGuess : t().guess(attempts + 1);
     $('.globe-lens').classList.toggle('active', !state.done && step === 1);
     $('#timeline').classList.toggle('active', !state.done && step === 2);
     renderYearWindow();
@@ -956,15 +958,31 @@
   function renderYearWindow() {
     const w = state.done ? null : yearWindow(), el = $('#yearWindow');
     el.hidden = !w;
-    if (!w) return;
-    // gleiche Skala wie der Regler (1700–2020), damit der Daumen über dem Abschnitt liegt
+    $('#yearPossible').hidden = !w;
+    // gleiche Skala wie der Regler, damit Daumen, Abschnitt und Markierungen übereinanderliegen
     const lo = +yearRange.min, hi = +yearRange.max, f = y => Math.max(0, Math.min(1, (y - lo) / (hi - lo)));
+    // jeder Fehlversuch als Markierung über dem Strich: „1880 · too early“ / „1910 · too late“ / „1889 · right year“
+    const misses = state.done ? [] : state.guesses.filter(g => !g.hit && !g.final);
+    $('#yearMarks').innerHTML = misses.map(g => {
+      const kind = Math.abs(g.dy) <= HIT_YEARS ? 'ok' : g.dy < 0 ? 'early' : 'late';
+      const side = f(g.year) > .72 ? ' right' : f(g.year) < .28 ? ' left' : '';
+      return `<span class="ym ${kind}${side}" style="--x:${f(g.year)}"><b>${g.year}</b> · ${t()[`ym_${kind}`]}</span>`;
+    }).join('');
+    // nah beieinander liegende Markierungen übereinander stapeln und darüber Platz schaffen
+    const chips = [...$('#yearMarks').children].sort((a, b) => a.getBoundingClientRect().left - b.getBoundingClientRect().left);
+    let rows = 0;
+    chips.forEach((c, i) => {
+      const prev = chips[i - 1];
+      const row = prev && c.getBoundingClientRect().left < prev.getBoundingClientRect().right + 6 ? +prev.dataset.row + 1 : 0;
+      c.dataset.row = row;
+      c.style.bottom = `${row * 24}px`;
+      rows = Math.max(rows, row + 1);
+    });
+    $('.year-track').style.marginTop = chips.length ? `${rows * 24 + 4}px` : '';
+    if (!w) return;
     el.style.setProperty('--a', f(w[0] - .5));
     el.style.setProperty('--b', f(w[1] + .5));
-    el.title = w[0] === w[1] ? `${w[0]}` : `${w[0]}–${w[1]}`;
-    // Pfeile an den Enden, die ein Tipp festgelegt hat: zeigen vom Tipp aus in Richtung der Lösung
-    el.classList.toggle('from-lo', w[0] > YEAR_MIN);
-    el.classList.toggle('from-hi', w[1] < YEAR_MAX);
+    $('#yearPossible').innerHTML = w[0] === w[1] ? t().possibleOne(w[0]) : t().possible(w[0], w[1]);
   }
 
   // Hinweis nach einem Fehlversuch: Richtung + Entfernung, früher/später
@@ -981,12 +999,13 @@
       let cls = 'slot', main = final ? '★' : String(i + 1), sub = final ? t().final : `−${fmt(MISS_COST)}`;
       if (g?.hit) { cls += ' hit'; main = '✓'; sub = t().hit; }
       else if (g?.final) { cls += ' used-final'; sub = `−${fmt(g.penalty)}`; }
+      else if (g && g.km <= HIT_KM) { cls += ' miss place-ok'; main = '✕'; sub = t().placeRight; }
       else if (g) { cls += ' miss'; main = '✕'; }
       else if (!state.done && i === state.guesses.length) cls += ' current';
       else if (state.done) cls += ' unused';
       if (i === freshTry) cls += ' fresh';
       const info = g && !g.hit && !g.final
-        ? `<span class="slot-info">${g.km <= HIT_KM ? '◎ ' + t().near : band(g, i).map(fmt).join('–') + ' km'}</span>`
+        ? `<span class="slot-info">${g.km <= HIT_KM ? t().onlyYear : band(g, i).map(fmt).join('–') + ' km'}</span>`
         : '';
       const title = g && !g.hit && !g.final ? ` title="${placeTxt(g, i)}. ${yearTxt(g)}."` : '';
       slots.push(`<div class="${cls}"${title}><span class="slot-main">${main}</span><span class="slot-sub">${sub}</span>${info}</div>`);
