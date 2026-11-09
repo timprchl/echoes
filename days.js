@@ -144,7 +144,7 @@ window.ECHOES_DAYS = [
   {
     id: 'titanic',
     status: 'live',
-    on: '2026-11-10',
+    on: '2026-11-11',
     year: 1912,
     lat: 41.73,
     lon: -49.95,
@@ -2138,7 +2138,7 @@ window.ECHOES_DAYS = [
   {
     id: 'chatgpt-launch',
     status: 'live',
-    on: '2026-11-11',
+    on: '2026-11-10',
     year: 2022,
     lat: 37.7623,
     lon: -122.4148,
