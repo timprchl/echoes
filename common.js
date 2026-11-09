@@ -59,11 +59,14 @@ window.Echoes = (() => {
   function todayNumber() {
     return Math.max(1, noOfIso(berlinNow().iso));
   }
-  // Archiv: ein vergangener Tag, nur für Angemeldete (play.html?day=N&archive) – zählt nicht zur Serie
+  // Archiv: ein vergangener Tag (play.html?day=N&archive) – zählt nicht zur Serie.
+  // ARCHIVE_OPEN: vorerst für alle offen (Tim, 9. Nov. 2026); auf false → wieder nur für Angemeldete (Vorteil des Kontos)
+  const ARCHIVE_OPEN = true;
   const signedIn = () => !!store.get('echoes.session')?.token;
+  const canArchive = () => ARCHIVE_OPEN || signedIn();
   const archiveNo = () => {
     const n = parseInt(params.get('day'), 10);
-    return params.has('archive') && signedIn() && n > 0 && n < todayNumber() ? n : 0;
+    return params.has('archive') && canArchive() && n > 0 && n < todayNumber() ? n : 0;
   };
   function currentDay() {
     // Probespiel: jedes Ereignis über seine ID, auch aus dem Pool (ohne Datum)
@@ -201,6 +204,6 @@ window.Echoes = (() => {
     return id;
   }
 
-  const ARCHIVE = !TEST && params.has('archive') && signedIn() && parseInt(params.get('day'), 10) < todayNumber();
-  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  const ARCHIVE = !TEST && params.has('archive') && canArchive() && parseInt(params.get('day'), 10) < todayNumber();
+  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, ARCHIVE_OPEN, canArchive, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();

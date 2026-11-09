@@ -12,10 +12,11 @@
       const day = window.ECHOES_DAYS.find(d => d.on === isoDate(dateOfNo(no)) && (d.status === 'live' || d.status === 'approved'));
       if (day) past.push({ no, day, state: store.get(`echoes.v2.${no}.${day.id}`) });
     }
-    const can = signedIn() && EchoesAccount.available();
+    const can = Echoes.canArchive();
     const playedN = past.filter(p => p.state?.done).length;
+    const acct = window.EchoesAccount?.available();
     $('#arcSub').innerHTML = can
-      ? `${playedN} of ${past.length} played. Replays are saved to your account but don’t count towards your streak.`
+      ? `${playedN} of ${past.length} played. Replays don’t count towards your streak.${acct && !signedIn() ? ' <button class="textbtn" id="arcSignIn">Sign in</button> to keep them on every device.' : ''}`
       : `Sign in with your e-mail to replay every past day – free and optional. <button class="textbtn" id="arcSignIn">Sign in</button>`;
     $('#arcList').innerHTML = past.map(({ no, day, state }) => {
       const date = dateOfNo(no).toLocaleDateString('en-GB', { weekday: 'short', day: 'numeric', month: 'short' });

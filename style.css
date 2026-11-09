@@ -1238,3 +1238,15 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .year-possible b { color: var(--ink); font-weight: 600; }
 .slot.place-ok .slot-main { background: #c98a1e; }
 .slot.place-ok .slot-sub { color: var(--hit); font-weight: 600; }
+/* Archiv nach der Runde anbieten – gut sichtbar, damit man weiterspielt */
+.more-days { margin: 22px auto 0; max-width: 360px; padding: 18px 20px; border-radius: 18px; background: var(--ink); color: #fff; text-align: center; }
+.more-days h3 { margin: 0; font: 400 22px/1.2 var(--serif); }
+.more-days p { margin: 6px 0 14px; font-size: 13px; color: rgba(255, 255, 255, .7); }
+.more-days .pill { background: #fff; color: var(--ink); text-decoration: none; display: inline-block; }
+.more-days .pill:hover { background: #f1f0ec; }
+.more-days .textbtn { display: block; margin-top: 10px; color: rgba(255, 255, 255, .75); font-size: 12px; }
+/* Statistik: Tagesrunde + Archiv übereinander */
+.ins-stack i:not(.arch) { border-radius: 0; }
+.ins-stack i.arch { background: #104281; }
+.ins-key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: #2a78d6; margin: 0 4px 0 8px; vertical-align: -1px; }
+.ins-key.arch { background: #104281; }

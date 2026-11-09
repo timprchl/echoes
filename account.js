@@ -71,7 +71,7 @@ window.EchoesAccount = (() => {
         <button class="acct-x" data-act="close" aria-label="Close">×</button>
         <h2>Your account</h2>
         <p class="acct-sub">Signed in as <b>${esc(s.email)}</b></p>
-        <p class="acct-perks">Your streak and results are saved on every device. You can replay every past day in the archive.</p>
+        <p class="acct-perks">Your streak and results are saved on every device – including the days you replay in the archive.</p>
         <a class="pill" href="archive.html">Open the archive</a>
         <label class="acct-check"><input type="checkbox" id="acctNews"${me?.news ? ' checked' : ''}> Send me occasional news about Echoes</label>
         <div class="acct-foot">
@@ -86,7 +86,7 @@ window.EchoesAccount = (() => {
       dlg.innerHTML = `
         <button class="acct-x" data-act="close" aria-label="Close">×</button>
         <h2>Keep your streak</h2>
-        <p class="acct-perks">Sign in with your e-mail – free and optional. Your streak and results are saved on every device, and you can replay every past day in the archive.</p>
+        <p class="acct-perks">Sign in with your e-mail – free and optional. Your streak and results are saved on every device, including your archive replays.</p>
         <form data-act="send">
           <input type="email" id="acctEmail" placeholder="you@example.com" autocomplete="email" required value="${esc(email)}">
           <label class="acct-check"><input type="checkbox" id="acctNewsIn"${news ? ' checked' : ''}> Send me occasional news about Echoes (optional)</label>

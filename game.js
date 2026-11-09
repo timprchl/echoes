@@ -21,6 +21,11 @@
     // der Tipp-Knopf führt Schritt für Schritt: Pin → Jahr → abgeben
     stepPin: '① Tap the globe to set your pin',
     stepYear: '② Now pick the year',
+    moreTitle: 'Can’t wait until tomorrow?',
+    moreSub: n => `${n} earlier ${n === 1 ? 'day is' : 'days are'} waiting in the archive.`,
+    moreNextTitle: 'Keep going?',
+    morePlay: n => `▶ Play No. ${String(n).padStart(3, '0')}`,
+    moreAll: 'All past days',
     ym_early: 'too early', ym_late: 'too late', ym_ok: 'right year',
     possible: (a, b) => `Still possible: <b>${a}–${b}</b>`,
     possibleOne: a => `The year is <b>${a}</b>`,
@@ -836,7 +841,7 @@
     pin = !g.hit && !g.final && g.km <= HIT_KM ? [g.lon, g.lat] : null; // Ort richtig → Pin bleibt, nur das Jahr anpassen
     if (g.hit || g.final) { state.done = true; viewing = null; }
     if (state.done) { state.score = score(); state.endedAt = Date.now(); if (!TEST && !ARCHIVE) Echoes.markPlayed(dayNo); } // für Startseite, Serie, Statistik
-    if (state.done && !TEST && !ARCHIVE) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
+    if (state.done && !TEST) EchoesStats.report({ day, dayNo, state, countries }); // anonym für „What everyone guessed“
     save();
     if (state.done) {
       stopSpeaking();
@@ -1059,6 +1064,28 @@
     return t().tomorrow(`${c}${c === 21 ? 'st' : 'th'} century`);
   }
 
+  // Archiv nach der Runde anbieten: der jüngste vergangene Tag, der hier noch nicht gespielt wurde
+  function unplayedPast() {
+    const out = [];
+    for (let no = Echoes.todayNumber() - 1; no >= 1; no--) {
+      if (no === dayNo) continue;
+      const d = window.ECHOES_DAYS.find(x => x.on === Echoes.isoDate(Echoes.dateOfNo(no)) && (x.status === 'live' || x.status === 'approved'));
+      if (d && !store.get(`echoes.v2.${no}.${d.id}`)?.done) out.push(no);
+    }
+    return out;
+  }
+  function moreHtml(d) {
+    if (TEST || !Echoes.canArchive()) return '';
+    const open = unplayedPast();
+    if (!open.length) return '';
+    return `<div class="more-days"${d}>
+      <h3>${ARCHIVE ? t().moreNextTitle : t().moreTitle}</h3>
+      <p>${t().moreSub(open.length)}</p>
+      <a class="pill" href="play.html?day=${open[0]}&archive">${t().morePlay(open[0])}</a>
+      <a class="textbtn" href="archive.html">${t().moreAll}</a>
+    </div>`;
+  }
+
   function resultHtml() {
     const last = state.guesses[state.guesses.length - 1];
     const streak = Echoes.streak(dayNo);
@@ -1078,6 +1105,7 @@
         ${TEST ? '<button class="pill" id="againBtn">Play again</button>' : `<button class="pill" id="shareBtn">${t().share}</button>`}
         ${EchoesStats.available() && !TEST && !ARCHIVE ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
       </div>
+      ${moreHtml(d(3.05))}
       ${ARCHIVE ? `<p class="come-back"${d(3.2)}>${t().archiveNote} <a href="archive.html">${t().backArchive}</a></p>`
         : `${TEST ? '' : statsHtml(d(3.1))}
       ${tomorrowText() ? `<p class="tomorrow"${d(3.15)}>${tomorrowText()}</p>` : ''}

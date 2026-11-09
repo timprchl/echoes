@@ -256,7 +256,6 @@ window.ECHOES_DAYS = [
   {
     id: 'krakatau',
     status: 'voiced',
-    on: '2026-11-14',
     year: 1883,
     lat: -6.1,
     lon: 105.42,
@@ -368,6 +367,7 @@ window.ECHOES_DAYS = [
   {
     id: 'chile-mine',
     status: 'live',
+    on: '2026-12-11',
     year: 2010,
     lat: -27.16,
     lon: -70.5,
@@ -855,6 +855,7 @@ window.ECHOES_DAYS = [
   {
     id: 'mandela-release',
     status: 'draft',
+    on: '2026-12-03',
     year: 1990,
     lat: -33.925,
     lon: 18.42,
@@ -1006,7 +1007,7 @@ window.ECHOES_DAYS = [
   {
     id: 'thai-cave-rescue',
     status: 'draft',
-    on: '2026-11-16',
+    on: '2026-11-19',
     year: 2018,
     lat: 20.382,
     lon: 99.868,
@@ -1478,6 +1479,7 @@ window.ECHOES_DAYS = [
   {
     id: 'great-depression',
     status: 'draft',
+    on: '2026-12-02',
     year: 1929,
     lat: 40.7069,
     lon: -74.0113,
@@ -1528,6 +1530,7 @@ window.ECHOES_DAYS = [
   {
     id: 'indian-independence',
     status: 'draft',
+    on: '2026-12-12',
     year: 1947,
     lat: 28.6562,
     lon: 77.241,
@@ -1578,6 +1581,7 @@ window.ECHOES_DAYS = [
   {
     id: 'korean-war',
     status: 'draft',
+    on: '2026-12-06',
     year: 1950,
     lat: 37.956,
     lon: 126.677,
@@ -1679,6 +1683,7 @@ window.ECHOES_DAYS = [
   {
     id: 'versailles',
     status: 'draft',
+    on: '2026-12-04',
     year: 1919,
     lat: 48.8049,
     lon: 2.1204,
@@ -1729,6 +1734,7 @@ window.ECHOES_DAYS = [
   {
     id: 'nato-founded',
     status: 'draft',
+    on: '2026-12-10',
     year: 1949,
     lat: 38.8936,
     lon: -77.029,
@@ -2086,8 +2092,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'bolt-world-record',
-    status: 'draft',
-    on: '2026-11-19',
+    status: 'reviewed',
+    on: '2026-11-14',
     year: 2009,
     lat: 52.5147,
     lon: 13.2395,
@@ -2194,6 +2200,7 @@ window.ECHOES_DAYS = [
   {
     id: 'messi-world-cup-2022',
     status: 'draft',
+    on: '2026-12-05',
     year: 2022,
     lat: 25.4207,
     lon: 51.4904,
@@ -2497,6 +2504,7 @@ window.ECHOES_DAYS = [
   {
     id: 'notre-dame-fire',
     status: 'draft',
+    on: '2026-11-16',
     year: 2019,
     lat: 48.853,
     lon: 2.3499,
@@ -2547,6 +2555,7 @@ window.ECHOES_DAYS = [
   {
     id: 'statue-of-liberty',
     status: 'draft',
+    on: '2026-12-08',
     year: 1886,
     lat: 40.6892,
     lon: -74.0445,
@@ -2847,6 +2856,7 @@ window.ECHOES_DAYS = [
   {
     id: 'baumgartner-jump',
     status: 'draft',
+    on: '2026-12-07',
     year: 2012,
     lat: 33.3016,
     lon: -104.5305,
@@ -3199,6 +3209,7 @@ window.ECHOES_DAYS = [
   {
     id: 'chanel-2-55',
     status: 'draft',
+    on: '2026-12-09',
     year: 1955,
     lat: 48.868,
     lon: 2.3265,

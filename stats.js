@@ -207,6 +207,7 @@ window.EchoesStats = (() => {
     const body = {
       dayNo, dayId: day.id, device: Echoes.deviceId(), heard: Math.max(1, state.heard), outcome: outcome(state),
       score: Math.max(0, Math.round(state.score ?? 0)), named: !!state.named?.ok,
+      archive: !!Echoes.ARCHIVE, // nachgespielter Tag aus dem Archiv – zählt getrennt von den Tageszahlen
       guesses: state.guesses.map(g => ({
         country: countries.length ? countryAt(countries, [g.lon, g.lat]) : AT_SEA,
         decade: Math.max(Echoes.YEAR_MIN, Math.min(2020, Math.floor(g.year / 10) * 10)),

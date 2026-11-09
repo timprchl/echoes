@@ -31,7 +31,7 @@
     $('#heroSub').textContent = t().sub;
     $('#guideLink').textContent = t().guide;
     $('#guideBtn').textContent = t().guide;
-    $('#archiveLink').hidden = !window.EchoesAccount?.available(); // Archiv erst mit Konten
+    $('#archiveLink').hidden = !(Echoes.ARCHIVE_OPEN || window.EchoesAccount?.available());
 
     const play = $('#playBtn');
     play.href = Echoes.withDay('play.html');
