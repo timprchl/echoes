@@ -381,9 +381,9 @@ window.ECHOES_LEVELS = {
   },
   "titanic": {
     "1": {
-      "before": -18.7,
-      "after": -19.9,
-      "mtime": 1793545772
+      "before": -18.8,
+      "after": -20.0,
+      "mtime": 1794205582
     },
     "2": {
       "before": -21.0,
@@ -391,14 +391,14 @@ window.ECHOES_LEVELS = {
       "mtime": 1793545785
     },
     "3": {
-      "before": -17.6,
+      "before": -17.7,
       "after": -20.0,
-      "mtime": 1793545798
+      "mtime": 1794205584
     },
     "4": {
-      "before": -22.8,
-      "after": -20.1,
-      "mtime": 1793545815
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1794205586
     },
     "5": {
       "before": -24.6,

@@ -144,7 +144,7 @@ window.ECHOES_DAYS = [
   {
     id: 'titanic',
     status: 'live',
-    on: '2026-11-15',
+    on: '2026-11-10',
     year: 1912,
     lat: 41.73,
     lon: -49.95,
@@ -159,7 +159,7 @@ window.ECHOES_DAYS = [
         style: 'Older Lebanese woman speaking English with a soft Arabic accent, slow, full of longing',
         voiceId: 'aCChyB4P5WEomwRsOKRh', voiceName: 'Salma – mature, inviting (Arabic)',
         pitch: 1, rate: 0.9,
-        text: 'Every evening I sit by the door and watch the road for the postman. My son promised to write the moment he arrived. The almond trees have flowered and dropped their blossom, and still no letter comes.',
+        text: 'Every evening I sit by the door and watch the road for the postman. My son sailed on the largest ship ever built, to find work across the ocean. The almond blossom has fallen, and still no letter comes.',
         note: 'Many third-class passengers came from villages in what is now Lebanon. Their families waited weeks for news.',
       },
       {
@@ -175,16 +175,16 @@ window.ECHOES_DAYS = [
         style: 'Gruff English sailor in his 30s, cold and tense, speaking low',
         voiceId: '7rQX8r6PVq3gfJ8rZzyE', voiceName: 'John North – slightly gruff Northern Englishman',
         pitch: 0.85, rate: 0.95,
-        text: 'Spring came late that year. Up in the crow’s nest the cold cut through two coats. No moon, no wind, the water black and flat as a mirror – and somewhere out there, ice drifting south from Greenland.',
-        note: 'Icebergs from Greenland drift south into the North Atlantic shipping lanes every spring.',
+        text: 'Spring came late that year. Up in the crow\'s nest the cold cut through two coats. No moon, no wind, the sea flat as a mirror, no binoculars – ice warnings all day, yet we raced west at full speed.',
+        note: 'Icebergs drift south into the North Atlantic shipping lanes every spring. The lookouts had no binoculars, and ice warnings had come in all day.',
       },
       {
         who: 'Survivor in a lifeboat',
         style: 'Irish man in his 20s, numb and haunted, slow and quiet',
         voiceId: 'B5jEZPqk2OJ2vkPw3wBM', voiceName: 'Cillian – low, calm (Irish)',
         pitch: 0.85, rate: 0.85,
-        text: 'We rowed away and watched the biggest ship in the world tilt, her lights still burning, the band still playing. Then all the lights went out at once, and the screaming started across the water.',
-        note: 'The ship sank at about 2:20 am. There were lifeboat seats for only about half the people aboard.',
+        text: 'We rowed away from the great liner on her very first voyage, torn open by ice in the black night. Her four funnels tilted, lights burning, the band playing. Then every light went out and the screaming began.',
+        note: 'The ship sank at about 2:20 am after hitting an iceberg on her maiden voyage. Lifeboat seats existed for only about half the people aboard, and many boats left partly empty.',
       },
       {
         who: 'Newsboy, New York',
@@ -752,12 +752,12 @@ window.ECHOES_DAYS = [
     year: 2004,
     lat: 5.5483,
     lon: 95.3238,
-    alt: [['Khao Lak, Thailand', 8.6367, 98.2487], ['Galle, Sri Lanka', 6.0329, 80.2168], ['Nagapattinam, India', 10.7672, 79.8449]],
     title: 'The Indian Ocean tsunami',
     answers: ['tsunami', 'boxing day tsunami', 'indian ocean tsunami', 'sumatra earthquake', 'aceh'],
     date: '26 December 2004',
     place: 'Banda Aceh, Sumatra, Indonesia – and coasts around the Indian Ocean',
     summary: 'One of the strongest earthquakes ever recorded struck off Sumatra and sent tsunami waves across the Indian Ocean. Around 230,000 people died in 14 countries – Banda Aceh, closest to the epicentre, was hit hardest. Many tourists spending Christmas on the beaches were among the victims.',
+    alt: [['Khao Lak, Thailand', 8.6367, 98.2487], ['Galle, Sri Lanka', 6.0329, 80.2168], ['Nagapattinam, India', 10.7672, 79.8449]],
     voices: [
       {
         who: 'Grandmother, Sweden',
@@ -1930,7 +1930,7 @@ window.ECHOES_DAYS = [
   {
     id: 'burj-khalifa',
     status: 'live',
-    on: '2026-11-10',
+    on: '2026-11-15',
     year: 2010,
     lat: 25.1972,
     lon: 55.2744,

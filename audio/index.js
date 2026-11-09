@@ -99,10 +99,10 @@ window.ECHOES_AUDIO = {
     "5": "331b8a6d"
   },
   "titanic": {
-    "1": "c1df7826",
+    "1": "07e75b87",
     "2": "52e7abc3",
-    "3": "e46d7a64",
-    "4": "73c17986",
+    "3": "9effe174",
+    "4": "34acf285",
     "5": "07454899"
   },
   "tsunami-2004": {
@@ -120,4 +120,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794163052; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794205587; // gegen veraltete Aufnahmen im Browser-Cache
