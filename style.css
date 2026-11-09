@@ -1218,3 +1218,16 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .cr-players b { color: var(--ink); font-weight: 600; }
 /* weitere richtige Orte (bei weit verteilten Ereignissen) – kleiner als der Hauptort */
 .marker-answer.alt circle { r: 6px; fill-opacity: .75; }
+
+/* --- eigene Bilanz und Ausblick nach der Runde --- */
+.my-stats { margin: 22px auto 0; max-width: 360px; padding: 16px 18px; border-radius: 16px; background: var(--card); border: 1px solid var(--line); text-align: left; }
+.ms-nums { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; }
+.ms-nums b { display: block; font: 400 26px/1.1 var(--serif); }
+.ms-nums span { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.ms-dist { margin-top: 14px; display: flex; flex-direction: column; gap: 4px; }
+.ms-dist small { font-size: 11px; color: var(--muted); margin-bottom: 2px; }
+.ms-row { display: grid; grid-template-columns: 14px 1fr 22px; align-items: center; gap: 8px; font-size: 12px; font-variant-numeric: tabular-nums; }
+.ms-row i { display: block; height: 14px; border-radius: 4px; background: var(--faint); }
+.ms-row.now i { background: var(--hit); }
+.ms-row em { font-style: normal; color: var(--muted); }
+.tomorrow { margin: 18px 0 0; font: 400 17px/1.4 var(--serif); }

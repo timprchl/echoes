@@ -21,6 +21,12 @@
     // der Tipp-Knopf führt Schritt für Schritt: Pin → Jahr → abgeben
     stepPin: '① Tap the globe to set your pin',
     stepYear: '② Now pick the year',
+    stepListen: 'Hear voice 2 first, then guess',
+    tomorrow: c => `Tomorrow: a moment from the ${c}`,
+    statsTitle: 'Your Echoes',
+    statsPlayed: 'Played', statsSolved: 'Solved', statsStreak: 'Streak', statsBest: 'Best',
+    statsVoices: 'Solved after … voices',
+    shared: 'Shared!',
     guess: n => `Lock in guess ${n} of ${TRIES + 1}`,
     finalGuess: 'Lock in your final guess',
     finalCost: 'Final guess: −150 per year and −100 per 500 km off',
@@ -37,7 +43,7 @@
     // Hinweise beim ersten Spielen, direkt am jeweiligen Element
     coach: {
       globe: 'Where did this happen? Tap the globe to set your pin. Drag to spin it.',
-      year: 'Now the year: slide by decade, then fine-tune with ‹ ›.',
+      year: 'Now the year: slide to it, then fine-tune with ‹ ›. It has to be close – within a year.',
       lock: 'Hold to lock in. You get two tries, then a final guess.',
       miss: 'A miss. The place lies somewhere in the red band around your pin – in the white quarter. The dark stretch on the year bar shows which years are still possible.',
       next: 'Stuck? Another voice brings you closer to the moment – but costs points.',
@@ -528,13 +534,13 @@
     year = y == null ? null : Math.max(YEAR_MIN, Math.min(YEAR_MAX, Math.round(y) || 1950));
     yearInput.value = year ?? '';
     yearInput.placeholder = t().yearUnset;
-    yearRange.value = year == null ? 1910 : Math.min(2020, Math.round(year / 10) * 10);
+    yearRange.value = year == null ? 1910 : year;
     $('#timeline').classList.toggle('unset', year == null);
     renderControls();
   }
   $('#ticks').innerHTML = [1700, 1750, 1800, 1850, 1900, 1950, 2000].map(y =>
     `<span style="left:${(y - YEAR_MIN) / (YEAR_MAX - YEAR_MIN) * 100}%">${y}</span>`).join('');
-  // der Regler rastet auf Jahrzehnten ein (mit kleinem Tick), ‹ › stellen das Jahr genau
+  // der Regler stellt einzelne Jahre ein (früher rastete er auf Jahrzehnten ein – fast alle blieben dann auf 2000 statt 2004 stehen); ‹ › für den Feinschliff
   yearRange.oninput = () => { setYear(+yearRange.value); haptic(5); };
   yearInput.onchange = () => setYear(yearInput.value === '' ? null : +yearInput.value);
   document.querySelectorAll('.nudge').forEach(b => { b.onclick = () => { setYear((year ?? 1950) + +b.dataset.step); haptic(5); }; });
@@ -657,7 +663,7 @@
     if (idx >= 0) {
       const v = day.voices[idx];
       $('#voice').innerHTML = `<div class="voice-stage${fresh && viewing === null ? ' fresh' : ''}">
-        <div class="who-line"><span>${t().voiceTag} ${String(idx + 1).padStart(2, '0')}</span><span class="sep"></span><span>${esc(v.who)}</span></div>
+        <div class="who-line"><span>${t().voiceTag} ${String(idx + 1).padStart(2, '0')}</span><span class="sep"></span><span>${esc(state.done || idx === day.voices.length - 1 ? v.who : v.who.split(',')[0])}</span></div>
         <blockquote class="big-quote follow" data-i="${idx}">${quoteHtml(idx, state.done || idx < state.heard - 1 || spoken.has(idx))}</blockquote>
         <button class="play-btn${speakingIdx === idx ? ' speaking' : ''}" data-i="${idx}"><span class="ic">${speakingIdx === idx ? '■' : '▶'}</span>${t().play}</button>
         ${state.done ? `<p class="note">${esc(v.note)}</p>` : ''}
@@ -668,8 +674,12 @@
       if (sb) sb.onclick = () => EchoesStats.open({ day, dayNo, state, countries });
       if ($('#acctCta')) $('#acctCta').onclick = () => EchoesAccount.open();
       if ($('#shareBtn')) $('#shareBtn').onclick = async () => {
-        try { await navigator.clipboard.writeText(shareText()); } catch { prompt('', shareText()); }
-        $('#shareBtn').textContent = t().copied;
+        let shared = false;
+        if (navigator.share && matchMedia('(pointer: coarse)').matches) { // Handy: WhatsApp, iMessage …
+          try { await navigator.share({ text: shareText() }); shared = true; } catch (e) { if (e.name === 'AbortError') return; }
+        }
+        if (!shared) { try { await navigator.clipboard.writeText(shareText()); } catch { prompt('', shareText()); } }
+        $('#shareBtn').textContent = shared ? t().shared : t().copied;
         $('#shareBtn').classList.add('held');
         haptic([30, 50, 30]);
       };
@@ -913,14 +923,16 @@
     $('#nextCaption').textContent = next.disabled ? t().allHeard : t().nextCaption;
 
     // Tipp-Knopf als Abfolge: erst Pin, dann Jahr, dann abgeben
+    // erst zuhören: der erste Tipp ist ab Stimme 2 möglich (blindes Raten nach Stimme 1 kostete viele Runden)
+    const listenFirst = !state.done && attempts === 0 && state.heard < 2;
     const step = !pin ? 1 : year == null ? 2 : 3;
     renderNameIt(); // vor dem Tippen den Namens-Bonus hervorheben
     const guess = $('#guessBtn');
     guess.hidden = state.done;
     $('#timeline').hidden = state.done;
-    guess.disabled = step < 3;
+    guess.disabled = step < 3 || listenFirst;
     guess.textContent = step === 1 ? t().stepPin : step === 2 ? t().stepYear
-      : isFinal() ? t().finalGuess : t().guess(attempts + 1);
+      : listenFirst ? t().stepListen : isFinal() ? t().finalGuess : t().guess(attempts + 1);
     $('.globe-lens').classList.toggle('active', !state.done && step === 1);
     $('#timeline').classList.toggle('active', !state.done && step === 2);
     renderYearWindow();
@@ -986,7 +998,46 @@
   function shareText() {
     const voices = day.voices.map((_, i) => i < state.heard ? '🔊' : '▫️').join('');
     const tries = state.guesses.map(g => g.final ? '🎯' : g.hit ? '✅' : '❌').join('') + (state.named?.ok ? ' ✍️' : '');
-    return `Echoes #${dayNo} · ${fmt(score())}/10.000\n${voices}\n${tries}`;
+    return `Echoes #${dayNo} · ${fmt(score())}/10.000\n${voices}\n${tries}\nhttps://hearechoes.com`;
+  }
+
+  // eigene Bilanz aus allen gespielten Tagen auf diesem Gerät (bzw. aus dem Konto übernommen); Archiv zählt nicht
+  function myStats() {
+    const rounds = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const m = /^echoes\.v2\.(\d+)\.[a-z0-9-]+$/.exec(localStorage.key(i) || '');
+      const st = m && store.get(m[0]);
+      if (st?.done && !st.archive) rounds.push(st);
+    }
+    const solvedAt = [0, 0, 0, 0, 0];
+    let solved = 0;
+    rounds.forEach(st => { if (st.guesses.some(g => g.hit)) { solved++; solvedAt[Math.min(4, Math.max(1, st.heard) - 1)]++; } });
+    const played = new Set(store.get('echoes.played') || []);
+    let best = 0, run = 0;
+    [...played].sort((a, b) => a - b).forEach((n, i, a) => { run = i && a[i - 1] === n - 1 ? run + 1 : 1; best = Math.max(best, run); });
+    return { played: rounds.length, solved, solvedAt, streak: Echoes.streak(dayNo), best };
+  }
+  function statsHtml(d) {
+    const s = myStats();
+    if (!s.played) return '';
+    const max = Math.max(1, ...s.solvedAt);
+    return `<div class="my-stats"${d}>
+      <div class="ms-nums">
+        <div><b>${s.played}</b><span>${t().statsPlayed}</span></div>
+        <div><b>${Math.round(s.solved / s.played * 100)} %</b><span>${t().statsSolved}</span></div>
+        <div><b>${s.streak}</b><span>${t().statsStreak}</span></div>
+        <div><b>${s.best}</b><span>${t().statsBest}</span></div>
+      </div>
+      <div class="ms-dist"><small>${t().statsVoices}</small>${s.solvedAt.map((n, i) => `<div class="ms-row${state.guesses.some(g => g.hit) && Math.min(5, state.heard) === i + 1 ? ' now' : ''}">
+        <span>${i + 1}</span><i style="width:${Math.max(n ? 8 : 0, n / max * 100)}%"></i><em>${n || ''}</em></div>`).join('')}</div>
+    </div>`;
+  }
+  // Ausblick: aus welchem Jahrhundert das morgige Ereignis stammt (verrät nichts, macht neugierig)
+  function tomorrowText() {
+    const next = window.ECHOES_DAYS.find(x => x.on === Echoes.isoDate(Echoes.dateOfNo(dayNo + 1)) && (x.status === 'approved' || x.status === 'live'));
+    if (!next) return '';
+    const c = Math.floor((next.year - 1) / 100) + 1;
+    return t().tomorrow(`${c}${c === 21 ? 'st' : 'th'} century`);
   }
 
   function resultHtml() {
@@ -1009,7 +1060,9 @@
         ${EchoesStats.available() && !TEST && !ARCHIVE ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
       </div>
       ${ARCHIVE ? `<p class="come-back"${d(3.2)}>${t().archiveNote} <a href="archive.html">${t().backArchive}</a></p>`
-        : `<p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
+        : `${TEST ? '' : statsHtml(d(3.1))}
+      ${tomorrowText() ? `<p class="tomorrow"${d(3.15)}>${tomorrowText()}</p>` : ''}
+      <p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
       ${!TEST && window.EchoesAccount?.available() && !EchoesAccount.signedIn() ? `<p class="acct-cta"${d(3.4)}><button class="textbtn" id="acctCta">${t().keepStreak}</button></p>` : ''}`}
     </div>`;
   }
