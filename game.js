@@ -735,7 +735,7 @@
   // aktueller Punktestand: Start − Stimmen − Fehlversuche − Abzug beim finalen Tipp
   const score = () => Math.max(0, START_POINTS
     - sum(VOICE_COST.slice(0, state.heard))
-    - MISS_COST * state.guesses.filter(g => !g.hit && !g.final && g.km > HIT_KM).length // Ort richtig, nur Jahr falsch: kein Abzug
+    - sum(state.guesses.map((g, i) => !g.hit && !g.final && g.km > HIT_KM ? MISS_COST[i] : 0)) // Ort richtig, nur Jahr falsch: kein Abzug
     - sum(state.guesses.map(g => g.penalty || 0))) + (state.named?.ok ? state.named.bonus : 0);
 
   // --- Bonus: das Ereignis benennen (ein Versuch, früher = mehr Punkte) ---
@@ -996,7 +996,7 @@
     for (let i = 0; i <= TRIES; i++) {
       const g = state.guesses[i];
       const final = i === TRIES;
-      let cls = 'slot', main = final ? '★' : String(i + 1), sub = final ? t().final : `−${fmt(MISS_COST)}`;
+      let cls = 'slot', main = final ? '★' : String(i + 1), sub = final ? t().final : `−${fmt(MISS_COST[i])}`;
       if (g?.hit) { cls += ' hit'; main = '✓'; sub = t().hit; }
       else if (g?.final) { cls += ' used-final'; sub = `−${fmt(g.penalty)}`; }
       else if (g && g.km <= HIT_KM) { cls += ' miss place-ok'; main = '✕'; sub = t().placeRight; }
