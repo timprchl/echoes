@@ -752,6 +752,7 @@ window.ECHOES_DAYS = [
     year: 2004,
     lat: 5.5483,
     lon: 95.3238,
+    alt: [['Khao Lak, Thailand', 8.6367, 98.2487], ['Galle, Sri Lanka', 6.0329, 80.2168], ['Nagapattinam, India', 10.7672, 79.8449]],
     title: 'The Indian Ocean tsunami',
     answers: ['tsunami', 'boxing day tsunami', 'indian ocean tsunami', 'sumatra earthquake', 'aceh'],
     date: '26 December 2004',

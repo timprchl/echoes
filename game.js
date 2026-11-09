@@ -104,6 +104,9 @@
       Math.sin(rad(lat1)) * Math.cos(rad(lat2)) * Math.cos(rad(lon2 - lon1));
     return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
   }
+  // Richtige Orte: der Hauptort und – bei weit verteilten Ereignissen – weitere Orte (day.alt: [Name, lat, lon])
+  const targets = () => [[day.lon, day.lat], ...(day.alt || []).map(([, lat, lon]) => [lon, lat])];
+  const nearestTarget = p => targets().reduce((best, t) => distanceKm(p, t) < distanceKm(p, best) ? t : best);
   // Entfernungs-Band nach einem Fehlversuch: etwa halb so breit wie die Entfernung (mind. 500 km),
   // das Ziel liegt aber nicht in der Mitte, sondern an einer zufälligen – pro Tag und Versuch festen – Stelle
   function band(g, i) {
@@ -346,7 +349,7 @@
 
     const target = [day.lon, day.lat];
     const arcs = state.done ? state.guesses.filter(g => !g.hit).map(g => ({
-      type: 'LineString', coordinates: [[g.lon, g.lat], target],
+      type: 'LineString', coordinates: [[g.lon, g.lat], nearestTarget([g.lon, g.lat])],
     })) : [];
     gArcs.selectAll('path').data(arcs).join('path').attr('class', 'arc').attr('d', path);
 
@@ -386,6 +389,7 @@
     const marks = state.guesses.map((g, i) => ({ c: [g.lon, g.lat], cls: 'marker-guess' + (g.hit ? ' hit' : ''), label: i + 1 }));
     if (pin && !state.done) marks.push({ c: pin, cls: 'marker-pin', label: '' });
     if (state.done) marks.push({ c: target, cls: 'marker-answer', label: '★' });
+    if (state.done) (day.alt || []).forEach(([, lat, lon]) => marks.push({ c: [lon, lat], cls: 'marker-answer alt', label: '' }));
 
     gMarks.selectAll('g').data(marks.filter(m => visible(m.c))).join(enter => {
       const g = enter.append('g');
@@ -799,7 +803,8 @@
 
   function submit() {
     if (!pin || year == null || state.done) return;
-    const target = [day.lon, day.lat];
+    // mehrere richtige Orte möglich (day.alt): gewertet wird der nächstgelegene
+    const target = nearestTarget(pin);
     const km = distanceKm(pin, target);
     const dy = yearOff(day, year); // 0 innerhalb der Spanne, sonst Abstand zum nächsten Ende
     const g = {

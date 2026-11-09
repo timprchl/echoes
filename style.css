@@ -1216,3 +1216,5 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .cr-players a { color: inherit; text-decoration: none; }
 .cr-players a:hover { color: var(--ink); }
 .cr-players b { color: var(--ink); font-weight: 600; }
+/* weitere richtige Orte (bei weit verteilten Ereignissen) – kleiner als der Hauptort */
+.marker-answer.alt circle { r: 6px; fill-opacity: .75; }
