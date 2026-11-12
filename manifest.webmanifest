@@ -1,0 +1,15 @@
+{
+  "name": "Echoes – a daily history game",
+  "short_name": "Echoes",
+  "description": "Five voices. One moment in history. Guess where and when.",
+  "start_url": "/?ref=homescreen",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f5f5f3",
+  "theme_color": "#f5f5f3",
+  "icons": [
+    { "src": "icons/echoes-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/echoes-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icons/echoes-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

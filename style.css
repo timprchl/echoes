@@ -1250,3 +1250,16 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .ins-stack i.arch { background: #104281; }
 .ins-key { display: inline-block; width: 10px; height: 10px; border-radius: 2px; background: #2a78d6; margin: 0 4px 0 8px; vertical-align: -1px; }
 .ins-key.arch { background: #104281; }
+.free-toast { position: fixed; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 40; padding: 10px 18px; border-radius: 999px;
+  background: var(--ink); color: #fff; font-size: 14px; box-shadow: 0 10px 30px rgba(0, 0, 0, .2); animation: toast 2.6s ease both; }
+@keyframes toast { 0% { opacity: 0; transform: translate(-50%, 10px); } 10%, 85% { opacity: 1; transform: translate(-50%, 0); } 100% { opacity: 0; } }
+/* Hinweis: Echoes als App auf den Homescreen */
+.install-hint { position: relative; display: flex; align-items: center; gap: 12px; margin: 16px auto 0; max-width: 360px; padding: 12px 36px 12px 12px;
+  border-radius: 16px; background: var(--card); border: 1px solid var(--line); text-align: left; }
+.install-hint img { width: 44px; height: 44px; border-radius: 11px; flex: none; }
+.install-hint div { flex: 1; font-size: 13px; line-height: 1.35; }
+.install-hint b { display: block; font-size: 14px; }
+.install-hint small { color: #555; font-size: 12px; }
+.install-hint small b { display: inline; font-size: 12px; }
+.install-hint .pill { padding: 8px 12px; font-size: 12px; white-space: nowrap; }
+.install-x { position: absolute; top: 6px; right: 8px; font-size: 18px; color: var(--muted); }

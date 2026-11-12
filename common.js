@@ -194,6 +194,13 @@ window.Echoes = (() => {
     if (foot) foot.hidden = !DEV;
   });
 
+  // Herkunft: ?ref=reddit usw. – beim ersten Besuch gemerkt (kein Cookie, nur dieser Browser), wird mit jeder Runde gemeldet
+  (() => {
+    const r = (params.get('ref') || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 30);
+    if (r && !store.get('echoes.ref')) store.set('echoes.ref', r);
+  })();
+  const refSource = () => store.get('echoes.ref') || null;
+
   // zufällige Geräte-ID, damit jedes Gerät pro Tag nur ein Ergebnis meldet (kein Name, keine IP)
   function deviceId() {
     let id = store.get('echoes.device');
@@ -205,5 +212,5 @@ window.Echoes = (() => {
   }
 
   const ARCHIVE = !TEST && params.has('archive') && canArchive() && parseInt(params.get('day'), 10) < todayNumber();
-  return { YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, ARCHIVE_OPEN, canArchive, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  return { refSource, YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, ARCHIVE_OPEN, canArchive, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();

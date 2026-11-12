@@ -26,6 +26,12 @@
     moreNextTitle: 'Keep going?',
     morePlay: n => `▶ Play No. ${String(n).padStart(3, '0')}`,
     moreAll: 'All past days',
+    freeVoice: n => `Miss – voice ${n} is on the house`,
+    installTitle: 'Echoes on your Home Screen',
+    installSub: 'One tap a day – no app store.',
+    installBtn: 'Add to Home Screen',
+    installIos: 'Tap <b>Share</b> ⎙, then <b>“Add to Home Screen”</b>.',
+    installLater: 'Not now',
     ym_early: 'too early', ym_late: 'too late', ym_ok: 'right year',
     possible: (a, b) => `Still possible: <b>${a}–${b}</b>`,
     possibleOne: a => `The year is <b>${a}</b>`,
@@ -682,6 +688,12 @@
       const sb = $('#statsBtn');
       if (sb) sb.onclick = () => EchoesStats.open({ day, dayNo, state, countries });
       if ($('#acctCta')) $('#acctCta').onclick = () => EchoesAccount.open();
+      if ($('#installX')) $('#installX').onclick = () => { store.set('echoes.installHidden', true); $('.install-hint').remove(); };
+      if ($('#installBtn')) $('#installBtn').onclick = async () => {
+        installPrompt?.prompt();
+        const r = await installPrompt?.userChoice.catch(() => null);
+        if (r?.outcome === 'accepted') $('.install-hint')?.remove();
+      };
       if ($('#shareBtn')) $('#shareBtn').onclick = async () => {
         let shared = false;
         if (navigator.share && matchMedia('(pointer: coarse)').matches) { // Handy: WhatsApp, iMessage …
@@ -739,7 +751,7 @@
   const isFinal = () => state.guesses.length >= TRIES;
   // aktueller Punktestand: Start − Stimmen − Fehlversuche − Abzug beim finalen Tipp
   const score = () => Math.max(0, START_POINTS
-    - sum(VOICE_COST.slice(0, state.heard))
+    - sum(VOICE_COST.slice(0, state.heard).map((c, i) => (state.free || []).includes(i) ? 0 : c)) // nach Fehlversuch geschenkte Stimmen
     - sum(state.guesses.map((g, i) => !g.hit && !g.final && g.km > HIT_KM ? MISS_COST[i] : 0)) // Ort richtig, nur Jahr falsch: kein Abzug
     - sum(state.guesses.map(g => g.penalty || 0))) + (state.named?.ok ? state.named.bonus : 0);
 
@@ -852,6 +864,12 @@
         EchoesStats.askFeedback({ day, dayNo }).then(reveal);
       } else reveal();
     } else {
+      // Fehlversuch schaltet die nächste Stimme kostenlos frei – so hört man mehr Stimmen, ohne zu bezahlen
+      if (state.heard < day.voices.length) {
+        state.free = [...(state.free || []), state.heard];
+        nextVoice();
+        freeToast();
+      }
       renderAll();
       // Umkreis ganz ins Bild holen: Radius auf dem Bildschirm ≈ scale · sin(Winkel)
       const deg = Math.min(89, g.km / R * 180 / Math.PI);
@@ -1020,9 +1038,10 @@
   }
 
   function shareText() {
-    const voices = day.voices.map((_, i) => i < state.heard ? '🔊' : '▫️').join('');
+    // z. B. „Echoes #11 🔊🔊🔊🔇🔇 3/5“ – mit wie vielen Stimmen gelöst; darunter die Tipps und Punkte
+    const voices = day.voices.map((_, i) => i < state.heard ? '🔊' : '🔇').join('');
     const tries = state.guesses.map(g => g.final ? '🎯' : g.hit ? '✅' : '❌').join('') + (state.named?.ok ? ' ✍️' : '');
-    return `Echoes #${dayNo} · ${fmt(score())}/10.000\n${voices}\n${tries}\nhttps://hearechoes.com`;
+    return `Echoes #${dayNo} ${voices} ${state.heard}/${day.voices.length}\n${tries} · ${fmt(score())} points\nhttps://hearechoes.com`;
   }
 
   // eigene Bilanz aus allen gespielten Tagen auf diesem Gerät (bzw. aus dem Konto übernommen); Archiv zählt nicht
@@ -1086,6 +1105,19 @@
     </div>`;
   }
 
+  // Als App auf den Homescreen: Android über die Installations-Abfrage, iPhone mit kurzer Anleitung
+  let installPrompt = null;
+  addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; });
+  function installHtml(d) {
+    const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+    const ios = /iPhone|iPad|iPod/.test(navigator.userAgent);
+    if (TEST || standalone || store.get('echoes.installHidden') || !matchMedia('(pointer: coarse)').matches || !(ios || installPrompt)) return '';
+    return `<div class="install-hint"${d}><img src="icons/echoes-180.png" alt=""><div><b>${t().installTitle}</b>
+      <small>${ios ? t().installIos : t().installSub}</small></div>
+      ${ios ? '' : `<button class="pill" id="installBtn">${t().installBtn}</button>`}
+      <button class="install-x" id="installX" aria-label="${t().installLater}">×</button></div>`;
+  }
+
   function resultHtml() {
     const last = state.guesses[state.guesses.length - 1];
     const streak = Echoes.streak(dayNo);
@@ -1106,6 +1138,7 @@
         ${EchoesStats.available() && !TEST && !ARCHIVE ? `<button class="pill ghost" id="statsBtn">${t().everyone}</button>` : ''}
       </div>
       ${moreHtml(d(3.05))}
+      ${installHtml(d(3.3))}
       ${ARCHIVE ? `<p class="come-back"${d(3.2)}>${t().archiveNote} <a href="archive.html">${t().backArchive}</a></p>`
         : `${TEST ? '' : statsHtml(d(3.1))}
       ${tomorrowText() ? `<p class="tomorrow"${d(3.15)}>${tomorrowText()}</p>` : ''}
@@ -1133,6 +1166,14 @@
     drawGlobe();
   }
 
+  // kurzer Hinweis, dass die nächste Stimme geschenkt ist
+  function freeToast() {
+    const el = document.createElement('div');
+    el.className = 'free-toast';
+    el.textContent = t().freeVoice(state.heard);
+    document.body.append(el);
+    setTimeout(() => el.remove(), 2600);
+  }
   function nextVoice() {
     if (state.heard >= day.voices.length || state.done) return;
     state.heard++;

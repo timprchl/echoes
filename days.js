@@ -2092,7 +2092,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'bolt-world-record',
-    status: 'reviewed',
+    status: 'draft',
     on: '2026-11-14',
     year: 2009,
     lat: 52.5147,
@@ -2114,15 +2114,15 @@ window.ECHOES_DAYS = [
         who: 'IT trainee',
         style: 'Young man in his early 20s, quick and enthusiastic, a bit nerdy',
         pitch: 1.05, rate: 1.05,
-        text: 'That summer people wore masks against the new flu, and the banks had just been rescued with our money. I had my first phone with a touchscreen and an app with a little blue bird. That evening it filled up with the same three digits, over and over.',
-        note: 'In 2009 the swine flu pandemic and the financial crisis dominated the news; Twitter was growing fast, and smartphones were spreading.',
+        text: 'The banks had just been rescued with our money, and I was saving for my first phone with a touchscreen. The little blue bird app was still new, and some evenings everyone in it seemed to shout at once.',
+        note: 'Around 2009 the financial crisis and bank bailouts dominated the news; smartphones with touchscreens were spreading and Twitter was growing fast.',
       },
       {
         who: 'Volunteer in a yellow vest',
         style: 'Polish woman in her 20s speaking English with a light accent, friendly and observant',
         pitch: 1.1, rate: 1,
-        text: 'A warm August evening after a thunderstorm; wet lime trees and pine on flat ground. Around me, a language I had only half learned at school, and the smell of rain on hot stone.',
-        note: 'The volunteer came from abroad and had learned some German at school. Berlin lies in flat, pine-and-lime-tree country in northeastern Germany, with warm, thundery summers.',
+        text: 'A warm summer evening, and I was handing out water by the tunnel when the whole stadium went silent – tens of thousands holding their breath for one short race. A bang, and before I could turn around, the roar shook the stands. The man beside me grabbed my arm and shouted “Wahnsinn!” – a word I knew from school, but never like this.',
+        note: 'The volunteer came from abroad and had learned some German at school. The 100 m final was the evening’s highlight in a stadium of over 70,000 – the crowd falls silent for the start, and the race is over in under ten seconds.',
       },
       {
         who: 'Finish-line photographer',
