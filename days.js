@@ -2092,7 +2092,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'bolt-world-record',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-14',
     year: 2009,
     lat: 52.5147,
@@ -2106,6 +2106,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Barber, Brazil',
         style: 'Brazilian man in his 50s speaking English with a warm Portuguese accent, cheerful and unhurried',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 0.95,
         text: 'A slow Sunday afternoon, the little television in the corner, a customer half shaved. The bar across the street roared, and my shop with it. Under ten seconds – not even one stroke of the razor. Grown men hugged strangers on the pavement.',
         note: 'The race lasted under ten seconds and was shown live around the world; in Brazil it was Sunday afternoon.',
@@ -2113,6 +2114,7 @@ window.ECHOES_DAYS = [
       {
         who: 'IT trainee',
         style: 'Young man in his early 20s, quick and enthusiastic, a bit nerdy',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 1.05, rate: 1.05,
         text: 'The banks had just been rescued with our money, and I was saving for my first phone with a touchscreen. The little blue bird app was still new, and some evenings everyone in it seemed to shout at once.',
         note: 'Around 2009 the financial crisis and bank bailouts dominated the news; smartphones with touchscreens were spreading and Twitter was growing fast.',
@@ -2120,6 +2122,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Volunteer in a yellow vest',
         style: 'Polish woman in her 20s speaking English with a light accent, friendly and observant',
+        voiceId: 'yOhXTwcNX7GiQq8AsROm', voiceName: 'Marta (polish)',
         pitch: 1.1, rate: 1,
         text: 'A warm summer evening, and I was handing out water by the tunnel when the whole stadium went silent – tens of thousands holding their breath for one short race. A bang, and before I could turn around, the roar shook the stands. The man beside me grabbed my arm and shouted “Wahnsinn!” – a word I knew from school, but never like this.',
         note: 'The volunteer came from abroad and had learned some German at school. The 100 m final was the evening’s highlight in a stadium of over 70,000 – the crowd falls silent for the start, and the race is over in under ten seconds.',
@@ -2127,6 +2130,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Finish-line photographer',
         style: 'British man in his 40s, dry, still a little amazed',
+        voiceId: 'G17SuINrv2H9FC6nvetn', voiceName: 'Christopher (british)',
         pitch: 0.9, rate: 1,
         text: 'Eight men in the blocks, in a grey stone stadium built for the Olympics of the 1930s. The tall Jamaican was clear by halfway. The clock showed a time nobody believed – a full tenth faster than his record in China the summer before.',
         note: 'The Olympic Stadium was built for the 1936 Games under the Nazi regime. The previous record of 9.69 had been set at the 2008 Olympics in Beijing; this race was the World Championships final a year later.',
@@ -2134,6 +2138,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Stadium announcer, Berlin',
         style: 'German man in his 50s speaking English with a German accent, warm, booming voice',
+        voiceId: 'Jvf6TAXwMUVTSR20U0f9', voiceName: 'Klaus (german)',
         pitch: 0.85, rate: 0.95,
         text: 'On the sixteenth of August 2009, at the World Championships in Berlin’s Olympic Stadium, Usain Bolt ran the hundred metres in nine point five eight seconds. A world record. I had to read the time out twice, because I could not believe it myself.',
         note: 'Bolt reached a top speed of about 44.7 km/h between 60 and 80 metres. The 9.58 still stands as the world record.',

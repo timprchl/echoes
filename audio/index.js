@@ -14,6 +14,13 @@ window.ECHOES_AUDIO = {
     "4": "af7eac32",
     "5": "8966a64d"
   },
+  "bolt-world-record": {
+    "1": "2a058f84",
+    "2": "b123d3c9",
+    "3": "da9aba7c",
+    "4": "358ec398",
+    "5": "4e032fba"
+  },
   "burj-khalifa": {
     "1": "9c636d52",
     "2": "aa6542d0",
@@ -120,4 +127,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794205587; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794570782; // gegen veraltete Aufnahmen im Browser-Cache

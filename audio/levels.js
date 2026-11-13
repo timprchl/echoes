@@ -55,6 +55,33 @@ window.ECHOES_LEVELS = {
     }
   },
   "bern-1954": {},
+  "bolt-world-record": {
+    "1": {
+      "before": -21.2,
+      "after": -20.0,
+      "mtime": 1794570761
+    },
+    "2": {
+      "before": -24.5,
+      "after": -20.0,
+      "mtime": 1794570763
+    },
+    "3": {
+      "before": -21.0,
+      "after": -20.0,
+      "mtime": 1794570777
+    },
+    "4": {
+      "before": -15.6,
+      "after": -20.0,
+      "mtime": 1794570778
+    },
+    "5": {
+      "before": -19.6,
+      "after": -20.0,
+      "mtime": 1794570780
+    }
+  },
   "burj-khalifa": {
     "1": {
       "before": -22.9,
