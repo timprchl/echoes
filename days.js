@@ -1991,7 +1991,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'iphone-presentation',
-    status: 'voiced',
+    status: 'live',
     on: '2026-11-17',
     year: 2007,
     lat: 37.7841,
