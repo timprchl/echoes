@@ -84,6 +84,13 @@ window.ECHOES_AUDIO = {
     "4": "033ba24c",
     "5": "f5c15928"
   },
+  "iphone-presentation": {
+    "1": "91f5cbd0",
+    "2": "158ee73f",
+    "3": "574a793f",
+    "4": "533bd651",
+    "5": "9210e853"
+  },
   "krakatau": {
     "1": "090cf3a3",
     "2": "bb06a1e1",
@@ -97,6 +104,13 @@ window.ECHOES_AUDIO = {
     "3": "02661b4a",
     "4": "36ee0eca",
     "5": "05e4c2d7"
+  },
+  "notre-dame-fire": {
+    "1": "2ef5b4ca",
+    "2": "d5501a41",
+    "3": "fe83b6b9",
+    "4": "d03f1d1e",
+    "5": "679c95e0"
   },
   "september-11": {
     "1": "18538fe4",
@@ -127,4 +141,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794570782; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794748097; // gegen veraltete Aufnahmen im Browser-Cache

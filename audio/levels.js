@@ -325,6 +325,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793559379
     }
   },
+  "iphone-presentation": {
+    "1": {
+      "before": -22.5,
+      "after": -20.1,
+      "mtime": 1794748089
+    },
+    "2": {
+      "before": -25.3,
+      "after": -20.0,
+      "mtime": 1794748091
+    },
+    "3": {
+      "before": -24.0,
+      "after": -20.0,
+      "mtime": 1794748092
+    },
+    "4": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1794748094
+    },
+    "5": {
+      "before": -17.0,
+      "after": -20.0,
+      "mtime": 1794748095
+    }
+  },
   "krakatau": {
     "1": {
       "before": -22.9,
@@ -377,6 +404,33 @@ window.ECHOES_LEVELS = {
       "before": -34.3,
       "after": -20.5,
       "mtime": 1793629509
+    }
+  },
+  "notre-dame-fire": {
+    "1": {
+      "before": -23.1,
+      "after": -20.0,
+      "mtime": 1794748073
+    },
+    "2": {
+      "before": -24.3,
+      "after": -20.0,
+      "mtime": 1794748075
+    },
+    "3": {
+      "before": -24.5,
+      "after": -20.2,
+      "mtime": 1794748076
+    },
+    "4": {
+      "before": -16.8,
+      "after": -20.0,
+      "mtime": 1794748078
+    },
+    "5": {
+      "before": -13.2,
+      "after": -19.8,
+      "mtime": 1794748080
     }
   },
   "september-11": {

@@ -529,7 +529,7 @@ window.ECHOES_DAYS = [
   {
     id: 'hindenburg',
     status: 'reviewed',
-    on: '2026-11-17',
+    on: '2026-11-23',
     year: 1937,
     lat: 40.0335,
     lon: -74.3535,
@@ -1991,8 +1991,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'iphone-presentation',
-    status: 'draft',
-    on: '2026-11-23',
+    status: 'voiced',
+    on: '2026-11-17',
     year: 2007,
     lat: 37.7841,
     lon: -122.4013,
@@ -2005,6 +2005,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Tea picker, Sri Lanka',
         style: 'Older Sri Lankan woman speaking English with a soft Sinhala accent, slow and amused',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1, rate: 0.88,
         text: 'My grandson came up the hill waving a newspaper page with a picture of a small black slab. He said: Achchi, one day everyone will carry a window in their pocket. I laughed and went back to the bushes. Now I pay for my tea on such a window.',
         note: 'Within a decade, cheap touchscreen phones had spread to villages all over Asia and Africa – often people’s first access to the internet.',
@@ -2012,6 +2013,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Shop assistant, electronics store',
         style: 'Young man in his early 20s, fast and slightly sarcastic',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 1.05, rate: 1.08,
         text: 'After Christmas everyone still wanted thinner flip phones and little white music players with earbuds. People bought their first flat screens on credit, and kids filmed everything for some new video website. Prices, they said, only went up.',
         note: 'Flip phones, iPods and online video (YouTube was founded in 2005) were everywhere; the US housing bubble was about to burst.',
@@ -2019,6 +2021,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Bicycle courier',
         style: 'Woman in her 30s, West Coast American accent, upbeat, slightly out of breath',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.1, rate: 1.02,
         text: 'Winter here means rain and a grey fog swallowing the big red bridge, then sun by noon. I race past the clanging cable cars to little software start-ups in old brick warehouses near the docks, all dreaming of the next big thing.',
         note: 'The South of Market district had filled with internet companies since the dot-com boom of the late 1990s.',
@@ -2026,6 +2029,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Tech journalist',
         style: 'American man in his 40s, measured but excited, a reporter who has seen many launches',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.92, rate: 1,
         text: 'A week into the new year, thousands of us in a dark hall, blogging live. The computer boss in the black turtleneck held up a phone with no keyboard – one button, one glass screen. A music player, a phone and the internet in one, he said. We gasped.',
         note: 'Most smartphones of the time had small physical keyboards or a stylus. Controlling a phone with several fingers on the glass was new to almost everyone in the hall.',
@@ -2033,6 +2037,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Conference technician, San Francisco',
         style: 'American man in his 50s, calm and dry, backstage veteran',
+        voiceId: 'wBXNqKUATyqu0RtYt25i', voiceName: 'Adam (american)',
         pitch: 0.85, rate: 0.92,
         text: 'On the ninth of January 2007, at the Macworld conference in the Moscone Center in San Francisco, Steve Jobs presented the first iPhone. It went on sale that June, and phones have never looked the same since.',
         note: 'The first iPhone had no App Store and no 3G; both came a year later. Well over two billion iPhones have been sold since.',
@@ -2508,7 +2513,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'notre-dame-fire',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-16',
     year: 2019,
     lat: 48.853,
@@ -2518,38 +2523,45 @@ window.ECHOES_DAYS = [
     date: '15 April 2019',
     place: 'Notre-Dame de Paris, Île de la Cité, Paris, France',
     summary: 'On the Monday of Holy Week, shortly before 18:30, a fire broke out in the roof of the Gothic cathedral of Notre-Dame in Paris. The medieval oak roof timbers – known as “the forest” – burned, and just before 20:00 the 19th-century spire collapsed into the nave. About 400 firefighters saved the two west towers and the main structure; the crown of thorns relic and many artworks were rescued. Crowds watched and sang hymns along the Seine. After five years of rebuilding, the cathedral reopened in December 2024.',
+    target: [12, 35, 51, 73, 94],
+    tol: 3.5,
     voices: [
       {
-        who: 'Sacristan’s widow, Philippines',
-        style: 'Filipino woman in her 70s speaking English with a soft Filipino accent, devout and gentle',
+        who: 'Retired nurse, Philippines',
+        style: 'Filipino woman in her 70s speaking English with a soft Filipino accent, gentle',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1.05, rate: 0.9,
-        text: 'Holy Week. Our little church in the province was full of palm leaves from Sunday. That Monday night my granddaughter showed me her phone: people far away kneeling in the street and singing, their faces glowing orange. I lit a candle without knowing for whom.',
-        note: 'The fire broke out in the evening in Europe – the middle of the night in Asia – and was streamed live worldwide.',
+        text: 'My granddaughter woke me in the dark to show me her phone. Far away it was still daylight, and strangers on the screen stood silent, their faces lit orange, watching something burn. I made tea and sat with her until the birds began.',
+        note: 'Europe is 6–7 hours behind the Philippines, so an evening event there falls in the middle of the night in Asia. Live streams of the fire made it a shared experience worldwide.',
       },
       {
         who: 'Teenager',
         style: 'Teenage girl, quick and passionate',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.15, rate: 1.1,
-        text: 'Every Friday we skipped school to march for the climate, behind a girl with braids. On my phone: short dance videos, and a dragon series everyone argued about. Wireless earbuds in, streaming everything.',
-        note: 'Around 2018–2020: the Fridays for Future school strikes, TikTok\'s rise, wireless earbuds and the streaming era of big fantasy TV.',
+        text: 'Wireless earbuds in, short dance videos until two in the morning, a phone with three camera lenses. Some Fridays we skipped school for climate marches, and the grown-ups called it a phase. Nobody had heard of a lockdown yet.',
+        note: 'Late 2010s: wireless earbuds, TikTok\'s rise, multi-lens phones and the Fridays for Future school strikes, shortly before the 2020 pandemic.',
       },
       {
-        who: 'Bookseller by the river',
+        who: 'Café waiter',
         style: 'French man in his 60s speaking English with a French accent, wry and poetic',
+        voiceId: 'pB0wYnYoA5t7xU302lqw', voiceName: 'JC (french)',
         pitch: 0.9, rate: 0.95,
-        text: 'A mild spring evening, chestnut trees in bud along the river. Pale limestone, grey zinc roofs, the smell of crêpes, and everyone around me talking fast French while I sorted old paperbacks into my green box.',
-        note: 'Green booksellers\' boxes line the river quays; zinc roofs and pale limestone are typical of the city\'s architecture.',
+        text: 'A mild spring day, the first warm one of the year. I was wiping tables on a pavement terrace under plane trees just coming into leaf, taking orders in a language that loves its accents.',
+        note: 'Plane trees and pavement terraces are typical of western European cities; accents point to a Romance language such as French.',
       },
       {
         who: 'Firefighter',
         style: 'French man in his 30s speaking English with a French accent, controlled, still shaken',
+        voiceId: 'xTZlmU8dKXdyk4XGYGFg', voiceName: 'Antoine (french)',
         pitch: 0.9, rate: 1,
-        text: 'Yellow smoke first, then flames racing through the forest of old oak beams in the roof. Just before eight the spire leaned and fell into the nave. We fought all night to save the two towers. Strangers knelt on the quays and sang Ave Maria.',
+        text: 'Yellow smoke first, then flames racing through the timbers of a roof centuries old. We fought all night to save the stone towers. Crowds stood silent along the riverbanks, some of them singing softly.',
         note: 'The roof was made of oak beams up to 800 years old. Firefighters went inside the north tower to stop the fire spreading to the bells.',
       },
       {
         who: 'Sacristan, Paris',
         style: 'French woman in her 50s speaking English with a French accent, composed and warm',
+        voiceId: '1hIScOW98xkqE5ttC10C', voiceName: 'Mariva Viva Muse (french)',
         pitch: 1, rate: 0.95,
         text: 'On the fifteenth of April 2019, fire broke out in the roof of Notre-Dame de Paris. The spire collapsed, but the walls, the towers and the great rose windows survived. Five years later, in December 2024, the cathedral opened its doors again.',
         note: 'Nearly a billion euros were donated for the rebuilding; the spire was reconstructed in its 19th-century form.',
