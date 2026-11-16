@@ -1263,3 +1263,17 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .install-hint small b { display: inline; font-size: 12px; }
 .install-hint .pill { padding: 8px 12px; font-size: 12px; white-space: nowrap; }
 .install-x { position: absolute; top: 6px; right: 8px; font-size: 18px; color: var(--muted); }
+
+/* Control Room → Open: was ansteht, zum Delegieren */
+.op { max-width: 860px; }
+.op-add { display: flex; gap: 10px; }
+.op-add input { flex: 1; min-width: 0; padding: 12px 16px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font: 14px var(--sans); }
+.op-item { display: flex; gap: 14px; align-items: flex-start; padding: 14px 0; border-top: 1px solid var(--line); }
+.op-item:first-of-type { border-top: 0; }
+.op-text { flex: 1; min-width: 0; }
+.op-text b { font: 600 14px/1.4 var(--sans); }
+.op-text p { margin: 4px 0 0; font-size: 13px; line-height: 1.5; color: #52514e; overflow-wrap: anywhere; }
+.op-due { display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; background: #fdecea; color: #a12d22; font: 600 11px var(--sans); }
+.op-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.op-done b { font-weight: 400; color: #52514e; text-decoration: line-through; }
+@media (max-width: 700px) { .op-item { flex-direction: column; } .op-add { flex-direction: column; } }

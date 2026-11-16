@@ -7,6 +7,13 @@ window.ECHOES_AUDIO = {
     "4": "178aa648",
     "5": "13cc0b1e"
   },
+  "beijing-olympics-2008": {
+    "1": "babbf5d6",
+    "2": "6428ce2e",
+    "3": "4edb4496",
+    "4": "e0e08895",
+    "5": "c79e455a"
+  },
   "berlin-wall": {
     "1": "28e1970a",
     "2": "d8ad10c5",
@@ -84,6 +91,13 @@ window.ECHOES_AUDIO = {
     "4": "033ba24c",
     "5": "f5c15928"
   },
+  "great-depression": {
+    "1": "817d565e",
+    "2": "93062fd6",
+    "3": "f7d1fdfd",
+    "4": "dbbc1a2c",
+    "5": "5794db2e"
+  },
   "iphone-presentation": {
     "1": "91f5cbd0",
     "2": "158ee73f",
@@ -98,12 +112,26 @@ window.ECHOES_AUDIO = {
     "4": "83fec462",
     "5": "879cd3e8"
   },
+  "machu-picchu": {
+    "1": "f45dc3dd",
+    "2": "d491881e",
+    "3": "60f532af",
+    "4": "842c3281",
+    "5": "bfaf7356"
+  },
   "march-on-washington": {
     "1": "4a95fa46",
     "2": "acb04953",
     "3": "02661b4a",
     "4": "36ee0eca",
     "5": "05e4c2d7"
+  },
+  "miracle-on-the-hudson": {
+    "1": "e18f6060",
+    "2": "dfcd7a11",
+    "3": "44938ca7",
+    "4": "390282b9",
+    "5": "cf3e51a4"
   },
   "notre-dame-fire": {
     "1": "2ef5b4ca",
@@ -112,12 +140,40 @@ window.ECHOES_AUDIO = {
     "4": "d03f1d1e",
     "5": "679c95e0"
   },
+  "pearl-harbor": {
+    "1": "aeb57f4a",
+    "2": "79050518",
+    "3": "02200caa",
+    "4": "e847b555",
+    "5": "662749e6"
+  },
+  "pokemon-go": {
+    "1": "2ff3bd13",
+    "2": "298b64b0",
+    "3": "3610cbf7",
+    "4": "1d401cea",
+    "5": "7443fb13"
+  },
+  "rumble-in-the-jungle": {
+    "1": "c84614a3",
+    "2": "2777fcd9",
+    "3": "605ff037",
+    "4": "379c71fc",
+    "5": "4c297ede"
+  },
   "september-11": {
     "1": "18538fe4",
     "2": "80e94dd3",
     "3": "b449a826",
     "4": "288e21ec",
     "5": "331b8a6d"
+  },
+  "thai-cave-rescue": {
+    "1": "4160fc6c",
+    "2": "a900e60f",
+    "3": "f257e026",
+    "4": "5aae4922",
+    "5": "94f0026c"
   },
   "titanic": {
     "1": "07e75b87",
@@ -141,4 +197,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794748097; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1794850416; // gegen veraltete Aufnahmen im Browser-Cache

@@ -529,7 +529,7 @@ window.ECHOES_DAYS = [
   {
     id: 'hindenburg',
     status: 'reviewed',
-    on: '2026-11-23',
+    on: '2026-11-30',
     year: 1937,
     lat: 40.0335,
     lon: -74.3535,
@@ -550,22 +550,22 @@ window.ECHOES_DAYS = [
         who: 'Passenger',
         style: 'Elegant German woman in her 40s, refined, German accent, amused',
         pitch: 1, rate: 0.95,
-        text: 'Our cabin is as narrow as a train berth, yet dinner comes on fine china, and smoking is allowed only in one sealed room. Below the window, fields slide by in silence, with just the hum of the engines.',
-        note: 'The Hindenburg had a pressurised, airlocked smoking room, fine dining and cabins like train berths; its passengers floated silently over the landscape.',
+        text: 'My trunk is full of hats and letters of introduction, and a telegram to my family is promised on arrival. Everyone around me talks of radio, of speed, of crossing an ocean in days instead of weeks.',
+        note: 'In 1937 the Hindenburg crossed the Atlantic in about two to three days, against a week or more by ocean liner. Telegrams and radio were the modern means of communication of the 1930s.',
       },
       {
         who: 'Ground crew sailor',
         style: 'Young American sailor, East Coast accent, tired and wet',
         pitch: 1, rate: 1,
-        text: 'We waited all afternoon for the thunderstorm to pass, out in flat, sandy pine woods where the air hangs heavy and wet. Two hundred of us in soaked uniforms, shouting in English, staring at the grey sky.',
-        note: 'Lakehurst lies in the New Jersey Pine Barrens; thunderstorms delayed the landing, and the ground crew were US Navy personnel.',
+        text: 'We waited all afternoon for a spring thunderstorm to pass, in flat sandy pine woods where the air hangs heavy. Two hundred of us in soaked Navy uniforms, American voices shouting, the Atlantic a short drive east, a huge city\'s glow to the north.',
+        note: 'Lakehurst lies in the New Jersey Pine Barrens, not far from the Atlantic coast and New York City. Thunderstorms delayed the landing, and the ground crew were US Navy personnel.',
       },
       {
         who: 'Newsreel cameraman',
         style: 'American man in his 40s, shaken, speaking slowly',
         pitch: 0.9, rate: 0.9,
-        text: 'The great German airship, the biggest thing that ever flew, came in on her first crossing of the new season, ropes dropping. Then a flicker by the swastikas on her tail, and in thirty seconds she was a torch on American sand. I kept filming.',
-        note: 'Several newsreel crews filmed the landing – the footage was shown in cinemas worldwide.',
+        text: 'The biggest thing that ever flew came in from Germany on her first American crossing of the season, ropes dropping toward the Navy mooring mast. Then a flicker at her tail, and in thirty seconds she was a torch of burning hydrogen. I kept filming.',
+        note: 'Several newsreel crews filmed the landing, and the footage was shown in cinemas worldwide. The Hindenburg was filled with flammable hydrogen and moored to a mast at the US Navy air station.',
       },
       {
         who: 'Navy officer, Lakehurst',
@@ -956,7 +956,7 @@ window.ECHOES_DAYS = [
   {
     id: 'hong-kong-handover',
     status: 'draft',
-    on: '2026-11-20',
+    on: '2026-12-02',
     year: 1997,
     lat: 22.282,
     lon: 114.174,
@@ -977,15 +977,15 @@ window.ECHOES_DAYS = [
         who: 'Shop assistant',
         style: 'Young woman in her 20s, quick and cheerful',
         pitch: 1.1, rate: 1.05,
-        text: 'Tamagotchis beeping in school bags, pagers on every belt, phones the size of a shoe. On a huge square far to the north, a giant clock counted down the days to one midnight, and people argued whether it meant a homecoming or a goodbye.',
-        note: 'A countdown clock in Beijing showed the days and seconds until the handover.',
+        text: 'Tamagotchis beeping in school bags, pagers on every belt, video CDs piled high in my shop. Dolly the cloned sheep is in the news, and a big clock counts down to a deadline set long ago.',
+        note: 'Tamagotchis, pagers and video CDs were everyday sights in 1997, the year Dolly the cloned sheep became world news.',
       },
       {
         who: 'Ferry deckhand',
         style: 'Cantonese man in his 50s speaking English with an accent, relaxed',
         pitch: 0.9, rate: 0.95,
-        text: 'Steep green hills rise behind a harbour of glittering towers, ferries and junks, the summer rain warm and heavy. Cantonese on deck, English on the signs, red double-decker trams, the Queen on the coins for a few more weeks.',
-        note: 'Victoria Harbour sits between Hong Kong Island and Kowloon; trams and the Star Ferry are icons of the city.',
+        text: 'Steep green hills rise behind a harbour of glittering towers, ferries and junks, the summer rain warm and heavy. Cantonese on deck, English on the signs, bamboo scaffolding on every building site, neon all night.',
+        note: 'Victoria Harbour sits between Hong Kong Island and Kowloon; bamboo scaffolding and neon signs are typical of the city.',
       },
       {
         who: 'Military bandsman',
@@ -1006,7 +1006,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'thai-cave-rescue',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-19',
     year: 2018,
     lat: 20.382,
@@ -1020,6 +1020,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Wife in England',
         style: 'English woman in her 50s, dry humour, proud',
+        voiceId: '19STyYD15bswVz51nqLf', voiceName: 'Samara X (british)',
         pitch: 1, rate: 1,
         text: 'My husband packed his oldest equipment at midnight and was on a plane before breakfast. He’s an electrician who crawls through muddy holes at weekends – I never thought anyone else in the world cared about that hobby.',
         note: 'Volunteer cave divers from the UK found the boys after nine days.',
@@ -1027,6 +1028,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Schoolboy',
         style: 'Young man of about 18, eager, quick',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 1.1, rate: 1.1,
         text: 'Everyone in my class had the same live feed open under the desks. We refreshed it between lessons, shared every photo, and argued about what the adults weren\'t telling us. Even the teacher kept glancing at her phone.',
         note: 'The rescue was followed live on social media around the world; the trapped boys were 11 to 16.',
@@ -1034,6 +1036,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Rice farmer',
         style: 'Thai man in his 50s speaking English with an accent, calm',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.9, rate: 0.9,
         text: 'The monsoon came early that year. Water ran off the misty border mountains into the jungle, and in the temples the monks prayed day and night. We let them pump the water from the hills into our own rice fields.',
         note: 'Farmers accepted flooded fields so the water could be pumped out of the cave.',
@@ -1041,6 +1044,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Navy diver',
         style: 'Thai man in his 30s, steady, determined',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.95, rate: 0.95,
         text: 'Twelve boys from a football team and their coach waited on a muddy ledge deep inside a flooded mountain, and the whole kingdom held its breath. We navy divers carried them out through black tunnels, one by one, asleep.',
         note: 'The boys were sedated and carried out over three days.',
@@ -1048,6 +1052,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Volunteer, Tham Luang, Thailand',
         style: 'Thai woman in her 30s, gentle and clear',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 0.95,
         text: 'In July 2018 a junior football team and their coach were rescued from the flooded Tham Luang cave in northern Thailand, after more than two weeks underground.',
         note: 'Former Thai Navy diver Saman Kunan died while supplying air tanks.',
@@ -1109,7 +1114,7 @@ window.ECHOES_DAYS = [
   {
     id: 'christmas-truce',
     status: 'live',
-    on: '2026-11-18',
+    on: '2026-11-29',
     year: 1914,
     lat: 50.73,
     lon: 2.88,
@@ -1428,7 +1433,7 @@ window.ECHOES_DAYS = [
   {
     id: 'waterloo',
     status: 'draft',
-    on: '2026-11-29',
+    on: '2026-12-01',
     year: 1815,
     lat: 50.6787,
     lon: 4.4044,
@@ -1439,32 +1444,32 @@ window.ECHOES_DAYS = [
     summary: 'Napoleon had escaped from exile on Elba in early 1815 and seized power in France again. On 18 June 1815 his army attacked an Anglo-allied army under the Duke of Wellington on a ridge south of Waterloo. After a day of attacks by infantry, cavalry and finally the Imperial Guard, the arrival of the Prussian army under Blücher decided the battle. Around 50,000 men were killed or wounded. Napoleon abdicated a few days later and was exiled to St Helena, ending more than two decades of war in Europe.',
     voices: [
       {
-        who: 'Fisherman’s wife, Nova Scotia',
+        who: 'Fisherman\'s wife, far across the sea',
         style: 'Older woman with a soft Maritime Canadian lilt, slow and quiet, a little weary',
         pitch: 1, rate: 0.9,
-        text: 'The ships from across the sea came in weeks late that summer. The harbour master read his lists aloud on the church steps, and we women held each other’s sleeves in the drizzle. My boy’s name was not on it. I kept his plate warm that night anyway.',
-        note: 'In 1815 news crossed the Atlantic only by sailing ship; it took weeks for word – and casualty lists – to reach North America.',
+        text: 'The ships came weeks late that summer. The harbour master read his lists on the church steps, and we women held each other\'s sleeves in the drizzle. Whatever had happened so far away, my boy\'s name was not on it.',
+        note: 'In the early 19th century news crossed the Atlantic only by sailing ship, so word of distant events and casualty lists took weeks to reach North America.',
       },
       {
-        who: 'Mail-coach guard',
+        who: 'Post rider',
         style: 'English man in his 40s, brisk and cheerful, a bit gravelly from shouting',
         pitch: 0.9, rate: 1.05,
-        text: 'Nothing on earth moved faster than a fresh team of horses and a fair wind for the packet boat. I blew my horn at every toll gate, lamps swinging in the dark. After twenty years of war, folk grabbed the papers off the roof before we had even stopped.',
-        note: 'Before railways and the electric telegraph, news travelled by mail coach, courier and sailing boat. Europe had been at war almost without pause since 1792.',
+        text: 'Twenty years of war had worn out the roads and the horses. That spring the emperor slipped his island exile, and every crown in Europe waited for my sealed bag. I changed mounts at each post house and slept in the saddle.',
+        note: 'Before railways and the electric telegraph, news travelled by courier and sailing ship. Napoleon escaped exile on Elba in early 1815 and Europe, at war almost without pause since 1792, braced for another conflict.',
       },
       {
         who: 'Farmer\'s daughter',
         style: 'Young woman around 18, Flemish accent in English, nervous and fast',
         pitch: 1.15, rate: 1.05,
-        text: 'The rain came down all night and flattened the rye up to my shoulders. Here the old folk speak Flemish and the gentlemen French. Soldiers in red coats, blue coats and kilts sleep in our barns, and they say the Emperor has slipped his island.',
-        note: 'Heavy rain the night before turned the fields into deep mud and delayed the start of the battle until late morning. Napoleon had escaped exile on Elba in 1815.',
+        text: 'Rain all night flattened the rye on our flat farmland. The old folk speak Flemish, the gentlemen French, and the king who rules us lives far north. Soldiers in many uniforms sleep in our barns, boots heavy with clay.',
+        note: 'Heavy rain turned the fields into deep mud. The region spoke Flemish with French as the language of the elite, and had just been joined with the Netherlands under one king after the fall of French rule.',
       },
       {
         who: 'Infantryman, Highland regiment',
         style: 'Scottish man in his 20s, hoarse and shaken, speaking low and slowly',
         pitch: 0.85, rate: 0.9,
-        text: 'All day we stood in squares on a muddy ridge behind a sunken lane while the Emperor\'s armoured horsemen rode at us. At dusk his Old Guard climbed the slope – and broke. The Prussians came in from the east. His hundred days, over.',
-        note: 'Infantry squares held off repeated French cavalry charges. The failed attack of the Imperial Guard and the arrival of the Prussians decided the battle, ending Napoleon\'s Hundred Days.',
+        text: 'The emperor came back from exile and raised an army in a hundred days. We stood all day in squares on a muddy ridge in Flemish farmland while his cuirassiers charged. At dusk his Old Guard climbed the slope and broke.',
+        note: 'Infantry squares held off repeated French cavalry charges. The failed attack of the Imperial Guard and the arrival of the Prussians decided the battle and ended Napoleon\'s Hundred Days.',
       },
       {
         who: 'Surgeon’s assistant, Waterloo',
@@ -1478,8 +1483,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'great-depression',
-    status: 'draft',
-    on: '2026-12-02',
+    status: 'live',
+    on: '2026-11-20',
     year: 1929,
     lat: 40.7069,
     lon: -74.0113,
@@ -1492,6 +1497,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Coffee grower’s son',
         style: 'Older man speaking English with a soft Brazilian Portuguese accent, slow and wistful',
+        voiceId: 'NOpBlnGInO9m6vDvFkFC', voiceName: 'Spuds Oxley (american)',
         pitch: 0.9, rate: 0.9,
         text: 'The buyers stopped coming up the red dirt road. Father walked the rows every evening, counting berries nobody wanted. That winter the trains burned sacks of beans instead of coal, and the whole valley smelled of roasting, like a party no one had come to.',
         note: 'Coffee prices collapsed. In Brazil millions of sacks of coffee were burned or dumped – some even as locomotive fuel.',
@@ -1499,6 +1505,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Young wife',
         style: 'Cheerful woman in her 20s, American, quick and bright, a little nostalgic',
+        voiceId: 'r1KmysJdVYZjJCm4mL3b', voiceName: 'Jessica (american)',
         pitch: 1.1, rate: 1.05,
         text: 'My sister bobbed her hair the week we got our first radio set, a walnut cabinet that hummed while it warmed up. On Saturdays we saw the new talking pictures – imagine, the actors’ lips finally moving with the words – and danced to the band on the wireless.',
         note: 'The late 1920s brought home radios, bobbed hair and the first “talkies” (from 1927) – and a boom of goods and shares bought on credit.',
@@ -1506,6 +1513,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Shoeshine boy',
         style: 'Boy of about 12, Italian-American street accent, fast and cheeky, turning serious',
+        voiceId: 'yowh82B72eMNrxcxHgBh', voiceName: 'Lorenzo Prada (italian)',
         pitch: 1.2, rate: 1.1,
         text: 'I shined shoes in the shadow of the tallest towers in the world, a nickel a pair. Mama came from Italy and spoke no English; the gentlemen talked share tips over my head – buy, buy. One autumn morning they went quiet.',
         note: 'Even shoeshine boys and lift operators passed on share tips. Many later saw that as the sign the boom had gone too far.',
@@ -1513,6 +1521,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Clerk at the stock exchange',
         style: 'American man in his 30s, nervous and hoarse, words tumbling out',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.95, rate: 1.1,
         text: 'The ticker tape ran hours behind. On the floor of the Exchange men screamed sell and nobody bought. Black Thursday, then Black Tuesday; a silent crowd filled the narrow street outside, and America\'s fortunes turned to paper.',
         note: 'So many shares were sold that the ticker machines fell hours behind. Thousands of banks failed in the following years, and unemployment in the USA rose to about 25 percent.',
@@ -1520,6 +1529,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Messenger boy, Wall Street',
         style: 'New York man in his late teens, tired and subdued, speaking slowly',
+        voiceId: 'aOZ9Pl8uWUTet0DS7PYP', voiceName: 'Scott (new york)',
         pitch: 1, rate: 0.9,
         text: 'On Tuesday the twenty-ninth of October 1929, the New York Stock Exchange on Wall Street crashed – Black Tuesday. Sixteen million shares were dumped in one day. It was the start of the Great Depression, and it lasted ten years.',
         note: 'After the first panic on Black Thursday, 24 October, prices fell further on 28 and 29 October. The crash triggered a worldwide economic crisis.',
@@ -1631,7 +1641,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'pearl-harbor',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-24',
     year: 1941,
     lat: 21.3649,
@@ -1645,6 +1655,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Grocer’s daughter, Iceland',
         style: 'Older Icelandic woman speaking English, soft Nordic accent, thoughtful',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1, rate: 0.9,
         text: 'The foreign soldiers in our town were always laughing and handing out chewing gum. That Sunday evening they went quiet and stood in little groups in the snow. One of them sat down on our step and cried like a boy.',
         note: 'American troops were stationed in Iceland from 1941, before the USA was officially at war.',
@@ -1652,6 +1663,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Teenage girl',
         style: 'American girl of about 15, bright and quick, turning hushed',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.15, rate: 1.05,
         text: 'Our radio had a glowing dial and a walnut case, and it was always on. Big bands, all trumpets, and my sister practising the jitterbug in her bobby socks. Dad only listened for the news from overseas and said it was none of our business.',
         note: 'Swing big bands and the jitterbug were the craze of the late 1930s and early 1940s. Until late 1941 many Americans wanted to stay out of the war in Europe; most heard of the attack by radio.',
@@ -1659,6 +1671,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Cane cutter’s daughter',
         style: 'Older woman, warm Pacific-island English, slow and melodic',
+        voiceId: 'kkPJzQOWz2Oz9cUaEaQd', voiceName: 'Beatrice (british)',
         pitch: 1, rate: 0.85,
         text: 'We lived on a green island with sharp volcanic ridges and warm trade winds, far out in a very big ocean. My grandmother spoke our old island language, and the sugar-cane fields ran right down to the sea.',
         note: 'The Hawaiian Islands are volcanic; the trade winds blow almost all year, and sugar cane was the main crop.',
@@ -1666,6 +1679,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Sailor’s brother',
         style: 'American man in his 20s, shaken, speaking fast then slowing',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 0.95, rate: 1,
         text: 'Just before eight in the morning the planes came in low over the hills, red circles under their wings. The battleships blew up one after another. One huge ship rolled over with hundreds of men still inside. Next day my country was at war.',
         note: 'The USS Arizona exploded and sank with 1,177 crew; the USS Oklahoma capsized.',
@@ -1673,6 +1687,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Navy nurse, Pearl Harbor',
         style: 'American woman in her 20s, steady and controlled, exhausted',
+        voiceId: 'r1KmysJdVYZjJCm4mL3b', voiceName: 'Jessica (american)',
         pitch: 1.05, rate: 0.9,
         text: 'On Sunday the seventh of December 1941, Japanese planes attacked the American fleet at Pearl Harbor in Hawaii. About two thousand four hundred people died. The next day the United States entered the Second World War.',
         note: 'Two waves of over 350 aircraft attacked. The US aircraft carriers were at sea and escaped.',
@@ -1884,7 +1899,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'rumble-in-the-jungle',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-25',
     year: 1974,
     lat: -4.3307,
@@ -1898,6 +1913,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Shepherd’s daughter, Pakistan',
         style: 'Older Pakistani woman speaking English with a soft Punjabi accent, warm and remembering',
+        voiceId: 'RILOU7YmBhvwJGDGjNmP', voiceName: 'Jane (british)',
         pitch: 1.05, rate: 0.9,
         text: 'Before the morning prayer my father sat on the roof with the little radio pressed to his ear, half the village around him in blankets. A boxer far away, a Muslim like us, was fighting the giant. When the roaring stopped, my father lifted me up to the stars.',
         note: 'The fight was broadcast on radio and television around the world. Ali had converted to Islam and was especially admired across Africa and the Muslim world.',
@@ -1905,6 +1921,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Television engineer',
         style: 'British man in his 30s, brisk and technical, a little proud',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 1.05,
         text: 'We bounced the picture off a satellite into cinemas across America, live, timed for their evening, so for us it was the dead of night. The crew all had sideburns and flares, and the only news from home was Watergate and a president who had just resigned.',
         note: 'The fight was shown live via satellite on closed-circuit screens in cinemas and arenas – it started around 4 am local time for American prime time. President Nixon had resigned over Watergate in August 1974.',
@@ -1912,6 +1929,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Bar musician',
         style: 'Central African man in his 40s, French accent, relaxed and musical',
+        voiceId: 'x3gYeuNB0kLLYxOZsaSh', voiceName: 'Shrey (indian)',
         pitch: 0.9, rate: 0.95,
         text: 'The rainy season was overdue and the air was thick as soup. Across the great brown river we saw the lights of another capital. Every bar played guitar rumba, street sellers shouted in Lingala and French, and the country’s new name was still fresh paint.',
         note: 'Kinshasa and Brazzaville face each other across the Congo River – the two closest capitals in the world. Congolese rumba was the sound of the city. The country had been renamed Zaire in 1971.',
@@ -1919,6 +1937,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Ringside photographer',
         style: 'American woman in her 30s, fast-talking, still amazed',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.1, rate: 1.05,
         text: 'Four in the morning, sixty thousand chanting "bomaye" for the old champion who once refused the draft. He leaned on the ropes while the young heavyweight champion pounded him, until in the eighth the giant fell.',
         note: 'Ali had been stripped of his title in 1967 for refusing the Vietnam draft. His tactic later became known as "rope-a-dope". The crowd chanted "Ali, bomaye!" – "Ali, kill him!" in Lingala.',
@@ -1926,6 +1945,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Stadium cleaner, Kinshasa',
         style: 'Congolese man in his 50s, French accent, calm and proud',
+        voiceId: 'xTZlmU8dKXdyk4XGYGFg', voiceName: 'Antoine (french)',
         pitch: 0.85, rate: 0.9,
         text: 'On the thirtieth of October 1974, here in the Stade du 20 Mai in Kinshasa, Zaire, Muhammad Ali knocked out George Foreman in the eighth round and became world heavyweight champion again. The world called it the Rumble in the Jungle.',
         note: 'Ali was 32 and a clear underdog. The stadium is now called Stade Tata Raphaël.',
@@ -2310,8 +2330,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'pokemon-go',
-    status: 'draft',
-    on: '2026-11-30',
+    status: 'live',
+    on: '2026-11-23',
     year: 2016,
     lat: 40.7829,
     lon: -73.9654,
@@ -2324,6 +2344,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Winegrower, South Africa',
         style: 'South African man in his 60s speaking English with an Afrikaans accent, dry and fond',
+        voiceId: 'x3gYeuNB0kLLYxOZsaSh', voiceName: 'Shrey (indian)',
         pitch: 0.9, rate: 0.95,
         text: 'My nephew came to stay on the farm that winter and walked through the vineyard at night, phone held up, turning in slow circles. He said he was hunting. He came back empty-handed and happy, his battery dead, his shoes full of dust.',
         note: 'Within days the game spread far beyond the countries where it was officially released; many people installed it early.',
@@ -2331,6 +2352,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Office worker',
         style: 'Woman in her 30s, brisk and ironic',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.1, rate: 1.05,
         text: 'That summer everyone sent each other selfies with puppy ears drawn on their faces and carried a power bank like a spare lung. The Olympics were heading to South America, and our own election campaign was the loudest anyone could remember.',
         note: '2016: Snapchat face filters were everywhere, Rio hosted the first Olympics in South America, and the US presidential campaign dominated the news.',
@@ -2338,6 +2360,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Bike-taxi rider',
         style: 'West African man in his 30s speaking English with a light accent, cheerful and chatty',
+        voiceId: 'F283CmouI2PYZhZYWl5b', voiceName: 'Darwin – Grand Mythology Narration (indian)',
         pitch: 0.95, rate: 1.05,
         text: 'July, the air thick as soup, thunder every evening. Sirens bouncing between brick and glass, a ferry horn from the river, joggers everywhere. I pedal tourists along shady paths under the towers, a hundred languages in the back seat.',
         note: 'Hot, humid summers with evening thunderstorms are typical of the big cities on the US East Coast – New York among them.',
@@ -2345,6 +2368,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Park ranger',
         style: 'American woman in her 40s, deadpan, still a little baffled',
+        voiceId: 'lxYfHSkYm1EzQzGhdbfc', voiceName: 'Jessica Anne Bogart (american)',
         pitch: 1, rate: 1,
         text: 'One night hundreds of people sprinted across the big park at once, phones raised, screaming, towers glowing on every side. Someone had spotted a rare blue creature by the lake – one that does not exist. A Japanese cartoon game, in America’s biggest city.',
         note: 'In July 2016 a video went viral of a crowd stampeding through Central Park to catch a rare Vaporeon.',
@@ -2352,6 +2376,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Tour guide, Central Park, New York',
         style: 'American man in his 50s, New York accent, theatrical and warm',
+        voiceId: 'aOZ9Pl8uWUTet0DS7PYP', voiceName: 'Scott (new york)',
         pitch: 0.9, rate: 1,
         text: 'In July 2016 the phone game Pokémon Go came out, made by Niantic with Nintendo. Here in Central Park in New York, thousands roamed the paths day and night, catching virtual monsters on their screens. My tours had never been so crowded.',
         note: 'Pokémon Go launched on 6 July 2016 and became one of the most downloaded apps of the year. It uses GPS and augmented reality.',
@@ -2412,7 +2437,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'miracle-on-the-hudson',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-22',
     year: 2009,
     lat: 40.7695,
@@ -2426,6 +2451,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Retired pilot, Australia',
         style: 'Australian man in his 70s, dry, warm and unhurried',
+        voiceId: 'YrAYvOVjAFiqVwBgB4qI', voiceName: 'Tanksinker (australian)',
         pitch: 0.85, rate: 0.95,
         text: 'Forty years in cockpits taught me that calm beats heroics. One hot summer evening, cricket murmuring on the radio, news arrived from the far side of the world, and the whole club went quiet, then cheered.',
         note: 'In Australia it was summer while the events took place in the northern winter. Hint: the story is on the opposite side of the globe.',
@@ -2433,6 +2459,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Laid-off banker',
         style: 'American man in his 40s, wry and tired',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.9, rate: 1,
         text: 'My daughter got a phone with no keys at all, just a slab of glass. She follows strangers on a site where everyone writes in tiny messages. I still buy the paper and keep checking the job ads. Everyone talks about the crisis.',
         note: 'Touchscreen smartphones were new and Twitter was only a few years old. The 2008 financial crisis cost many bankers their jobs.',
@@ -2440,6 +2467,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Ferry deckhand',
         style: 'American man in his 30s, New Jersey accent, plain-spoken',
+        voiceId: 'wBXNqKUATyqu0RtYt25i', voiceName: 'Adam (american)',
         pitch: 0.95, rate: 1.05,
         text: 'Deep winter, breath hanging in the air, the wind cutting off the water. A wide grey river, tall buildings on one side, low warehouses and old piers on the other. We work the crossings all day in three layers.',
         note: 'The Hudson separates Manhattan from New Jersey. It was about −7 °C that January afternoon, the water about 2 °C.',
@@ -2447,6 +2475,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Ferry captain',
         style: 'American man in his 50s, steady and modest',
+        voiceId: 'uju3wxzG5OhpWcoi3SMy', voiceName: 'Michael C. Vincent (american)',
         pitch: 0.85, rate: 0.95,
         text: 'An airliner came gliding down the river, low and silent, both engines killed by birds just after take-off. It hit the water, slid, stopped. Passengers stood on the wings in freezing spray. Our commuter ferries pulled them aboard – all 155 lived.',
         note: 'Commuter ferries reached the plane within about four minutes.',
@@ -2454,6 +2483,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Commuter, New York',
         style: 'American woman in her 40s, New York accent, still moved',
+        voiceId: 'Gvx1qZk9R4BUiBfsNPBU', voiceName: 'Jessica (new york)',
         pitch: 1.05, rate: 1,
         text: 'On the fifteenth of January 2009, US Airways Flight 1549 lost both engines to geese and landed on the Hudson River in New York. Captain Chesley Sullenberger and his crew brought all 155 people out alive. The papers called it the Miracle on the Hudson.',
         note: 'The flight lasted about six minutes. The story was filmed in 2016 as “Sully”.',
@@ -2973,8 +3003,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'machu-picchu',
-    status: 'draft',
-    on: '2026-12-01',
+    status: 'live',
+    on: '2026-11-18',
     year: 1911,
     lat: -13.1631,
     lon: -72.545,
@@ -2987,6 +3017,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Sailmaker, Wales',
         style: 'Welsh man in his 50s, lilting and wistful',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.9, rate: 0.95,
         text: 'My son went off to build railways in a far country. His letter that winter was smudged with rain. A tall foreign professor had passed his camp, he wrote, asking about old stones, and paid a boy a silver coin to show him a path up into the clouds.',
         note: 'In the early 20th century many British engineers and workers built railways in South America.',
@@ -2994,6 +3025,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Shop clerk',
         style: 'Woman in her 30s, prim but curious',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.1, rate: 1,
         text: 'Everyone talked of Captain Scott racing a Norwegian to the South Pole and of the new king’s crowning. A young college lecturer bought snow goggles, quinine and a folding camera from us, off on some expedition in the summer holidays.',
         note: '1911: the coronation of George V (June) and the race between Amundsen and Scott to the South Pole. That summer the young Yale lecturer Hiram Bingham set off on an expedition to the Andes.',
@@ -3001,6 +3033,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Mule driver',
         style: 'Andean man in his 50s speaking English with a Spanish-Quechua accent, quiet and steady',
+        voiceId: 'AsHHje51j2aYdrvLDHfG', voiceName: 'Carlos (spanish)',
         pitch: 0.85, rate: 0.9,
         text: 'July, the dry season: icy nights, burning sun. A brown river roars through a gorge below green peaks steep as sugar loaves. Llamas carry the loads, the farmers chew coca and speak the tongue of the Inca kings, and they say stone walls hide up in the clouds.',
         note: 'The Urubamba valley lies in the Andes; llamas are the pack animals there, and Quechua, the language of the Incas, is still widely spoken.',
@@ -3008,6 +3041,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Farmer’s son',
         style: 'Peruvian man in his 70s speaking English with a Spanish accent, amused and proud',
+        voiceId: 'r2goToszgNLUzvFARGqy', voiceName: 'Paul Urbina (spanish)',
         pitch: 0.9, rate: 0.95,
         text: 'A tall American professor crawled over the log bridge on his knees and climbed our hillside in the drizzle. My family grew potatoes there on Inca terraces among granite temples. His photographs made our Peruvian mountain famous as the lost city of the Incas.',
         note: 'Two farming families lived on the site in 1911; a boy led Bingham up to the ruins.',
@@ -3015,6 +3049,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Muleteer, Machu Picchu',
         style: 'Peruvian man in his 60s speaking English with a Spanish accent, dignified',
+        voiceId: 'lOEtO6uKXvOvJeMZaY4u', voiceName: 'Robert (spanish)',
         pitch: 0.85, rate: 0.95,
         text: 'On the twenty-fourth of July 1911, the farmer Melchor Arteaga led the American explorer Hiram Bingham up to Machu Picchu, the Inca citadel above the Urubamba river. Local farmers knew it well; Bingham’s photographs made it famous.',
         note: 'Machu Picchu was built around 1450 for the Inca ruler Pachacuti and abandoned about a century later.',
@@ -3074,7 +3109,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'beijing-olympics-2008',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-21',
     year: 2008,
     lat: 39.9917,
@@ -3088,6 +3123,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Fisherman, Peru',
         style: 'Peruvian man in his 50s speaking English with a Spanish accent, slow and warm',
+        voiceId: 'AsHHje51j2aYdrvLDHfG', voiceName: 'Carlos (spanish)',
         pitch: 0.9, rate: 0.9,
         text: 'Early morning for us, the fog still lying on the harbour. In the cantina the owner turned the television up for once, and for an hour nobody touched their coffee. Light and colour, a sea of people moving as one. My grandson counted out loud, then gave up.',
         note: 'The ceremony began at 8 pm local time – early morning in South America.',
@@ -3095,6 +3131,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Office worker',
         style: 'Woman in her 40s, crisp and sardonic',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 1.05,
         text: 'Petrol cost more every time I filled the tank, so my husband dusted off his old bicycle. We had just hung our first flat television on the wall, thin as a painting, and our daughter put every photo of her life on the internet for strangers.',
         note: 'Summer 2008: record oil prices, flat-screen TVs replacing tube sets, social networks spreading worldwide – a few weeks before the financial crisis broke.',
@@ -3102,6 +3139,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Bicycle courier',
         style: 'Young Chinese man speaking English with a Mandarin accent, quick and cheerful',
+        voiceId: 'h1i3CVVBUuF6s46cxUGG', voiceName: 'Andy Lin (chinese)',
         pitch: 1, rate: 1.1,
         text: 'Summer, heavy and humid, a yellow haze that hid the sun. Wide roads in rings around the city, grey brick alleys with courtyard houses, cranes over new towers everywhere. In spring the dust blew in from the desert and I rode with a cloth over my mouth.',
         note: 'Beijing is known for its ring roads, hutong alleys and spring dust storms from the Gobi. Driving bans and factory closures were imposed to reduce smog during the Games.',
@@ -3109,6 +3147,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Drummer',
         style: 'Chinese man in his 30s speaking English with a Mandarin accent, proud and excited',
+        voiceId: 'mbL34QDB5FptPamlgvX5', voiceName: 'Jay (chinese)',
         pitch: 0.95, rate: 1.05,
         text: 'We drummers beat ancient drums in the giant stadium of steel twigs, our lights flashing. Our country was hosting the Olympic Games for the first time, fireworks marching over the capital. Then a gymnast flew on wires and lit the flame.',
         note: '2,008 drummers played the fou, an ancient Chinese percussion instrument. Some of the footprint fireworks shown on TV were computer-generated. China hosted the Summer Olympics for the first time.',
@@ -3116,6 +3155,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Volunteer, Beijing',
         style: 'Chinese woman in her 30s speaking English with a light accent, warm and precise',
+        voiceId: 'ngiiW8FFLIdMew1cqwSB', voiceName: 'Tulipe (chinese)',
         pitch: 1.1, rate: 0.95,
         text: 'On the eighth of August 2008, at eight minutes past eight in the evening, the Olympic Games opened in Beijing’s National Stadium, the Bird’s Nest. Zhang Yimou directed the ceremony, and the gymnast Li Ning lit the cauldron.',
         note: 'China went on to win the most gold medals of the Games (48).',

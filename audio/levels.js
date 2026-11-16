@@ -27,6 +27,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793629247
     }
   },
+  "beijing-olympics-2008": {
+    "1": {
+      "before": -25.4,
+      "after": -20.2,
+      "mtime": 1794850088
+    },
+    "2": {
+      "before": -22.8,
+      "after": -20.0,
+      "mtime": 1794850089
+    },
+    "3": {
+      "before": -18.5,
+      "after": -19.9,
+      "mtime": 1794850091
+    },
+    "4": {
+      "before": -13.0,
+      "after": -20.0,
+      "mtime": 1794850104
+    },
+    "5": {
+      "before": -17.9,
+      "after": -19.9,
+      "mtime": 1794850113
+    }
+  },
   "berlin-wall": {
     "1": {
       "before": -17.4,
@@ -325,6 +352,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793559379
     }
   },
+  "great-depression": {
+    "1": {
+      "before": -22.8,
+      "after": -20.1,
+      "mtime": 1794850361
+    },
+    "2": {
+      "before": -22.1,
+      "after": -20.0,
+      "mtime": 1794850362
+    },
+    "3": {
+      "before": -20.3,
+      "after": -20.0,
+      "mtime": 1794850371
+    },
+    "4": {
+      "before": -22.4,
+      "after": -20.0,
+      "mtime": 1794850373
+    },
+    "5": {
+      "before": -27.1,
+      "after": -20.1,
+      "mtime": 1794850384
+    }
+  },
   "iphone-presentation": {
     "1": {
       "before": -22.5,
@@ -379,6 +433,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1794163050
     }
   },
+  "machu-picchu": {
+    "1": {
+      "before": -22.4,
+      "after": -20.0,
+      "mtime": 1794850340
+    },
+    "2": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1794850341
+    },
+    "3": {
+      "before": -22.3,
+      "after": -20.1,
+      "mtime": 1794850343
+    },
+    "4": {
+      "before": -23.7,
+      "after": -20.1,
+      "mtime": 1794850345
+    },
+    "5": {
+      "before": -19.2,
+      "after": -20.0,
+      "mtime": 1794850346
+    }
+  },
   "march-on-washington": {
     "1": {
       "before": -25.9,
@@ -404,6 +485,33 @@ window.ECHOES_LEVELS = {
       "before": -34.3,
       "after": -20.5,
       "mtime": 1793629509
+    }
+  },
+  "miracle-on-the-hudson": {
+    "1": {
+      "before": -21.5,
+      "after": -20.0,
+      "mtime": 1794850126
+    },
+    "2": {
+      "before": -22.8,
+      "after": -20.0,
+      "mtime": 1794850128
+    },
+    "3": {
+      "before": -16.2,
+      "after": -20.0,
+      "mtime": 1794850129
+    },
+    "4": {
+      "before": -24.3,
+      "after": -20.2,
+      "mtime": 1794850130
+    },
+    "5": {
+      "before": -18.4,
+      "after": -20.0,
+      "mtime": 1794850142
     }
   },
   "notre-dame-fire": {
@@ -433,6 +541,87 @@ window.ECHOES_LEVELS = {
       "mtime": 1794748080
     }
   },
+  "pearl-harbor": {
+    "1": {
+      "before": -21.6,
+      "after": -20.0,
+      "mtime": 1794850147
+    },
+    "2": {
+      "before": -23.0,
+      "after": -20.0,
+      "mtime": 1794850149
+    },
+    "3": {
+      "before": -22.4,
+      "after": -20.0,
+      "mtime": 1794850158
+    },
+    "4": {
+      "before": -24.4,
+      "after": -20.0,
+      "mtime": 1794850160
+    },
+    "5": {
+      "before": -22.6,
+      "after": -20.0,
+      "mtime": 1794850161
+    }
+  },
+  "pokemon-go": {
+    "1": {
+      "before": -26.1,
+      "after": -20.2,
+      "mtime": 1794850389
+    },
+    "2": {
+      "before": -23.4,
+      "after": -20.0,
+      "mtime": 1794850391
+    },
+    "3": {
+      "before": -23.4,
+      "after": -20.1,
+      "mtime": 1794850402
+    },
+    "4": {
+      "before": -18.1,
+      "after": -19.9,
+      "mtime": 1794850413
+    },
+    "5": {
+      "before": -27.1,
+      "after": -20.0,
+      "mtime": 1794850414
+    }
+  },
+  "rumble-in-the-jungle": {
+    "1": {
+      "before": -22.4,
+      "after": -20.0,
+      "mtime": 1794850166
+    },
+    "2": {
+      "before": -21.9,
+      "after": -20.1,
+      "mtime": 1794850167
+    },
+    "3": {
+      "before": -27.5,
+      "after": -20.2,
+      "mtime": 1794850169
+    },
+    "4": {
+      "before": -23.3,
+      "after": -20.0,
+      "mtime": 1794850171
+    },
+    "5": {
+      "before": -16.6,
+      "after": -19.9,
+      "mtime": 1794850172
+    }
+  },
   "september-11": {
     "1": {
       "before": -26.6,
@@ -458,6 +647,33 @@ window.ECHOES_LEVELS = {
       "before": -20.8,
       "after": -20.0,
       "mtime": 1793544966
+    }
+  },
+  "thai-cave-rescue": {
+    "1": {
+      "before": -20.0,
+      "after": -20.0,
+      "mtime": 1794850076
+    },
+    "2": {
+      "before": -25.4,
+      "after": -20.1,
+      "mtime": 1794850077
+    },
+    "3": {
+      "before": -20.4,
+      "after": -20.0,
+      "mtime": 1794850079
+    },
+    "4": {
+      "before": -22.0,
+      "after": -20.0,
+      "mtime": 1794850080
+    },
+    "5": {
+      "before": -23.7,
+      "after": -20.0,
+      "mtime": 1794850081
     }
   },
   "titanic": {
