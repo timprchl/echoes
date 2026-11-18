@@ -1007,7 +1007,7 @@ window.ECHOES_DAYS = [
   {
     id: 'thai-cave-rescue',
     status: 'reviewed',
-    on: '2026-11-22',
+    on: '2026-11-23',
     year: 2018,
     lat: 20.382,
     lon: 99.868,
@@ -2333,7 +2333,7 @@ window.ECHOES_DAYS = [
   {
     id: 'pokemon-go',
     status: 'live',
-    on: '2026-11-23',
+    on: '2026-11-22',
     year: 2016,
     lat: 40.7829,
     lon: -73.9654,
