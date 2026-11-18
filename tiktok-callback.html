@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Echoes – TikTok</title>
+</head>
+<body style="font:17px/1.5 -apple-system,system-ui,sans-serif;padding:60px 24px;text-align:center;color:#111;background:#f5f5f3">
+  <p id="msg">Connecting TikTok to the Echoes Control Room …</p>
+  <script>
+    // TikTok schickt den Anmelde-Code hierher (https ist Pflicht); weiter an den Control Room auf diesem Rechner.
+    // Der Code ist nur zusammen mit dem geheimen Schlüssel im Control Room etwas wert und gilt nur einmal.
+    const q = location.search;
+    if (/[?&](code|error)=/.test(q)) location.replace('http://localhost:8765/api/tiktok/callback' + q);
+    else document.getElementById('msg').textContent = 'Nothing to do here.';
+  </script>
+</body>
+</html>

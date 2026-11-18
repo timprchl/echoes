@@ -1277,3 +1277,10 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .op-acts { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 .op-done b { font-weight: 400; color: #52514e; text-decoration: line-through; }
 @media (max-width: 700px) { .op-item { flex-direction: column; } .op-add { flex-direction: column; } }
+/* Control Room → Open: Clips zur Freigabe für TikTok */
+.op-clip { display: flex; gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); }
+.op-clip video { width: 150px; aspect-ratio: 9 / 16; border-radius: 12px; background: #111; flex: none; object-fit: cover; }
+.op-clipbody { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 8px; font-size: 14px; }
+.op-clipbody textarea { width: 100%; font: 13px/1.45 var(--sans); padding: 9px 11px; border: 1px solid var(--line); border-radius: 10px; resize: vertical; background: #fff; }
+.op-clipbody .pill { padding: 9px 16px; font-size: 13px; }
+.op-posted { margin: 10px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
