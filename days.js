@@ -1486,7 +1486,7 @@ window.ECHOES_DAYS = [
   {
     id: 'great-depression',
     status: 'live',
-    on: '2026-11-20',
+    on: '2026-11-22',
     year: 1929,
     lat: 40.7069,
     lon: -74.0113,
@@ -2333,7 +2333,7 @@ window.ECHOES_DAYS = [
   {
     id: 'pokemon-go',
     status: 'live',
-    on: '2026-11-22',
+    on: '2026-11-20',
     year: 2016,
     lat: 40.7829,
     lon: -73.9654,
