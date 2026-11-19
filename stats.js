@@ -224,6 +224,14 @@ window.EchoesStats = (() => {
     }).catch(() => {});
   }
 
+  // „Share“ gedrückt (geteilt oder kopiert): an der eigenen Runde vermerken, damit man sieht, ob überhaupt geteilt wird
+  function shared(dayNo) {
+    if (!window.ECHOES_STATS_URL || !dayNo) return;
+    fetch(`${window.ECHOES_STATS_URL}/api/share`, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ dayNo, device: Echoes.deviceId() }),
+    }).catch(() => {});
+  }
+
   // kurze Frage vor der Auflösung: wie schwer war es, und optional ein Satz. Ergebnis: Promise, das nach
   // „Send“ oder „Skip“ erfüllt wird – erst dann zeigt das Spiel die Lösung.
   function askFeedback({ day, dayNo }) {
@@ -263,5 +271,5 @@ window.EchoesStats = (() => {
     });
   }
 
-  return { open, close, available, report, askFeedback };
+  return { open, close, available, report, shared, askFeedback };
 })();

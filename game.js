@@ -700,6 +700,7 @@
           try { await navigator.share({ text: shareText() }); shared = true; } catch (e) { if (e.name === 'AbortError') return; }
         }
         if (!shared) { try { await navigator.clipboard.writeText(shareText()); } catch { prompt('', shareText()); } }
+        if (!TEST) window.EchoesStats?.shared?.(dayNo);
         $('#shareBtn').textContent = shared ? t().shared : t().copied;
         $('#shareBtn').classList.add('held');
         haptic([30, 50, 30]);
@@ -1041,7 +1042,7 @@
     // z. B. „Echoes #11 🔊🔊🔊🔇🔇 3/5“ – mit wie vielen Stimmen gelöst; darunter die Tipps und Punkte
     const voices = day.voices.map((_, i) => i < state.heard ? '🔊' : '🔇').join('');
     const tries = state.guesses.map(g => g.final ? '🎯' : g.hit ? '✅' : '❌').join('') + (state.named?.ok ? ' ✍️' : '');
-    return `Echoes #${dayNo} ${voices} ${state.heard}/${day.voices.length}\n${tries} · ${fmt(score())} points\nhttps://hearechoes.com`;
+    return `Echoes #${dayNo} ${voices} ${state.heard}/${day.voices.length}\n${tries} · ${fmt(score())} points\nhttps://hearechoes.com/?ref=share`;
   }
 
   // eigene Bilanz aus allen gespielten Tagen auf diesem Gerät (bzw. aus dem Konto übernommen); Archiv zählt nicht
