@@ -1287,3 +1287,17 @@ dialog.acct .pill { align-self: stretch; text-align: center; text-decoration: no
 .op-res { width: 100%; margin-top: 12px; border-collapse: collapse; font: 13px var(--sans); }
 .op-res th { text-align: left; font-weight: 600; color: var(--muted, #8b8b88); padding: 4px 8px 4px 0; border-bottom: 1px solid var(--line); }
 .op-res td { padding: 6px 8px 6px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+.ins-table tr.ins-sub td { padding-top: 14px; font-weight: 600; color: var(--muted, #8b8b88); border-bottom: none; }
+#socialStats .ins-table + .ins-table, #socialStats .db-small + .ins-table { margin-top: 18px; }
+
+/* Control Room: Reload-Knopf und Bereiche in der Statistik */
+button.cr-icon { border: none; background: none; cursor: pointer; font-family: inherit; }
+.cr-icon.spin { animation: cr-spin .8s linear infinite; }
+@keyframes cr-spin { to { transform: rotate(360deg); } }
+.ins-nav { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 18px 0 14px; }
+.ins-nav button { border: 1px solid var(--line); background: #fff; border-radius: 999px; padding: 7px 16px; font: 500 13px var(--sans); color: var(--muted); cursor: pointer; }
+.ins-nav button:hover { color: var(--ink); }
+.ins-nav button.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.ins-nav .db-small { margin-left: auto; }
+#insights section[data-sec][hidden] { display: none; }
+#insights .db-tiles { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }

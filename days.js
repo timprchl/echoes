@@ -367,7 +367,7 @@ window.ECHOES_DAYS = [
   {
     id: 'chile-mine',
     status: 'live',
-    on: '2026-12-11',
+    on: '2026-11-30',
     year: 2010,
     lat: -27.16,
     lon: -70.5,
@@ -422,7 +422,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'bern-1954',
-    status: 'reviewed',
+    status: 'live',
+    on: '2026-11-25',
     year: 1954,
     lat: 46.96,
     lon: 7.46,
@@ -435,6 +436,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Old woman on a farm, Brazil',
         style: 'Elderly Brazilian woman, Portuguese accent with a trace of German, nostalgic',
+        voiceId: 'SDm2FQORi7Hju7z9CyTa', voiceName: 'Ilona (german)',
         pitch: 1, rate: 0.9,
         text: 'On our farm in the hills, grandfather kept the shortwave radio wrapped in a blanket like a baby. That afternoon a voice from the old country crackled across the ocean, shouting one word again and again: Tor! Grandfather, who never cried, wept into his hat.',
         note: 'German emigrants in South America followed the match on shortwave radio.',
@@ -442,6 +444,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Innkeeper',
         style: 'Hearty woman in her 50s, rural accent, laughing',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 1,
         text: 'Nine summers after the war, only the doctor in our village owned a television, so the whole street crowded into my inn around the one wireless set. At the final whistle total strangers hugged each other and nobody wanted to pay.',
         note: 'Most people followed the match on the radio – television sets were still rare in the 1950s.',
@@ -449,6 +452,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Stadium usher',
         style: 'Older Swiss man, calm, Swiss-German accent, wry',
+        voiceId: 'A9evEp8yGjv4c3WsIKuY', voiceName: 'Ralf Eisend (german)',
         pitch: 0.85, rate: 0.95,
         text: 'The rain came down off the Alps like a curtain and the pitch turned to mud. In our country of four languages the crowd spoke three of them, plus the cowbells. On the roof, cameras sent pictures across half of Europe for the first time.',
         note: 'Switzerland hosted the tournament; the final was played in heavy rain and was among the first matches broadcast live across Europe on television.',
@@ -456,6 +460,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Fan from Budapest',
         style: 'Hungarian man, confident at first, then bitter, Hungarian accent',
+        voiceId: '372NsdHr6qutUh2JE8DJ', voiceName: 'Géza (british)',
         pitch: 0.9, rate: 1,
         text: 'Our Golden Team, unbeaten for four years, led the World Cup final 2–0 after eight minutes. We had beaten these West Germans 8–3 in the group stage. Then they equalised, and scored again six minutes from time. Budapest rioted.',
         note: 'Hungary\'s "Golden Team" were clear favourites; Helmut Rahn scored the winner in the 84th minute.',
@@ -463,6 +468,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Steward at Wankdorf Stadium, Bern',
         style: 'Older Swiss man, calm, Swiss-German accent, reflective',
+        voiceId: 'fvmkmNaIvqNTpXkcg7GK', voiceName: 'Bernd (german)',
         pitch: 0.85, rate: 0.9,
         text: 'On 4 July 1954, here in Bern, West Germany became football world champions for the first time. Over there they soon called it a miracle – the Miracle of Bern.',
         note: 'Nine years after the war, the victory became a moment of new self-confidence for many Germans.',
@@ -529,7 +535,7 @@ window.ECHOES_DAYS = [
   {
     id: 'hindenburg',
     status: 'reviewed',
-    on: '2026-11-30',
+    on: '2026-12-11',
     year: 1937,
     lat: 40.0335,
     lon: -74.3535,
@@ -550,22 +556,22 @@ window.ECHOES_DAYS = [
         who: 'Passenger',
         style: 'Elegant German woman in her 40s, refined, German accent, amused',
         pitch: 1, rate: 0.95,
-        text: 'My trunk is full of hats and letters of introduction, and a telegram to my family is promised on arrival. Everyone around me talks of radio, of speed, of crossing an ocean in days instead of weeks.',
-        note: 'In 1937 the Hindenburg crossed the Atlantic in about two to three days, against a week or more by ocean liner. Telegrams and radio were the modern means of communication of the 1930s.',
+        text: 'My trunk is full of hats and letters of introduction, and a telegram home is promised on arrival. The wireless plays dance bands, and the newspapers are full of money worries and men out of work.',
+        note: 'In the interwar years radio was the dominant mass medium and telegrams were the fastest way to send news home. Economic hardship and unemployment marked much of the 1920s and 1930s.',
       },
       {
-        who: 'Ground crew sailor',
+        who: 'Ground crew man',
         style: 'Young American sailor, East Coast accent, tired and wet',
         pitch: 1, rate: 1,
-        text: 'We waited all afternoon for a spring thunderstorm to pass, in flat sandy pine woods where the air hangs heavy. Two hundred of us in soaked Navy uniforms, American voices shouting, the Atlantic a short drive east, a huge city\'s glow to the north.',
-        note: 'Lakehurst lies in the New Jersey Pine Barrens, not far from the Atlantic coast and New York City. Thunderstorms delayed the landing, and the ground crew were US Navy personnel.',
+        text: 'We waited all afternoon for a spring thunderstorm to pass, in flat sandy pine woods where the air hangs heavy. Two hundred of us in soaked uniforms, English shouted over the wind, the sea a short drive east.',
+        note: 'Lakehurst lies in the New Jersey Pine Barrens, not far from the Atlantic coast. Thunderstorms delayed the landing, and the ground crew were mostly US Navy personnel.',
       },
       {
         who: 'Newsreel cameraman',
         style: 'American man in his 40s, shaken, speaking slowly',
         pitch: 0.9, rate: 0.9,
-        text: 'The biggest thing that ever flew came in from Germany on her first American crossing of the season, ropes dropping toward the Navy mooring mast. Then a flicker at her tail, and in thirty seconds she was a torch of burning hydrogen. I kept filming.',
-        note: 'Several newsreel crews filmed the landing, and the footage was shown in cinemas worldwide. The Hindenburg was filled with flammable hydrogen and moored to a mast at the US Navy air station.',
+        text: 'The silver giant with swastikas on her tail fins came in from Germany, over our American fields, toward the Navy mast after the storm. A flicker at her stern, and in thirty seconds she was a torch. I kept filming.',
+        note: 'Several newsreel crews filmed the landing, and the footage was shown in cinemas worldwide. The Hindenburg carried swastikas on its tail fins, was filled with flammable hydrogen, and was mooring at a US Navy mast.',
       },
       {
         who: 'Navy officer, Lakehurst',
@@ -804,7 +810,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'tutankhamun',
-    status: 'draft',
+    status: 'live',
+    on: '2026-12-01',
     year: 1922,
     lat: 25.7402,
     lon: 32.6014,
@@ -817,6 +824,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Seamstress',
         style: 'American woman in her 30s, New York accent, tired but amused',
+        voiceId: 'Gvx1qZk9R4BUiBfsNPBU', voiceName: 'Jessica (new york)',
         pitch: 1.05, rate: 1,
         text: 'That winter every customer wanted the same colours – deep blue and gold – and patterns of beetles and birds on everything. I sewed until my fingers bled. Nobody could tell me where the craze had started.',
         note: 'The find set off a wave of “Egyptomania” in fashion and design around the world.',
@@ -824,6 +832,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Newspaper man',
         style: 'Fast-talking British man in his 30s, journalist, wry',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.95, rate: 1.05,
         text: 'The war was a few years behind us and the girls had cut their hair short. The hotel gramophone played jazz half the night, and the new wireless in the lobby crackled with dance music. Everyone just wanted to forget.',
         note: 'Jazz, bobbed hair and the first radio broadcasts mark the early 1920s; reporters from all over the world came to cover the find.',
@@ -831,6 +840,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Water carrier',
         style: 'Young Egyptian man speaking English with an Arabic accent, calm',
+        voiceId: 'Os2frcqCuUz8b9F93RuI', voiceName: 'Mahmoud (arabic)',
         pitch: 1, rate: 0.95,
         text: 'Every morning I led the donkeys up the dry valley before the heat came, past the cliffs where the old kings sleep. Below us the river was green and full of sails; up here there was only stone and dust.',
         note: 'The Valley of the Kings lies on the west bank of the Nile, opposite Luxor.',
@@ -838,6 +848,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Foreman of the dig',
         style: 'Older Egyptian man, Arabic accent, quiet awe',
+        voiceId: 'tlETan7Okc4pzjD0z62P', voiceName: 'Mohammed (arabic)',
         pitch: 0.85, rate: 0.9,
         text: 'Four Novembers after the great war in Europe ended, our picks struck a step cut into the rock. Sixteen steps down was a sealed door stamped with the boy king’s seal. The Englishman held a candle to the hole and fell silent. Everywhere – gold.',
         note: 'The entrance was found on 4 November 1922; the sealed door was opened on 26 November.',
@@ -845,6 +856,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Guard at the tomb, Luxor',
         style: 'Egyptian man in his 50s, Arabic accent, proud and clear',
+        voiceId: 'EzoxNTKsg4JNN7wxAgut', voiceName: 'Hakim (arabic)',
         pitch: 0.9, rate: 0.9,
         text: 'In November 1922, in the Valley of the Kings near Luxor in Egypt, the tomb of the boy pharaoh Tutankhamun was found almost untouched after more than three thousand years.',
         note: 'The tomb held more than 5,000 objects, including the famous golden death mask.',
@@ -854,8 +866,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'mandela-release',
-    status: 'draft',
-    on: '2026-12-03',
+    status: 'live',
+    on: '2026-11-28',
     year: 1990,
     lat: -33.925,
     lon: 18.42,
@@ -868,6 +880,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Wine seller, Amsterdam',
         style: 'Older Dutch man speaking English with a Dutch accent, gruff, softening',
+        voiceId: '3T9MoEO77NQAD05l9TVO', voiceName: 'Sir Pieter (dutch)',
         pitch: 0.9, rate: 1,
         text: 'Every Saturday for years a woman stood on the corner with a candle, for a prisoner whose face none of us had ever seen. I never once signed her petition. Then one Sunday evening she bought every bottle of fizzy wine I had and poured it for strangers.',
         note: 'Anti-apartheid activists kept vigils in many European cities for years. Pictures of the prisoner could not be published in his own country, so most of the world did not know what he looked like.',
@@ -875,6 +888,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Student',
         style: 'Young woman in her early 20s, lively, slightly breathless',
+        voiceId: 'r1KmysJdVYZjJCm4mL3b', voiceName: 'Jessica (american)',
         pitch: 1.1, rate: 1.05,
         text: 'That winter history seemed to be on television every week. My father had just put a satellite dish on the balcony, and one Sunday he taped hours of frozen, far-away pictures – a road, a crowd, nothing happening – all waiting for one man to appear.',
         note: 'The release came three months after the fall of the Berlin Wall, in a winter full of upheaval, and was broadcast live by satellite around the world.',
@@ -882,6 +896,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Taxi driver',
         style: 'South African man in his 40s, warm Xhosa-accented English',
+        voiceId: 'x3gYeuNB0kLLYxOZsaSh', voiceName: 'Shrey (indian)',
         pitch: 0.95, rate: 1,
         text: 'From the vineyards in the valley all the way to the city by the ocean, the road was lined with people in the summer heat. Some had walked all night, some sang in a language full of clicks, some just stood there with tears on their faces.',
         note: 'February is high summer there. The prison lies in the winelands near Paarl, about an hour from Cape Town; many in the crowd sang in Xhosa, a click language.',
@@ -889,6 +904,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Prison warder',
         style: 'Afrikaans-accented man in his 50s, quiet, reflective',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.85, rate: 0.9,
         text: 'Twenty-seven years he had been our prisoner. That hot Sunday I walked beside the grey-haired man to the gate, and when it opened the noise hit us like a wave. He raised his fist – four years before this country would vote him president.',
         note: 'He had spent 27 years in prison, most of them on Robben Island; in 1994 he became president.',
@@ -896,6 +912,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Steward on the Grand Parade, Cape Town',
         style: 'South African woman in her 40s, clear and proud',
+        voiceId: '8B4Pfz8BwZh0sAFOespj', voiceName: 'Ira Queen (african)',
         pitch: 1, rate: 0.95,
         text: 'On 11 February 1990 Nelson Mandela walked out of prison after 27 years. That evening, here on the Grand Parade in Cape Town, he spoke to a crowd that had waited the whole day.',
         note: 'Four years later he became South Africa’s first democratically elected president.',
@@ -955,8 +972,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'hong-kong-handover',
-    status: 'draft',
-    on: '2026-12-02',
+    status: 'live',
+    on: '2026-11-26',
     year: 1997,
     lat: 22.282,
     lon: 114.174,
@@ -969,6 +986,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Woman in Vancouver',
         style: 'Canadian woman in her 40s, kind, slightly worried',
+        voiceId: 'TgnhEILA8UwUqIMi20rp', voiceName: 'Jenna (canadian)',
         pitch: 1.05, rate: 0.95,
         text: 'My uncle arrived with two suitcases and a rice cooker, and the whole family squeezed closer together in our little house. Every evening he called home and stood at the window long after he had hung up.',
         note: 'Hundreds of thousands emigrated before 1997, many to Canada.',
@@ -976,20 +994,23 @@ window.ECHOES_DAYS = [
       {
         who: 'Shop assistant',
         style: 'Young woman in her 20s, quick and cheerful',
+        voiceId: 'r1KmysJdVYZjJCm4mL3b', voiceName: 'Jessica (american)',
         pitch: 1.1, rate: 1.05,
-        text: 'Tamagotchis beeping in school bags, pagers on every belt, video CDs piled high in my shop. Dolly the cloned sheep is in the news, and a big clock counts down to a deadline set long ago.',
-        note: 'Tamagotchis, pagers and video CDs were everyday sights in 1997, the year Dolly the cloned sheep became world news.',
+        text: 'Tamagotchis beeping in school bags, pagers on every belt, a customer asking whether the new mobile phone really fits in a pocket. The Spice Girls on the radio, and everyone fretting about the year 2000.',
+        note: 'Tamagotchis, pagers and the first pocket-sized mobile phones were everyday sights in the late 1990s, as were the Spice Girls and worries about the millennium bug.',
       },
       {
         who: 'Ferry deckhand',
         style: 'Cantonese man in his 50s speaking English with an accent, relaxed',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.9, rate: 0.95,
-        text: 'Steep green hills rise behind a harbour of glittering towers, ferries and junks, the summer rain warm and heavy. Cantonese on deck, English on the signs, bamboo scaffolding on every building site, neon all night.',
-        note: 'Victoria Harbour sits between Hong Kong Island and Kowloon; bamboo scaffolding and neon signs are typical of the city.',
+        text: 'Steep green hills crowd down to a busy bay, the summer rain warm and heavy. Ferries and junks cross all day, and the shop signs carry Chinese characters beside Latin letters. The air smells of salt and frying oil.',
+        note: 'Hilly subtropical coasts with warm monsoon rain and bilingual signage are typical of southern China\'s coast and its former colonial ports.',
       },
       {
         who: 'Military bandsman',
         style: 'British man in his 30s, steady, a little wistful',
+        voiceId: 'G17SuINrv2H9FC6nvetn', voiceName: 'Christopher (british)',
         pitch: 0.95, rate: 0.95,
         text: 'At midnight, in a hall by the harbour, our colony went back to China: the flag came down after more than 150 years, a red one with five yellow stars rose, in pouring rain. The last governor sailed off on the royal yacht.',
         note: 'The British flag was lowered at midnight; Chinese troops entered the next morning.',
@@ -997,6 +1018,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Reporter, Hong Kong',
         style: 'Hong Kong woman in her 40s, English with a Cantonese accent, clear',
+        voiceId: '19STyYD15bswVz51nqLf', voiceName: 'Samara X (british)',
         pitch: 1, rate: 0.95,
         text: 'At midnight on 1 July 1997 Hong Kong was handed back from Britain to China, after 156 years as a British colony.',
         note: 'Under “one country, two systems” Hong Kong was meant to keep its own system for 50 years.',
@@ -1007,7 +1029,6 @@ window.ECHOES_DAYS = [
   {
     id: 'thai-cave-rescue',
     status: 'reviewed',
-    on: '2026-11-23',
     year: 2018,
     lat: 20.382,
     lon: 99.868,
@@ -1032,31 +1053,31 @@ window.ECHOES_DAYS = [
         style: 'Young man of about 18, eager, quick',
         voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 1.1, rate: 1.1,
-        text: 'Summer of the World Cup: everyone in my class kept a live stream open under the desks, shared drone clips in group chats and posted stories that vanished after a day. In July France lifted the trophy, and we still talked about the news.',
-        note: 'Smartphones, live streams and disappearing stories, together with the World Cup won by France in July, point to 2018.',
+        text: 'Everyone in my class had a phone you unlock with your fingerprint and streamed series at night. We copied the Fortnite dances at break, and our teacher kept banning phones.',
+        note: 'Fingerprint-lock phones, streaming and Fortnite dances point to the late 2010s.',
       },
       {
         who: 'Rice farmer',
         style: 'Thai man in his 50s speaking English with an accent, calm',
         voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.9, rate: 0.9,
-        text: 'The monsoon came early that year. Water poured off the steep limestone hills into the jungle, monks in saffron robes prayed day and night, and we let the pumps drain it onto our paddies.',
-        note: 'Tropical monsoon climate, karst hills, Buddhist monks and rice paddies point to mainland Southeast Asia. Farmers accepted flooded fields so the water could be pumped out of the cave.',
+        text: 'The rains came early. Limestone hills rose behind our paddies, the air was thick and warm, and our language rises and falls in tones. We greet guests with palms pressed together.',
+        note: 'Monsoon rains, karst hills, a tonal language and the palms-together greeting (wai) point to mainland Southeast Asia.',
       },
       {
         who: 'Navy diver',
         style: 'Thai man in his 30s, steady, determined',
         voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.95, rate: 0.95,
-        text: 'Twelve boys from a football team and their coach waited on a muddy ledge deep in a flooded mountain in the north of our kingdom. Foreign divers found them alive after nine days; we navy divers carried them out, one by one, asleep.',
+        text: 'A group of boys and their coach vanished in a flooded mountain cave in our north. We worked in brown water where a lamp showed almost nothing, and the whole kingdom held its breath.',
         note: 'The boys were sedated and carried out over three days.',
       },
       {
-        who: 'Volunteer, Tham Luang, Chiang Rai, Thailand',
+        who: 'Volunteer at Tham Luang cave, Chiang Rai, Thailand',
         style: 'Thai woman in her 30s, gentle and clear',
         voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1.05, rate: 0.95,
-        text: 'From 23 June to 10 July 2018, twelve boys of the Wild Boars junior football team and their coach were trapped in the flooded Tham Luang cave in Chiang Rai, Thailand, until international divers brought all thirteen out alive.',
+        text: 'From 23 June to 10 July 2018, twelve boys of the Wild Boars junior football team and their coach were trapped by flood water in the Tham Luang cave until international divers brought all thirteen out alive.',
         note: 'Former Thai Navy diver Saman Kunan died while supplying air tanks.',
       },
     ],
@@ -1065,7 +1086,6 @@ window.ECHOES_DAYS = [
   {
     id: 'sydney-opera-house',
     status: 'draft',
-    on: '2026-11-26',
     year: 1973,
     lat: -33.8568,
     lon: 151.2153,
@@ -1074,6 +1094,8 @@ window.ECHOES_DAYS = [
     date: '20 October 1973',
     place: 'Bennelong Point, Sydney, Australia',
     summary: 'After fourteen years of construction, huge cost overruns and the departure of its Danish architect Jørn Utzon, the Sydney Opera House was opened. Its shell-shaped roofs became the symbol of Australia and, in 2007, a UNESCO World Heritage Site.',
+    target: [6, 27, 65, 81, 94],
+    tol: 3.5,
     voices: [
       {
         who: 'Old woman in Denmark',
@@ -1086,22 +1108,22 @@ window.ECHOES_DAYS = [
         who: 'Taxpayer',
         style: 'Grumpy man in his 50s, broad accent, sarcastic',
         pitch: 0.9, rate: 1,
-        text: 'Bell-bottoms, colour television on the way, and a building that cost fourteen times what they had promised. The newspapers called it a white elephant for years, and everyone had an opinion about the roof.',
-        note: 'The final cost was about 14 times the original estimate.',
+        text: 'Last year the final men left the moon. Colour television has reached our living room, jumbo jets crowd the airports, and the evening news shows a war winding down. Prices climb faster than wages.',
+        note: 'Zeitgeist pinned to the early 1970s: Apollo 17 (Dec 1972) was the last moon mission, colour TV arriving in homes, the Boeing 747 (from 1970), the Vietnam War winding down (1973), inflation. No place and no mention of the event.',
       },
       {
         who: 'Ferry captain',
         style: 'Weathered man in his 60s, relaxed Australian drawl',
         pitch: 0.85, rate: 0.95,
-        text: 'Ferry captain since 1959. Christmas here is beach weather, gum trees full of cockatoos, the Southern Cross over my wheelhouse. Each morning I pass the big steel coat-hanger of a bridge, and the point\'s nearly finished after fifteen years.',
-        note: 'Sydney Harbour lies in the Southern Hemisphere, where Christmas falls in summer. The Harbour Bridge is nicknamed "the Coathanger". Construction began in 1959.',
+        text: 'Ferry captain since 1959. Christmas is beach weather, cockatoos shriek in the gum trees, my great-grandfather came in chains from Britain. Sandstone cliffs, a vast harbour, a steel arch we call the coathanger.',
+        note: 'Australia, Sydney: summer Christmas, cockatoos and gum trees, convict ancestry, sandstone cliffs, big natural harbour. The Harbour Bridge\'s nickname \'coathanger\' points much harder at Sydney without naming it.',
       },
       {
         who: 'Stagehand',
         style: 'Young Australian woman, bright and excited',
         pitch: 1.1, rate: 1.05,
-        text: 'Fourteen years after the first digging – white tiles on concrete shells like sails on the water. The Queen herself came to open it, fireworks burst over the harbour, and the whole shore was packed with people.',
-        note: 'The roof shells are covered with more than a million tiles. Queen Elizabeth II opened the building, 14 years after work began.',
+        text: 'Spring Saturday: the Queen opens the sail-roofed opera house above the harbour. Fourteen years of building, a million tiles, Beethoven\'s Ninth inside. The Danish architect quit the year England won the World Cup and stays away.',
+        note: 'Queen Elizabeth II opened the Sydney Opera House on 20 October 1973, 14 years after work began. Jørn Utzon left in 1966, the year England won the World Cup, which pins 1973 for a European audience. Million roof tiles, Beethoven\'s Ninth in the opening concert.',
       },
       {
         who: 'Usher, Sydney',
@@ -1383,7 +1405,7 @@ window.ECHOES_DAYS = [
 
   {
     id: 'nuremberg-trials',
-    status: 'draft',
+    status: 'live',
     on: '2026-11-27',
     year: 1945,
     lat: 49.4536,
@@ -1397,6 +1419,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Nurse, Canada',
         style: 'Canadian woman in her 30s, quiet and thoughtful, slightly tired',
+        voiceId: 'TgnhEILA8UwUqIMi20rp', voiceName: 'Jenna (canadian)',
         pitch: 1, rate: 0.9,
         text: 'My brother’s letters came every two weeks that winter. He wrote that his whole job was to stand behind a row of men and watch their hands. The strangest part, he said, was that some of them still nodded to him politely every morning.',
         note: 'Military police stood guard directly behind the defendants throughout the trial.',
@@ -1404,13 +1427,15 @@ window.ECHOES_DAYS = [
       {
         who: 'War correspondent',
         style: 'British man in his 40s, dry and observant, a little hoarse',
+        voiceId: 'NFG5qt843uXKj4pFvR7C', voiceName: 'Adam Stone (british)',
         pitch: 0.9, rate: 0.95,
-        text: 'We typed our copy on borrowed portable typewriters and sent it off by wire each night. Cigarettes were worth more than money – I paid my driver in American packets. Greatcoats everywhere, badges cut off.',
-        note: 'In occupied Germany in 1945/46, cigarettes served as an unofficial currency. Press reports were filed by wire and teleprinter; many men still wore military greatcoats with insignia removed.',
+        text: 'We typed our copy on borrowed portable typewriters and sent it off by wire each night. Half the lines were down, so I queued for hours at the telegraph desk, fingers black from carbon paper, hat still damp from the rain.',
+        note: 'In the 1940s, reporters typically wrote on portable typewriters, used carbon paper for copies, and filed stories by telegraph or teleprinter wire, often with long waits for a free line.',
       },
       {
         who: 'Translator',
         style: 'Woman in her 20s, precise and quick, light French accent',
+        voiceId: 'dTmTLshIypwp08eftJH6', voiceName: 'Sylvie (french)',
         pitch: 1.1, rate: 1.05,
         text: 'The houses were built of red sandstone, broken now and black with soot, and beyond them dark pine forests stood white with frost. The locals rolled their r’s in a soft dialect my German teacher had never taught me.',
         note: 'Nuremberg’s red-sandstone old town had been almost entirely destroyed by bombing; the city is surrounded by Franconian pine forests, and the local Franconian dialect differs from standard German.',
@@ -1418,6 +1443,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Guard, US Army',
         style: 'American man in his early 20s, Midwestern, earnest, voice low',
+        voiceId: 'UgBBYS2sOqTuMpoF3BR0', voiceName: 'Mark (american)',
         pitch: 0.9, rate: 0.9,
         text: 'Twenty-one men in the dock, judges from four nations before them – in the very city where those men had staged their great torchlit party rallies. One day the prosecutors showed films of the camps. Afterwards nobody in that courtroom could lift their eyes.',
         note: 'Nuremberg had been the site of the Nazi Party rallies. Film footage of the liberated concentration camps was shown in court on 29 November 1945.',
@@ -1425,6 +1451,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Court stenographer, Nuremberg',
         style: 'Woman in her 30s, American, clear, calm and formal',
+        voiceId: '56AoDkrOh6qfVPDXZ7Pt', voiceName: 'Cassidy (american)',
         pitch: 1, rate: 0.9,
         text: 'On 20 November 1945 the International Military Tribunal opened in the Palace of Justice in Nuremberg. For the first time, the leaders of a state stood trial for crimes against humanity.',
         note: 'The verdicts were announced on 1 October 1946; twelve defendants were sentenced to death.',
@@ -1435,7 +1462,6 @@ window.ECHOES_DAYS = [
   {
     id: 'waterloo',
     status: 'draft',
-    on: '2026-12-01',
     year: 1815,
     lat: 50.6787,
     lon: 4.4044,
@@ -1456,15 +1482,15 @@ window.ECHOES_DAYS = [
         who: 'Post rider',
         style: 'English man in his 40s, brisk and cheerful, a bit gravelly from shouting',
         pitch: 0.9, rate: 1.05,
-        text: 'Twenty years of war had worn out the roads and the horses. That spring the emperor slipped his island exile, and every crown in Europe waited for my sealed bag. I changed mounts at each post house and slept in the saddle.',
-        note: 'Before railways and the electric telegraph, news travelled by courier and sailing ship. Napoleon escaped exile on Elba in early 1815 and Europe, at war almost without pause since 1792, braced for another conflict.',
+        text: 'Years of war had worn out the roads and the horses. Every crown waited for my sealed bag, and nobody trusted the quiet. I changed mounts at each post house and slept in the saddle.',
+        note: 'Before railways and the electric telegraph, news travelled by courier on horseback and by sailing ship. Europe had been at war almost without pause for a generation and the peace felt fragile.',
       },
       {
         who: 'Farmer\'s daughter',
         style: 'Young woman around 18, Flemish accent in English, nervous and fast',
         pitch: 1.15, rate: 1.05,
-        text: 'Rain all night flattened the rye on our flat farmland. The old folk speak Flemish, the gentlemen French, and the king who rules us lives far north. Soldiers in many uniforms sleep in our barns, boots heavy with clay.',
-        note: 'Heavy rain turned the fields into deep mud. The region spoke Flemish with French as the language of the elite, and had just been joined with the Netherlands under one king after the fall of French rule.',
+        text: 'Rain all night flattened the rye in our fields. Grandmother and the gentlemen at the manor speak different tongues. Church bells carry far over the heavy clay, and the barns smell of wet straw.',
+        note: 'Heavy rain turned the clay fields into deep mud. In the region the common people and the educated elite spoke different languages, in flat, fertile farmland with a damp maritime climate.',
       },
       {
         who: 'Infantryman, Highland regiment',
@@ -1902,7 +1928,7 @@ window.ECHOES_DAYS = [
   {
     id: 'rumble-in-the-jungle',
     status: 'live',
-    on: '2026-11-25',
+    on: '2026-11-23',
     year: 1974,
     lat: -4.3307,
     lon: 15.3006,
@@ -2389,7 +2415,6 @@ window.ECHOES_DAYS = [
   {
     id: 'penicillin',
     status: 'draft',
-    on: '2026-11-28',
     year: 1928,
     lat: 51.5171,
     lon: -0.1738,
@@ -2403,29 +2428,29 @@ window.ECHOES_DAYS = [
         who: 'Midwife, Argentina',
         style: 'Argentine woman in her 70s speaking English with a Spanish accent, calm and a little sad',
         pitch: 1, rate: 0.9,
-        text: 'That summer my little brother scratched his knee on a wire fence. Three days later he had a fever, a week later he was gone. In those years a thorn, a shaving cut, a blister could kill you, and nobody anywhere could stop it. I became a midwife because of him.',
-        note: 'Before antibiotics, ordinary infections from small wounds were a common cause of death.',
+        text: 'Ten years after the Great War, my little brother scratched his knee on a wire fence. Three days later he had a fever, a week later he was gone. A thorn, a shaving cut, a blister could kill, and nobody could stop it. I became a midwife.',
+        note: 'Before antibiotics, ordinary infections from small wounds were a common cause of death. \'Ten years after the Great War\' points to c. 1928.',
       },
       {
         who: 'Dance-hall pianist',
         style: 'Man in his 30s, jaunty and charming, a showman',
         pitch: 1, rate: 1.05,
-        text: 'The pictures had only just learned to talk, and a lone airman\'s ocean flight was still the talk of the bar. This summer women ran their first Olympic 800 metres. Charleston every night, and my wireless the pride of the street.',
-        note: 'Late 1920s: the Charleston craze, the first sound films (1927), Lindbergh\'s solo Atlantic flight (1927). At the 1928 Olympics women first ran the 800 metres.',
+        text: 'Ten years since the guns fell silent, and the Bright Young Things dance till dawn. The pictures have started to talk, Charleston every night, skirts at the knee. My wireless is the street\'s pride; the old folks call it noise.',
+        note: '1920s zeitgeist: ten years after WWI, Bright Young Things (a British society set), the Charleston craze, flapper fashion, home wireless sets and the first sound films (from 1927).',
       },
       {
         who: 'Railway porter',
         style: 'Cockney man in his 50s, cheerful and gruff',
         pitch: 0.9, rate: 1,
-        text: 'Late summer, and still the rain. Coal smoke from the steam trains hung under the great iron-and-glass roof, the smell of soot and wet wool everywhere. Red buses, bowler hats, and men who say sorry when you step on their foot.',
-        note: 'St Mary’s Hospital stands next to Paddington Station, one of London’s great railway terminals.',
+        text: 'Late summer, and still the rain. Coal smoke from the steam trains hung under the great iron-and-glass roof. The air smelled of wet wool and soot, and we porters traded dry jokes in a clipped northern-sea tongue.',
+        note: 'Damp maritime climate of north-western Europe, steam-age terminus with an iron-and-glass roof, coal smoke and rain. The language hint (English, a clipped dry humour) is only a loose regional clue. St Mary\'s Hospital stands next to Paddington Station.',
       },
       {
         who: 'Laboratory assistant',
         style: 'British woman in her 20s, precise and lively',
         pitch: 1.1, rate: 1,
-        text: 'The doctor, a quiet Scot, came back from holiday to his dishes of germs. One held a blue-green mould, and around it the bacteria had melted away. A juice from it might stop wound infections. That year we girls got the vote at twenty-one.',
-        note: 'Fleming had left his Staphylococcus cultures on the bench during his holiday; a Penicillium spore landed on one. In 1928 British women won the vote on equal terms with men, from age 21.',
+        text: 'Our doctor, a quiet Scot, came back from holiday to his dishes of germs in our hospital lab beside the railway terminus. One held a blue-green mould, and the bacteria had melted around it. This year Parliament gave us girls the vote at twenty-one.',
+        note: 'Fleming had left his Staphylococcus cultures on the bench during his holiday; a Penicillium spore landed on one. In 1928 British women won the vote on equal terms with men, from age 21. St Mary\'s stands beside Paddington Station.',
       },
       {
         who: 'Hospital porter, London',
@@ -2704,7 +2729,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'gagarin',
-    status: 'draft',
+    status: 'live',
+    on: '2026-12-02',
     year: 1961,
     lat: 45.9203,
     lon: 63.3422,
@@ -2717,6 +2743,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Cattle herder, Argentina',
         style: 'Argentine man in his 70s speaking English with a Spanish accent, slow and thoughtful',
+        voiceId: 'r2goToszgNLUzvFARGqy', voiceName: 'Paul Urbina (spanish)',
         pitch: 0.85, rate: 0.9,
         text: 'An autumn morning on the plains, mist over the grass. On the little radio in the kitchen, the announcer’s voice shook as if he had seen a ghost. My father put down his yerba, went outside and stared at the sky for a long time, saying nothing at all.',
         note: 'The news spread around the world by radio within hours.',
@@ -2724,6 +2751,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Schoolgirl',
         style: 'Woman in her 70s remembering her childhood, bright and animated',
+        voiceId: 'wGcFBfKz5yUQqhqr0mVy', voiceName: 'Maria Moody (american)',
         pitch: 1.1, rate: 1.05,
         text: 'Everyone was afraid of the bomb; at school we practised hiding under our desks. Transistor radios small enough for a coat pocket, a new dance called the twist. Four years before, a little beeping ball had circled the earth, and the race was on.',
         note: 'Early 1960s: the Cold War, transistor radios, the twist. Sputnik had been launched in 1957.',
@@ -2731,6 +2759,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Railway worker',
         style: 'Kazakh man in his 50s speaking English with a Russian-Kazakh accent, laconic',
+        voiceId: '3faLw6tqzw5w1UZMFTgL', voiceName: 'Nik Ivanov (russian)',
         pitch: 0.85, rate: 0.95,
         text: 'Flat steppe to every horizon, wormwood and dry grass, camels by the tracks. In April the wind still bites; in summer it burns. We spoke one language at work and another at home, and our town had no name on any map – only a number.',
         note: 'The cosmodrome lay in the Kazakh steppe; its town was secret and known only by postal codes.',
@@ -2738,6 +2767,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Farm woman',
         style: 'Russian woman in her 60s speaking English with a Russian accent, earthy and amused',
+        voiceId: 'GCPLhb1XrVwcoKUJYcvz', voiceName: 'Nadya (russian)',
         pitch: 1, rate: 0.95,
         text: 'We were planting potatoes when a man in a bright orange suit and white helmet floated down into our field on a parachute. He smiled and said he had just circled the whole Earth, the first human in space. His helmet read CCCP.',
         note: 'Gagarin landed by parachute near the Volga, outside his capsule. The letters CCCP (USSR) were painted on his helmet shortly before launch.',
@@ -2745,6 +2775,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Rocket technician, Baikonur',
         style: 'Russian man in his 40s speaking English with a Russian accent, proud and moved',
+        voiceId: 'XaEUesE01wKIKaa0xI0h', voiceName: 'Alexey\'s English With Russian Accent Professional Male Voice (russian)',
         pitch: 0.9, rate: 0.95,
         text: 'On the twelfth of April 1961, Yuri Gagarin lifted off from Baikonur in the Vostok spacecraft and became the first human in space. He circled the Earth once in a hundred and eight minutes and landed safely. That night we all drank to him.',
         note: 'The American Alan Shepard followed on 5 May 1961, on a short flight that did not reach orbit.',
@@ -2804,7 +2835,8 @@ window.ECHOES_DAYS = [
 
   {
     id: 'beatles-ed-sullivan',
-    status: 'draft',
+    status: 'live',
+    on: '2026-12-03',
     year: 1964,
     lat: 40.7638,
     lon: -73.983,
@@ -2817,6 +2849,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Postman’s son, Australia',
         style: 'Australian man in his 70s, laconic and amused',
+        voiceId: 'YrAYvOVjAFiqVwBgB4qI', voiceName: 'Tanksinker (australian)',
         pitch: 0.9, rate: 0.95,
         text: 'For us it was a hot Monday morning and nothing had happened yet. But weeks later my cousin’s letter said her whole family had sat silent in front of the box on a Sunday night, and that her father, the most serious man alive, had tapped his foot.',
         note: 'The show aired on Sunday evening in New York – Monday morning in Australia.',
@@ -2824,6 +2857,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Teenage girl',
         style: 'Woman in her 70s remembering being 14, breathless and giggly',
+        voiceId: 'wGcFBfKz5yUQqhqr0mVy', voiceName: 'Maria Moody (american)',
         pitch: 1.15, rate: 1.1,
         text: 'A transistor radio under my pillow, hair teased high with hairspray, a stack of 45s next to the record player. Everything felt new and a little dangerous, and my parents just shook their heads at the noise.',
         note: 'Transistor radios and 45 rpm singles were teenage essentials of the late 1950s and 1960s.',
@@ -2831,6 +2865,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Hotel doorman',
         style: 'American man in his 60s, gravelly city accent, unflappable',
+        voiceId: 'NOpBlnGInO9m6vDvFkFC', voiceName: 'Spuds Oxley (american)',
         pitch: 0.85, rate: 1,
         text: 'February, grey slush on the sidewalks, steam rising out of the street grates. Theatre marquees, neon, yellow cabs honking, everybody in a hurry and nobody saying sorry. In the lobby I heard accents from every corner of the city, and half of Europe.',
         note: 'Midtown Manhattan, around Broadway and Central Park, where the band stayed at the Plaza Hotel.',
@@ -2838,6 +2873,7 @@ window.ECHOES_DAYS = [
       {
         who: 'TV cameraman',
         style: 'American man in his 40s, dry and matter-of-fact',
+        voiceId: 'EkK5I93UQWFDigLMpZcX', voiceName: 'James (american)',
         pitch: 0.9, rate: 1,
         text: 'A live Sunday-night variety show, and the whole country tuned in. Four young men from England, mop-top haircuts, matching suits, guitars – and girls screaming so loudly I could barely hear a note. The streets outside were empty.',
         note: 'The studio held only about 700 people; tens of thousands had applied for tickets. Around seventy million Americans watched.',
@@ -2845,6 +2881,7 @@ window.ECHOES_DAYS = [
       {
         who: 'Usher, New York',
         style: 'American woman in her 70s, New York accent, nostalgic and funny',
+        voiceId: 'Gvx1qZk9R4BUiBfsNPBU', voiceName: 'Jessica (new york)',
         pitch: 1.05, rate: 1,
         text: 'On the ninth of February 1964, the Beatles played live on The Ed Sullivan Show in New York – their first appearance on American television. About seventy-three million people watched, and Beatlemania swept across America.',
         note: 'They opened with “All My Loving”. Within weeks they held the top five places in the US singles chart.',

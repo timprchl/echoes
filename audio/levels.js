@@ -27,6 +27,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793629247
     }
   },
+  "beatles-ed-sullivan": {
+    "1": {
+      "before": -21.4,
+      "after": -20.0,
+      "mtime": 1795423816
+    },
+    "2": {
+      "before": -19.2,
+      "after": -20.0,
+      "mtime": 1795423817
+    },
+    "3": {
+      "before": -20.1,
+      "after": -20.0,
+      "mtime": 1795423819
+    },
+    "4": {
+      "before": -22.2,
+      "after": -20.0,
+      "mtime": 1795423820
+    },
+    "5": {
+      "before": -15.7,
+      "after": -20.0,
+      "mtime": 1795423821
+    }
+  },
   "beijing-olympics-2008": {
     "1": {
       "before": -25.4,
@@ -81,7 +108,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793545890
     }
   },
-  "bern-1954": {},
+  "bern-1954": {
+    "1": {
+      "before": -17.0,
+      "after": -19.8,
+      "mtime": 1795423646
+    },
+    "2": {
+      "before": -24.6,
+      "after": -20.1,
+      "mtime": 1795423647
+    },
+    "3": {
+      "before": -16.1,
+      "after": -19.9,
+      "mtime": 1795423657
+    },
+    "4": {
+      "before": -19.1,
+      "after": -20.0,
+      "mtime": 1795423668
+    },
+    "5": {
+      "before": -16.6,
+      "after": -19.9,
+      "mtime": 1795423679
+    }
+  },
   "bolt-world-record": {
     "1": {
       "before": -21.2,
@@ -352,6 +405,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1793559379
     }
   },
+  "gagarin": {
+    "1": {
+      "before": -23.1,
+      "after": -20.1,
+      "mtime": 1795423790
+    },
+    "2": {
+      "before": -19.4,
+      "after": -20.0,
+      "mtime": 1795423791
+    },
+    "3": {
+      "before": -17.8,
+      "after": -20.0,
+      "mtime": 1795423801
+    },
+    "4": {
+      "before": -24.2,
+      "after": -20.3,
+      "mtime": 1795423805
+    },
+    "5": {
+      "before": -26.7,
+      "after": -20.0,
+      "mtime": 1795423808
+    }
+  },
   "great-depression": {
     "1": {
       "before": -22.8,
@@ -377,6 +457,33 @@ window.ECHOES_LEVELS = {
       "before": -27.1,
       "after": -20.1,
       "mtime": 1794850384
+    }
+  },
+  "hong-kong-handover": {
+    "1": {
+      "before": -25.7,
+      "after": -20.1,
+      "mtime": 1795423695
+    },
+    "2": {
+      "before": -22.5,
+      "after": -20.0,
+      "mtime": 1795423696
+    },
+    "3": {
+      "before": -22.4,
+      "after": -20.3,
+      "mtime": 1795423698
+    },
+    "4": {
+      "before": -14.9,
+      "after": -20.0,
+      "mtime": 1795423699
+    },
+    "5": {
+      "before": -21.2,
+      "after": -20.0,
+      "mtime": 1795423700
     }
   },
   "iphone-presentation": {
@@ -460,6 +567,33 @@ window.ECHOES_LEVELS = {
       "mtime": 1794850346
     }
   },
+  "mandela-release": {
+    "1": {
+      "before": -16.2,
+      "after": -20.0,
+      "mtime": 1795423734
+    },
+    "2": {
+      "before": -22.5,
+      "after": -20.1,
+      "mtime": 1795423735
+    },
+    "3": {
+      "before": -26.4,
+      "after": -20.3,
+      "mtime": 1795423738
+    },
+    "4": {
+      "before": -22.4,
+      "after": -20.0,
+      "mtime": 1795423739
+    },
+    "5": {
+      "before": -31.9,
+      "after": -21.6,
+      "mtime": 1795423742
+    }
+  },
   "march-on-washington": {
     "1": {
       "before": -25.9,
@@ -539,6 +673,33 @@ window.ECHOES_LEVELS = {
       "before": -13.2,
       "after": -19.8,
       "mtime": 1794748080
+    }
+  },
+  "nuremberg-trials": {
+    "1": {
+      "before": -25.2,
+      "after": -20.1,
+      "mtime": 1795423706
+    },
+    "2": {
+      "before": -21.3,
+      "after": -20.2,
+      "mtime": 1795423707
+    },
+    "3": {
+      "before": -20.4,
+      "after": -20.0,
+      "mtime": 1795423717
+    },
+    "4": {
+      "before": -24.7,
+      "after": -20.1,
+      "mtime": 1795423719
+    },
+    "5": {
+      "before": -24.1,
+      "after": -20.0,
+      "mtime": 1795423720
     }
   },
   "pearl-harbor": {
@@ -728,6 +889,33 @@ window.ECHOES_LEVELS = {
       "before": -20.8,
       "after": -20.0,
       "mtime": 1793629838
+    }
+  },
+  "tutankhamun": {
+    "1": {
+      "before": -23.1,
+      "after": -20.1,
+      "mtime": 1795423750
+    },
+    "2": {
+      "before": -21.6,
+      "after": -20.0,
+      "mtime": 1795423752
+    },
+    "3": {
+      "before": -20.1,
+      "after": -20.0,
+      "mtime": 1795423760
+    },
+    "4": {
+      "before": -22.4,
+      "after": -20.1,
+      "mtime": 1795423772
+    },
+    "5": {
+      "before": -17.4,
+      "after": -19.9,
+      "mtime": 1795423781
     }
   },
   "wright-flight": {

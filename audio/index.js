@@ -7,6 +7,13 @@ window.ECHOES_AUDIO = {
     "4": "178aa648",
     "5": "13cc0b1e"
   },
+  "beatles-ed-sullivan": {
+    "1": "5135718e",
+    "2": "71284e68",
+    "3": "1ddd6975",
+    "4": "643da42d",
+    "5": "8417c256"
+  },
   "beijing-olympics-2008": {
     "1": "babbf5d6",
     "2": "6428ce2e",
@@ -20,6 +27,13 @@ window.ECHOES_AUDIO = {
     "3": "20264795",
     "4": "af7eac32",
     "5": "8966a64d"
+  },
+  "bern-1954": {
+    "1": "39398ce4",
+    "2": "ca89ede7",
+    "3": "8fef15d8",
+    "4": "1d0eea55",
+    "5": "d7d7454a"
   },
   "bolt-world-record": {
     "1": "2a058f84",
@@ -91,12 +105,26 @@ window.ECHOES_AUDIO = {
     "4": "033ba24c",
     "5": "f5c15928"
   },
+  "gagarin": {
+    "1": "5063721b",
+    "2": "767ce36e",
+    "3": "098909b2",
+    "4": "7eae8f63",
+    "5": "ad9379fc"
+  },
   "great-depression": {
     "1": "817d565e",
     "2": "93062fd6",
     "3": "f7d1fdfd",
     "4": "dbbc1a2c",
     "5": "5794db2e"
+  },
+  "hong-kong-handover": {
+    "1": "28641e58",
+    "2": "4c6dac62",
+    "3": "16e64f84",
+    "4": "37324d95",
+    "5": "dedd79e0"
   },
   "iphone-presentation": {
     "1": "91f5cbd0",
@@ -119,6 +147,13 @@ window.ECHOES_AUDIO = {
     "4": "842c3281",
     "5": "bfaf7356"
   },
+  "mandela-release": {
+    "1": "ec482c3e",
+    "2": "04b3dca6",
+    "3": "93b1f675",
+    "4": "7c78fd12",
+    "5": "b72abbb9"
+  },
   "march-on-washington": {
     "1": "4a95fa46",
     "2": "acb04953",
@@ -139,6 +174,13 @@ window.ECHOES_AUDIO = {
     "3": "fe83b6b9",
     "4": "d03f1d1e",
     "5": "679c95e0"
+  },
+  "nuremberg-trials": {
+    "1": "12ba5b61",
+    "2": "c9698373",
+    "3": "891b6654",
+    "4": "b4c3e2bf",
+    "5": "cdc774dd"
   },
   "pearl-harbor": {
     "1": "aeb57f4a",
@@ -189,6 +231,13 @@ window.ECHOES_AUDIO = {
     "4": "99ce863b",
     "5": "694ef748"
   },
+  "tutankhamun": {
+    "1": "7154b7b6",
+    "2": "4a6fa690",
+    "3": "1cdc5954",
+    "4": "c3bb3220",
+    "5": "e1dc5a49"
+  },
   "wright-flight": {
     "1": "a09663c4",
     "2": "aac8ecb4",
@@ -197,4 +246,4 @@ window.ECHOES_AUDIO = {
     "5": "73b54c78"
   }
 };
-window.ECHOES_AUDIO_VERSION = 1794850416; // gegen veraltete Aufnahmen im Browser-Cache
+window.ECHOES_AUDIO_VERSION = 1795423823; // gegen veraltete Aufnahmen im Browser-Cache
