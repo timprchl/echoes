@@ -423,7 +423,7 @@ window.ECHOES_DAYS = [
   {
     id: 'bern-1954',
     status: 'live',
-    on: '2026-11-25',
+    on: '2026-11-29',
     year: 1954,
     lat: 46.96,
     lon: 7.46,
@@ -867,7 +867,7 @@ window.ECHOES_DAYS = [
   {
     id: 'mandela-release',
     status: 'live',
-    on: '2026-11-28',
+    on: '2026-11-25',
     year: 1990,
     lat: -33.925,
     lon: 18.42,
@@ -1138,7 +1138,7 @@ window.ECHOES_DAYS = [
   {
     id: 'christmas-truce',
     status: 'live',
-    on: '2026-11-29',
+    on: '2026-11-28',
     year: 1914,
     lat: 50.73,
     lon: 2.88,
