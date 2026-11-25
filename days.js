@@ -3041,6 +3041,56 @@ window.ECHOES_DAYS = [
   },
 
   {
+    id: 'world-cup-final-2014',
+    status: 'draft',
+    year: 2014,
+    lat: -22.9121,
+    lon: -43.2302,
+    title: 'Germany wins the 2014 World Cup final',
+    answers: ['world cup final', 'world cup final 2014', '2014 world cup final', 'world cup 2014', 'fifa world cup 2014', 'brazil 2014', 'world cup brazil', 'germany world cup', 'germany wins the world cup', 'germany world champion', 'germany argentina', 'germany vs argentina', 'argentina germany', 'gotze', 'götze', 'goetze', 'mario götze', 'mario gotze', 'götze goal', 'maracana', 'maracanã', 'wm finale', 'wm finale 2014', 'wm 2014', 'wm brasilien', 'weltmeister 2014', 'deutschland weltmeister', 'deutschland argentinien', 'vierter stern'],
+    date: '13 July 2014',
+    place: 'Estádio do Maracanã, Rio de Janeiro, Brazil',
+    summary: 'In the final of the World Cup in Brazil, Germany beat Argentina 1–0 after extra time. The substitute Mario Götze, aged 22, took a cross from André Schürrle on his chest and volleyed it in in the 113th minute. It was Germany’s fourth title, the first since reunification, and the first time a European team won a World Cup played in the Americas. Lionel Messi was named player of the tournament but walked past the trophy empty-handed. Five days earlier Germany had beaten the hosts 7–1 in the semi-final.',
+    voices: [
+      {
+        who: 'Night watchman, Indonesia',
+        style: 'Indonesian man in his 50s speaking English with a Javanese accent, gentle and unhurried',
+        pitch: 0.95, rate: 0.9,
+        text: 'It was the fasting month, so the whole street was awake long before dawn anyway. We ate our rice in front of one screen in the guard hut. Nearly two hours of nothing – then one moment, just before the call to prayer. I started my fast smiling.',
+        note: 'Ramadan 2014 ran from late June to late July. In Jakarta the final kicked off at 2 am on Monday; the only goal fell around 4:20 am, shortly before the dawn prayer that ends the pre-dawn meal.',
+      },
+      {
+        who: 'Schoolgirl',
+        style: 'Girl of about 13, quick and chatty, a little cheeky',
+        pitch: 1.2, rate: 1.1,
+        text: 'That summer everyone in my class wore bracelets we wove from tiny rubber bands. My brother never looked up from the games on his phone, and the family chat pinged all through dinner. Dad had just bought a stick for taking selfies.',
+        note: 'Mid-2010s: the loom-band craze of 2014, smartphone games, family group chats and the first selfie sticks.',
+      },
+      {
+        who: 'Coconut seller',
+        style: 'Brazilian man in his 40s speaking English with a Portuguese accent, relaxed and cheerful',
+        pitch: 0.95, rate: 1,
+        text: 'Winter, and still people swim. A long curve of beach, steep green rocks rising straight out of the bay, houses climbing the hillsides. A little cable car swings up to the roundest of them. Around my stall everyone shouts in Portuguese, and that week I ran out of coconuts by noon.',
+        note: 'Rio de Janeiro: Copacabana beach, the hillside favelas and the cable car up Sugarloaf Mountain. Hundreds of thousands of visitors filled the city, among them tens of thousands of Argentine fans.',
+      },
+      {
+        who: 'Home supporter',
+        style: 'Brazilian woman in her 30s speaking English with a Portuguese accent, wry and lively',
+        pitch: 1.05, rate: 1.05,
+        text: 'Five days earlier they had scored seven against us. And still we cheered for them – anything but our neighbours lifting the cup in our house. Nil–nil, extra time. Then a young substitute took the ball on his chest and volleyed it in. Their little number ten just stared at the trophy.',
+        note: 'Many Brazilians supported Germany against their great rivals Argentina, despite the 7–1 semi-final. Götze scored in the 113th minute; Messi’s long look at the trophy became one of the pictures of the tournament.',
+      },
+      {
+        who: 'Turnstile steward, Rio de Janeiro',
+        style: 'Brazilian man in his 50s speaking English with a Portuguese accent, proud and clear',
+        pitch: 0.9, rate: 0.95,
+        text: 'On the thirteenth of July 2014, at the Maracanã in Rio de Janeiro, Germany beat Argentina one–nil after extra time in the World Cup final. Mario Götze scored in the hundred and thirteenth minute. It was Germany’s fourth title – and the first for a European team on this continent.',
+        note: 'About 75,000 people were in the stadium. No European team had won a World Cup in North or South America before.',
+      },
+    ],
+  },
+
+  {
     id: 'machu-picchu',
     status: 'live',
     on: '2026-11-18',
