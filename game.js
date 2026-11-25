@@ -758,29 +758,73 @@
 
   // --- Bonus: das Ereignis benennen (ein Versuch, früher = mehr Punkte) ---
   const norm = x => ` ${x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]+/g, ' ').trim()} `;
+  // Abstand zweier Wörter; ein Buchstabendreher (titnaic) zählt als ein Fehler
   function lev(a, b) {
-    const d = Array.from({ length: b.length + 1 }, (_, j) => j);
-    for (let i = 1; i <= a.length; i++) {
-      let prev = d[0]; d[0] = i;
-      for (let j = 1; j <= b.length; j++) {
-        const tmp = d[j];
-        d[j] = Math.min(d[j] + 1, d[j - 1] + 1, prev + (a[i - 1] === b[j - 1] ? 0 : 1));
-        prev = tmp;
-      }
+    const m = a.length, n = b.length;
+    const d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+    for (let j = 1; j <= n; j++) d[0][j] = j;
+    for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
     }
-    return d[b.length];
+    return d[m][n];
   }
-  // richtig, wenn eine erlaubte Antwort im Text vorkommt; bei langen Einzelwörtern sind Tippfehler ok
-  function isRightName(text) {
+  // Füllwörter zählen beim Vergleich nicht; GENERIC-Wörter allein reichen nicht für eine lose Beschreibung
+  const STOP = new Set('the a an of in on at to for and or by from with into is was it its this that when where de la le du des el der die das den dem des von vom bei auf im in zu zur zum und ein eine einer'.split(' '));
+  const GENERIC = new Set('first great new big old last day days year years world war end man men people city event history famous wins win won final finale game games match cup opening opens opened discovery erste erster grosse neue welt krieg ende tag jahr'.split(' '));
+  // Tippfehler: je länger das Wort, desto mehr Fehler sind erlaubt; Zahlen und Kürzel müssen stimmen
+  const slack = w => /\d/.test(w) || w.length < 5 ? 0 : w.length < 8 ? 1 : 2;
+  // gleiche Wortfamilie: sink/sinking, land/landed, rescue/rescued
+  const stemOf = w => w.replace(/(ings?|ed|es|s|ung|en|e)$/, '');
+  const keyWords = phrase => norm(phrase).trim().split(' ').filter(w => w && !STOP.has(w));
+  // Wörter, die zu einem ANDEREN Tag gehören (maradona, foreman, chanel), gelten nie als Tippfehler
+  const vocabOf = d => new Set([d.title || '', ...(d.answers || [])].flatMap(p => keyWords(p)));
+  const allWords = new Map(); // Wort -> Anzahl Tage, in denen es vorkommt
+  for (const d of window.ECHOES_DAYS || []) for (const w of vocabOf(d)) allWords.set(w, (allWords.get(w) || 0) + 1);
+  let own = new Set();
+  function sameWord(x, w) {
+    if (x === w) return true;
+    if (allWords.has(x) && !own.has(x)) return false;
+    if (/\d/.test(x) || /\d/.test(w)) return false;
+    // kurze Wörter: nur ein fehlender oder doppelter Buchstabe (wal/wall), kein Tausch (fall/wall)
+    const short = Math.min(x.length, w.length) < 5;
+    if (short ? x.length >= 3 && x[0] === w[0] && x.length !== w.length && Math.max(x.length, w.length) <= 5 && lev(x, w) === 1
+      : Math.abs(x.length - w.length) <= 3 && lev(x, w) <= Math.min(slack(x), slack(w))) return true;
+    const a = stemOf(x), b = stemOf(w);
+    return a.length >= 4 && b.length >= 4 && (a === b || lev(a, b) <= (Math.min(a.length, b.length) >= 6 ? 1 : 0));
+  }
+  // richtig, wenn (1) eine erlaubte Antwort im Text vorkommt, (2) alle wichtigen Wörter einer Antwort
+  // vorkommen – Reihenfolge und Tippfehler egal –, oder (3) eine lose Beschreibung mindestens zwei
+  // kennzeichnende Wörter aus Titel und Antworten trifft
+  function isRightName(text, d = day) {
     const input = norm(text);
-    const words = input.trim().split(' ');
-    return (day.answers || []).some(ans => {
+    const words = input.trim().split(' ').filter(Boolean);
+    if (!words.length) return false;
+    const glued = words.join('');
+    const answers = d.answers || [];
+    own = vocabOf(d);
+    // eine Jahreszahl, die nicht zu diesem Tag gehört, meint ein anderes Ereignis
+    if (words.some(x => /^(1[0-9]|20)\d\d$/.test(x) && +x !== d.year && !own.has(x))) return false;
+    const has = w => words.some(x => sameWord(x, w));
+    if (answers.some(ans => {
       const a = norm(ans);
       if (input.includes(a)) return true;
-      const w = a.trim();
-      return !w.includes(' ') && w.length >= 5 && words.some(x => lev(x, w) <= (w.length >= 8 ? 2 : 1));
-    });
+      const g = a.replace(/ /g, '');
+      // zusammen oder getrennt geschrieben, mit Tippfehlern: „pearlharbor“, „tutenkamun“
+      if (g.length >= 5 && words.length !== a.trim().split(' ').length && lev(glued, g) <= slack(g)) return true;
+      const keys = keyWords(ans);
+      return keys.length > 0 && keys.join('').length >= 4 && keys.every(has);
+    })) return true;
+    const pool = new Set([d.title || '', ...answers].flatMap(keyWords)
+      .filter(w => !GENERIC.has(w) && (w.length >= 4 || /^\d{3,}$/.test(w))));
+    // nennt die Beschreibung ein Kennwort eines anderen Tages (fukushima, sydney), ist der gemeint
+    if (words.some(x => x.length >= 5 && !GENERIC.has(x) && allWords.has(x) && !own.has(x))) return false;
+    // zwei verschiedene Wörter der Eingabe müssen zwei verschiedene Kennwörter treffen
+    const hitIn = new Set(), hitPool = new Set();
+    for (const x of words) for (const w of pool) if (sameWord(x, w)) { hitIn.add(stemOf(x)); hitPool.add(stemOf(w)); }
+    return hitIn.size >= 2 && hitPool.size >= 2;
   }
+  if (typeof window !== 'undefined') window.__isRightName = isRightName; // für Tests
   const nameBonus = () => NAME_BONUS[Math.max(0, state.heard - 1)];
   let nameOpen = false;
   let remindLater = -1; // „Maybe next guess“: bis zum nächsten Tipp nicht mehr nachfragen
