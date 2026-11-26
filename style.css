@@ -1301,3 +1301,14 @@ button.cr-icon { border: none; background: none; cursor: pointer; font-family: i
 .ins-nav .db-small { margin-left: auto; }
 #insights section[data-sec][hidden] { display: none; }
 #insights .db-tiles { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+
+/* Andere tägliche Spiele: klein unter dem Ergebnis, und die Seite games.html */
+.more-games { margin: 26px auto 0; padding-top: 14px; max-width: 360px; border-top: 1px solid var(--line); display: flex; flex-wrap: wrap; justify-content: center; align-items: baseline; gap: 6px 12px; font-size: 12px; color: var(--muted); }
+.mg-title { flex-basis: 100%; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; }
+.mg-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 12px; }
+.mg-list a { color: var(--ink); font-size: 13px; text-decoration: none; }
+.mg-list a:hover { text-decoration: underline; }
+.more-games .textbtn { font-size: 12px; color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.games-list a { flex-direction: column; align-items: flex-start; gap: 4px; }
+.games-list b { font: 400 20px/1.2 var(--serif); }
+.games-list span { font-size: 14px; line-height: 1.45; color: #555; }

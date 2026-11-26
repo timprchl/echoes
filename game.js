@@ -77,6 +77,7 @@
     resultHit: (v, g) => `Recognised with ${v} ${v === 1 ? 'voice' : 'voices'} on guess ${g}.`,
     resultFinal: (dy, km, p) => `Final guess: ${fmt(dy)} ${dy === 1 ? 'year' : 'years'} and ${fmt(km)} km off (−${fmt(p)}).`,
     notes: 'Tap 1–5 to read what each voice was hinting at.',
+    moreGames: 'More daily games', moreGamesAll: 'See all',
     proto: 'Prototype – pick a day:', reset: 'Reset day',
   };
 
@@ -1163,6 +1164,18 @@
       <button class="install-x" id="installX" aria-label="${t().installLater}">×</button></div>`;
   }
 
+  // Andere tägliche Spiele: klein und ganz unten, nach Teilen und Serie. Drei zufällige, pro Aufruf einmal gewählt.
+  let gamesPick = null;
+  function gamesHtml(d) {
+    if (TEST) return '';
+    gamesPick ??= [...Echoes.MORE_GAMES].sort(() => Math.random() - .5).slice(0, 3);
+    return `<div class="more-games"${d}>
+      <span class="mg-title">${t().moreGames}</span>
+      <span class="mg-list">${gamesPick.map(g => `<a href="${g.url}" target="_blank" rel="noopener" title="${esc(g.text)}">${esc(g.name)}</a>`).join('')}</span>
+      <a class="textbtn" href="games.html">${t().moreGamesAll}</a>
+    </div>`;
+  }
+
   function resultHtml() {
     const last = state.guesses[state.guesses.length - 1];
     const streak = Echoes.streak(dayNo);
@@ -1189,6 +1202,7 @@
       ${tomorrowText() ? `<p class="tomorrow"${d(3.15)}>${tomorrowText()}</p>` : ''}
       <p class="come-back"${d(3.2)}>${streak > 1 ? `<b>${t().streak(streak)}</b> · ` : ''}<span id="nextIn">${t().nextIn(Echoes.untilMidnight())}</span></p>
       ${!TEST && window.EchoesAccount?.available() && !EchoesAccount.signedIn() ? `<p class="acct-cta"${d(3.4)}><button class="textbtn" id="acctCta">${t().keepStreak}</button></p>` : ''}`}
+      ${gamesHtml(d(3.6))}
     </div>`;
   }
 

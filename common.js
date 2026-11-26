@@ -211,6 +211,16 @@ window.Echoes = (() => {
     return id;
   }
 
+  // Andere tägliche Spiele: eine Liste für den Ergebnis-Screen und games.html.
+  // utm_source zeigt den Betreibern in ihrer Statistik, dass der Besuch von Echoes kommt.
+  const MORE_GAMES = [
+    { name: 'TimeGuessr', url: 'https://timeguessr.com', text: 'Guess where and when a photo was taken.' },
+    { name: 'MapTap', url: 'https://maptap.gg', text: 'Tap five places on a globe, each with a story from history.' },
+    { name: 'Chronophoto', url: 'https://www.chronophoto.app', text: 'Guess the year a photo was taken.' },
+    { name: 'Bandle', url: 'https://bandle.app', text: 'Guess the song, one instrument at a time.' },
+    { name: 'Originle', url: 'https://originle.app', text: 'Guess where a person’s roots are from short clips.' },
+  ].map(g => ({ ...g, url: `${g.url}?utm_source=hearechoes&utm_medium=referral` }));
+
   const ARCHIVE = !TEST && params.has('archive') && canArchive() && parseInt(params.get('day'), 10) < todayNumber();
-  return { refSource, YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, ARCHIVE_OPEN, canArchive, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
+  return { MORE_GAMES, refSource, YEAR_MIN, YEAR_MAX, yearOff, yearLabel, isoDate, dateOfNo, noOfIso, todayNumber, DEV, TEST, ARCHIVE, ARCHIVE_OPEN, canArchive, START, STATS_LIVE, STATS_URL, signedIn, deviceId, RULES, store, fmt, currentDay, withDay, dayLinks, showGuide, markPlayed, streak, untilMidnight, textHash };
 })();
